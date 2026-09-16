@@ -230,11 +230,11 @@ description: Explore our portfolio of commercial and residential smart home auto
   .portfolio-collapsed-header {
     display: flex;
     align-items: center;
-    gap: 0.85rem;
-    padding: 2rem 2rem;
+    gap: 1rem;
+    padding: 2.85rem 2.5rem;
     cursor: pointer;
     user-select: none;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, padding 0.3s ease;
     width: 100%;
   }
 
@@ -245,6 +245,8 @@ description: Explore our portfolio of commercial and residential smart home auto
     color: #111111;
     letter-spacing: -0.02em;
     display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+    transform-origin: left center;
   }
 
   .portfolio-collapsed-num {
@@ -264,25 +266,36 @@ description: Explore our portfolio of commercial and residential smart home auto
     justify-content: center;
     font-size: clamp(1.2rem, 1.8vw, 1.5rem);
     color: #FF4103;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: center center;
     transform: rotate(0deg);
   }
 
-  /* Desktop Hover OR Item Active (Expanded): Hide Title, Show Number, Rotate Arrow DOWN */
-  .portfolio-list-item:hover .portfolio-collapsed-title,
+  /* Desktop Hover (when collapsed): Title and Arrow increase in size slightly */
+  .portfolio-list-item:not(.active):hover .portfolio-collapsed-title {
+    transform: scale(1.04);
+    color: #FF4103;
+  }
+
+  .portfolio-list-item:not(.active):hover .portfolio-arrow-icon {
+    transform: scale(1.18) translateX(4px);
+  }
+
+  /* When Item is Expanded (Active via Click): Swap Title for Number & Rotate Arrow Down */
   .portfolio-list-item.active .portfolio-collapsed-title {
     display: none;
   }
 
-  .portfolio-list-item:hover .portfolio-collapsed-num,
   .portfolio-list-item.active .portfolio-collapsed-num {
     display: inline-block;
   }
 
-  .portfolio-list-item:hover .portfolio-arrow-icon,
   .portfolio-list-item.active .portfolio-arrow-icon {
     transform: rotate(90deg);
+  }
+
+  .portfolio-list-item.active:hover .portfolio-arrow-icon {
+    transform: scale(1.18) rotate(90deg);
   }
 
   /* Expandable Grid Animation Container */
@@ -429,7 +442,7 @@ description: Explore our portfolio of commercial and residential smart home auto
   /* Responsive Design for Mobile & Tablet */
   @media (max-width: 991px) {
     .portfolio-collapsed-header {
-      padding: 1.75rem 1.25rem;
+      padding: 2.25rem 1.5rem;
     }
 
     .portfolio-collapsed-title {
@@ -477,19 +490,6 @@ description: Explore our portfolio of commercial and residential smart home auto
           }
         }
       });
-
-      // Desktop hover expand handler
-      item.addEventListener('mouseenter', () => {
-        if (window.innerWidth > 991) {
-          listItems.forEach(i => {
-            i.classList.remove('active');
-            const headerEl = i.querySelector('.portfolio-collapsed-header');
-            if (headerEl) headerEl.setAttribute('aria-expanded', 'false');
-          });
-          item.classList.add('active');
-          header.setAttribute('aria-expanded', 'true');
-        }
-      });
     });
 
     // Close when clicking outside portfolio items
@@ -502,5 +502,95 @@ description: Explore our portfolio of commercial and residential smart home auto
         });
       }
     });
+
+    // Scroll-Controlled Exit Animations for Hero Title & Subtitle/Button
+    const heroTitleLines = document.querySelectorAll('.hero-tresmares-portfolio .hero-display-title .hero-title-line');
+    const heroTextItems = document.querySelectorAll('.hero-tresmares-portfolio .hero-text-block > *');
+
+    if (heroTitleLines.length > 0 || heroTextItems.length > 0) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let initialLoaded = false;
+
+      const loadTimer = setTimeout(() => {
+        initialLoaded = true;
+        heroTitleLines.forEach(line => {
+          line.style.animation = 'none';
+          line.style.transform = 'translateY(0%)';
+          line.style.opacity = '1';
+        });
+        heroTextItems.forEach(item => {
+          item.style.animation = 'none';
+          item.style.transform = 'translateX(0%)';
+          item.style.opacity = '1';
+        });
+      }, 1800);
+
+      function updateHeroScroll() {
+        if (prefersReducedMotion) return;
+
+        const scrollY = window.scrollY || window.pageYOffset;
+        
+        if (scrollY > 5 && !initialLoaded) {
+          initialLoaded = true;
+          clearTimeout(loadTimer);
+          heroTitleLines.forEach(line => {
+            line.style.animation = 'none';
+          });
+          heroTextItems.forEach(item => {
+            item.style.animation = 'none';
+          });
+        }
+
+        if (!initialLoaded && scrollY === 0) return;
+
+        const maxScroll = 320;
+        const scrollProgress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
+
+        heroTitleLines.forEach((line, index) => {
+          const start = index * 0.12;
+          const end = Math.min(start + 0.76, 1);
+          
+          let lineProgress = 0;
+          if (scrollProgress > start) {
+            lineProgress = Math.min((scrollProgress - start) / (end - start), 1);
+          }
+
+          const translateY = -120 * lineProgress;
+          const opacity = 1 - lineProgress;
+
+          line.style.transform = `translateY(${translateY.toFixed(2)}%)`;
+          line.style.opacity = opacity.toFixed(3);
+        });
+
+        heroTextItems.forEach((item, index) => {
+          const start = index * 0.10;
+          const end = Math.min(start + 0.80, 1);
+
+          let itemProgress = 0;
+          if (scrollProgress > start) {
+            itemProgress = Math.min((scrollProgress - start) / (end - start), 1);
+          }
+
+          const translateX = 115 * itemProgress;
+          const opacity = 1 - itemProgress;
+
+          item.style.transform = `translateX(${translateX.toFixed(2)}%)`;
+          item.style.opacity = opacity.toFixed(3);
+        });
+      }
+
+      let heroScrollTicking = false;
+      window.addEventListener('scroll', () => {
+        if (!heroScrollTicking) {
+          requestAnimationFrame(() => {
+            updateHeroScroll();
+            heroScrollTicking = false;
+          });
+          heroScrollTicking = true;
+        }
+      }, { passive: true });
+
+      updateHeroScroll();
+    }
   });
 </script>

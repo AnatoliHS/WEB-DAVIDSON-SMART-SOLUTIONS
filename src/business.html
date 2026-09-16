@@ -323,5 +323,101 @@ isBusinessPage: true
 
     if (prevBtn) prevBtn.addEventListener('click', () => activateSlide(currentIndex - 1));
     if (nextBtn) nextBtn.addEventListener('click', () => activateSlide(currentIndex + 1));
+
+    // Scroll-Controlled Exit Animations for Hero Title & Subtitle/Button
+    const heroTitleLines = document.querySelectorAll('.hero-tresmares-business .hero-display-title .hero-title-line');
+    const heroTextItems = document.querySelectorAll('.hero-tresmares-business .hero-text-block > *');
+
+    if (heroTitleLines.length > 0 || heroTextItems.length > 0) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let initialLoaded = false;
+
+      // Allow initial CSS reveal animation to complete (~1.8s) before scroll control takes over
+      const loadTimer = setTimeout(() => {
+        initialLoaded = true;
+        heroTitleLines.forEach(line => {
+          line.style.animation = 'none';
+          line.style.transform = 'translateY(0%)';
+          line.style.opacity = '1';
+        });
+        heroTextItems.forEach(item => {
+          item.style.animation = 'none';
+          item.style.transform = 'translateX(0%)';
+          item.style.opacity = '1';
+        });
+      }, 1800);
+
+      function updateHeroScroll() {
+        if (prefersReducedMotion) return;
+
+        const scrollY = window.scrollY || window.pageYOffset;
+        
+        // If user scrolls before timeout, immediately transfer control to scroll
+        if (scrollY > 5 && !initialLoaded) {
+          initialLoaded = true;
+          clearTimeout(loadTimer);
+          heroTitleLines.forEach(line => {
+            line.style.animation = 'none';
+          });
+          heroTextItems.forEach(item => {
+            item.style.animation = 'none';
+          });
+        }
+
+        if (!initialLoaded && scrollY === 0) return;
+
+        // Scroll distance threshold (0 to 320px scroll)
+        const maxScroll = 320;
+        const scrollProgress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
+
+        // 1. Hero Title Lines (Animate Upwards -Y out of mask)
+        heroTitleLines.forEach((line, index) => {
+          const start = index * 0.12;
+          const end = Math.min(start + 0.76, 1);
+          
+          let lineProgress = 0;
+          if (scrollProgress > start) {
+            lineProgress = Math.min((scrollProgress - start) / (end - start), 1);
+          }
+
+          const translateY = -120 * lineProgress;
+          const opacity = 1 - lineProgress;
+
+          line.style.transform = `translateY(${translateY.toFixed(2)}%)`;
+          line.style.opacity = opacity.toFixed(3);
+        });
+
+        // 2. Hero Subtitle & Explore Link (Animate Rightwards +X off screen)
+        heroTextItems.forEach((item, index) => {
+          const start = index * 0.10;
+          const end = Math.min(start + 0.80, 1);
+
+          let itemProgress = 0;
+          if (scrollProgress > start) {
+            itemProgress = Math.min((scrollProgress - start) / (end - start), 1);
+          }
+
+          const translateX = 115 * itemProgress;
+          const opacity = 1 - itemProgress;
+
+          item.style.transform = `translateX(${translateX.toFixed(2)}%)`;
+          item.style.opacity = opacity.toFixed(3);
+        });
+      }
+
+      let heroScrollTicking = false;
+      window.addEventListener('scroll', () => {
+        if (!heroScrollTicking) {
+          requestAnimationFrame(() => {
+            updateHeroScroll();
+            heroScrollTicking = false;
+          });
+          heroScrollTicking = true;
+        }
+      }, { passive: true });
+
+      // Check initial scroll state on load
+      updateHeroScroll();
+    }
   });
 </script>
