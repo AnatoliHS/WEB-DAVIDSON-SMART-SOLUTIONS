@@ -16,11 +16,11 @@
   --text-muted: #737373;
   --text-inverse: #f8f7f4;
 
-  /* Vibrant Accent Gradient Colors (#FF4103 -> #c73200) */
-  --color-accent: #FF4103;
-  --color-accent-hover: #c73200;
-  --color-accent-light: rgba(255, 65, 3, 0.08);
-  --color-accent-gradient: linear-gradient(135deg, #FF4103 0%, #c73200 100%);
+  /* Vibrant Accent Gradient Colors (#C5A059 -> #C5A059) */
+  --color-accent: #C5A059;
+  --color-accent-hover: #C5A059;
+  --color-accent-light: rgba(197, 160, 89, 0.08);
+  --color-accent-gradient: linear-gradient(135deg, #C5A059 0%, #C5A059 100%);
 
   --border-subtle: rgba(24, 24, 24, 0.12);
   --border-strong: rgba(24, 24, 24, 0.25);
@@ -182,11 +182,11 @@ ul {
 }
 
 .brand-logo-text .accent-s {
-  color: #FF4103;
+  color: #C5A059;
 }
 
 body.business-portal .brand-logo-text .accent-s {
-  color: #8e2de2;
+  color: #61709e !important;
 }
 
 .main-nav {
@@ -496,7 +496,7 @@ body.business-portal .brand-logo-text .accent-s {
   .mega-card-item:hover {
     transform: translateY(-4px);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
-    border-color: rgba(255, 65, 3, 0.4);
+    border-color: rgba(158, 139, 125, 0.4);
   }
 
   .mega-card-item:hover .mega-card-bg {
@@ -508,8 +508,8 @@ body.business-portal .brand-logo-text .accent-s {
   }
 
   .mega-card-item:hover .mega-card-arrow {
-    background: var(--color-accent, #FF4103);
-    border-color: var(--color-accent, #FF4103);
+    background: var(--color-accent, #C5A059);
+    border-color: var(--color-accent, #C5A059);
     color: #ffffff;
     transform: translateX(3px);
   }
@@ -534,7 +534,7 @@ body.business-portal .brand-logo-text .accent-s {
   }
 
   .mega-footer-link:hover {
-    background: rgba(255, 65, 3, 0.06);
+    background: rgba(158, 139, 125, 0.06);
   }
 
   /* About Mega Dropdown Layout (Featured Spotlight Image + Structured Text Link Grid) */
@@ -633,7 +633,7 @@ body.business-portal .brand-logo-text .accent-s {
 
   .about-mega-feature:hover .about-feature-link {
     gap: 0.65rem;
-    color: var(--color-accent, #FF4103);
+    color: var(--color-accent, #C5A059);
   }
 
   .about-mega-links {
@@ -671,8 +671,8 @@ body.business-portal .brand-logo-text .accent-s {
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: rgba(255, 65, 3, 0.08);
-    color: var(--color-accent, #FF4103);
+    background: rgba(158, 139, 125, 0.08);
+    color: var(--color-accent, #C5A059);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -682,7 +682,7 @@ body.business-portal .brand-logo-text .accent-s {
   }
 
   .about-link-item:hover .about-link-icon {
-    background: var(--color-accent, #FF4103);
+    background: var(--color-accent, #C5A059);
     color: #ffffff;
     transform: scale(1.06);
   }
@@ -702,7 +702,7 @@ body.business-portal .brand-logo-text .accent-s {
   }
 
   .about-link-item:hover .about-link-title {
-    color: var(--color-accent, #FF4103);
+    color: var(--color-accent, #C5A059);
   }
 
   .about-link-desc {
@@ -719,7 +719,7 @@ body.business-portal .brand-logo-text .accent-s {
   }
 
   .about-link-item:hover .about-link-arrow {
-    color: var(--color-accent, #FF4103);
+    color: var(--color-accent, #C5A059);
     transform: translateX(4px);
   }
 }
@@ -772,11 +772,11 @@ body.business-portal .brand-logo-text .accent-s {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #FF4103 0%, #c73200 100%);
+  background: linear-gradient(135deg, #C5A059 0%, #C5A059 100%);
   background-size: 160% 160%;
   border: none;
   color: #ffffff;
-  box-shadow: 0 4px 15px rgba(255, 65, 3, 0.35);
+  box-shadow: 0 4px 15px rgba(158, 139, 125, 0.35);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -784,7 +784,7 @@ body.business-portal .brand-logo-text .accent-s {
   background-position: 100% 0;
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(199, 50, 0, 0.45);
+  box-shadow: 0 8px 22px rgba(137, 120, 108, 0.45);
 }
 
 .btn-secondary {
@@ -850,11 +850,50 @@ body.business-portal .brand-logo-text .accent-s {
 }
 
 .hero-tresmares {
-  background-image: url('/assets/images/hero_fullwidth_camera.jpg');
+  align-items: flex-start !important;
+  padding-top: 140px !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-image: url('/assets/Davidson-House-Main.jpg');
+  background-position: center var(--hero-bg-y, 10%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(var(--hero-bg-scale, 1));
+  transform-origin: center top;
+  will-change: transform;
+  pointer-events: none;
 }
 
 .hero-tresmares-business {
-  background-image: url('/assets/images/hero_business_camera.jpg');
+  position: relative;
+  overflow: hidden;
+  background-image: none !important;
+}
+
+.hero-tresmares-business .hero-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-image: url('/assets/Business-Hero.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(var(--hero-bg-scale, 1));
+  transform-origin: center center;
+  will-change: transform;
+  pointer-events: none;
 }
 
 .hero-tresmares-about {
@@ -862,7 +901,7 @@ body.business-portal .brand-logo-text .accent-s {
 }
 
 .hero-tresmares-automation {
-  background-image: url('/assets/images/smart_home_automation_hero.jpg');
+  background-image: url('/assets/images/pro_hero_white_grey.jpg');
 }
 
 .hero-tresmares-contact {
@@ -903,9 +942,28 @@ body.business-portal .brand-logo-text .accent-s {
   z-index: 1;
 }
 
-/* Index, Contact & Portfolio Hero Specific Overlay: Lighter gradient to make hero image significantly more visible */
+/* Index Hero Overlay */
 .hero-tresmares::before {
-  background: linear-gradient(to right, rgba(248, 247, 244, 0.72) 0%, rgba(248, 247, 244, 0.42) 60%, rgba(248, 247, 244, 0.30) 100%);
+  display: none !important;
+  background: none !important;
+  opacity: 0 !important;
+}
+
+/* Business Hero Slight Dark Overlay for Premium Contrast */
+.hero-tresmares-business::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.2) 100%);
+  pointer-events: none;
+  z-index: 1;
+  display: block !important;
+  opacity: 1 !important;
 }
 
 .hero-tresmares-pro::before {
@@ -914,6 +972,7 @@ body.business-portal .brand-logo-text .accent-s {
 
 /* Blinking Camera Status LED Indicator */
 .hero-camera-dot {
+  display: none !important;
   position: absolute;
   width: 4px;
   height: 4px;
@@ -964,6 +1023,10 @@ body.business-portal .brand-logo-text .accent-s {
   width: 100%;
 }
 
+.hero-tresmares .container {
+  margin-top: 0;
+}
+
 .hero-tresmares-contact .container,
 .hero-tresmares-portfolio .container,
 .hero-tresmares-blog .container {
@@ -979,7 +1042,7 @@ body.business-portal .brand-logo-text .accent-s {
 
 .hero-display-title {
   font-family: var(--font-sans);
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -0.035em;
   font-size: clamp(3.5rem, 6.5vw, 6.2rem);
   line-height: 1.05;
@@ -988,11 +1051,11 @@ body.business-portal .brand-logo-text .accent-s {
 
 .hero-display-title em {
   font-style: italic;
-  background: linear-gradient(90deg, #FF4103 0%, #c73200 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #FF4103;
+  color: var(--color-accent, #C5A059);
+  -webkit-text-fill-color: var(--color-accent, #C5A059);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
   display: inline-block;
   padding-right: 0.15em;
   padding-bottom: 0.25em;
@@ -1036,6 +1099,39 @@ body.business-portal .brand-logo-text .accent-s {
   animation-delay: 0.72s;
 }
 
+/* Desktop Full-Width Single-Line Hero Title */
+@media (min-width: 992px) {
+  .hero-tresmares .hero-tresmares-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .hero-tresmares .hero-display-title {
+    font-size: clamp(3.4rem, 5.8vw, 7rem);
+    font-weight: 900;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .hero-tresmares .hero-display-title em {
+    padding-right: 0;
+  }
+
+  .hero-tresmares .hero-title-line-mask {
+    display: inline-block;
+    margin-right: 0;
+    padding-right: 0;
+    vertical-align: bottom;
+  }
+
+  .hero-tresmares .hero-title-line {
+    display: inline-block;
+    padding-right: 0;
+  }
+}
+
 @keyframes heroLineReveal {
   0% {
     opacity: 0;
@@ -1049,30 +1145,37 @@ body.business-portal .brand-logo-text .accent-s {
 }
 
 .hero-text-block {
-  border-left: 3px solid transparent;
-  border-image: linear-gradient(to bottom, #FF4103, #c73200) 1;
-  padding-left: 2rem;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  border-left: 3px solid var(--color-accent) !important;
+  border-radius: 0 !important;
+  padding: 0.25rem 0 0.25rem 1.75rem !important;
+  box-shadow: none !important;
   position: relative;
-  overflow: hidden;
 }
 
-.hero-text-block>* {
+.hero-text-block>*,
+.hero-sub-content>* {
   opacity: 0;
   transform: translateX(-100%);
   animation: slideInFromRedLine 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   will-change: transform, opacity;
 }
 
-.hero-text-block .hero-subtitle {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  color: #181818;
+.hero-text-block .hero-subtitle,
+.hero-sub-content .hero-subtitle {
+  font-size: 1.18rem;
+  line-height: 1.65;
+  color: #111111;
   font-weight: 500;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   animation-delay: 0.65s;
 }
 
-.hero-text-block>div {
+.hero-text-block>div,
+.hero-sub-content>div {
   animation-delay: 0.85s;
 }
 
@@ -1237,8 +1340,9 @@ body.business-portal .brand-logo-text .accent-s {
   }
 
   .statement-layout-video-wrap {
-    aspect-ratio: 16 / 10;
-    border-radius: 12px;
+    aspect-ratio: 3 / 4;
+    max-height: 580px;
+    border-radius: 14px;
   }
 }
 
@@ -1454,7 +1558,7 @@ body.business-portal .brand-logo-text .accent-s {
 }
 
 .title-color-wipe-red {
-  background: linear-gradient(90deg, #FF4103 0%, #c73200 50%, rgba(255, 65, 3, 0.28) 50%, rgba(199, 50, 0, 0.28) 100%);
+  background: linear-gradient(90deg, #C5A059 0%, #C5A059 50%, rgba(197, 160, 89, 0.28) 50%, rgba(197, 160, 89, 0.28) 100%);
   background-size: 200% 100%;
   background-position: 100% 0;
   -webkit-background-clip: text;
@@ -1783,7 +1887,7 @@ body.business-portal .brand-logo-text .accent-s {
 }
 
 .btn-pill-accent {
-  background: linear-gradient(135deg, #FF4103 0%, #c73200 100%);
+  background: linear-gradient(135deg, #C5A059 0%, #C5A059 100%);
   color: #ffffff !important;
   font-family: var(--font-sans);
   font-weight: 700;
@@ -1794,13 +1898,13 @@ body.business-portal .brand-logo-text .accent-s {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  box-shadow: 0 4px 15px rgba(255, 65, 3, 0.3);
+  box-shadow: 0 4px 15px rgba(158, 139, 125, 0.3);
 }
 
 .btn-pill-accent:hover {
-  filter: brightness(1.1);
+  filter: brightness(1.08);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 65, 3, 0.4);
+  box-shadow: 0 6px 20px rgba(158, 139, 125, 0.4);
 }
 
 /* Slider Controls */
@@ -2030,12 +2134,12 @@ body.business-portal .brand-logo-text .accent-s {
 
   .mobile-toggle.active .line-top {
     transform: translateY(6px) rotate(45deg);
-    background-color: var(--color-accent, #FF4103);
+    background-color: var(--color-accent, #C5A059);
   }
 
   .mobile-toggle.active .line-bottom {
     transform: translateY(-6px) rotate(-45deg);
-    background-color: var(--color-accent, #FF4103);
+    background-color: var(--color-accent, #C5A059);
   }
 
   .main-nav {
@@ -2296,20 +2400,73 @@ body.business-portal .brand-logo-text .accent-s {
     padding: 2rem 1.25rem !important;
   }
 
-  .hero-tresmares-grid {
-    grid-template-columns: 1fr !important;
-    gap: 3.5rem !important;
+  /* Main Mobile Hero Section Layout & Typography Fixes */
+  .hero-tresmares {
+    padding-top: 2.5rem !important;
+    align-items: flex-start !important;
+    min-height: calc(100vh - var(--header-height));
   }
 
-  .hero-display-title {
-    font-size: clamp(3.2rem, 11vw, 4.8rem) !important;
-    line-height: 1.02 !important;
-    margin-bottom: 2.5rem !important;
+  .hero-bg-layer {
+    background-position: center top !important;
+  }
+
+  .hero-tresmares .container {
+    margin-top: 0 !important;
+  }
+
+  .hero-tresmares-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    padding: 0 !important;
+    text-align: center !important;
+    justify-items: center !important;
+  }
+
+  .hero-tresmares .hero-display-title,
+  .hero-tresmares-about .hero-display-title,
+  .hero-tresmares-automation .hero-display-title,
+  .hero-tresmares-portfolio .hero-display-title,
+  .hero-tresmares-blog .hero-display-title,
+  .hero-tresmares-pro .hero-display-title {
+    font-size: clamp(3rem, 10.5vw, 4.5rem) !important;
+    line-height: 1.05 !important;
+    white-space: normal !important;
+    text-align: center !important;
+    margin-bottom: 0.85rem !important;
+    word-break: break-word !important;
+  }
+
+  .hero-tresmares .hero-title-line-mask {
+    display: block !important;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .hero-tresmares .hero-title-line {
+    display: block !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .hero-tresmares .hero-subtitle {
+    white-space: normal !important;
+    font-size: 1.05rem !important;
+    line-height: 1.5 !important;
+    max-width: 90% !important;
+    color: #1e293b !important;
+    font-weight: 600 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 1.25rem !important;
   }
 
   .hero-text-block {
     margin-top: 1rem !important;
-    padding-left: 1.5rem !important;
+    padding: 1.5rem !important;
   }
 
   /* Business Portal Specific Mobile Hero Spacing */
@@ -2659,7 +2816,7 @@ body.business-portal .brand-logo-text .accent-s {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: var(--color-accent, #FF4103);
+  background: var(--color-accent, #C5A059);
   border: 2.5px solid #ffffff;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   position: relative;
@@ -2723,8 +2880,24 @@ body {
     gap: 2rem !important;
   }
 
+  #service-area-map .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .service-area-header {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
   .map-picture-wrapper {
     height: 380px !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
   .map-picture-wrapper::before {
@@ -2990,7 +3163,7 @@ body {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--color-accent, #FF4103);
+  background: var(--color-accent, #C5A059);
   display: inline-block;
 }
 
@@ -3146,7 +3319,7 @@ body {
   max-width: 48px;
   padding: 0;
   justify-content: center;
-  background: #FF4103;
+  background: var(--color-accent, #C5A059);
   color: #ffffff !important;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 24px;
@@ -3154,7 +3327,7 @@ body {
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 14px;
-  box-shadow: 0 4px 14px rgba(255, 65, 3, 0.35);
+  box-shadow: 0 4px 14px rgba(158, 139, 125, 0.35);
   transition: max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
     padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
     gap 0.35s cubic-bezier(0.4, 0, 0.2, 1),
@@ -3187,8 +3360,8 @@ body {
   width: auto;
   padding: 0 18px 0 14px;
   gap: 10px;
-  background: #e03900;
-  box-shadow: 0 6px 20px rgba(255, 65, 3, 0.45);
+  background: #C5A059;
+  box-shadow: 0 6px 20px rgba(158, 139, 125, 0.45);
 }
 
 .google-preferred-badge:hover .google-preferred-text,
@@ -3199,15 +3372,15 @@ body {
 
 /* Business Portal Signature Electric Purple Gradient Styling */
 body.business-portal .google-preferred-badge {
-  background: linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%) !important;
+  background: linear-gradient(135deg, #252b3d 0%, #252b3d 100%) !important;
   border-color: rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 4px 18px rgba(74, 0, 224, 0.38) !important;
+  box-shadow: 0 4px 18px rgba(37, 43, 61, 0.38) !important;
 }
 
 body.business-portal .google-preferred-badge:hover,
 body.business-portal .google-preferred-badge:focus-visible {
-  background: linear-gradient(135deg, #5900ff 0%, #9f3ef3 100%) !important;
-  box-shadow: 0 6px 24px rgba(142, 45, 226, 0.55) !important;
+  background: #61709e !important;
+  box-shadow: 0 6px 24px rgba(97, 112, 158, 0.45) !important;
 }
 
 @media (max-width: 850px) {
@@ -3366,18 +3539,18 @@ body.business-portal .google-preferred-badge:focus-visible {
 
 /* ==========================================================================
    BUSINESS PORTAL DYNAMIC ELECTRIC PURPLE GRADIENT DESIGN SYSTEM
-   Gradient reserved for Hero "Business" Title & Buttons: #4a00e0 to #8e2de2
-   All other text accents use primary accent (#8e2de2)
+   Gradient reserved for Hero "Business" Title & Buttons: #252b3d to #252b3d
+   All other text accents use primary accent (#252b3d)
    ========================================================================== */
 
 body.business-portal {
-  --color-accent: #8e2de2;
-  --color-accent-gradient: linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%);
+  --color-accent: #61709e;
+  --color-accent-gradient: linear-gradient(135deg, #61709e 0%, #4a577d 100%);
 }
 
 /* 1. Title Color Wipe Animation in Business Portal (Purple Wipe Reveal) */
 body.business-portal .title-color-wipe-red {
-  background: linear-gradient(90deg, #8e2de2 0%, #8e2de2 50%, rgba(142, 45, 226, 0.28) 50%, rgba(142, 45, 226, 0.28) 100%);
+  background: linear-gradient(90deg, #61709e 0%, #61709e 50%, rgba(97, 112, 158, 0.28) 50%, rgba(97, 112, 158, 0.28) 100%);
   background-size: 200% 100%;
   background-position: 100% 0;
   -webkit-background-clip: text;
@@ -3393,7 +3566,7 @@ body.business-portal .title-color-wipe.revealed .title-color-wipe-red {
   background-position: 0 0 !important;
 }
 
-/* 2. Text Accents & Spans inside Headings & Subtitles (#8e2de2) */
+/* 2. Text Accents & Spans inside Headings & Subtitles (#252b3d) */
 body.business-portal span[style*="color: var(--color-accent)"],
 body.business-portal strong[style*="color: var(--color-accent)"],
 body.business-portal span[style*="color: #e31b23"],
@@ -3402,46 +3575,62 @@ body.business-portal strong[style*="color: #e31b23"] {
   -webkit-background-clip: unset !important;
   background-clip: unset !important;
   -webkit-text-fill-color: initial !important;
-  color: #8e2de2 !important;
+  color: #61709e !important;
   font-style: normal;
 }
 
-/* Hero Title "Business" Word - GRADIENT RETAINED */
+/* Hero Display Title Off-White Styling on Business Portal */
+body.business-portal .hero-display-title,
+body.business-portal .hero-title-line,
+body.business-portal .hero-title-line-mask,
+.hero-tresmares-business .hero-display-title,
+.hero-tresmares-business .hero-title-line {
+  color: #f8f7f4 !important;
+  -webkit-text-fill-color: #f8f7f4 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  font-style: normal;
+  text-shadow: none !important;
+}
+
 body.business-portal .hero-title-line em,
-body.business-portal .hero-display-title em {
-  background: linear-gradient(90deg, #4a00e0 0%, #8e2de2 100%);
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: #8e2de2;
+body.business-portal .hero-display-title em,
+.hero-tresmares-business .hero-display-title em {
+  color: #C5A059 !important;
+  -webkit-text-fill-color: #C5A059 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
   font-style: italic;
   font-weight: inherit;
+  text-shadow: none !important;
 }
 
 /* 3. Primary Buttons & Action Buttons in Business Portal - GRADIENT RETAINED */
 body.business-portal .btn-primary,
 body.business-portal .btn-pill-accent {
-  background: linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%) !important;
+  background: linear-gradient(135deg, #61709e 0%, #4a577d 100%) !important;
   background-size: 160% 160% !important;
   border: none !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 18px rgba(74, 0, 224, 0.35) !important;
+  box-shadow: 0 4px 18px rgba(97, 112, 158, 0.35) !important;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 body.business-portal .btn-primary:hover,
 body.business-portal .btn-pill-accent:hover {
   background-position: 100% 0 !important;
-  box-shadow: 0 8px 25px rgba(142, 45, 226, 0.45) !important;
+  box-shadow: 0 8px 25px rgba(97, 112, 158, 0.45) !important;
   transform: translateY(-2px) !important;
 }
 
-/* 4. Eyebrow Labels, Badges & Highlights (#8e2de2) */
+/* 4. Eyebrow Labels, Badges & Highlights (#252b3d) */
 body.business-portal .eyebrow-label {
-  color: #8e2de2 !important;
+  color: #61709e !important;
 }
 
-/* 5. Showcase Tabs (Colored Text & Underline - #8e2de2) */
+/* 5. Showcase Tabs (Colored Text & Underline - #252b3d) */
 body.business-portal .tab-btn {
   background: none !important;
   border: none !important;
@@ -3457,16 +3646,16 @@ body.business-portal #bizShowcaseTabs .tab-btn.active {
   -webkit-background-clip: unset !important;
   background-clip: unset !important;
   -webkit-text-fill-color: initial !important;
-  color: #8e2de2 !important;
+  color: #61709e !important;
   border-color: transparent !important;
 }
 
 body.business-portal .tab-btn::after {
-  background: #8e2de2 !important;
+  background: #61709e !important;
   height: 2px !important;
 }
 
-/* 6. Icons & Checklist Bullets (#8e2de2) */
+/* 6. Icons & Checklist Bullets (#252b3d) */
 body.business-portal .fa-circle-check,
 body.business-portal .feature-checklist i,
 body.business-portal .fa-video,
@@ -3482,22 +3671,55 @@ body.business-portal .fa-briefcase,
 body.business-portal .fa-network-wired,
 body.business-portal .fa-wifi,
 body.business-portal i[style*="color: var(--color-accent)"] {
-  color: #8e2de2 !important;
+  color: #61709e !important;
 }
 
 body.business-portal .feature-title-bullet::before,
 body.business-portal strong span[style*="width: 9px; height: 9px;"] {
-  background-color: #8e2de2 !important;
-  background: #8e2de2 !important;
+  background-color: #61709e !important;
+  background: #61709e !important;
 }
 
-/* 7. Vertical Accent Border Lines (#8e2de2) */
+/* 7. Vertical Accent Border Lines (#C5A059 / Home Accent Match) */
 body.business-portal .hero-text-block,
-body.business-portal p[style*="border-left"] {
-  border-left-width: 4px !important;
-  border-left-style: solid !important;
-  border-left-color: #8e2de2 !important;
-  border-image: none !important;
+.hero-tresmares-business .hero-text-block {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-left: 3px solid #C5A059 !important;
+  padding: 0.25rem 0 0.25rem 1.75rem !important;
+}
+
+body.business-portal .hero-text-block .hero-subtitle,
+.hero-tresmares-business .hero-text-block .hero-subtitle {
+  color: #f8f7f4 !important;
+  font-size: 1.18rem;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+body.business-portal .hero-text-block .link-arrow,
+.hero-tresmares-business .hero-text-block .link-arrow {
+  color: #f8f7f4 !important;
+  border-bottom-color: rgba(248, 247, 244, 0.4) !important;
+}
+
+body.business-portal .hero-text-block .link-arrow i,
+.hero-tresmares-business .link-arrow i {
+  color: #C5A059 !important;
+}
+
+body.business-portal .hero-text-block .link-arrow:hover,
+.hero-tresmares-business .hero-text-block .link-arrow:hover {
+  color: #ffffff !important;
+  border-bottom-color: #ffffff !important;
+}
+
+body.business-portal .hero-scroll-label,
+.hero-tresmares-business .hero-scroll-label {
+  color: #f8f7f4 !important;
 }
 
 /* 8. Link Arrows & Interactive Phone/Email Links */
@@ -3508,16 +3730,16 @@ body.business-portal .link-arrow {
 }
 
 body.business-portal .link-arrow i {
-  color: var(--color-accent, #8e2de2) !important;
+  color: var(--color-accent, #252b3d) !important;
 }
 
 body.business-portal .link-arrow:hover {
-  color: var(--color-accent, #8e2de2) !important;
-  border-bottom-color: var(--color-accent, #8e2de2) !important;
+  color: var(--color-accent, #252b3d) !important;
+  border-bottom-color: var(--color-accent, #252b3d) !important;
 }
 
 body.business-portal a[style*="color: var(--color-accent)"] {
-  color: #8e2de2 !important;
+  color: #61709e !important;
   transition: color 0.3s ease;
 }
 
@@ -3528,16 +3750,17 @@ body.business-portal a[style*="color: var(--color-accent)"]:hover {
 /* 9. Form Inputs Focus Rings */
 body.business-portal .form-input:focus,
 body.business-portal .form-select:focus {
-  border-color: #8e2de2 !important;
-  box-shadow: 0 0 0 3px rgba(142, 45, 226, 0.18) !important;
+  border-color: #61709e !important;
+  box-shadow: 0 0 0 3px rgba(97, 112, 158, 0.18) !important;
 }
 
 /* 10. Nav Mobile Active Icons & Buttons in Business Portal */
 body.business-portal .mobile-toggle.active .hamburger-line {
-  background-color: #8e2de2 !important;
+  background-color: #61709e !important;
 }
+
 body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
-  color: #8e2de2 !important;
+  color: #61709e !important;
 }
 
 /* Infinite Marquee Ticker Section */
@@ -3618,7 +3841,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
 
 /* Smart Home Ideas for Interior Designers (Dark Modern Grid Layout matching reference) */
 .designer-ideas-section {
-  background-color: #001621;
+  background-color: #121212;
   color: #ffffff;
   padding: 6.5rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -3656,7 +3879,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
 
 .designer-ideas-heading .heading-grey,
 .designer-ideas-heading .heading-red {
-  color: var(--color-accent, #FF4103);
+  color: var(--color-accent, #C5A059);
   font-weight: 700;
 }
 
@@ -3851,7 +4074,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
   max-height: calc(100% - 3rem);
   padding-right: 0.35rem;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 36, 0, 0.5) transparent;
+  scrollbar-color: rgba(158, 139, 125, 0.5) transparent;
 }
 
 .designer-card-drawer-body::-webkit-scrollbar {
@@ -3859,7 +4082,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
 }
 
 .designer-card-drawer-body::-webkit-scrollbar-thumb {
-  background: var(--color-accent, #FF4103);
+  background: var(--color-accent, #C5A059);
   border-radius: 4px;
 }
 
@@ -3875,7 +4098,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-accent, #FF4103);
+  color: var(--color-accent, #C5A059);
 }
 
 .designer-card-drawer-close {
@@ -3942,7 +4165,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
 }
 
 .designer-card-scenarios-list li i {
-  color: var(--color-accent, #FF4103);
+  color: var(--color-accent, #C5A059);
   font-size: 0.75rem;
   margin-top: 0.2rem;
   flex-shrink: 0;
@@ -3989,7 +4212,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
 
 /* Reviews Slider Styling inside Dark Section (matching designer-ideas-section background) */
 .designer-ideas-section .review-slide-card {
-  background: #14161d;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   color: #ffffff;
@@ -4026,7 +4249,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
 }
 
 .designer-ideas-section .review-dot.active {
-  background: var(--color-accent, #FF4103);
+  background: var(--color-accent, #C5A059);
 }
 
 /* FAQ Accordion Styling inside Dark Section (designer-ideas-section) */
@@ -4078,13 +4301,13 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
   font-family: var(--font-serif);
   font-size: 1.25rem;
   font-weight: 500;
-  color: var(--color-accent, #FF4103);
+  color: var(--color-accent, #C5A059);
   letter-spacing: 0.05em;
   flex-shrink: 0;
 }
 
 .designer-ideas-section .faq-question:hover {
-  color: var(--color-accent, #FF4103);
+  color: var(--color-accent, #C5A059);
 }
 
 .designer-ideas-section .faq-question i {
@@ -4102,20 +4325,20 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
 }
 
 .designer-ideas-section .faq-question:hover i {
-  border-color: var(--color-accent, #FF4103);
-  color: var(--color-accent, #FF4103);
+  border-color: var(--color-accent, #C5A059);
+  color: var(--color-accent, #C5A059);
 }
 
 .designer-ideas-section .faq-item.open .faq-question,
 .designer-ideas-section .faq-item.open .faq-question-text {
-  color: var(--color-accent, #FF4103) !important;
+  color: var(--color-accent, #C5A059) !important;
 }
 
 .designer-ideas-section .faq-item.open .faq-question i {
   transform: rotate(180deg);
-  background: var(--color-accent, #FF4103);
+  background: var(--color-accent, #C5A059);
   color: #ffffff;
-  border-color: var(--color-accent, #FF4103);
+  border-color: var(--color-accent, #C5A059);
 }
 
 .designer-ideas-section .faq-answer {
@@ -4635,7 +4858,7 @@ p[style*="border-left"] {
   font-size: clamp(2.8rem, 4.5vw, 4rem);
   font-weight: 800;
   line-height: 0.95;
-  color: var(--color-accent, #FF4103);
+  color: var(--color-accent, #C5A059);
   letter-spacing: -0.03em;
 }
 
@@ -5024,8 +5247,8 @@ p[style*="border-left"] {
   justify-content: center;
   padding: 1.15rem 3.2rem;
   border-radius: 9999px;
-  border: 1.5px solid #FF4103;
-  color: #FF4103;
+  border: 1.5px solid #C5A059;
+  color: #C5A059;
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 0.95rem;
@@ -5033,18 +5256,18 @@ p[style*="border-left"] {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  background: rgba(255, 65, 3, 0.08);
+  background: rgba(158, 139, 125, 0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 0 25px rgba(255, 65, 3, 0.22), inset 0 0 15px rgba(255, 65, 3, 0.1);
+  box-shadow: 0 0 25px rgba(158, 139, 125, 0.22), inset 0 0 15px rgba(158, 139, 125, 0.1);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .together-cta-btn:hover {
-  background: #FF4103;
+  background: #C5A059;
   color: #ffffff;
-  border-color: #FF4103;
-  box-shadow: 0 0 40px rgba(255, 65, 3, 0.65);
+  border-color: #C5A059;
+  box-shadow: 0 0 40px rgba(158, 139, 125, 0.65);
   transform: translateY(-3px);
 }
 
@@ -5064,7 +5287,7 @@ p[style*="border-left"] {
   align-items: center;
   padding: 12rem 0;
   overflow: hidden;
-  border-top: 1px solid rgba(74, 0, 224, 0.25);
+  border-top: 1px solid rgba(37, 43, 61, 0.25);
 }
 
 .biz-together-cta::before {
@@ -5078,18 +5301,18 @@ p[style*="border-left"] {
 
 .biz-together-cta .together-cta-btn,
 .together-cta-btn.biz-cta-btn {
-  border-color: #8e2de2 !important;
-  color: #8e2de2 !important;
-  background: rgba(142, 45, 226, 0.08) !important;
-  box-shadow: 0 0 25px rgba(142, 45, 226, 0.22), inset 0 0 15px rgba(142, 45, 226, 0.1) !important;
+  border-color: #61709e !important;
+  color: #61709e !important;
+  background: rgba(37, 43, 61, 0.08) !important;
+  box-shadow: 0 0 25px rgba(37, 43, 61, 0.22), inset 0 0 15px rgba(37, 43, 61, 0.1) !important;
 }
 
 .biz-together-cta .together-cta-btn:hover,
 .together-cta-btn.biz-cta-btn:hover {
-  background: linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%) !important;
+  background: linear-gradient(135deg, #61709e 0%, #4a577d 100%) !important;
   color: #ffffff !important;
-  border-color: #8e2de2 !important;
-  box-shadow: 0 0 40px rgba(142, 45, 226, 0.65) !important;
+  border-color: #61709e !important;
+  box-shadow: 0 0 40px rgba(37, 43, 61, 0.65) !important;
   transform: translateY(-3px);
 }
 
@@ -5154,7 +5377,7 @@ p[style*="border-left"] {
    ========================================================================== */
 .contact-editorial-section {
   padding: 5.5rem 0 7.5rem 0;
-  background-color: #001621;
+  background-color: #252b3d !important;
   color: #ffffff;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -5162,6 +5385,13 @@ p[style*="border-left"] {
 .contact-editorial-section .together-cta-heading {
   color: #ffffff !important;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9) !important;
+}
+
+.contact-editorial-section .together-cta-heading span[style*="color"],
+.contact-editorial-section .together-cta-heading span:nth-child(2),
+body.business-portal .contact-editorial-section .together-cta-heading span[style*="color"],
+body.business-portal .contact-editorial-section .together-cta-heading span:nth-child(2) {
+  color: #C5A059 !important;
 }
 
 .contact-editorial-grid {
@@ -5172,7 +5402,8 @@ p[style*="border-left"] {
 }
 
 .contact-dark-card {
-  background: #001621;
+  background: #252b3d !important;
+  background-color: #252b3d !important;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 16px;
   padding: 2.25rem;
@@ -5193,9 +5424,9 @@ p[style*="border-left"] {
 }
 
 .contact-dark-input:focus {
-  outline: none;
-  border-color: #FF4103;
-  box-shadow: 0 0 12px rgba(255, 65, 3, 0.25);
+  outline: none !important;
+  border-color: #C5A059 !important;
+  box-shadow: 0 0 12px rgba(197, 160, 89, 0.35) !important;
 }
 
 .contact-dark-input::placeholder {
@@ -5203,8 +5434,33 @@ p[style*="border-left"] {
 }
 
 .contact-dark-input option {
-  background-color: #18181b;
+  background-color: #252b3d;
   color: #ffffff;
+}
+
+/* Submit Buttons in Contact Cards across Business & Home Services */
+.contact-dark-card .btn-primary,
+.contact-dark-card .btn-pill-accent,
+.contact-editorial-section .btn-primary,
+.contact-editorial-section .btn-pill-accent,
+.contact-dark-card button[type="submit"],
+.contact-editorial-section button[type="submit"] {
+  background: linear-gradient(135deg, #988678 0%, #C5A059 100%) !important;
+  background-size: 160% 160% !important;
+  border: none !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 18px rgba(197, 160, 89, 0.35) !important;
+}
+
+.contact-dark-card .btn-primary:hover,
+.contact-dark-card .btn-pill-accent:hover,
+.contact-editorial-section .btn-primary:hover,
+.contact-editorial-section .btn-pill-accent:hover,
+.contact-dark-card button[type="submit"]:hover,
+.contact-editorial-section button[type="submit"]:hover {
+  background-position: 100% 0 !important;
+  box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5) !important;
+  transform: translateY(-2px) !important;
 }
 
 .contact-form-row {
@@ -5289,8 +5545,8 @@ p[style*="border-left"] {
 .brand-tile:hover {
   transform: translateY(-5px);
   background: #ffffff;
-  border-color: var(--color-accent, #FF4103);
-  box-shadow: 0 10px 24px rgba(255, 65, 3, 0.16);
+  border-color: var(--color-accent, #C5A059);
+  box-shadow: 0 10px 24px rgba(158, 139, 125, 0.16);
 }
 
 .brand-logo-img {
@@ -5351,22 +5607,71 @@ p[style*="border-left"] {
   }
 
   /* Randomized Pop-In Stagger Sequence on Mobile (12 Visible Logos) */
-  .brand-staggered-grid.revealed > *:nth-child(6)  { transition-delay: 0.00s; } /* Samsung */
-  .brand-staggered-grid.revealed > *:nth-child(1)  { transition-delay: 0.05s; } /* Control4 */
-  .brand-staggered-grid.revealed > *:nth-child(21) { transition-delay: 0.10s; } /* Integra */
-  .brand-staggered-grid.revealed > *:nth-child(4)  { transition-delay: 0.15s; } /* Sonos */
-  .brand-staggered-grid.revealed > *:nth-child(13) { transition-delay: 0.20s; } /* DMF Lighting */
-  .brand-staggered-grid.revealed > *:nth-child(10) { transition-delay: 0.25s; } /* Sonance */
-  .brand-staggered-grid.revealed > *:nth-child(3)  { transition-delay: 0.30s; } /* Lutron */
-  .brand-staggered-grid.revealed > *:nth-child(17) { transition-delay: 0.35s; } /* Modern Forms */
-  .brand-staggered-grid.revealed > *:nth-child(9)  { transition-delay: 0.40s; } /* Lucetta CI */
-  .brand-staggered-grid.revealed > *:nth-child(12) { transition-delay: 0.45s; } /* Mecho */
-  .brand-staggered-grid.revealed > *:nth-child(19) { transition-delay: 0.50s; } /* Episode */
-  .brand-staggered-grid.revealed > *:nth-child(15) { transition-delay: 0.55s; } /* WAC Group */
+  .brand-staggered-grid.revealed>*:nth-child(6) {
+    transition-delay: 0.00s;
+  }
+
+  /* Samsung */
+  .brand-staggered-grid.revealed>*:nth-child(1) {
+    transition-delay: 0.05s;
+  }
+
+  /* Control4 */
+  .brand-staggered-grid.revealed>*:nth-child(21) {
+    transition-delay: 0.10s;
+  }
+
+  /* Integra */
+  .brand-staggered-grid.revealed>*:nth-child(4) {
+    transition-delay: 0.15s;
+  }
+
+  /* Sonos */
+  .brand-staggered-grid.revealed>*:nth-child(13) {
+    transition-delay: 0.20s;
+  }
+
+  /* DMF Lighting */
+  .brand-staggered-grid.revealed>*:nth-child(10) {
+    transition-delay: 0.25s;
+  }
+
+  /* Sonance */
+  .brand-staggered-grid.revealed>*:nth-child(3) {
+    transition-delay: 0.30s;
+  }
+
+  /* Lutron */
+  .brand-staggered-grid.revealed>*:nth-child(17) {
+    transition-delay: 0.35s;
+  }
+
+  /* Modern Forms */
+  .brand-staggered-grid.revealed>*:nth-child(9) {
+    transition-delay: 0.40s;
+  }
+
+  /* Lucetta CI */
+  .brand-staggered-grid.revealed>*:nth-child(12) {
+    transition-delay: 0.45s;
+  }
+
+  /* Mecho */
+  .brand-staggered-grid.revealed>*:nth-child(19) {
+    transition-delay: 0.50s;
+  }
+
+  /* Episode */
+  .brand-staggered-grid.revealed>*:nth-child(15) {
+    transition-delay: 0.55s;
+  }
+
+  /* WAC Group */
 }
 
 /* Sequential Left-to-Right 1-by-1 Stagger Animation on Desktop */
 @media (min-width: 769px) {
+
   .brand-staggered-grid .brand-tile,
   .brand-staggered-grid .brand-tile-empty {
     opacity: 0;
@@ -5381,25 +5686,109 @@ p[style*="border-left"] {
   }
 
   /* Column-by-Column Left-to-Right Wave Stagger Across 3 Rows (Columns 1 to 7) */
-  .brand-staggered-grid.revealed > *:nth-child(1)  { transition-delay: 0.00s; } /* Control4 (Col 1) */
-  .brand-staggered-grid.revealed > *:nth-child(8)  { transition-delay: 0.03s; } /* Empty 4 (Col 1) */
-  .brand-staggered-grid.revealed > *:nth-child(15) { transition-delay: 0.06s; } /* WAC Group (Col 1) */
-  .brand-staggered-grid.revealed > *:nth-child(2)  { transition-delay: 0.09s; } /* Empty 1 (Col 2) */
-  .brand-staggered-grid.revealed > *:nth-child(9)  { transition-delay: 0.12s; } /* Lucetta CI (Col 2) */
-  .brand-staggered-grid.revealed > *:nth-child(16) { transition-delay: 0.15s; } /* Empty 7 (Col 2) */
-  .brand-staggered-grid.revealed > *:nth-child(3)  { transition-delay: 0.18s; } /* Lutron (Col 3) */
-  .brand-staggered-grid.revealed > *:nth-child(10) { transition-delay: 0.21s; } /* Sonance (Col 3) */
-  .brand-staggered-grid.revealed > *:nth-child(17) { transition-delay: 0.24s; } /* Modern Forms (Col 3) */
-  .brand-staggered-grid.revealed > *:nth-child(4)  { transition-delay: 0.27s; } /* Sonos (Col 4) */
-  .brand-staggered-grid.revealed > *:nth-child(11) { transition-delay: 0.30s; } /* Empty 5 (Col 4) */
-  .brand-staggered-grid.revealed > *:nth-child(18) { transition-delay: 0.33s; } /* Empty 8 (Col 4) */
-  .brand-staggered-grid.revealed > *:nth-child(5)  { transition-delay: 0.36s; } /* Empty 2 (Col 5) */
-  .brand-staggered-grid.revealed > *:nth-child(12) { transition-delay: 0.39s; } /* Mecho (Col 5) */
-  .brand-staggered-grid.revealed > *:nth-child(19) { transition-delay: 0.42s; } /* Episode (Col 5) */
-  .brand-staggered-grid.revealed > *:nth-child(6)  { transition-delay: 0.45s; } /* Samsung (Col 6) */
-  .brand-staggered-grid.revealed > *:nth-child(13) { transition-delay: 0.48s; } /* DMF Lighting (Col 6) */
-  .brand-staggered-grid.revealed > *:nth-child(20) { transition-delay: 0.51s; } /* Empty 9 (Col 6) */
-  .brand-staggered-grid.revealed > *:nth-child(7)  { transition-delay: 0.54s; } /* Empty 3 (Col 7) */
-  .brand-staggered-grid.revealed > *:nth-child(14) { transition-delay: 0.57s; } /* Empty 6 (Col 7) */
-  .brand-staggered-grid.revealed > *:nth-child(21) { transition-delay: 0.60s; } /* Integra (Col 7) */
+  .brand-staggered-grid.revealed>*:nth-child(1) {
+    transition-delay: 0.00s;
+  }
+
+  /* Control4 (Col 1) */
+  .brand-staggered-grid.revealed>*:nth-child(8) {
+    transition-delay: 0.03s;
+  }
+
+  /* Empty 4 (Col 1) */
+  .brand-staggered-grid.revealed>*:nth-child(15) {
+    transition-delay: 0.06s;
+  }
+
+  /* WAC Group (Col 1) */
+  .brand-staggered-grid.revealed>*:nth-child(2) {
+    transition-delay: 0.09s;
+  }
+
+  /* Empty 1 (Col 2) */
+  .brand-staggered-grid.revealed>*:nth-child(9) {
+    transition-delay: 0.12s;
+  }
+
+  /* Lucetta CI (Col 2) */
+  .brand-staggered-grid.revealed>*:nth-child(16) {
+    transition-delay: 0.15s;
+  }
+
+  /* Empty 7 (Col 2) */
+  .brand-staggered-grid.revealed>*:nth-child(3) {
+    transition-delay: 0.18s;
+  }
+
+  /* Lutron (Col 3) */
+  .brand-staggered-grid.revealed>*:nth-child(10) {
+    transition-delay: 0.21s;
+  }
+
+  /* Sonance (Col 3) */
+  .brand-staggered-grid.revealed>*:nth-child(17) {
+    transition-delay: 0.24s;
+  }
+
+  /* Modern Forms (Col 3) */
+  .brand-staggered-grid.revealed>*:nth-child(4) {
+    transition-delay: 0.27s;
+  }
+
+  /* Sonos (Col 4) */
+  .brand-staggered-grid.revealed>*:nth-child(11) {
+    transition-delay: 0.30s;
+  }
+
+  /* Empty 5 (Col 4) */
+  .brand-staggered-grid.revealed>*:nth-child(18) {
+    transition-delay: 0.33s;
+  }
+
+  /* Empty 8 (Col 4) */
+  .brand-staggered-grid.revealed>*:nth-child(5) {
+    transition-delay: 0.36s;
+  }
+
+  /* Empty 2 (Col 5) */
+  .brand-staggered-grid.revealed>*:nth-child(12) {
+    transition-delay: 0.39s;
+  }
+
+  /* Mecho (Col 5) */
+  .brand-staggered-grid.revealed>*:nth-child(19) {
+    transition-delay: 0.42s;
+  }
+
+  /* Episode (Col 5) */
+  .brand-staggered-grid.revealed>*:nth-child(6) {
+    transition-delay: 0.45s;
+  }
+
+  /* Samsung (Col 6) */
+  .brand-staggered-grid.revealed>*:nth-child(13) {
+    transition-delay: 0.48s;
+  }
+
+  /* DMF Lighting (Col 6) */
+  .brand-staggered-grid.revealed>*:nth-child(20) {
+    transition-delay: 0.51s;
+  }
+
+  /* Empty 9 (Col 6) */
+  .brand-staggered-grid.revealed>*:nth-child(7) {
+    transition-delay: 0.54s;
+  }
+
+  /* Empty 3 (Col 7) */
+  .brand-staggered-grid.revealed>*:nth-child(14) {
+    transition-delay: 0.57s;
+  }
+
+  /* Empty 6 (Col 7) */
+  .brand-staggered-grid.revealed>*:nth-child(21) {
+    transition-delay: 0.60s;
+  }
+
+  /* Integra (Col 7) */
 }
