@@ -5,10 +5,10 @@ description: Industry insights, smart home tips, Lutron lighting guides, Starlin
 eleventyExcludeFromCollections: true
 ---
 
-<!-- Tresmares Fullwidth Background Hero Section for Blog -->
-<section class="hero-tresmares-blog">
+<!-- Editorial Fullwidth Background Hero Section for Blog -->
+<section class="hero-editorial-blog">
   <div class="container">
-    <div class="hero-tresmares-grid">
+    <div class="hero-editorial-grid">
       <div>
         <h1 class="hero-display-title">
           <span class="hero-title-line-mask"><span class="hero-title-line">Smart Automation</span></span>
@@ -32,7 +32,7 @@ eleventyExcludeFromCollections: true
 <!-- Blog Cards Section (Off-White Canvas Theme matching reference) -->
 <section class="section" id="articles" style="padding: 4rem 0 7rem 0; background: #f5f5f7;">
   <div class="container">
-    <div class="blog-grid-tresmares">
+    <div class="blog-grid-editorial">
       {% for post in collections.blog | reverse %}
       <article class="blog-card-item">
         <!-- Image Container with Blur & Morphing Top-Right Corner Badge -->
@@ -71,7 +71,7 @@ eleventyExcludeFromCollections: true
 </section>
 
 <style>
-  .blog-grid-tresmares {
+  .blog-grid-editorial {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2.25rem;
@@ -257,14 +257,14 @@ eleventyExcludeFromCollections: true
   }
 
   @media (max-width: 991px) {
-    .blog-grid-tresmares {
+    .blog-grid-editorial {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.75rem;
     }
   }
 
   @media (max-width: 640px) {
-    .blog-grid-tresmares {
+    .blog-grid-editorial {
       grid-template-columns: 1fr;
       gap: 2rem;
     }
@@ -274,8 +274,8 @@ eleventyExcludeFromCollections: true
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     // Scroll-Controlled Exit Animations for Hero Title & Subtitle/Button
-    const heroTitleLines = document.querySelectorAll('.hero-tresmares-blog .hero-display-title .hero-title-line');
-    const heroTextItems = document.querySelectorAll('.hero-tresmares-blog .hero-text-block > *');
+    const heroTitleLines = document.querySelectorAll('.hero-editorial-blog .hero-display-title .hero-title-line');
+    const heroTextItems = document.querySelectorAll('.hero-editorial-blog .hero-text-block > *');
 
     if (heroTitleLines.length > 0 || heroTextItems.length > 0) {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

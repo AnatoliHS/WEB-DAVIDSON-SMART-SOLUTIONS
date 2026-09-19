@@ -5,11 +5,11 @@ description: "Quinte Smart Homes provides whole-home automation, smart lighting,
 networking installed by licensed electricians in Belleville, PEC, and Quinte."
 ---
 
-<!-- Tresmares Fullwidth Background Hero Section (component--herofulltext) -->
-<section class="hero-tresmares">
+<!-- Editorial Fullwidth Background Hero Section (component--herofulltext) -->
+<section class="hero-editorial">
   <div class="hero-bg-layer" aria-hidden="true"></div>
   <div class="container">
-    <div class="hero-tresmares-grid" style="grid-template-columns: 1fr; text-align: center; justify-items: center;">
+    <div class="hero-editorial-grid" style="grid-template-columns: 1fr; text-align: center; justify-items: center;">
       <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
         <h1 class="hero-display-title" style="text-align: center;">
           <span class="hero-title-line-mask"><span class="hero-title-line">Engineering</span></span>
@@ -32,7 +32,7 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
   <div class="hero-scroll-label">Scroll ↓</div>
 </section>
 
-<!-- Tresmares Large Editorial Statement & Video Showcase (Matching Reference Layout) -->
+<!-- Large Editorial Statement & Video Showcase (Matching Reference Layout) -->
 <section class="section-statement-layout" style="padding-bottom: 0.5rem;">
   <div class="container">
     <div class="statement-layout-grid">
@@ -188,8 +188,8 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
   });
 </script>
 
-<!-- Tresmares Split Interactive Showcase (component--contentscrollcenter) -->
-<section class="showcase-tresmares" id="home-services">
+<!-- Editorial Split Interactive Showcase (component--contentscrollcenter) -->
+<section class="showcase-editorial" id="home-services">
   <div class="container">
     <h2 class="statement-title title-color-wipe" style="margin-bottom: 3rem; text-align: center;"><span
         class="title-color-wipe-dark">Our Key Smart </span><span class="title-color-wipe-red">Automation
@@ -561,7 +561,7 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
 
     // Dynamic Pulsating Camera LED Position Sync
     function positionCameraDot() {
-      const hero = document.querySelector('.hero-tresmares');
+      const hero = document.querySelector('.hero-editorial');
       const dot = document.getElementById('heroCameraDot');
       if (!hero || !dot) return;
 
@@ -596,8 +596,8 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
     setTimeout(positionCameraDot, 500);
 
     // Scroll-Controlled Exit Animations for Hero Title & Subtitle/Button
-    const heroTitleLines = document.querySelectorAll('.hero-tresmares .hero-display-title .hero-title-line');
-    const heroTextItems = document.querySelectorAll('.hero-tresmares .hero-text-block > *, .hero-tresmares .hero-sub-content > *');
+    const heroTitleLines = document.querySelectorAll('.hero-editorial .hero-display-title .hero-title-line');
+    const heroTextItems = document.querySelectorAll('.hero-editorial .hero-text-block > *, .hero-editorial .hero-sub-content > *');
 
     if (heroTitleLines.length > 0 || heroTextItems.length > 0) {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -642,7 +642,7 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
         const scrollProgress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
 
         // 0. Hero Background Image Scroll Animation (Mobile: Slow Zoom In / Desktop: Parallax Pan)
-        const heroBgEl = document.querySelector('.hero-tresmares .hero-bg-layer') || document.querySelector('.hero-tresmares');
+        const heroBgEl = document.querySelector('.hero-editorial .hero-bg-layer') || document.querySelector('.hero-editorial');
         if (heroBgEl && scrollY <= 800) {
           if (window.innerWidth < 992) {
             const scaleVal = 1 + (scrollY * 0.0006);

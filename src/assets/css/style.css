@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Quinte Smart Homes - Tresmares Capital Inspired Editorial Luxury Design System
+   Quinte Smart Homes - Editorial Luxury Design System
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
@@ -824,17 +824,18 @@ body.business-portal .brand-logo-text .accent-s {
 
 .link-arrow:hover i {
   transform: translateX(5px);
-}
+}/*   Quinte Smart Homes - Editorial Luxury Design System
+ *   ========================================================================== */
 
-/* Tresmares Full-Screen Hero Sections */
-.hero-tresmares,
-.hero-tresmares-business,
-.hero-tresmares-about,
-.hero-tresmares-automation,
-.hero-tresmares-contact,
-.hero-tresmares-portfolio,
-.hero-tresmares-blog,
-.hero-tresmares-pro {
+/* Editorial Full-Screen Hero Sections */
+.hero-editorial,
+.hero-editorial-business,
+.hero-editorial-about,
+.hero-editorial-automation,
+.hero-editorial-contact,
+.hero-editorial-portfolio,
+.hero-editorial-blog,
+.hero-editorial-pro {
   position: relative;
   min-height: calc(100vh - var(--header-height));
   height: calc(100vh - var(--header-height));
@@ -849,7 +850,7 @@ body.business-portal .brand-logo-text .accent-s {
   overflow: hidden;
 }
 
-.hero-tresmares {
+.hero-editorial {
   align-items: flex-start !important;
   padding-top: 140px !important;
   overflow: hidden;
@@ -873,13 +874,17 @@ body.business-portal .brand-logo-text .accent-s {
   pointer-events: none;
 }
 
-.hero-tresmares-business {
+.hero-bg-layer::after {
+  display: none !important;
+}
+
+.hero-editorial-business {
   position: relative;
   overflow: hidden;
   background-image: none !important;
 }
 
-.hero-tresmares-business .hero-bg-layer {
+.hero-editorial-business .hero-bg-layer {
   position: absolute;
   top: 0;
   left: 0;
@@ -896,39 +901,39 @@ body.business-portal .brand-logo-text .accent-s {
   pointer-events: none;
 }
 
-.hero-tresmares-about {
+.hero-editorial-about {
   background-image: url('/assets/images/about_hero_background.jpg');
 }
 
-.hero-tresmares-automation {
+.hero-editorial-automation {
   background-image: url('/assets/images/pro_hero_white_grey.jpg');
 }
 
-.hero-tresmares-contact {
+.hero-editorial-contact {
   background-image: url('/assets/images/contact_hero_white_grey.jpg');
 }
 
-.hero-tresmares-portfolio {
+.hero-editorial-portfolio {
   background-image: url('/assets/images/portfolio_hero_white_grey.jpg');
 }
 
-.hero-tresmares-blog {
+.hero-editorial-blog {
   background-image: url('/assets/images/blog_hero_white_grey.jpg');
 }
 
-.hero-tresmares-pro {
+.hero-editorial-pro {
   background-image: url('/assets/images/pro_hero_white_grey.jpg');
 }
 
 /* White Veil Overlay for Home, Business, About & Automation Hero Sections */
-.hero-tresmares::before,
-.hero-tresmares-business::before,
-.hero-tresmares-about::before,
-.hero-tresmares-automation::before,
-.hero-tresmares-contact::before,
-.hero-tresmares-portfolio::before,
-.hero-tresmares-blog::before,
-.hero-tresmares-pro::before {
+.hero-editorial::before,
+.hero-editorial-business::before,
+.hero-editorial-about::before,
+.hero-editorial-automation::before,
+.hero-editorial-contact::before,
+.hero-editorial-portfolio::before,
+.hero-editorial-blog::before,
+.hero-editorial-pro::before {
   content: '';
   position: absolute;
   top: 0;
@@ -942,15 +947,15 @@ body.business-portal .brand-logo-text .accent-s {
   z-index: 1;
 }
 
-/* Index Hero Overlay */
-.hero-tresmares::before {
+/* /* Index Hero Overlay */
+.hero-editorial::before {
   display: none !important;
   background: none !important;
   opacity: 0 !important;
 }
 
 /* Business Hero Slight Dark Overlay for Premium Contrast */
-.hero-tresmares-business::before {
+.hero-editorial-business::before {
   content: '';
   position: absolute;
   top: 0;
@@ -966,7 +971,7 @@ body.business-portal .brand-logo-text .accent-s {
   opacity: 1 !important;
 }
 
-.hero-tresmares-pro::before {
+.hero-editorial-pro::before {
   background: linear-gradient(to right, rgba(248, 247, 244, 0.93) 0%, rgba(248, 247, 244, 0.82) 65%, rgba(248, 247, 244, 0.68) 100%);
 }
 
@@ -1000,40 +1005,40 @@ body.business-portal .brand-logo-text .accent-s {
   }
 }
 
-.hero-tresmares-contact::before,
-.hero-tresmares-portfolio::before,
-.hero-tresmares-blog::before {
+.hero-editorial-contact::before,
+.hero-editorial-portfolio::before,
+.hero-editorial-blog::before {
   background: linear-gradient(to right, rgba(248, 247, 244, 0.85) 0%, rgba(248, 247, 244, 0.55) 60%, rgba(248, 247, 244, 0.35) 100%);
 }
 
-.hero-tresmares-about::before {
+.hero-editorial-about::before {
   background: linear-gradient(to right, rgba(248, 247, 244, 0.93) 0%, rgba(248, 247, 244, 0.82) 65%, rgba(248, 247, 244, 0.68) 100%);
 }
 
-.hero-tresmares .container,
-.hero-tresmares-business .container,
-.hero-tresmares-about .container,
-.hero-tresmares-automation .container,
-.hero-tresmares-contact .container,
-.hero-tresmares-portfolio .container,
-.hero-tresmares-blog .container,
-.hero-tresmares-pro .container {
+.hero-editorial .container,
+.hero-editorial-business .container,
+.hero-editorial-about .container,
+.hero-editorial-automation .container,
+.hero-editorial-contact .container,
+.hero-editorial-portfolio .container,
+.hero-editorial-blog .container,
+.hero-editorial-pro .container {
   position: relative;
   z-index: 2;
   width: 100%;
 }
 
-.hero-tresmares .container {
+.hero-editorial .container {
   margin-top: 0;
 }
 
-.hero-tresmares-contact .container,
-.hero-tresmares-portfolio .container,
-.hero-tresmares-blog .container {
+.hero-editorial-contact .container,
+.hero-editorial-portfolio .container,
+.hero-editorial-blog .container {
   margin-top: -3.5rem;
 }
 
-.hero-tresmares-grid {
+.hero-editorial-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 4rem;
@@ -1101,32 +1106,34 @@ body.business-portal .brand-logo-text .accent-s {
 
 /* Desktop Full-Width Single-Line Hero Title */
 @media (min-width: 992px) {
-  .hero-tresmares .hero-tresmares-grid {
+  .hero-editorial .hero-editorial-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
     justify-items: center;
   }
 
-  .hero-tresmares .hero-display-title {
+  .hero-editorial .hero-display-title {
     font-size: clamp(3.4rem, 5.8vw, 7rem);
     font-weight: 900;
     white-space: nowrap;
     text-align: center;
   }
 
-  .hero-tresmares .hero-display-title em {
+  .hero-editorial .hero-display-title em {
+    color: #D4AF37 !important;
+    -webkit-text-fill-color: #D4AF37 !important;
     padding-right: 0;
   }
 
-  .hero-tresmares .hero-title-line-mask {
+  .hero-editorial .hero-title-line-mask {
     display: inline-block;
     margin-right: 0;
     padding-right: 0;
     vertical-align: bottom;
   }
 
-  .hero-tresmares .hero-title-line {
+  .hero-editorial .hero-title-line {
     display: inline-block;
     padding-right: 0;
   }
@@ -1606,7 +1613,7 @@ body.business-portal .brand-logo-text .accent-s {
 
 /* Reusable Light Grey Dots Gradient Background */
 .pastel-dots-bg,
-.showcase-tresmares {
+.showcase-editorial {
   background-color: #f4f4f6;
   background-image:
     radial-gradient(rgba(255, 255, 255, 0.9) 1.5px, transparent 1.5px),
@@ -1614,7 +1621,7 @@ body.business-portal .brand-logo-text .accent-s {
   background-size: 14px 14px, 100% 100%;
 }
 
-.stats-tresmares {
+.stats-editorial {
   padding: 7rem 0 8rem 0;
   border-bottom: 1px solid var(--border-subtle);
   background: var(--bg-canvas);
@@ -1700,7 +1707,7 @@ body.business-portal .brand-logo-text .accent-s {
   }
 }
 
-.tresmares-stat-box {
+.editorial-stat-box {
   background: var(--bg-canvas);
   border: 1px solid var(--border-subtle);
   margin-top: -1px;
@@ -1713,14 +1720,14 @@ body.business-portal .brand-logo-text .accent-s {
   transition: var(--transition-fast);
 }
 
-.tresmares-stat-box:hover {
+.editorial-stat-box:hover {
   z-index: 10;
   border-color: var(--color-accent);
   background: #ffffff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-.tresmares-stat-number {
+.editorial-stat-number {
   font-family: var(--font-serif);
   font-size: clamp(3.2rem, 4.5vw, 4.5rem);
   font-weight: 400;
@@ -1729,7 +1736,7 @@ body.business-portal .brand-logo-text .accent-s {
   letter-spacing: -0.02em;
 }
 
-.tresmares-stat-label {
+.editorial-stat-label {
   font-size: 0.92rem;
   font-weight: 500;
   color: var(--text-primary);
@@ -1737,7 +1744,7 @@ body.business-portal .brand-logo-text .accent-s {
 }
 
 /* Showcase Section */
-.showcase-tresmares {
+.showcase-editorial {
   padding: 6.5rem 0;
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -1967,7 +1974,7 @@ body.business-portal .brand-logo-text .accent-s {
 }
 
 /* Estimator Section */
-.estimator-tresmares {
+.estimator-editorial {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   padding: 4rem 3.5rem;
@@ -2077,21 +2084,21 @@ body.business-portal .brand-logo-text .accent-s {
 /* Responsive Queries & Mobile Navigation Drawer */
 @media (max-width: 900px) {
 
-  .hero-tresmares,
-  .hero-tresmares-business,
-  .hero-tresmares-about,
-  .hero-tresmares-automation,
-  .hero-tresmares-contact,
-  .hero-tresmares-portfolio,
-  .hero-tresmares-blog,
-  .hero-tresmares-pro {
+  .hero-editorial,
+  .hero-editorial-business,
+  .hero-editorial-about,
+  .hero-editorial-automation,
+  .hero-editorial-contact,
+  .hero-editorial-portfolio,
+  .hero-editorial-blog,
+  .hero-editorial-pro {
     height: auto;
     min-height: 80vh;
   }
 
-  .hero-tresmares-contact .container,
-  .hero-tresmares-portfolio .container,
-  .hero-tresmares-blog .container {
+  .hero-editorial-contact .container,
+  .hero-editorial-portfolio .container,
+  .hero-editorial-blog .container {
     margin-top: 0;
   }
 
@@ -2285,7 +2292,7 @@ body.business-portal .brand-logo-text .accent-s {
     border-top: 1px solid var(--border-subtle);
   }
 
-  .hero-tresmares-grid,
+  .hero-editorial-grid,
   .stats-staggered-layout,
   .showcase-panel.active {
     grid-template-columns: 1fr;
@@ -2323,16 +2330,16 @@ body.business-portal .brand-logo-text .accent-s {
     margin-top: 2.5rem !important;
   }
 
-  .tresmares-stat-box {
+  .editorial-stat-box {
     padding: 1.75rem 1.25rem !important;
     min-height: 170px !important;
   }
 
-  .tresmares-stat-number {
+  .editorial-stat-number {
     font-size: clamp(2.4rem, 7vw, 3.2rem) !important;
   }
 
-  .tresmares-stat-label {
+  .editorial-stat-label {
     font-size: 0.82rem !important;
   }
 
@@ -2401,7 +2408,7 @@ body.business-portal .brand-logo-text .accent-s {
   }
 
   /* Main Mobile Hero Section Layout & Typography Fixes */
-  .hero-tresmares {
+  .hero-editorial {
     padding-top: 2.5rem !important;
     align-items: flex-start !important;
     min-height: calc(100vh - var(--header-height));
@@ -2411,11 +2418,11 @@ body.business-portal .brand-logo-text .accent-s {
     background-position: center top !important;
   }
 
-  .hero-tresmares .container {
+  .hero-editorial .container {
     margin-top: 0 !important;
   }
 
-  .hero-tresmares-grid {
+  .hero-editorial-grid {
     grid-template-columns: 1fr !important;
     gap: 1.25rem !important;
     padding: 0 !important;
@@ -2423,12 +2430,12 @@ body.business-portal .brand-logo-text .accent-s {
     justify-items: center !important;
   }
 
-  .hero-tresmares .hero-display-title,
-  .hero-tresmares-about .hero-display-title,
-  .hero-tresmares-automation .hero-display-title,
-  .hero-tresmares-portfolio .hero-display-title,
-  .hero-tresmares-blog .hero-display-title,
-  .hero-tresmares-pro .hero-display-title {
+  .hero-editorial .hero-display-title,
+  .hero-editorial-about .hero-display-title,
+  .hero-editorial-automation .hero-display-title,
+  .hero-editorial-portfolio .hero-display-title,
+  .hero-editorial-blog .hero-display-title,
+  .hero-editorial-pro .hero-display-title {
     font-size: clamp(3rem, 10.5vw, 4.5rem) !important;
     line-height: 1.05 !important;
     white-space: normal !important;
@@ -2437,7 +2444,7 @@ body.business-portal .brand-logo-text .accent-s {
     word-break: break-word !important;
   }
 
-  .hero-tresmares .hero-title-line-mask {
+  .hero-editorial .hero-title-line-mask {
     display: block !important;
     margin-right: 0 !important;
     padding-right: 0 !important;
@@ -2445,14 +2452,14 @@ body.business-portal .brand-logo-text .accent-s {
     text-align: center !important;
   }
 
-  .hero-tresmares .hero-title-line {
+  .hero-editorial .hero-title-line {
     display: block !important;
     padding-right: 0 !important;
     width: 100% !important;
     text-align: center !important;
   }
 
-  .hero-tresmares .hero-subtitle {
+  .hero-editorial .hero-subtitle {
     white-space: normal !important;
     font-size: 1.05rem !important;
     line-height: 1.5 !important;
@@ -2470,22 +2477,22 @@ body.business-portal .brand-logo-text .accent-s {
   }
 
   /* Business Portal Specific Mobile Hero Spacing */
-  .hero-tresmares-business .hero-tresmares-grid {
+  .hero-editorial-business .hero-editorial-grid {
     gap: 1.5rem !important;
     padding-bottom: 3.5rem !important;
   }
 
-  .hero-tresmares-business .hero-display-title {
+  .hero-editorial-business .hero-display-title {
     font-size: clamp(3rem, 10vw, 4.5rem) !important;
     margin-bottom: 1.25rem !important;
   }
 
-  .hero-tresmares-business .hero-text-block {
+  .hero-editorial-business .hero-text-block {
     margin-top: 0 !important;
     padding-left: 1.25rem !important;
   }
 
-  .hero-tresmares-business .hero-text-block .hero-subtitle {
+  .hero-editorial-business .hero-text-block .hero-subtitle {
     margin-bottom: 1.25rem !important;
   }
 
@@ -3583,8 +3590,8 @@ body.business-portal strong[style*="color: #e31b23"] {
 body.business-portal .hero-display-title,
 body.business-portal .hero-title-line,
 body.business-portal .hero-title-line-mask,
-.hero-tresmares-business .hero-display-title,
-.hero-tresmares-business .hero-title-line {
+.hero-editorial-business .hero-display-title,
+.hero-editorial-business .hero-title-line {
   color: #f8f7f4 !important;
   -webkit-text-fill-color: #f8f7f4 !important;
   background: none !important;
@@ -3596,7 +3603,7 @@ body.business-portal .hero-title-line-mask,
 
 body.business-portal .hero-title-line em,
 body.business-portal .hero-display-title em,
-.hero-tresmares-business .hero-display-title em {
+.hero-editorial-business .hero-display-title em {
   color: #C5A059 !important;
   -webkit-text-fill-color: #C5A059 !important;
   background: none !important;
@@ -3682,7 +3689,7 @@ body.business-portal strong span[style*="width: 9px; height: 9px;"] {
 
 /* 7. Vertical Accent Border Lines (#C5A059 / Home Accent Match) */
 body.business-portal .hero-text-block,
-.hero-tresmares-business .hero-text-block {
+.hero-editorial-business .hero-text-block {
   background: transparent !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
@@ -3693,7 +3700,7 @@ body.business-portal .hero-text-block,
 }
 
 body.business-portal .hero-text-block .hero-subtitle,
-.hero-tresmares-business .hero-text-block .hero-subtitle {
+.hero-editorial-business .hero-text-block .hero-subtitle {
   color: #f8f7f4 !important;
   font-size: 1.18rem;
   line-height: 1.65;
@@ -3701,24 +3708,24 @@ body.business-portal .hero-text-block .hero-subtitle,
 }
 
 body.business-portal .hero-text-block .link-arrow,
-.hero-tresmares-business .hero-text-block .link-arrow {
+.hero-editorial-business .hero-text-block .link-arrow {
   color: #f8f7f4 !important;
   border-bottom-color: rgba(248, 247, 244, 0.4) !important;
 }
 
 body.business-portal .hero-text-block .link-arrow i,
-.hero-tresmares-business .link-arrow i {
+.hero-editorial-business .link-arrow i {
   color: #C5A059 !important;
 }
 
 body.business-portal .hero-text-block .link-arrow:hover,
-.hero-tresmares-business .hero-text-block .link-arrow:hover {
+.hero-editorial-business .link-arrow:hover {
   color: #ffffff !important;
   border-bottom-color: #ffffff !important;
 }
 
 body.business-portal .hero-scroll-label,
-.hero-tresmares-business .hero-scroll-label {
+.hero-editorial-business .hero-scroll-label {
   color: #f8f7f4 !important;
 }
 
@@ -4523,29 +4530,29 @@ p[style*="border-left"] {
   padding-left: 0 !important;
 }
 
-/* Nakula Dark Theme Pricing / Package Layout */
-.nakula-pricing-section {
-  background: #001621;
+/* Dark Theme Security Packages Layout */
+.packages-pricing-section {
+  background: #252b3d;
   width: 100%;
   padding: 6rem 0;
   margin: 0;
   color: #ffffff;
 }
 
-.nakula-pricing-container {
+.packages-pricing-container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2.5rem;
 }
 
-.nakula-pricing-grid {
+.packages-pricing-grid {
   display: grid;
   grid-template-columns: 260px repeat(3, 1fr);
   gap: 2.5rem;
   align-items: stretch;
 }
 
-.nakula-card {
+.package-card {
   background: transparent;
   border: none;
   border-radius: 0;
@@ -4560,30 +4567,30 @@ p[style*="border-left"] {
 }
 
 @media (max-width: 1100px) {
-  .nakula-pricing-grid {
+  .packages-pricing-grid {
     grid-template-columns: 1fr 1fr;
   }
 
-  .nakula-card {
+  .package-card {
     margin-top: 2rem;
   }
 }
 
 @media (max-width: 768px) {
-  .nakula-pricing-section {
+  .packages-pricing-section {
     padding: 3.5rem 0;
   }
 
-  .nakula-pricing-container {
+  .packages-pricing-container {
     padding: 0 1.25rem;
   }
 
-  .nakula-pricing-grid {
+  .packages-pricing-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }
 
-  .nakula-card {
+  .package-card {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 16px;
@@ -4591,16 +4598,16 @@ p[style*="border-left"] {
     margin-top: 1rem;
   }
 
-  .nakula-card:hover {
+  .package-card:hover {
     border-color: #333333;
   }
 
-  .nakula-card-featured {
+  .package-card-featured {
     border-color: #2a2a2a;
   }
 }
 
-.nakula-card-popular-bar {
+.package-card-popular-bar {
   position: absolute;
   top: 0;
   left: 0;
@@ -4609,14 +4616,14 @@ p[style*="border-left"] {
   background: var(--color-accent);
 }
 
-.nakula-card-title {
+.package-card-title {
   font-size: 1.45rem;
   font-weight: 800;
   color: #ffffff;
   margin-bottom: 0.35rem;
 }
 
-.nakula-card-popular-tag {
+.package-card-popular-tag {
   color: var(--color-accent);
   font-size: 0.72rem;
   font-weight: 800;
@@ -4625,14 +4632,14 @@ p[style*="border-left"] {
   margin-left: 0.5rem;
 }
 
-.nakula-card-subtitle {
+.package-card-subtitle {
   font-size: 0.85rem;
   color: #888888;
   line-height: 1.5;
   margin-bottom: 2rem;
 }
 
-.nakula-card-list {
+.package-card-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -4641,7 +4648,7 @@ p[style*="border-left"] {
   gap: 0.9rem;
 }
 
-.nakula-card-list li {
+.package-card-list li {
   display: flex;
   gap: 0.65rem;
   font-size: 0.92rem;
@@ -4649,19 +4656,19 @@ p[style*="border-left"] {
   line-height: 1.45;
 }
 
-.nakula-card-list li .plus-icon {
+.package-card-list li .plus-icon {
   color: var(--color-accent);
   font-weight: 800;
   flex-shrink: 0;
 }
 
-.nakula-card-footer {
+.package-card-footer {
   margin-top: 2.5rem;
   border-top: 1px solid #222222;
   padding-top: 1.35rem;
 }
 
-.nakula-card-btn {
+.package-card-btn {
   color: var(--color-accent);
   font-size: 0.8rem;
   font-weight: 800;
@@ -4673,11 +4680,11 @@ p[style*="border-left"] {
   transition: opacity 0.2s ease;
 }
 
-.nakula-card-btn:hover {
+.package-card-btn:hover {
   opacity: 0.85;
 }
 
-.nakula-card-btn-solid {
+.package-card-btn-solid {
   color: #ffffff;
   background: var(--color-accent);
   padding: 0.75rem 1rem;

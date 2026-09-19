@@ -6,11 +6,11 @@ high-performance enterprise networks by Quinte Smart Homes."
 isBusinessPage: true
 ---
 
-<!-- Tresmares Business Fullwidth Background Hero Section -->
-<section class="hero-tresmares-business">
+<!-- Editorial Business Fullwidth Background Hero Section -->
+<section class="hero-editorial-business">
   <div class="hero-bg-layer"></div>
   <div class="container">
-    <div class="hero-tresmares-grid">
+    <div class="hero-editorial-grid">
       <div>
         <h1 class="hero-display-title">
           <span class="hero-title-line-mask"><span class="hero-title-line">Empowering</span></span>
@@ -168,7 +168,7 @@ isBusinessPage: true
 </section>
 
 <!-- Business Services Showcase Slider (Strictly Business Security & Networking) -->
-<section class="showcase-tresmares" id="commercial-services">
+<section class="showcase-editorial" id="commercial-services">
   <div class="container">
     <h2 class="statement-title title-color-wipe" style="margin-bottom: 3rem; text-align: center;"><span
         class="title-color-wipe-dark">Core Business </span><span class="title-color-wipe-red">Technology Services</span>
@@ -300,8 +300,8 @@ isBusinessPage: true
     if (nextBtn) nextBtn.addEventListener('click', () => activateSlide(currentIndex + 1));
 
     // Scroll-Controlled Exit Animations for Hero Title & Subtitle/Button
-    const heroTitleLines = document.querySelectorAll('.hero-tresmares-business .hero-display-title .hero-title-line');
-    const heroTextItems = document.querySelectorAll('.hero-tresmares-business .hero-text-block > *');
+    const heroTitleLines = document.querySelectorAll('.hero-editorial-business .hero-display-title .hero-title-line');
+    const heroTextItems = document.querySelectorAll('.hero-editorial-business .hero-text-block > *');
 
     if (heroTitleLines.length > 0 || heroTextItems.length > 0) {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -346,7 +346,7 @@ isBusinessPage: true
         const scrollProgress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
 
         // 0. Hero Background Image Scroll Animation (Slow Zoom In on Desktop & Mobile)
-        const heroBgEl = document.querySelector('.hero-tresmares-business .hero-bg-layer') || document.querySelector('.hero-tresmares-business');
+        const heroBgEl = document.querySelector('.hero-editorial-business .hero-bg-layer') || document.querySelector('.hero-editorial-business');
         if (heroBgEl && scrollY <= 800) {
           const scaleVal = 1 + (scrollY * 0.0006);
           heroBgEl.style.setProperty('--hero-bg-scale', scaleVal.toFixed(3));
