@@ -16,4 +16,4 @@ Commercial security requires a proactive architecture built for 24/7 reliability
 2. **Encrypted Local NVR Storage**: Eliminate recurring monthly cloud subscription fees by storing encrypted high-definition footage on-site with redundant hard drives.
 3. **Smart Door Access Control**: Grant digital keycard or mobile app credentials to staff with customizable scheduled time windows and audit logging.
 
-Contact Quinte Smart Homes to schedule a commercial security site audit for your business.
+Contact Davidson Smart Solutions to schedule a commercial security site audit for your business.

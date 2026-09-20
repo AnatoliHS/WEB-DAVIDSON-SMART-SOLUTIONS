@@ -16,4 +16,4 @@ Smart lighting is far more than just turning lights on and off from a phone app.
 2. **Vacation & Security Modes**: Automatically simulate occupancy while you are away traveling.
 3. **Energy Efficiency**: Dimming lights by just 10% extends bulb lifespan and reduces monthly hydro costs.
 
-Contact Quinte Smart Homes to schedule a lighting demonstration for your property!
+Contact Davidson Smart Solutions to schedule a lighting demonstration for your property!

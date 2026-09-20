@@ -141,6 +141,6 @@
   <!-- Top Hero Title Overlay Banner -->
   <g transform="translate(960, 100)">
     <text x="0" y="0" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="900" letter-spacing="4" text-anchor="middle">RESIDENTIAL ENTERPRISE NETWORK</text>
-    <text x="0" y="32" fill="#00d2ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" letter-spacing="3" text-anchor="middle">QUINTE SMART HOMES CERTIFIED ARCHITECTURE</text>
+    <text x="0" y="32" fill="#00d2ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" letter-spacing="3" text-anchor="middle">DAVIDSON SMART SOLUTIONS CERTIFIED ARCHITECTURE</text>
   </g>
 </svg>

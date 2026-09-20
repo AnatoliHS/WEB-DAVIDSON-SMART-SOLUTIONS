@@ -16,4 +16,4 @@ Living in Prince Edward County or rural Belleville offers beautiful scenery, but
 - **Concealed Weather-Proof Cable Entry**: Safe low-voltage wall penetrations to prevent water leaks.
 - **Enterprise Wi-Fi Integration**: Connecting your Starlink dish directly to an Araknis mesh network so gigabit speeds reach every room.
 
-Call Quinte Smart Homes at 613-779-9044 for certified Starlink dish installation.
+Call Davidson Smart Solutions at 613-779-9044 for certified Starlink dish installation.
