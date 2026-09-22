@@ -4,7 +4,7 @@ date: 2026-08-15
 description: "Discover how Lutron RadioRA3 architectural dimmers and custom engraved keypads transform your daily home routine and save energy."
 category: "Blog"
 tag: "Lutron & Smart Lighting"
-image: "/assets/images/showcase_smart_lights.jpg"
+image: "/assets/images/lights.jpg"
 tags: ["blog"]
 ---
 

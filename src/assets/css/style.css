@@ -171,6 +171,29 @@ ul {
   display: block;
 }
 
+.nav-brand-logo-img {
+  height: 80px;
+  width: auto;
+  max-width: 380px;
+  object-fit: contain;
+  display: block;
+  transition: height 0.2s ease, max-width 0.2s ease;
+}
+
+@media (max-width: 900px) {
+  .nav-brand-logo-img {
+    height: 68px;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-brand-logo-img {
+    height: 62px;
+    max-width: 270px;
+  }
+}
+
 .brand-logo-text {
   font-family: var(--font-sans);
   font-size: 1.6rem;
