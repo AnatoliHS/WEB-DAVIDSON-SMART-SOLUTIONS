@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Home Automation & Smart Integration
-description: "Davidson Smart Solutions provides whole home automation, smart lighting, high end audio/visual, security, and
+description: "Davidson Smart Solutions provides whole home automation, smart lighting, high end audio/visual, security,
+and
 networking installed by licensed electricians in Belleville, PEC, and Quinte."
 ---
 
@@ -645,11 +646,11 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
         const heroBgEl = document.querySelector('.hero-editorial .hero-bg-layer') || document.querySelector('.hero-editorial');
         if (heroBgEl && scrollY <= 800) {
           if (window.innerWidth < 992) {
-            const scaleVal = 1 + (scrollY * 0.0004);
-            heroBgEl.style.transform = `translate3d(0, 0, 0) scale(${scaleVal})`;
+            const scaleVal = 1 + (scrollY * 0.0006);
+            heroBgEl.style.setProperty('--hero-bg-scale', scaleVal.toFixed(3));
           } else {
             const bgOffset = scrollY * 0.35;
-            heroBgEl.style.transform = `translate3d(0, ${-bgOffset.toFixed(1)}px, 0)`;
+            heroBgEl.style.setProperty('--hero-bg-y', `calc(10% - ${bgOffset.toFixed(1)}px)`);
           }
         }
 

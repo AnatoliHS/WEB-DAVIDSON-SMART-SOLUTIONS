@@ -114,8 +114,7 @@ isBusinessPage: true
         style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 18px; padding: 1.25rem; display: flex; flex-direction: column; height: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
         <div class="process-card-img-wrap"
           style="position: relative; border-radius: 12px; overflow: hidden; margin-bottom: 1.25rem;">
-          <img src="/assets/images/phase02.jpg"
-            alt="Licensed Master Electrician Pre Wiring &amp; Rack Setup"
+          <img src="/assets/images/phase02.jpg" alt="Licensed Master Electrician Pre Wiring &amp; Rack Setup"
             style="width: 100%; height: 100%; object-fit: cover;" />
         </div>
         <div style="padding: 0.25rem 0.5rem 0.5rem 0.5rem; display: flex; flex-direction: column; flex-grow: 1;">
@@ -136,8 +135,7 @@ isBusinessPage: true
         style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 18px; padding: 1.25rem; display: flex; flex-direction: column; height: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
         <div class="process-card-img-wrap"
           style="position: relative; border-radius: 12px; overflow: hidden; margin-bottom: 1.25rem;">
-          <img src="/assets/images/phase03.jpg"
-            alt="24/7 Ontario Video Verification &amp; Telemetry"
+          <img src="/assets/images/phase03.jpg" alt="24/7 Ontario Video Verification &amp; Telemetry"
             style="width: 100%; height: 100%; object-fit: cover;" />
         </div>
         <div style="padding: 0.25rem 0.5rem 0.5rem 0.5rem; display: flex; flex-direction: column; flex-grow: 1;">
@@ -189,8 +187,7 @@ isBusinessPage: true
 
       <!-- Service 1: Business Security -->
       <div class="showcase-panel active" id="panel-biz-security">
-        <div class="service-banner-card"
-          style="background-image: url('/assets/images/business-security.jpg');">
+        <div class="service-banner-card" style="background-image: url('/assets/images/business-security.jpg');">
           <div class="service-banner-content">
             <h3 class="service-banner-title">Business Security</h3>
             <p class="service-banner-subtitle">
@@ -224,8 +221,7 @@ isBusinessPage: true
 
       <!-- Service 3: Construction Security -->
       <div class="showcase-panel" id="panel-biz-construction">
-        <div class="service-banner-card"
-          style="background-image: url('/assets/images/construction-security.jpg');">
+        <div class="service-banner-card" style="background-image: url('/assets/images/construction-security.jpg');">
           <div class="service-banner-content">
             <h3 class="service-banner-title">Construction Security</h3>
             <p class="service-banner-subtitle">
@@ -348,8 +344,8 @@ isBusinessPage: true
         // 0. Hero Background Image Scroll Animation (Slow Zoom In on Desktop & Mobile)
         const heroBgEl = document.querySelector('.hero-editorial-business .hero-bg-layer') || document.querySelector('.hero-editorial-business');
         if (heroBgEl && scrollY <= 800) {
-          const scaleVal = 1 + (scrollY * 0.0004);
-          heroBgEl.style.transform = `translate3d(0, 0, 0) scale(${scaleVal})`;
+          const scaleVal = 1 + (scrollY * 0.0006);
+          heroBgEl.style.setProperty('--hero-bg-scale', scaleVal.toFixed(3));
         }
 
         // 1. Hero Title Lines (Animate Upwards -Y out of mask)
