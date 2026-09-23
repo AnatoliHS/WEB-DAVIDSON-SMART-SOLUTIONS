@@ -890,13 +890,16 @@ body.business-portal .brand-logo-text .accent-s {
   height: 100%;
   z-index: 0;
   background-image: url('/assets/Davidson-House-Main.jpg');
-  background-position: center var(--hero-bg-y, 10%);
+  background-position: center 10%;
   background-size: cover;
   background-repeat: no-repeat;
-  transform: scale(var(--hero-bg-scale, 1));
+  transform: translate3d(0, 0, 0);
   transform-origin: center top;
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   pointer-events: none;
+  transition: transform 0.12s cubic-bezier(0.1, 0.9, 0.2, 1);
 }
 
 .hero-bg-layer::after {
@@ -920,10 +923,13 @@ body.business-portal .brand-logo-text .accent-s {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  transform: scale(var(--hero-bg-scale, 1));
+  transform: translate3d(0, 0, 0);
   transform-origin: center center;
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   pointer-events: none;
+  transition: transform 0.12s cubic-bezier(0.1, 0.9, 0.2, 1);
 }
 
 .hero-editorial-about {
