@@ -5,10 +5,10 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "cd src && npx @11ty/eleventy --serve --output=../dist",
+        "start": "npx @11ty/eleventy --serve",
         "admin": "bun x decap-server --port 8081 --cors & bun run start",
-        "build": "cd src && npx @11ty/eleventy --output=../dist",
-        "buildfresh": "rm -rf dist && mkdir dist && cd src && npx @11ty/eleventy --output=../dist",
+        "build": "npx @11ty/eleventy",
+        "buildfresh": "rm -rf dist && npx @11ty/eleventy",
         "srvsrc": "cd src && python -m http.server 8000 && cd ..",
         "setup": "cd utils && pipenv install",
         "unstylish": "cd utils && pipenv run ./_unstylish.py ../src/",
