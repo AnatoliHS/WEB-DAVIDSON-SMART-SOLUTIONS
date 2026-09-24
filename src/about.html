@@ -7,6 +7,7 @@ County, Kingston & Oshawa. Residential, commercial & industrial automation."
 
 <!-- Editorial Full-Screen Hero Section with White overlay -->
 <section class="hero-editorial-about">
+  <div class="hero-bg-layer" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-editorial-grid">
       <div>
@@ -702,6 +703,10 @@ County, Kingston & Oshawa. Residential, commercial & industrial automation."
           });
           heroScrollTicking = true;
         }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        updateHeroScroll();
       }, { passive: true });
 
       updateHeroScroll();

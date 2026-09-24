@@ -6,6 +6,7 @@ description: "Work with a partner who understands design. Smart homes for interi
 
 <!-- 1. Editorial Full-Screen Hero Section matching About Page Layout -->
 <section class="hero-editorial-pro">
+  <div class="hero-bg-layer" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-editorial-grid">
       <div>
@@ -696,6 +697,10 @@ description: "Work with a partner who understands design. Smart homes for interi
           });
           heroScrollTicking = true;
         }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        updateHeroScroll();
       }, { passive: true });
 
       updateHeroScroll();

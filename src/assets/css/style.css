@@ -849,6 +849,115 @@ body.business-portal .brand-logo-text .accent-s {
   transform: translateX(5px);
 }
 
+/* Hero CTA Pill Shape & Semi-Transparent Background (index.html & business.html - Desktop & Mobile) */
+.hero-editorial .hero-sub-content .link-arrow,
+.hero-editorial .link-arrow {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.65rem !important;
+  padding: 0.75rem 1.75rem !important;
+  border-radius: 9999px !important;
+  border: 1px solid rgba(22, 28, 45, 0.38) !important;
+  border-bottom: 1px solid rgba(22, 28, 45, 0.38) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  color: #1e293b !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.hero-editorial .hero-sub-content .link-arrow i,
+.hero-editorial .link-arrow i {
+  color: var(--color-accent, #C5A059) !important;
+  transition: transform 0.25s ease !important;
+}
+
+.hero-editorial .hero-sub-content .link-arrow:hover,
+.hero-editorial .hero-sub-content .link-arrow:active,
+.hero-editorial .link-arrow:hover,
+.hero-editorial .link-arrow:active {
+  background: #ffffff !important;
+  border-color: var(--color-accent, #C5A059) !important;
+  border-bottom-color: var(--color-accent, #C5A059) !important;
+  color: #0f172a !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14) !important;
+}
+
+.hero-editorial .hero-sub-content .link-arrow:hover i,
+.hero-editorial .hero-sub-content .link-arrow:active i,
+.hero-editorial .link-arrow:hover i,
+.hero-editorial .link-arrow:active i {
+  transform: translateX(5px) !important;
+}
+
+body.business-portal .hero-editorial-business .hero-text-block .link-arrow,
+body.business-portal .hero-editorial-business .link-arrow,
+.hero-editorial-business .hero-text-block .link-arrow,
+.hero-editorial-business .link-arrow {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.65rem !important;
+  padding: 0.75rem 1.75rem !important;
+  border-radius: 9999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.32) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.32) !important;
+  background: rgba(18, 22, 32, 0.80) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  color: #ffffff !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+body.business-portal .hero-editorial-business .hero-text-block .link-arrow i,
+body.business-portal .hero-editorial-business .link-arrow i,
+.hero-editorial-business .hero-text-block .link-arrow i,
+.hero-editorial-business .link-arrow i {
+  color: #C5A059 !important;
+  transition: transform 0.25s ease !important;
+}
+
+body.business-portal .hero-editorial-business .hero-text-block .link-arrow:hover,
+body.business-portal .hero-editorial-business .hero-text-block .link-arrow:active,
+body.business-portal .hero-editorial-business .link-arrow:hover,
+body.business-portal .hero-editorial-business .link-arrow:active,
+.hero-editorial-business .hero-text-block .link-arrow:hover,
+.hero-editorial-business .hero-text-block .link-arrow:active,
+.hero-editorial-business .link-arrow:hover,
+.hero-editorial-business .link-arrow:active {
+  background: rgba(28, 34, 48, 0.95) !important;
+  border-color: #C5A059 !important;
+  border-bottom-color: #C5A059 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.38) !important;
+}
+
+body.business-portal .hero-editorial-business .hero-text-block .link-arrow:hover i,
+body.business-portal .hero-editorial-business .hero-text-block .link-arrow:active i,
+body.business-portal .hero-editorial-business .link-arrow:hover i,
+body.business-portal .hero-editorial-business .link-arrow:active i,
+.hero-editorial-business .hero-text-block .link-arrow:hover i,
+.hero-editorial-business .hero-text-block .link-arrow:active i,
+.hero-editorial-business .link-arrow:hover i,
+.hero-editorial-business .link-arrow:active i {
+  transform: translateX(5px) !important;
+}
+
 /*   Davidson Smart Solutions - Editorial Luxury Design System
  *   ========================================================================== */
 
@@ -876,10 +985,12 @@ body.business-portal .brand-logo-text .accent-s {
 }
 
 .hero-editorial {
-  align-items: flex-start !important;
-  padding-top: 140px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 3rem 0 !important;
   overflow: hidden;
   position: relative;
+  background-image: none !important;
 }
 
 .hero-bg-layer {
@@ -926,27 +1037,56 @@ body.business-portal .brand-logo-text .accent-s {
   pointer-events: none;
 }
 
-.hero-editorial-about {
+.hero-editorial-about,
+.hero-editorial-automation,
+.hero-editorial-contact,
+.hero-editorial-portfolio,
+.hero-editorial-blog,
+.hero-editorial-pro {
+  position: relative;
+  overflow: hidden;
+  background-image: none !important;
+}
+
+.hero-editorial-about .hero-bg-layer,
+.hero-editorial-automation .hero-bg-layer,
+.hero-editorial-contact .hero-bg-layer,
+.hero-editorial-portfolio .hero-bg-layer,
+.hero-editorial-blog .hero-bg-layer,
+.hero-editorial-pro .hero-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.hero-editorial-about .hero-bg-layer {
   background-image: url('/assets/images/about_hero_background.jpg');
 }
 
-.hero-editorial-automation {
+.hero-editorial-automation .hero-bg-layer {
   background-image: url('/assets/images/pro_hero_white_grey.jpg');
 }
 
-.hero-editorial-contact {
+.hero-editorial-contact .hero-bg-layer {
   background-image: url('/assets/images/contact_hero_white_grey.jpg');
 }
 
-.hero-editorial-portfolio {
+.hero-editorial-portfolio .hero-bg-layer {
   background-image: url('/assets/images/portfolio_hero_white_grey.jpg');
 }
 
-.hero-editorial-blog {
+.hero-editorial-blog .hero-bg-layer {
   background-image: url('/assets/images/blog_hero_white_grey.jpg');
 }
 
-.hero-editorial-pro {
+.hero-editorial-pro .hero-bg-layer {
   background-image: url('/assets/images/pro_hero_white_grey.jpg');
 }
 
@@ -972,11 +1112,25 @@ body.business-portal .brand-logo-text .accent-s {
   z-index: 1;
 }
 
-/* /* Index Hero Overlay */
+/* Index Hero Slight Dark Overlay for Premium Contrast */
 .hero-editorial::before {
-  display: none !important;
-  background: none !important;
-  opacity: 0 !important;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.48) 0%, rgba(0, 0, 0, 0.32) 50%, rgba(0, 0, 0, 0.45) 100%);
+  pointer-events: none;
+  z-index: 1;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+.hero-editorial .hero-scroll-label {
+  color: #f8f7f4 !important;
 }
 
 /* Business Hero Slight Dark Overlay for Premium Contrast */
@@ -1091,6 +1245,18 @@ body.business-portal .brand-logo-text .accent-s {
   padding-bottom: 0.25em;
   margin-bottom: -0.25em;
 }
+.hero-editorial .hero-display-title,
+.hero-editorial .hero-title-line {
+  color: #f8f7f4 !important;
+  -webkit-text-fill-color: #f8f7f4 !important;
+}
+
+.hero-editorial .hero-display-title em {
+  color: #D4AF37 !important;
+  -webkit-text-fill-color: #D4AF37 !important;
+}
+
+
 
 /* Hero Title Line-by-Line Bottom-Up Reveal Animation */
 .hero-title-line-mask {
@@ -1129,38 +1295,10 @@ body.business-portal .brand-logo-text .accent-s {
   animation-delay: 0.72s;
 }
 
-/* Desktop Full-Width Single-Line Hero Title */
 @media (min-width: 992px) {
-  .hero-editorial .hero-editorial-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-    justify-items: center;
-  }
-
-  .hero-editorial .hero-display-title {
-    font-size: clamp(3.4rem, 5.8vw, 7rem);
-    font-weight: 900;
-    white-space: nowrap;
-    text-align: center;
-  }
-
   .hero-editorial .hero-display-title em {
     color: #D4AF37 !important;
     -webkit-text-fill-color: #D4AF37 !important;
-    padding-right: 0;
-  }
-
-  .hero-editorial .hero-title-line-mask {
-    display: inline-block;
-    margin-right: 0;
-    padding-right: 0;
-    vertical-align: bottom;
-  }
-
-  .hero-editorial .hero-title-line {
-    display: inline-block;
-    padding-right: 0;
   }
 }
 
@@ -1204,6 +1342,11 @@ body.business-portal .brand-logo-text .accent-s {
   font-weight: 500;
   margin-bottom: 1.5rem;
   animation-delay: 0.65s;
+}
+
+.hero-editorial .hero-text-block .hero-subtitle,
+.hero-editorial .hero-subtitle {
+  color: #f8f7f4 !important;
 }
 
 .hero-text-block>div,
@@ -2117,8 +2260,9 @@ body.business-portal .brand-logo-text .accent-s {
   .hero-editorial-portfolio,
   .hero-editorial-blog,
   .hero-editorial-pro {
-    height: auto;
-    min-height: 80vh;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 5rem 0 4rem 0 !important;
   }
 
   .hero-editorial-contact .container,
@@ -2434,13 +2578,22 @@ body.business-portal .brand-logo-text .accent-s {
 
   /* Main Mobile Hero Section Layout & Typography Fixes */
   .hero-editorial {
-    padding-top: 2.5rem !important;
-    align-items: flex-start !important;
+    padding-top: clamp(6.5rem, 16vh, 9rem) !important;
+    padding-bottom: 2.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
     min-height: calc(100vh - var(--header-height));
+    min-height: calc(100svh - var(--header-height));
+    height: auto !important;
+    box-sizing: border-box;
   }
 
+  .hero-editorial .hero-bg-layer,
   .hero-bg-layer {
-    background-position: center top !important;
+    background-position: center center !important;
+    transform: scale(var(--hero-bg-scale, 1)) !important;
   }
 
   .hero-editorial .container {
@@ -2455,7 +2608,6 @@ body.business-portal .brand-logo-text .accent-s {
     justify-items: center !important;
   }
 
-  .hero-editorial .hero-display-title,
   .hero-editorial-about .hero-display-title,
   .hero-editorial-automation .hero-display-title,
   .hero-editorial-portfolio .hero-display-title,
@@ -2469,56 +2621,82 @@ body.business-portal .brand-logo-text .accent-s {
     word-break: break-word !important;
   }
 
-  .hero-editorial .hero-title-line-mask {
-    display: block !important;
-    margin-right: 0 !important;
-    padding-right: 0 !important;
-    width: 100% !important;
-    text-align: center !important;
-  }
-
-  .hero-editorial .hero-title-line {
-    display: block !important;
-    padding-right: 0 !important;
-    width: 100% !important;
-    text-align: center !important;
-  }
-
-  .hero-editorial .hero-subtitle {
-    white-space: normal !important;
-    font-size: 1.05rem !important;
-    line-height: 1.5 !important;
-    max-width: 90% !important;
-    color: #1e293b !important;
-    font-weight: 600 !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    margin-bottom: 1.25rem !important;
-  }
-
   .hero-text-block {
     margin-top: 1rem !important;
     padding: 1.5rem !important;
   }
 
-  /* Business Portal Specific Mobile Hero Spacing */
+  /* Editorial & Business Portal Specific Mobile Hero Alignment */
+  .hero-editorial .hero-editorial-grid,
   .hero-editorial-business .hero-editorial-grid {
     gap: 1.5rem !important;
     padding-bottom: 3.5rem !important;
+    text-align: left !important;
+    justify-items: start !important;
   }
 
+  .hero-editorial .hero-display-title,
   .hero-editorial-business .hero-display-title {
     font-size: clamp(3rem, 10vw, 4.5rem) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.035em !important;
     margin-bottom: 1.25rem !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
   }
 
+  .hero-editorial .hero-display-title em {
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    display: inline-block !important;
+    padding-right: 0 !important;
+  }
+
+  .hero-editorial .hero-title-line-mask,
+  .hero-editorial .hero-title-line {
+    display: block !important;
+    text-align: left !important;
+    width: 100% !important;
+    padding-right: 0 !important;
+  }
+
+  .hero-editorial .hero-text-block,
   .hero-editorial-business .hero-text-block {
     margin-top: 0 !important;
     padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    text-align: left !important;
+    border-left: 3px solid var(--color-accent) !important;
   }
 
-  .hero-editorial-business .hero-text-block .hero-subtitle {
+  .hero-editorial .hero-text-block .hero-subtitle,
+  .hero-editorial .hero-subtitle,
+  .hero-editorial-business .hero-text-block .hero-subtitle,
+  .hero-editorial-business .hero-subtitle {
+    white-space: normal !important;
+    font-size: 1.05rem !important;
+    line-height: 1.5 !important;
+    max-width: 90% !important;
+    color: #f8f7f4 !important;
+    font-weight: 600 !important;
     margin-bottom: 1.25rem !important;
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+
+  /* Mobile adjustments for Hero CTA Pills */
+  .hero-editorial .hero-sub-content .link-arrow,
+  .hero-editorial .link-arrow,
+  body.business-portal .hero-editorial-business .hero-text-block .link-arrow,
+  body.business-portal .hero-editorial-business .link-arrow,
+  .hero-editorial-business .hero-text-block .link-arrow,
+  .hero-editorial-business .link-arrow {
+    padding: 0.65rem 1.45rem !important;
+    font-size: 0.92rem !important;
   }
 
   h1 {
@@ -3744,22 +3922,6 @@ body.business-portal .hero-text-block .hero-subtitle,
   margin-bottom: 1.5rem;
 }
 
-body.business-portal .hero-text-block .link-arrow,
-.hero-editorial-business .hero-text-block .link-arrow {
-  color: #f8f7f4 !important;
-  border-bottom-color: rgba(248, 247, 244, 0.4) !important;
-}
-
-body.business-portal .hero-text-block .link-arrow i,
-.hero-editorial-business .link-arrow i {
-  color: #C5A059 !important;
-}
-
-body.business-portal .hero-text-block .link-arrow:hover,
-.hero-editorial-business .link-arrow:hover {
-  color: #ffffff !important;
-  border-bottom-color: #ffffff !important;
-}
 
 body.business-portal .hero-scroll-label,
 .hero-editorial-business .hero-scroll-label {

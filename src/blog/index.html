@@ -7,6 +7,7 @@ eleventyExcludeFromCollections: true
 
 <!-- Editorial Fullwidth Background Hero Section for Blog -->
 <section class="hero-editorial-blog">
+  <div class="hero-bg-layer" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-editorial-grid">
       <div>
@@ -358,6 +359,10 @@ eleventyExcludeFromCollections: true
           });
           heroScrollTicking = true;
         }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        updateHeroScroll();
       }, { passive: true });
 
       updateHeroScroll();

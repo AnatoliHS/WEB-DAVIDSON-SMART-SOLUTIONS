@@ -6,6 +6,7 @@ description: Explore our portfolio of commercial and residential smart home auto
 
 <!-- Editorial Fullwidth Background Hero Section for Portfolio -->
 <section class="hero-editorial-portfolio">
+  <div class="hero-bg-layer" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-editorial-grid">
       <div>
@@ -588,6 +589,10 @@ description: Explore our portfolio of commercial and residential smart home auto
           });
           heroScrollTicking = true;
         }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        updateHeroScroll();
       }, { passive: true });
 
       updateHeroScroll();

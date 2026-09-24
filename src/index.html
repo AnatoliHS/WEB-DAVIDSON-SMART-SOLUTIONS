@@ -10,22 +10,21 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
 <section class="hero-editorial">
   <div class="hero-bg-layer" aria-hidden="true"></div>
   <div class="container">
-    <div class="hero-editorial-grid" style="grid-template-columns: 1fr; text-align: center; justify-items: center;">
-      <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-        <h1 class="hero-display-title" style="text-align: center;">
+    <div class="hero-editorial-grid">
+      <div>
+        <h1 class="hero-display-title">
           <span class="hero-title-line-mask"><span class="hero-title-line">Engineering</span></span>
           <span class="hero-title-line-mask"><span class="hero-title-line"><em>Convenience</em></span></span>
+          <span class="hero-title-line-mask"><span class="hero-title-line">Into Daily Living.</span></span>
         </h1>
+      </div>
 
-        <div class="hero-sub-content"
-          style="margin-top: 1rem; display: flex; flex-direction: column; align-items: center; width: 100%;">
-          <p class="hero-subtitle"
-            style="margin-bottom: 1.25rem; text-align: center; margin-left: auto; margin-right: auto;">
-            Master electricians. Custom design. A clear path to your automated smart home.
-          </p>
-          <div style="display: flex; gap: 1rem; align-items: center; justify-content: center;">
-            <a href="#home-services" class="link-arrow">Explore Services <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
+      <div class="hero-text-block">
+        <p class="hero-subtitle">
+          Master electricians. Custom design. A clear path to your automated smart home.
+        </p>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <a href="#home-services" class="link-arrow">Explore Services <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -596,6 +595,29 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
     setTimeout(positionCameraDot, 100);
     setTimeout(positionCameraDot, 500);
 
+    // Lock hero height on mobile load to fill whole screen without stretching/resizing on scroll
+    function setMobileHeroHeight() {
+      const hero = document.querySelector('.hero-editorial');
+      if (!hero) return;
+      if (window.innerWidth <= 900) {
+        const header = document.querySelector('.site-header');
+        const headerH = header ? header.offsetHeight : (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 90);
+        const stableH = window.innerHeight - headerH;
+        hero.style.setProperty('min-height', Math.max(stableH, 500) + 'px', 'important');
+      } else {
+        hero.style.removeProperty('min-height');
+      }
+    }
+    setMobileHeroHeight();
+    setTimeout(setMobileHeroHeight, 100);
+    let lastWinWidth = window.innerWidth;
+    window.addEventListener('resize', () => {
+      if (window.innerWidth !== lastWinWidth) {
+        lastWinWidth = window.innerWidth;
+        setMobileHeroHeight();
+      }
+    }, { passive: true });
+
     // Scroll-Controlled Exit Animations for Hero Title & Subtitle/Button
     const heroTitleLines = document.querySelectorAll('.hero-editorial .hero-display-title .hero-title-line');
     const heroTextItems = document.querySelectorAll('.hero-editorial .hero-text-block > *, .hero-editorial .hero-sub-content > *');
@@ -698,6 +720,10 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
           });
           heroScrollTicking = true;
         }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        updateHeroScroll();
       }, { passive: true });
 
       // Check initial scroll state on load

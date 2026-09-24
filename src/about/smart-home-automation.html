@@ -6,6 +6,7 @@ description: "Discover unified smart home automation in Belleville, Quinte West 
 
 <!-- Editorial Full-Screen Hero Section with White Overlay (Using Smart-Home-Example Image) -->
 <section class="hero-editorial-automation">
+  <div class="hero-bg-layer" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-editorial-grid">
       <div>
@@ -337,6 +338,10 @@ description: "Discover unified smart home automation in Belleville, Quinte West 
           });
           heroScrollTicking = true;
         }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        updateHeroScroll();
       }, { passive: true });
 
       updateHeroScroll();
