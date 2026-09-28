@@ -4,366 +4,106 @@ title: Smart Lighting Design & Automation Belleville, Quinte & PEC | Davidson Sm
 description: "Experience custom smart lights, linear LED accents, and Lutron/Control4 scene keypads. Installed by licensed master electricians across Belleville & Quinte."
 ---
 
-<!-- Hero Statement (Reference Image Layout Match with Interactive Tabs 1-5) -->
-<section class="section-statement" style="text-align: left; padding: 4rem 0 3.5rem 0;">
-  <div class="container">
-
-    <!-- Top Big Title Spanning the Layout -->
-    <h1
-      style="font-family: var(--font-sans); font-weight: 800; letter-spacing: -0.035em; font-size: clamp(2.8rem, 5.2vw, 4.5rem); margin-bottom: 3rem; line-height: 1.1; color: var(--text-primary);">
-      Smart Lighting <span style="color: var(--color-accent); font-weight: 300;">Design &amp; Control.</span>
-    </h1>
-
-    <!-- 2-Column Grid (Responsive Left-to-Right Image & Tab Card) -->
-    <div class="hero-reveal-grid">
-
-      <!-- Left Column: Large Image Card -->
-      <div class="hero-reveal-container">
-        <img src="/assets/images/lights.jpg" alt="Smart Lighting Kitchen Installation" />
+<!-- Hero Editorial Showcase (Matching Reference Image Look & Feel) -->
+<section class="hero-editorial hero-editorial-service hero-editorial-lights dark-section" id="hero-lights" style="background-color: #0b0f17;">
+  <div class="hero-bg-layer" style="background-image: url('/assets/images/lights.jpg');"></div>
+  <div class="hero-service-overlay"></div>
+  <div class="container hero-service-container">
+    <div class="hero-service-content">
+      <h1 class="hero-service-headline">
+        Smart illumination.<br>Designed for living.
+      </h1>
+      <p class="hero-service-subtitle">Architectural Lighting &amp; Automated Control.</p>
+      <p class="hero-service-description">
+        Custom Lutron keypads, circadian daylight tuning, and discrete linear LED accents engineered by licensed master electricians across Quinte &amp; PEC.
+      </p>
+      <div class="hero-service-actions">
+        <a href="#lighting-quote" class="btn-service-action">
+          Design Your Lighting <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="#lighting-solutions" class="service-action-link">
+          Explore Solutions <i class="fa-solid fa-arrow-down"></i>
+        </a>
       </div>
-
-      <!-- Right Column: Card Layout Matching Reference Image with Interactive Tabs -->
-      <div class="hero-reveal-card">
-
-        <!-- Top Row: Interactive Tabs 1-5 Left -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-          <div style="display: flex; gap: 0.65rem; align-items: center;" id="heroTabNav">
-            <button class="hero-tab-btn active" id="hero-tab-btn-1" onclick="switchHeroTab(1)"
-              aria-label="Tab 1: Trade & Design">1</button>
-            <button class="hero-tab-btn" id="hero-tab-btn-2" onclick="switchHeroTab(2)"
-              aria-label="Tab 2: Lighting Capabilities">2</button>
-            <button class="hero-tab-btn" id="hero-tab-btn-3" onclick="switchHeroTab(3)"
-              aria-label="Tab 3: Circadian Tuning">3</button>
-            <button class="hero-tab-btn" id="hero-tab-btn-4" onclick="switchHeroTab(4)"
-              aria-label="Tab 4: Lighting Scenes">4</button>
-            <button class="hero-tab-btn" id="hero-tab-btn-5" onclick="switchHeroTab(5)"
-              aria-label="Tab 5: What's Included">5</button>
-          </div>
-        </div>
-
-        <!-- Center Interactive Tab Content Panels -->
-        <div style="margin: 1.25rem 0; flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
-
-          <!-- TAB 1: Electrician by Trade -->
-          <div class="hero-tab-panel active" id="hero-tab-panel-1">
-            <h3
-              style="font-size: clamp(1.3rem, 2vw, 1.5rem); font-family: var(--font-sans); font-weight: 800; color: #111111; margin-bottom: 0.65rem;">
-              Electrician by Trade. <span style="color: var(--color-accent);">Eye for Design.</span>
-            </h3>
-            <p
-              style="font-family: var(--font-sans); font-size: clamp(1rem, 1.25vw, 1.18rem); color: #222222; line-height: 1.55; margin-bottom: 1rem;">
-              We are sister companies with <strong>Davidson Electrical Services</strong>, bringing over 15 years of
-              licensed electrical trade experience to every smart lighting installation across Belleville, Quinte, and
-              Prince Edward County.
-            </p>
-            <p
-              style="font-size: 0.9rem; color: #444444; font-weight: 600; border-left: 3px solid var(--color-accent); padding-left: 0.85rem; margin-bottom: 1.25rem; line-height: 1.45;">
-              Master electricians handle every wire, low voltage LED driver, and electrical panel layout — ensuring 100%
-              ESA safety compliance alongside flawless aesthetic design.
-            </p>
-            <a href="#lighting-quote" class="btn btn-primary"
-              style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.7rem 1.35rem; font-size: 0.88rem; max-width: 100%; white-space: normal; text-align: center;"><i
-                class="fa-solid fa-lightbulb"></i> Request Lighting Design Consultation</a>
-          </div>
-
-          <!-- TAB 2: Lighting Control Capabilities -->
-          <div class="hero-tab-panel" id="hero-tab-panel-2" style="display: none;">
-            <h3
-              style="font-size: clamp(1.3rem, 2vw, 1.5rem); font-family: var(--font-sans); font-weight: 800; color: #111111; margin-bottom: 1rem;">
-              Lighting Control <span style="color: var(--color-accent);">Capabilities</span>
-            </h3>
-            <ul style="display: flex; flex-direction: column; gap: 0.9rem;">
-              <li
-                style="display: flex; gap: 0.85rem; align-items: center; font-size: 1.02rem; font-weight: 600; color: #222222;">
-                <i class="fa-solid fa-toggle-on" style="color: var(--color-accent); font-size: 1.15rem;"></i>
-                Custom Backlit Scene Keypads Replacing Switch Clutter
-              </li>
-              <li
-                style="display: flex; gap: 0.85rem; align-items: center; font-size: 1.02rem; font-weight: 600; color: #222222;">
-                <i class="fa-solid fa-sun" style="color: var(--color-accent); font-size: 1.15rem;"></i>
-                Circadian Rhythm &amp; Tunable Color-Temperature Lighting
-              </li>
-              <li
-                style="display: flex; gap: 0.85rem; align-items: center; font-size: 1.02rem; font-weight: 600; color: #222222;">
-                <i class="fa-solid fa-grip-lines" style="color: var(--color-accent); font-size: 1.15rem;"></i>
-                Architectural Linear Under Cabinet &amp; Cove LED Accents
-              </li>
-              <li
-                style="display: flex; gap: 0.85rem; align-items: center; font-size: 1.02rem; font-weight: 600; color: #222222;">
-                <i class="fa-solid fa-mobile-screen-button" style="color: var(--color-accent); font-size: 1.15rem;"></i>
-                Automated Sunset/Sunrise Timers &amp; Mobile App Control
-              </li>
-            </ul>
-          </div>
-
-          <!-- TAB 3: Circadian Rhythm Tuning -->
-          <div class="hero-tab-panel" id="hero-tab-panel-3" style="display: none;">
-            <h3
-              style="font-size: clamp(1.3rem, 2vw, 1.5rem); font-family: var(--font-sans); font-weight: 800; color: #111111; margin-bottom: 0.75rem;">
-              Circadian <span style="color: var(--color-accent);">Daylight Tuning</span>
-            </h3>
-            <p
-              style="font-family: var(--font-sans); font-size: clamp(1.05rem, 1.3vw, 1.25rem); color: #222222; line-height: 1.6; font-style: italic; margin-bottom: 1.25rem;">
-              "Lights that dynamically shift color temperature throughout the day — from cool morning energizing white
-              (5000K) to warm evening amber candlelight (2200K)."
-            </p>
-            <p style="font-size: 0.95rem; color: #555555; line-height: 1.6;">
-              Engineered to support natural sleep wake cycles, enhance focus during work hours, and relax your mind in
-              the evening.
-            </p>
-          </div>
-
-          <!-- TAB 4: Lighting Applications -->
-          <div class="hero-tab-panel" id="hero-tab-panel-4" style="display: none;">
-            <h3
-              style="font-size: clamp(1.3rem, 2vw, 1.5rem); font-family: var(--font-sans); font-weight: 800; color: #111111; margin-bottom: 1rem;">
-              Lighting <span style="color: var(--color-accent);">Applications</span>
-            </h3>
-            <ul style="display: flex; flex-direction: column; gap: 0.85rem;">
-              <li
-                style="display: flex; gap: 0.85rem; align-items: center; font-size: 1.02rem; font-weight: 600; color: #222222;">
-                <i class="fa-solid fa-utensils" style="color: var(--color-accent); font-size: 1.15rem;"></i>
-                Under Cabinet Linear Task LEDs &amp; Night-Light Accents
-              </li>
-              <li
-                style="display: flex; gap: 0.85rem; align-items: center; font-size: 1.02rem; font-weight: 600; color: #222222;">
-                <i class="fa-solid fa-lightbulb" style="color: var(--color-accent); font-size: 1.15rem;"></i>
-                Low-Glare Architectural Recessed Pot Lights
-              </li>
-              <li
-                style="display: flex; gap: 0.85rem; align-items: center; font-size: 1.02rem; font-weight: 600; color: #222222;">
-                <i class="fa-solid fa-house-night" style="color: var(--color-accent); font-size: 1.15rem;"></i>
-                Automated Outdoor Facade &amp; Landscape Up-Lighting
-              </li>
-              <li
-                style="display: flex; gap: 0.85rem; align-items: center; font-size: 1.02rem; font-weight: 600; color: #222222;">
-                <i class="fa-solid fa-power-off" style="color: var(--color-accent); font-size: 1.15rem;"></i>
-                One Touch "All Off" Bedside &amp; Entryway Scene Buttons
-              </li>
-            </ul>
-          </div>
-
-          <!-- TAB 5: What's Included in Installation -->
-          <div class="hero-tab-panel" id="hero-tab-panel-5" style="display: none;">
-            <h3
-              style="font-size: clamp(1.3rem, 2vw, 1.5rem); font-family: var(--font-sans); font-weight: 800; color: #111111; margin-bottom: 1rem;">
-              What's Included <span style="color: var(--color-accent);">in Installation:</span>
-            </h3>
-            <ul style="display: flex; flex-direction: column; gap: 0.9rem;">
-              <li
-                style="display: flex; gap: 0.85rem; align-items: center; font-size: 1.02rem; font-weight: 600; color: #222222;">
-                <i class="fa-solid fa-circle-check" style="color: var(--color-accent); font-size: 1.15rem;"></i>
-                Master Electrician ESA Certified Wiring &amp; Panel Connections
-              </li>
-              <li
-                style="display: flex; gap: 0.85rem; align-items: center; font-size: 1.02rem; font-weight: 600; color: #222222;">
-                <i class="fa-solid fa-circle-check" style="color: var(--color-accent); font-size: 1.15rem;"></i>
-                Custom Engraved Backlit Keypad Dimmer Installation
-              </li>
-              <li
-                style="display: flex; gap: 0.85rem; align-items: center; font-size: 1.02rem; font-weight: 600; color: #222222;">
-                <i class="fa-solid fa-circle-check" style="color: var(--color-accent); font-size: 1.15rem;"></i>
-                Low Voltage Linear Aluminum LED Channel Mounting
-              </li>
-              <li
-                style="display: flex; gap: 0.85rem; align-items: center; font-size: 1.02rem; font-weight: 600; color: #222222;">
-                <i class="fa-solid fa-circle-check" style="color: var(--color-accent); font-size: 1.15rem;"></i>
-                Lutron &amp; Control4 Automation App Scene Programming
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-        <!-- Bottom Metadata Line -->
-        <div
-          style="display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: #111111; border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
-          <span>DAVIDSON SMART SOLUTIONS &nbsp;/&nbsp; SMART LIGHTING &amp; CONTROLS</span>
-        </div>
-
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- Script for Interactive Hero Tab Switching -->
-<script>
-  function switchHeroTab(num) {
-    for (let i = 1; i <= 5; i++) {
-      const btn = document.getElementById('hero-tab-btn-' + i);
-      const panel = document.getElementById('hero-tab-panel-' + i);
-      if (btn) {
-        if (i === num) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      }
-      if (panel) {
-        if (i === num) {
-          panel.style.display = 'block';
-        } else {
-          panel.style.display = 'none';
-        }
-      }
-    }
-  }
-</script>
+<!-- Built Properly, From Ground Up (Consolidated Lighting Infrastructure Section) -->
+<section class="built-groundup-section pastel-dots-bg" id="lighting-solutions">
+  <div class="container built-groundup-container">
 
-<!-- Stacked Technical Presentation Sections (Matching Reference Layout) -->
-<section class="stacked-services-section" style="margin-bottom: 5rem;">
-  <div class="container stacked-services-container">
+    <!-- Left Column: Sticky Editorial Header -->
+    <div class="built-groundup-header">
+      <h2 class="built-groundup-title">
+        Built Properly,<br><span>From Ground Up.</span>
+      </h2>
+      <p class="built-groundup-lead">
+        Consumer smart bulbs flicker, drop off Wi-Fi, and clutter your walls with switch banks. We engineer centralized panelized dimming, architectural low-voltage LED drivers, and custom engraved keypads.
+      </p>
+      <a href="#lighting-quote" class="btn-pill-dark" style="margin-top: 1.75rem;">Book Lighting Consultation &rarr;</a>
+    </div>
 
-    <!-- Row 01: Architectural Smart Lighting & Automated Scenes -->
-    <div class="stacked-service-row">
-      <div class="stacked-service-num">01</div>
-      <div>
-        <h2 class="stacked-service-main-title">Architectural Smart Lighting &amp; Automated Scenes</h2>
+    <!-- Right Column: 5 Refined, Non-Redundant Core Points -->
+    <div class="built-groundup-points">
 
-        <div class="stacked-service-tag">[ ASTRONOMICAL CLOCK &amp; GEOFENCING ]</div>
-
-        <div class="stacked-service-list">
-          <div class="stacked-service-list-item" style="align-items: flex-start;"><i class="fa-solid fa-circle-check"
-              style="color: var(--color-accent); margin-right: 0.65rem; margin-top: 0.25rem; flex-shrink: 0; font-size: 1.05rem;"></i>
-            <div><strong>Automated Sunset &amp; Sunrise</strong><span
-                style="font-size: 0.88rem; color: #555555; display: block; font-weight: 400; line-height: 1.45; margin-top: 0.15rem;">Lights
-                adjust automatically based on local astronomical clock schedules.</span></div>
-          </div>
-          <div class="stacked-service-list-item" style="align-items: flex-start;"><i class="fa-solid fa-circle-check"
-              style="color: var(--color-accent); margin-right: 0.65rem; margin-top: 0.25rem; flex-shrink: 0; font-size: 1.05rem;"></i>
-            <div><strong>Smart Away Occupancy Simulation</strong><span
-                style="font-size: 0.88rem; color: #555555; display: block; font-weight: 400; line-height: 1.45; margin-top: 0.15rem;">Cycles
-                interior lights while traveling to simulate home occupancy.</span></div>
-          </div>
-          <div class="stacked-service-list-item" style="align-items: flex-start;"><i class="fa-solid fa-circle-check"
-              style="color: var(--color-accent); margin-right: 0.65rem; margin-top: 0.25rem; flex-shrink: 0; font-size: 1.05rem;"></i>
-            <div><strong>Geofencing Arrival Triggers</strong><span
-                style="font-size: 0.88rem; color: #555555; display: block; font-weight: 400; line-height: 1.45; margin-top: 0.15rem;">Illuminates
-                driveway and entryway lights automatically as your vehicle approaches.</span></div>
-          </div>
-          <div class="stacked-service-list-item" style="align-items: flex-start;"><i class="fa-solid fa-circle-check"
-              style="color: var(--color-accent); margin-right: 0.65rem; margin-top: 0.25rem; flex-shrink: 0; font-size: 1.05rem;"></i>
-            <div><strong>One Touch Personalization</strong><span
-                style="font-size: 0.88rem; color: #555555; display: block; font-weight: 400; line-height: 1.45; margin-top: 0.15rem;">Single
-                keypad buttons for custom 'Movie', 'Dinner', or 'Goodnight' scenes.</span></div>
-          </div>
+      <!-- Point 01: Custom Engraved Backlit Scene Keypads -->
+      <div class="built-point-card">
+        <div class="built-point-num">01<span class="built-point-dot">.</span></div>
+        <div class="built-point-body">
+          <h3 class="built-point-title">Custom Engraved Backlit Scene Keypads</h3>
+          <p class="built-point-desc">
+            Replace unsightly 4-gang and 5-gang switch banks with a single elegant keypad featuring custom engraved buttons for 'Entertain', 'Dining', 'Relax', and 'All Off'.
+          </p>
         </div>
       </div>
 
-      <div class="stacked-service-desc">
-        <p>
-          Light up your space to create an aesthetically pleasing ambiance. Effortlessly control natural and artificial
-          lighting with a design that radiates comfort and style.
-        </p>
-        <p>
-          Set the perfect mood from anywhere via smart keypad, wall panel, or app interface across your entire
-          Belleville &amp; PEC home.
-        </p>
-      </div>
-    </div>
-
-    <!-- Row 02: Licensed Electrical Precision & Energy Savings -->
-    <div class="stacked-service-row">
-      <div class="stacked-service-num">02</div>
-      <div>
-        <h2 class="stacked-service-main-title">Licensed Electrical Precision &amp; Energy Savings</h2>
-
-        <div class="stacked-service-tag">[ LOW VOLTAGE LEDS &amp; MASTER ELECTRICIANS ]</div>
-
-        <div class="stacked-service-list">
-          <div class="stacked-service-list-item" style="align-items: flex-start;"><i class="fa-solid fa-circle-check"
-              style="color: var(--color-accent); margin-right: 0.65rem; margin-top: 0.25rem; flex-shrink: 0; font-size: 1.05rem;"></i>
-            <div><strong>15+ Years Licensed Electrician Trade</strong><span
-                style="font-size: 0.88rem; color: #555555; display: block; font-weight: 400; line-height: 1.45; margin-top: 0.15rem;">In
-                partnership with Davidson Electrical Services.</span></div>
-          </div>
-          <div class="stacked-service-list-item" style="align-items: flex-start;"><i class="fa-solid fa-circle-check"
-              style="color: var(--color-accent); margin-right: 0.65rem; margin-top: 0.25rem; flex-shrink: 0; font-size: 1.05rem;"></i>
-            <div><strong>Linear Strip &amp; Accent LED Strips</strong><span
-                style="font-size: 0.88rem; color: #555555; display: block; font-weight: 400; line-height: 1.45; margin-top: 0.15rem;">Custom
-                aluminum channels for under cabinet task &amp; cove lighting.</span></div>
-          </div>
-          <div class="stacked-service-list-item" style="align-items: flex-start;"><i class="fa-solid fa-circle-check"
-              style="color: var(--color-accent); margin-right: 0.65rem; margin-top: 0.25rem; flex-shrink: 0; font-size: 1.05rem;"></i>
-            <div><strong>Hands-Free Voice Control</strong><span
-                style="font-size: 0.88rem; color: #555555; display: block; font-weight: 400; line-height: 1.45; margin-top: 0.15rem;">Seamless
-                integration with Apple HomeKit, Amazon Alexa, and Google Assistant.</span></div>
-          </div>
-          <div class="stacked-service-list-item" style="align-items: flex-start;"><i class="fa-solid fa-circle-check"
-              style="color: var(--color-accent); margin-right: 0.65rem; margin-top: 0.25rem; flex-shrink: 0; font-size: 1.05rem;"></i>
-            <div><strong>Outdoor Facade Illumination</strong><span
-                style="font-size: 0.88rem; color: #555555; display: block; font-weight: 400; line-height: 1.45; margin-top: 0.15rem;">Highlight
-                landscaping, pools, and facades with seasonal color scenes.</span></div>
-          </div>
+      <!-- Point 02: Circadian Rhythm & Natural Daylight Tuning -->
+      <div class="built-point-card">
+        <div class="built-point-num">02<span class="built-point-dot">.</span></div>
+        <div class="built-point-body">
+          <h3 class="built-point-title">Circadian Rhythm &amp; Natural Daylight Tuning</h3>
+          <p class="built-point-desc">
+            Dynamically shifts color temperature automatically from crisp energizing cool white (5000K) at midday to warm, soothing candlelight amber (2200K) at sundown.
+          </p>
         </div>
       </div>
 
-      <div class="stacked-service-desc">
-        <p>
-          We bring over 15 years of licensed electrical trade experience to every smart lighting installation across
-          Belleville, Quinte, and Prince Edward County.
-        </p>
-        <p>
-          From kitchen under cabinet linear LEDs to hidden cove lighting and pool facades, elevate curb appeal while
-          lowering energy costs.
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Bulletproof Quality & Lighting Partners (Halftone Dots Gradient Section) -->
-<section class="section pastel-dots-bg"
-  style="border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
-  <div class="container">
-    <div class="rewired-grid">
-      <div>
-        <h2 class="rewired-left-title">
-          Architectural,<br>
-          <span class="sub-title">Illumination.</span>
-        </h2>
-        <a href="#lighting-quote" class="btn-pill-dark">Explore Lighting Control &rarr;</a>
-      </div>
-
-      <div>
-        <div class="rewired-right-header">Lighting Control Partners:</div>
-        <div class="rewired-list">
-          <div class="rewired-list-item">
-            <span class="rewired-item-num">01</span>
-            <div class="rewired-item-content">
-              <span class="rewired-item-title">Colorbeam Architectural.</span> Low voltage RGBCW recessed downlights
-              with tunable circadian rhythm color temperatures.
-            </div>
-          </div>
-
-          <div class="rewired-list-item">
-            <span class="rewired-item-num">02</span>
-            <div class="rewired-item-content">
-              <span class="rewired-item-title">Control4 Keypads.</span> Custom engraved backlit wall buttons that
-              replace messy multi gang light switch banks.
-            </div>
-          </div>
-
-          <div class="rewired-list-item">
-            <span class="rewired-item-num">03</span>
-            <div class="rewired-item-content">
-              <span class="rewired-item-title">Lutron RadioRA 3.</span> World-class ultra smooth dimming performance for
-              high end residential estates.
-            </div>
-          </div>
-
-          <div class="rewired-list-item">
-            <span class="rewired-item-num">04</span>
-            <div class="rewired-item-content">
-              <span class="rewired-item-title">Vibrant Linear LEDs.</span> Seamless under cabinet, toe kick, and ceiling
-              cove accent LED strip illumination.
-            </div>
-          </div>
+      <!-- Point 03: Architectural Linear Under-Cabinet & Cove Accents -->
+      <div class="built-point-card">
+        <div class="built-point-num">03<span class="built-point-dot">.</span></div>
+        <div class="built-point-body">
+          <h3 class="built-point-title">Architectural Linear Under-Cabinet &amp; Cove Accents</h3>
+          <p class="built-point-desc">
+            Custom aluminum channel LED tape light installations providing flawless, dotless task lighting across kitchen countertops, floating vanities, and ceiling coves.
+          </p>
         </div>
       </div>
+
+      <!-- Point 04: Astronomical Sunset Timers & Occupancy Automation -->
+      <div class="built-point-card">
+        <div class="built-point-num">04<span class="built-point-dot">.</span></div>
+        <div class="built-point-body">
+          <h3 class="built-point-title">Astronomical Sunset Timers &amp; Occupancy Automation</h3>
+          <p class="built-point-desc">
+            Astronomical time clock schedules and geofencing adjust exterior landscape facades and interior pathways automatically at dusk and simulate lived-in occupancy when away.
+          </p>
+        </div>
+      </div>
+
+      <!-- Point 05: Master Electrician ESA Certified Infrastructure -->
+      <div class="built-point-card">
+        <div class="built-point-num">05<span class="built-point-dot">.</span></div>
+        <div class="built-point-body">
+          <h3 class="built-point-title">Master Electrician ESA Certified Infrastructure</h3>
+          <p class="built-point-desc">
+            Installed by licensed electricians from Davidson Electrical Services, guaranteeing clean panel wiring, proper low-voltage driver placement, and 100% Ontario safety compliance.
+          </p>
+        </div>
+      </div>
+
     </div>
+
   </div>
 </section>
 

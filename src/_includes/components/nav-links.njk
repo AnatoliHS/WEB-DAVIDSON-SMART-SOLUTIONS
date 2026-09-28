@@ -1,0 +1,435 @@
+        {% if isBusinessPage or page.url == "/business/" %}
+        <!-- Dedicated Business Portal Navigation Menu -->
+        <a href="/business/" class="nav-link {% if page.url == '/business/' %}active{% endif %}">HOME</a>
+
+        <div class="has-dropdown has-mega-dropdown">
+          <a href="/business/#commercial-services"
+            class="nav-link {% if page.url and page.url.startsWith('/services/') %}active{% endif %}">
+            SERVICES <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
+          </a>
+          <div class="dropdown-menu mega-dropdown-menu">
+            <!-- Desktop Visual Cards Grid (Osmo Concept - Core Business Services) -->
+            <div class="mega-cards-container">
+              <div class="mega-cards-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <a href="/services/business-security/" class="mega-card-item">
+                  <div class="mega-card-bg"
+                    style="background-image: url('/assets/images/business-security.jpg');"></div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Small Business Security</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+
+                <a href="/services/business-networking/" class="mega-card-item">
+                  <div class="mega-card-bg" style="background-image: url('/assets/images/business-network.jpg');">
+                  </div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Business Networking</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+
+                <a href="/services/construction-security/" class="mega-card-item">
+                  <div class="mega-card-bg"
+                    style="background-image: url('/assets/images/construction-security.jpg');"></div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Construction Site Security</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+              </div>
+
+              <div class="mega-dropdown-footer">
+                <a href="/" class="mega-footer-link">
+                  <span>Looking for Residential Smart Automation, Home Theatre &amp; Lighting?</span>
+                  <span style="color: var(--color-accent); font-weight: 700;"><i class="fa-solid fa-arrow-left"></i>
+                    Switch to Residential</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Mobile Fallback Menu -->
+            <div class="mobile-dropdown-list">
+              <a href="/services/business-security/" class="dropdown-item">Business Security</a>
+              <a href="/services/business-networking/" class="dropdown-item">Business Networking</a>
+              <a href="/services/construction-security/" class="dropdown-item">Construction Security</a>
+              <div style="border-top: 1px solid var(--border-subtle); margin: 0.4rem 0;"></div>
+              <a href="/" class="dropdown-item" style="color: var(--color-accent); font-weight: 700;"><i
+                  class="fa-solid fa-arrow-left"></i> Switch to Residential</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="has-dropdown has-mega-dropdown">
+          <a href="/industry-professionals/"
+            class="nav-link {% if page.url == '/industry-professionals/' %}active{% endif %}">
+            INDUSTRY PROFESSIONALS <i class="fa-solid fa-chevron-down"
+              style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
+          </a>
+          <div class="dropdown-menu mega-dropdown-menu pro-mega-dropdown-menu">
+            <!-- Desktop Visual Split Mega Dropdown for INDUSTRY PROFESSIONALS -->
+            <div class="about-mega-container">
+              <!-- Left Side: Single Featured Image Spotlight -->
+              <a href="/industry-professionals/" class="about-mega-feature">
+                <div class="about-feature-bg"
+                  style="background-image: url('/assets/images/smart_home_automation_hero.jpg');"></div>
+                <div class="about-feature-overlay"></div>
+                <div class="about-feature-content">
+                  <span class="about-feature-tag">Trade Partners</span>
+                  <h4 class="about-feature-title">Build &amp; Design Partner Program</h4>
+                  <p class="about-feature-text">Collaborative pre wiring, architectural lighting &amp; smart
+                    infrastructure for custom builders.</p>
+                  <span class="about-feature-link">Explore Partner Program <i
+                      class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </a>
+
+              <!-- Right Side: Structured Link Grid (Single Column) -->
+              <div class="about-mega-links pro-mega-links-single">
+                <a href="/industry-professionals/" class="about-link-item">
+                  <div class="about-link-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+                  <div class="about-link-text">
+                    <span class="about-link-title">Interior Designers</span>
+                    <span class="about-link-desc">Architectural audio, hidden tech &amp; motorized shade
+                      integration</span>
+                  </div>
+                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Mobile Fallback Menu -->
+            <div class="mobile-dropdown-list">
+              <a href="/industry-professionals/" class="dropdown-item">Interior Designers</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="has-dropdown has-mega-dropdown">
+          <a href="/about/" class="nav-link {% if page.url and page.url.startsWith('/about/') %}active{% endif %}">
+            ABOUT <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
+          </a>
+          <div class="dropdown-menu mega-dropdown-menu">
+            <!-- Desktop Visual Split Mega Dropdown for ABOUT (1 Featured Image + Text Link Grid) -->
+            <div class="about-mega-container">
+              <!-- Left Side: Single Featured Image Spotlight -->
+              <a href="/about/" class="about-mega-feature">
+                <div class="about-feature-bg"
+                  style="background-image: url('/assets/images/about_hero_background.jpg');"></div>
+                <div class="about-feature-overlay"></div>
+                <div class="about-feature-content">
+                  <span class="about-feature-tag">Who We Are</span>
+                  <h4 class="about-feature-title">Crafting Exceptional Smart Spaces</h4>
+                  <p class="about-feature-text">Licensed master electricians &amp; AV integration experts in Belleville
+                    &amp; Quinte.</p>
+                  <span class="about-feature-link">Explore Our Story <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </a>
+
+              <!-- Right Side: Structured Link Grid -->
+              <div class="about-mega-links">
+                <a href="/about/" class="about-link-item">
+                  <div class="about-link-icon"><i class="fa-solid fa-building-user"></i></div>
+                  <div class="about-link-text">
+                    <span class="about-link-title">About the Company</span>
+                    <span class="about-link-desc">Our team, values &amp; local Belleville story</span>
+                  </div>
+                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+
+                <a href="/portfolio/" class="about-link-item">
+                  <div class="about-link-icon"><i class="fa-solid fa-images"></i></div>
+                  <div class="about-link-text">
+                    <span class="about-link-title">Portfolio Showcase</span>
+                    <span class="about-link-desc">Explore featured home theatre, lighting &amp; network builds</span>
+                  </div>
+                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+
+                <a href="/about/smart-home-automation/" class="about-link-item">
+                  <div class="about-link-icon"><i class="fa-solid fa-sliders"></i></div>
+                  <div class="about-link-text">
+                    <span class="about-link-title">About Smart Home Automation</span>
+                    <span class="about-link-desc">How integrated Control4 &amp; Lutron systems work</span>
+                  </div>
+                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+
+                <a href="/blog/" class="about-link-item">
+                  <div class="about-link-icon"><i class="fa-solid fa-newspaper"></i></div>
+                  <div class="about-link-text">
+                    <span class="about-link-title">News &amp; Insights</span>
+                    <span class="about-link-desc">Starlink tips, smart lighting guides &amp; tech news</span>
+                  </div>
+                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+
+                <a href="/contact/" class="about-link-item">
+                  <div class="about-link-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                  <div class="about-link-text">
+                    <span class="about-link-title">Contact &amp; Consultations</span>
+                    <span class="about-link-desc">Schedule an on site consultation with our experts</span>
+                  </div>
+                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Mobile Fallback Menu -->
+            <div class="mobile-dropdown-list">
+              <a href="/portfolio/" class="dropdown-item">Portfolio Showcase</a>
+              <a href="/about/" class="dropdown-item">About the Company</a>
+              <a href="/about/smart-home-automation/" class="dropdown-item">About Smart Home Automation</a>
+              <a href="/blog/" class="dropdown-item">News &amp; Insights</a>
+              <a href="/contact/" class="dropdown-item">Contact &amp; Consultations</a>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <!-- Standard Consumer Portal Navigation Menu -->
+        {% for item in navigation.main %}
+        {% if item.children %}
+        <div
+          class="has-dropdown {% if item.title == 'SERVICES' or item.title == 'Services' or item.title == 'ABOUT' or item.title == 'About' or item.title == 'INDUSTRY PROFESSIONALS' or item.title == 'Industry Professionals' or item.href == '/services/' or item.href == '/#home-services' or item.href == '/about/' or item.href == '/industry-professionals/' %}has-mega-dropdown{% endif %}">
+          <a href="{{ item.href }}"
+            class="nav-link {% if page.url and ((page.url.startsWith('/services/') and (item.title == 'SERVICES' or item.title == 'Services')) or (item.href != '/' and page.url.startsWith(item.href))) %}active{% endif %}">
+            {{ item.title }} <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
+          </a>
+          <div
+            class="dropdown-menu {% if item.title == 'SERVICES' or item.title == 'Services' or item.title == 'ABOUT' or item.title == 'About' or item.title == 'INDUSTRY PROFESSIONALS' or item.title == 'Industry Professionals' or item.href == '/services/' or item.href == '/#home-services' or item.href == '/about/' or item.href == '/industry-professionals/' %}mega-dropdown-menu{% endif %} {% if item.title == 'INDUSTRY PROFESSIONALS' or item.title == 'Industry Professionals' or item.href == '/industry-professionals/' %}pro-mega-dropdown-menu{% endif %}">
+            {% if item.title == "SERVICES" or item.title == "Services" or item.href == "/services/" or item.href ==
+            "/#home-services" %}
+            <!-- Desktop Visual Cards Grid (Osmo Concept - All 9 Services) -->
+            <div class="mega-cards-container">
+              <div class="mega-cards-grid">
+                <a href="/services/networking/" class="mega-card-item">
+                  <div class="mega-card-bg" style="background-image: url('/assets/images/home-network.jpg');">
+                  </div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Home Networking</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+
+                <a href="/services/starlink/" class="mega-card-item">
+                  <div class="mega-card-bg" style="background-image: url('/assets/images/starlink.jpg');">
+                  </div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Starlink Installation</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+
+                <a href="/services/home-security/" class="mega-card-item">
+                  <div class="mega-card-bg" style="background-image: url('/assets/images/home-sec.jpg');">
+                  </div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Home Security</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+
+                <a href="/services/audio/" class="mega-card-item">
+                  <div class="mega-card-bg" style="background-image: url('/assets/images/showcase_audio.jpg');"></div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Architectural Audio</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+
+                <a href="/services/home-theatre/" class="mega-card-item">
+                  <div class="mega-card-bg" style="background-image: url('/assets/images/home-theater.jpg');">
+                  </div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Home Theatre</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+
+                <a href="/services/outdoor-screens/" class="mega-card-item">
+                  <div class="mega-card-bg"
+                    style="background-image: url('/assets/images/showcase_outdoor_screens.jpg');"></div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Outdoor Screens</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+
+                <a href="/services/smart-lights/" class="mega-card-item">
+                  <div class="mega-card-bg" style="background-image: url('/assets/images/lights.jpg');">
+                  </div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Smart Lights</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+
+                <a href="/services/window-shades/" class="mega-card-item">
+                  <div class="mega-card-bg" style="background-image: url('/assets/images/showcase_window_shades.jpg');">
+                  </div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Window Shades</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+
+                <a href="/services/pergola/" class="mega-card-item">
+                  <div class="mega-card-bg" style="background-image: url('/assets/images/Pergola.webp');"></div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Louvered Pergola</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+              </div>
+
+              <div class="mega-dropdown-footer">
+                <a href="/business/" class="mega-footer-link">
+                  <span>Looking for Commercial Grade Security &amp; Enterprise Networking?</span>
+                  <span style="color: var(--color-accent); font-weight: 700;">Switch to Commercial <i
+                      class="fa-solid fa-arrow-right"></i></span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Mobile Fallback Menu -->
+            <div class="mobile-dropdown-list">
+              {% for child in item.children %}
+              <a href="{{ child.href }}" class="dropdown-item">{{ child.title }}</a>
+              {% endfor %}
+              <div style="border-top: 1px solid var(--border-subtle); margin: 0.4rem 0;"></div>
+              <a href="/business/" class="dropdown-item" style="color: var(--color-accent); font-weight: 700;">Switch to
+                Commercial <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            {% elseif item.title == "ABOUT" or item.title == "About" or item.href == "/about/" %}
+            <!-- Desktop Visual Split Mega Dropdown for ABOUT (1 Featured Image + Text Link Grid) -->
+            <div class="about-mega-container">
+              <!-- Left Side: Single Featured Image Spotlight -->
+              <a href="/about/" class="about-mega-feature">
+                <div class="about-feature-bg"
+                  style="background-image: url('/assets/images/about_hero_background.jpg');"></div>
+                <div class="about-feature-overlay"></div>
+                <div class="about-feature-content">
+                  <span class="about-feature-tag">Who We Are</span>
+                  <h4 class="about-feature-title">Crafting Exceptional Smart Spaces</h4>
+                  <p class="about-feature-text">Licensed master electricians &amp; AV integration experts in Belleville
+                    &amp; Quinte.</p>
+                  <span class="about-feature-link">Explore Our Story <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </a>
+
+              <!-- Right Side: Structured Link Grid -->
+              <div class="about-mega-links">
+                <a href="/about/" class="about-link-item">
+                  <div class="about-link-icon"><i class="fa-solid fa-building-user"></i></div>
+                  <div class="about-link-text">
+                    <span class="about-link-title">About the Company</span>
+                    <span class="about-link-desc">Our team, values &amp; local Belleville story</span>
+                  </div>
+                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+
+                <a href="/portfolio/" class="about-link-item">
+                  <div class="about-link-icon"><i class="fa-solid fa-images"></i></div>
+                  <div class="about-link-text">
+                    <span class="about-link-title">Portfolio Showcase</span>
+                    <span class="about-link-desc">Explore featured home theatre, lighting &amp; network builds</span>
+                  </div>
+                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+
+                <a href="/about/smart-home-automation/" class="about-link-item">
+                  <div class="about-link-icon"><i class="fa-solid fa-sliders"></i></div>
+                  <div class="about-link-text">
+                    <span class="about-link-title">About Smart Home Automation</span>
+                    <span class="about-link-desc">How integrated Control4 &amp; Lutron systems work</span>
+                  </div>
+                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+
+                <a href="/blog/" class="about-link-item">
+                  <div class="about-link-icon"><i class="fa-solid fa-newspaper"></i></div>
+                  <div class="about-link-text">
+                    <span class="about-link-title">News &amp; Insights</span>
+                    <span class="about-link-desc">Starlink tips, smart lighting guides &amp; tech news</span>
+                  </div>
+                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+
+                <a href="/contact/" class="about-link-item">
+                  <div class="about-link-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                  <div class="about-link-text">
+                    <span class="about-link-title">Contact &amp; Consultations</span>
+                    <span class="about-link-desc">Schedule an on site consultation with our experts</span>
+                  </div>
+                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Mobile Fallback Menu -->
+            <div class="mobile-dropdown-list">
+              {% for child in item.children %}
+              <a href="{{ child.href }}" class="dropdown-item">{{ child.title }}</a>
+              {% endfor %}
+            </div>
+            {% elseif item.title == "INDUSTRY PROFESSIONALS" or item.title == "Industry Professionals" or item.href ==
+            "/industry-professionals/" %}
+            <!-- Desktop Visual Split Mega Dropdown for INDUSTRY PROFESSIONALS -->
+            <div class="about-mega-container">
+              <!-- Left Side: Single Featured Image Spotlight -->
+              <a href="/industry-professionals/" class="about-mega-feature">
+                <div class="about-feature-bg"
+                  style="background-image: url('/assets/images/smart_home_automation_hero.jpg');"></div>
+                <div class="about-feature-overlay"></div>
+                <div class="about-feature-content">
+                  <span class="about-feature-tag">Trade Partners</span>
+                  <h4 class="about-feature-title">Build &amp; Design Partner Program</h4>
+                  <p class="about-feature-text">Collaborative pre wiring, architectural lighting &amp; smart
+                    infrastructure for custom builders.</p>
+                  <span class="about-feature-link">Explore Partner Program <i
+                      class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </a>
+
+              <!-- Right Side: Structured Link Grid (Single Column) -->
+              <div class="about-mega-links pro-mega-links-single">
+                <a href="/industry-professionals/" class="about-link-item">
+                  <div class="about-link-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+                  <div class="about-link-text">
+                    <span class="about-link-title">Interior Designers</span>
+                    <span class="about-link-desc">Architectural audio, hidden tech &amp; motorized shade
+                      integration</span>
+                  </div>
+                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Mobile Fallback Menu -->
+            <div class="mobile-dropdown-list">
+              <a href="/industry-professionals/" class="dropdown-item">Interior Designers</a>
+            </div>
+            {% else %}
+            {% for child in item.children %}
+            <a href="{{ child.href }}" class="dropdown-item">{{ child.title }}</a>
+            {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+        {% else %}
+        <a href="{{ item.href }}" class="nav-link {% if page.url == item.href %}active{% endif %}">{{ item.title }}</a>
+        {% endif %}
+        {% endfor %}
+        {% endif %}

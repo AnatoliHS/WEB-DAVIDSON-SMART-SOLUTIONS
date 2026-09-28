@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- Editorial Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=4.0" />
 
   <!-- Favicon -->
   <link rel="icon"
@@ -25,7 +25,46 @@
 </head>
 
 <body class="{% if isBusinessPage or page.url == '/business/' %}business-portal{% endif %}">
-  <!-- Main Navigation Header -->
+  <!-- Thinking Wave Visualizer Ring around Closed Navbar Circle (Desktop Only) -->
+  <div class="pill-thinking-orb" id="pillThinkingOrb" aria-hidden="true">
+    <canvas class="orb-wave-canvas" id="orbWaveCanvas" width="140" height="140"></canvas>
+  </div>
+
+  <!-- Desktop Expanding Pill Navigation (Desktop Only: min-width 901px) -->
+  <aside class="desktop-pill-nav" id="desktopPillNav" aria-label="Main Navigation">
+    <!-- Circle Bulb Trigger Button (Always visible on left) -->
+    <button class="pill-bulb-btn" id="pillBulbBtn" aria-label="Open Navigation Menu" aria-expanded="false" title="Menu">
+      <img src="/assets/bulb-black.png" alt="Davidson Smart Solutions Logo" class="pill-bulb-icon bulb-icon-dark" />
+      <img src="/assets/bulb-white.png" alt="Davidson Smart Solutions Commercial Logo" class="pill-bulb-icon bulb-icon-light" />
+    </button>
+
+    <!-- Expanded Long Pill Content Wrapper -->
+    <div class="pill-content" id="pillContent">
+      <div class="pill-divider" aria-hidden="true"></div>
+
+      <nav class="pill-nav-links" aria-label="Desktop Menu">
+        {% include "components/nav-links.njk" %}
+      </nav>
+
+      <div class="pill-divider" aria-hidden="true"></div>
+
+      <div class="pill-actions">
+        <a href="/contact/" class="btn btn-primary pill-btn-consult">Book Consultation</a>
+        {% if page.url == "/business/" or isBusinessPage %}
+        <a href="/" class="link-arrow pill-switch-link">Residential <i class="fa-solid fa-arrow-right"></i></a>
+        {% else %}
+        <a href="/business/" class="link-arrow pill-switch-link">Commercial <i class="fa-solid fa-arrow-right"></i></a>
+        {% endif %}
+      </div>
+
+      <!-- Close Trigger Button on the right of the pill -->
+      <button class="pill-close-btn" id="pillCloseBtn" aria-label="Close Navigation Menu" title="Close Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Mobile Navigation Header (Mobile Only: max-width 900px) -->
   <header class="site-header" id="top">
     <div class="container header-inner">
       {% if isBusinessPage or page.url == "/business/" %}
@@ -39,441 +78,7 @@
       {% endif %}
 
       <nav class="main-nav" id="mainNav">
-        {% if isBusinessPage or page.url == "/business/" %}
-        <!-- Dedicated Business Portal Navigation Menu -->
-        <a href="/business/" class="nav-link {% if page.url == '/business/' %}active{% endif %}">HOME</a>
-
-        <div class="has-dropdown has-mega-dropdown">
-          <a href="/business/#commercial-services"
-            class="nav-link {% if page.url and page.url.startsWith('/services/') %}active{% endif %}">
-            SERVICES <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
-          </a>
-          <div class="dropdown-menu mega-dropdown-menu">
-            <!-- Desktop Visual Cards Grid (Osmo Concept - Core Business Services) -->
-            <div class="mega-cards-container">
-              <div class="mega-cards-grid" style="grid-template-columns: repeat(3, 1fr);">
-                <a href="/services/business-security/" class="mega-card-item">
-                  <div class="mega-card-bg"
-                    style="background-image: url('/assets/images/business-security.jpg');"></div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Small Business Security</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-
-                <a href="/services/business-networking/" class="mega-card-item">
-                  <div class="mega-card-bg" style="background-image: url('/assets/images/business-network.jpg');">
-                  </div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Business Networking</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-
-                <a href="/services/construction-security/" class="mega-card-item">
-                  <div class="mega-card-bg"
-                    style="background-image: url('/assets/images/construction-security.jpg');"></div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Construction Site Security</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-              </div>
-
-              <div class="mega-dropdown-footer">
-                <a href="/" class="mega-footer-link">
-                  <span>Looking for Residential Smart Automation, Home Theatre &amp; Lighting?</span>
-                  <span style="color: var(--color-accent); font-weight: 700;"><i class="fa-solid fa-arrow-left"></i>
-                    Switch to Residential</span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Mobile Fallback Menu -->
-            <div class="mobile-dropdown-list">
-              <a href="/services/business-security/" class="dropdown-item">Business Security</a>
-              <a href="/services/business-networking/" class="dropdown-item">Business Networking</a>
-              <a href="/services/construction-security/" class="dropdown-item">Construction Security</a>
-              <div style="border-top: 1px solid var(--border-subtle); margin: 0.4rem 0;"></div>
-              <a href="/" class="dropdown-item" style="color: var(--color-accent); font-weight: 700;"><i
-                  class="fa-solid fa-arrow-left"></i> Switch to Residential</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="has-dropdown has-mega-dropdown">
-          <a href="/industry-professionals/"
-            class="nav-link {% if page.url == '/industry-professionals/' %}active{% endif %}">
-            INDUSTRY PROFESSIONALS <i class="fa-solid fa-chevron-down"
-              style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
-          </a>
-          <div class="dropdown-menu mega-dropdown-menu pro-mega-dropdown-menu">
-            <!-- Desktop Visual Split Mega Dropdown for INDUSTRY PROFESSIONALS -->
-            <div class="about-mega-container">
-              <!-- Left Side: Single Featured Image Spotlight -->
-              <a href="/industry-professionals/" class="about-mega-feature">
-                <div class="about-feature-bg"
-                  style="background-image: url('/assets/images/smart_home_automation_hero.jpg');"></div>
-                <div class="about-feature-overlay"></div>
-                <div class="about-feature-content">
-                  <span class="about-feature-tag">Trade Partners</span>
-                  <h4 class="about-feature-title">Build &amp; Design Partner Program</h4>
-                  <p class="about-feature-text">Collaborative pre wiring, architectural lighting &amp; smart
-                    infrastructure for custom builders.</p>
-                  <span class="about-feature-link">Explore Partner Program <i
-                      class="fa-solid fa-arrow-right"></i></span>
-                </div>
-              </a>
-
-              <!-- Right Side: Structured Link Grid (Single Column) -->
-              <div class="about-mega-links pro-mega-links-single">
-                <a href="/industry-professionals/" class="about-link-item">
-                  <div class="about-link-icon"><i class="fa-solid fa-compass-drafting"></i></div>
-                  <div class="about-link-text">
-                    <span class="about-link-title">Interior Designers</span>
-                    <span class="about-link-desc">Architectural audio, hidden tech &amp; motorized shade
-                      integration</span>
-                  </div>
-                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Mobile Fallback Menu -->
-            <div class="mobile-dropdown-list">
-              <a href="/industry-professionals/" class="dropdown-item">Interior Designers</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="has-dropdown has-mega-dropdown">
-          <a href="/about/" class="nav-link {% if page.url and page.url.startsWith('/about/') %}active{% endif %}">
-            ABOUT <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
-          </a>
-          <div class="dropdown-menu mega-dropdown-menu">
-            <!-- Desktop Visual Split Mega Dropdown for ABOUT (1 Featured Image + Text Link Grid) -->
-            <div class="about-mega-container">
-              <!-- Left Side: Single Featured Image Spotlight -->
-              <a href="/about/" class="about-mega-feature">
-                <div class="about-feature-bg"
-                  style="background-image: url('/assets/images/about_hero_background.jpg');"></div>
-                <div class="about-feature-overlay"></div>
-                <div class="about-feature-content">
-                  <span class="about-feature-tag">Who We Are</span>
-                  <h4 class="about-feature-title">Crafting Exceptional Smart Spaces</h4>
-                  <p class="about-feature-text">Licensed master electricians &amp; AV integration experts in Belleville
-                    &amp; Quinte.</p>
-                  <span class="about-feature-link">Explore Our Story <i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-              </a>
-
-              <!-- Right Side: Structured Link Grid -->
-              <div class="about-mega-links">
-                <a href="/about/" class="about-link-item">
-                  <div class="about-link-icon"><i class="fa-solid fa-building-user"></i></div>
-                  <div class="about-link-text">
-                    <span class="about-link-title">About the Company</span>
-                    <span class="about-link-desc">Our team, values &amp; local Belleville story</span>
-                  </div>
-                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
-                </a>
-
-                <a href="/portfolio/" class="about-link-item">
-                  <div class="about-link-icon"><i class="fa-solid fa-images"></i></div>
-                  <div class="about-link-text">
-                    <span class="about-link-title">Portfolio Showcase</span>
-                    <span class="about-link-desc">Explore featured home theatre, lighting &amp; network builds</span>
-                  </div>
-                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
-                </a>
-
-                <a href="/about/smart-home-automation/" class="about-link-item">
-                  <div class="about-link-icon"><i class="fa-solid fa-sliders"></i></div>
-                  <div class="about-link-text">
-                    <span class="about-link-title">About Smart Home Automation</span>
-                    <span class="about-link-desc">How integrated Control4 &amp; Lutron systems work</span>
-                  </div>
-                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
-                </a>
-
-                <a href="/blog/" class="about-link-item">
-                  <div class="about-link-icon"><i class="fa-solid fa-newspaper"></i></div>
-                  <div class="about-link-text">
-                    <span class="about-link-title">News &amp; Insights</span>
-                    <span class="about-link-desc">Starlink tips, smart lighting guides &amp; tech news</span>
-                  </div>
-                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
-                </a>
-
-                <a href="/contact/" class="about-link-item">
-                  <div class="about-link-icon"><i class="fa-solid fa-calendar-check"></i></div>
-                  <div class="about-link-text">
-                    <span class="about-link-title">Contact &amp; Consultations</span>
-                    <span class="about-link-desc">Schedule an on site consultation with our experts</span>
-                  </div>
-                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Mobile Fallback Menu -->
-            <div class="mobile-dropdown-list">
-              <a href="/portfolio/" class="dropdown-item">Portfolio Showcase</a>
-              <a href="/about/" class="dropdown-item">About the Company</a>
-              <a href="/about/smart-home-automation/" class="dropdown-item">About Smart Home Automation</a>
-              <a href="/blog/" class="dropdown-item">News &amp; Insights</a>
-              <a href="/contact/" class="dropdown-item">Contact &amp; Consultations</a>
-            </div>
-          </div>
-        </div>
-        {% else %}
-        <!-- Standard Consumer Portal Navigation Menu -->
-        {% for item in navigation.main %}
-        {% if item.children %}
-        <div
-          class="has-dropdown {% if item.title == 'SERVICES' or item.title == 'Services' or item.title == 'ABOUT' or item.title == 'About' or item.title == 'INDUSTRY PROFESSIONALS' or item.title == 'Industry Professionals' or item.href == '/services/' or item.href == '/#home-services' or item.href == '/about/' or item.href == '/industry-professionals/' %}has-mega-dropdown{% endif %}">
-          <a href="{{ item.href }}"
-            class="nav-link {% if page.url and ((page.url.startsWith('/services/') and (item.title == 'SERVICES' or item.title == 'Services')) or (item.href != '/' and page.url.startsWith(item.href))) %}active{% endif %}">
-            {{ item.title }} <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
-          </a>
-          <div
-            class="dropdown-menu {% if item.title == 'SERVICES' or item.title == 'Services' or item.title == 'ABOUT' or item.title == 'About' or item.title == 'INDUSTRY PROFESSIONALS' or item.title == 'Industry Professionals' or item.href == '/services/' or item.href == '/#home-services' or item.href == '/about/' or item.href == '/industry-professionals/' %}mega-dropdown-menu{% endif %} {% if item.title == 'INDUSTRY PROFESSIONALS' or item.title == 'Industry Professionals' or item.href == '/industry-professionals/' %}pro-mega-dropdown-menu{% endif %}">
-            {% if item.title == "SERVICES" or item.title == "Services" or item.href == "/services/" or item.href ==
-            "/#home-services" %}
-            <!-- Desktop Visual Cards Grid (Osmo Concept - All 9 Services) -->
-            <div class="mega-cards-container">
-              <div class="mega-cards-grid">
-                <a href="/services/networking/" class="mega-card-item">
-                  <div class="mega-card-bg" style="background-image: url('/assets/images/home-network.jpg');">
-                  </div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Home Networking</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-
-                <a href="/services/starlink/" class="mega-card-item">
-                  <div class="mega-card-bg" style="background-image: url('/assets/images/starlink.jpg');">
-                  </div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Starlink Installation</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-
-                <a href="/services/home-security/" class="mega-card-item">
-                  <div class="mega-card-bg" style="background-image: url('/assets/images/home-sec.jpg');">
-                  </div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Home Security</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-
-                <a href="/services/audio/" class="mega-card-item">
-                  <div class="mega-card-bg" style="background-image: url('/assets/images/showcase_audio.jpg');"></div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Architectural Audio</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-
-                <a href="/services/home-theatre/" class="mega-card-item">
-                  <div class="mega-card-bg" style="background-image: url('/assets/images/home-theater.jpg');">
-                  </div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Home Theatre</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-
-                <a href="/services/outdoor-screens/" class="mega-card-item">
-                  <div class="mega-card-bg"
-                    style="background-image: url('/assets/images/showcase_outdoor_screens.jpg');"></div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Outdoor Screens</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-
-                <a href="/services/smart-lights/" class="mega-card-item">
-                  <div class="mega-card-bg" style="background-image: url('/assets/images/lights.jpg');">
-                  </div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Smart Lights</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-
-                <a href="/services/window-shades/" class="mega-card-item">
-                  <div class="mega-card-bg" style="background-image: url('/assets/images/showcase_window_shades.jpg');">
-                  </div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Window Shades</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-
-                <a href="/services/pergola/" class="mega-card-item">
-                  <div class="mega-card-bg" style="background-image: url('/assets/images/Pergola.webp');"></div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Louvered Pergola</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-              </div>
-
-              <div class="mega-dropdown-footer">
-                <a href="/business/" class="mega-footer-link">
-                  <span>Looking for Commercial Grade Security &amp; Enterprise Networking?</span>
-                  <span style="color: var(--color-accent); font-weight: 700;">Switch to Business <i
-                      class="fa-solid fa-arrow-right"></i></span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Mobile Fallback Menu -->
-            <div class="mobile-dropdown-list">
-              {% for child in item.children %}
-              <a href="{{ child.href }}" class="dropdown-item">{{ child.title }}</a>
-              {% endfor %}
-              <div style="border-top: 1px solid var(--border-subtle); margin: 0.4rem 0;"></div>
-              <a href="/business/" class="dropdown-item" style="color: var(--color-accent); font-weight: 700;">Switch to
-                Business <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-            {% elseif item.title == "ABOUT" or item.title == "About" or item.href == "/about/" %}
-            <!-- Desktop Visual Split Mega Dropdown for ABOUT (1 Featured Image + Text Link Grid) -->
-            <div class="about-mega-container">
-              <!-- Left Side: Single Featured Image Spotlight -->
-              <a href="/about/" class="about-mega-feature">
-                <div class="about-feature-bg"
-                  style="background-image: url('/assets/images/about_hero_background.jpg');"></div>
-                <div class="about-feature-overlay"></div>
-                <div class="about-feature-content">
-                  <span class="about-feature-tag">Who We Are</span>
-                  <h4 class="about-feature-title">Crafting Exceptional Smart Spaces</h4>
-                  <p class="about-feature-text">Licensed master electricians &amp; AV integration experts in Belleville
-                    &amp; Quinte.</p>
-                  <span class="about-feature-link">Explore Our Story <i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-              </a>
-
-              <!-- Right Side: Structured Link Grid -->
-              <div class="about-mega-links">
-                <a href="/about/" class="about-link-item">
-                  <div class="about-link-icon"><i class="fa-solid fa-building-user"></i></div>
-                  <div class="about-link-text">
-                    <span class="about-link-title">About the Company</span>
-                    <span class="about-link-desc">Our team, values &amp; local Belleville story</span>
-                  </div>
-                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
-                </a>
-
-                <a href="/portfolio/" class="about-link-item">
-                  <div class="about-link-icon"><i class="fa-solid fa-images"></i></div>
-                  <div class="about-link-text">
-                    <span class="about-link-title">Portfolio Showcase</span>
-                    <span class="about-link-desc">Explore featured home theatre, lighting &amp; network builds</span>
-                  </div>
-                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
-                </a>
-
-                <a href="/about/smart-home-automation/" class="about-link-item">
-                  <div class="about-link-icon"><i class="fa-solid fa-sliders"></i></div>
-                  <div class="about-link-text">
-                    <span class="about-link-title">About Smart Home Automation</span>
-                    <span class="about-link-desc">How integrated Control4 &amp; Lutron systems work</span>
-                  </div>
-                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
-                </a>
-
-                <a href="/blog/" class="about-link-item">
-                  <div class="about-link-icon"><i class="fa-solid fa-newspaper"></i></div>
-                  <div class="about-link-text">
-                    <span class="about-link-title">News &amp; Insights</span>
-                    <span class="about-link-desc">Starlink tips, smart lighting guides &amp; tech news</span>
-                  </div>
-                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
-                </a>
-
-                <a href="/contact/" class="about-link-item">
-                  <div class="about-link-icon"><i class="fa-solid fa-calendar-check"></i></div>
-                  <div class="about-link-text">
-                    <span class="about-link-title">Contact &amp; Consultations</span>
-                    <span class="about-link-desc">Schedule an on site consultation with our experts</span>
-                  </div>
-                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Mobile Fallback Menu -->
-            <div class="mobile-dropdown-list">
-              {% for child in item.children %}
-              <a href="{{ child.href }}" class="dropdown-item">{{ child.title }}</a>
-              {% endfor %}
-            </div>
-            {% elseif item.title == "INDUSTRY PROFESSIONALS" or item.title == "Industry Professionals" or item.href ==
-            "/industry-professionals/" %}
-            <!-- Desktop Visual Split Mega Dropdown for INDUSTRY PROFESSIONALS -->
-            <div class="about-mega-container">
-              <!-- Left Side: Single Featured Image Spotlight -->
-              <a href="/industry-professionals/" class="about-mega-feature">
-                <div class="about-feature-bg"
-                  style="background-image: url('/assets/images/smart_home_automation_hero.jpg');"></div>
-                <div class="about-feature-overlay"></div>
-                <div class="about-feature-content">
-                  <span class="about-feature-tag">Trade Partners</span>
-                  <h4 class="about-feature-title">Build &amp; Design Partner Program</h4>
-                  <p class="about-feature-text">Collaborative pre wiring, architectural lighting &amp; smart
-                    infrastructure for custom builders.</p>
-                  <span class="about-feature-link">Explore Partner Program <i
-                      class="fa-solid fa-arrow-right"></i></span>
-                </div>
-              </a>
-
-              <!-- Right Side: Structured Link Grid (Single Column) -->
-              <div class="about-mega-links pro-mega-links-single">
-                <a href="/industry-professionals/" class="about-link-item">
-                  <div class="about-link-icon"><i class="fa-solid fa-compass-drafting"></i></div>
-                  <div class="about-link-text">
-                    <span class="about-link-title">Interior Designers</span>
-                    <span class="about-link-desc">Architectural audio, hidden tech &amp; motorized shade
-                      integration</span>
-                  </div>
-                  <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Mobile Fallback Menu -->
-            <div class="mobile-dropdown-list">
-              <a href="/industry-professionals/" class="dropdown-item">Interior Designers</a>
-            </div>
-            {% else %}
-            {% for child in item.children %}
-            <a href="{{ child.href }}" class="dropdown-item">{{ child.title }}</a>
-            {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-        {% else %}
-        <a href="{{ item.href }}" class="nav-link {% if page.url == item.href %}active{% endif %}">{{ item.title }}</a>
-        {% endif %}
-        {% endfor %}
-        {% endif %}
+        {% include "components/nav-links.njk" %}
 
         <!-- Mobile Action Links Inside Menu Drawer -->
         <div class="mobile-actions-wrapper">
@@ -482,21 +87,13 @@
           <a href="/" class="link-arrow" style="margin-top: 0.75rem;">Residential <i
               class="fa-solid fa-arrow-right"></i></a>
           {% else %}
-          <a href="/business/" class="link-arrow" style="margin-top: 0.75rem;">Business <i
+          <a href="/business/" class="link-arrow" style="margin-top: 0.75rem;">Commercial <i
               class="fa-solid fa-arrow-right"></i></a>
           {% endif %}
         </div>
       </nav>
 
       <div class="header-actions">
-        <a href="/contact/" class="btn btn-primary desktop-only">Book Consultation</a>
-        {% if page.url == "/business/" or isBusinessPage %}
-        <a href="/" class="link-arrow desktop-only" style="margin-left: 0.5rem;">Residential <i
-            class="fa-solid fa-arrow-right"></i></a>
-        {% else %}
-        <a href="/business/" class="link-arrow desktop-only" style="margin-left: 0.5rem;">Business <i
-            class="fa-solid fa-arrow-right"></i></a>
-        {% endif %}
         <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
           <span class="hamburger-box">
             <span class="hamburger-line line-top"></span>
@@ -583,9 +180,273 @@
     {% include "components/preferred-badge.njk" %}
   </div>
 
-  <!-- Scripts: Mobile Hamburger, Word Writing Reveal & Stat Count-Up -->
+  <!-- Scripts: Desktop Expanding Pill, Mobile Hamburger, Word Writing Reveal & Stat Count-Up -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Desktop Expanding Pill Navbar Interaction
+      const desktopPill = document.getElementById('desktopPillNav');
+      const pillBulbBtn = document.getElementById('pillBulbBtn');
+      const pillCloseBtn = document.getElementById('pillCloseBtn');
+      const pillThinkingOrb = document.getElementById('pillThinkingOrb');
+
+      if (desktopPill && pillBulbBtn) {
+        let expandTimer = null;
+
+        const openDesktopPill = () => {
+          clearTimeout(expandTimer);
+          if (pillThinkingOrb) pillThinkingOrb.classList.add('is-hidden');
+          desktopPill.classList.add('is-expanded');
+          pillBulbBtn.setAttribute('aria-expanded', 'true');
+          pillBulbBtn.setAttribute('aria-label', 'Close Navigation Menu');
+          pillBulbBtn.title = 'Close Menu';
+          // Enable overflow once expansion animation finishes so mega-dropdown menus are unclipped
+          expandTimer = setTimeout(() => {
+            if (desktopPill.classList.contains('is-expanded')) {
+              desktopPill.classList.add('overflow-visible');
+            }
+          }, 460);
+        };
+
+        const closeDesktopPill = () => {
+          clearTimeout(expandTimer);
+          if (pillThinkingOrb) pillThinkingOrb.classList.remove('is-hidden');
+          desktopPill.classList.remove('overflow-visible');
+          desktopPill.classList.remove('is-expanded');
+          pillBulbBtn.setAttribute('aria-expanded', 'false');
+          pillBulbBtn.setAttribute('aria-label', 'Open Navigation Menu');
+          pillBulbBtn.title = 'Menu';
+        };
+
+        pillBulbBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (desktopPill.classList.contains('is-expanded')) {
+            closeDesktopPill();
+          } else {
+            openDesktopPill();
+          }
+        });
+
+        if (pillCloseBtn) {
+          pillCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeDesktopPill();
+          });
+        }
+
+        // Close when clicking anywhere outside of the pill
+        document.addEventListener('click', (e) => {
+          if (desktopPill.classList.contains('is-expanded') && !desktopPill.contains(e.target)) {
+            closeDesktopPill();
+          }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && desktopPill.classList.contains('is-expanded')) {
+            closeDesktopPill();
+            pillBulbBtn.focus();
+          }
+        });
+
+        // Auto-close on in-page anchor navigation
+        desktopPill.querySelectorAll('a[href^="#"], a[href*="/#"]').forEach(link => {
+          link.addEventListener('click', () => {
+            setTimeout(closeDesktopPill, 160);
+          });
+        });
+
+        // Radial Waveform Equalizer Ring Animation Controller
+        const orbCanvas = document.getElementById('orbWaveCanvas');
+        if (orbCanvas) {
+          const ctx = orbCanvas.getContext('2d');
+          const dpr = window.devicePixelRatio || 1;
+          const size = 140;
+          orbCanvas.width = size * dpr;
+          orbCanvas.height = size * dpr;
+          ctx.scale(dpr, dpr);
+
+          const N = 48; // 48 radial tick capsules like reference animation
+          const cx = 70;
+          const cy = 70;
+          const baseRadius = 41.5; // Sits just outside the 78px circle (radius 39px)
+          let time = 0;
+          let targetEnergy = 1.0;
+          let currentEnergy = 1.0;
+          let animId = null;
+
+          desktopPill.addEventListener('mouseenter', () => {
+            if (!desktopPill.classList.contains('is-expanded')) {
+              targetEnergy = 1.35;
+            }
+          });
+          desktopPill.addEventListener('mouseleave', () => {
+            targetEnergy = 1.0;
+          });
+
+          let colorBlend = 1.0; // 1 = dark section (amber-gold), 0 = light section (navy + gold accent)
+
+          const lerpColor = (c1, c2, factor) => {
+            const r = Math.round(c1[0] + (c2[0] - c1[0]) * factor);
+            const g = Math.round(c1[1] + (c2[1] - c1[1]) * factor);
+            const b = Math.round(c1[2] + (c2[2] - c1[2]) * factor);
+            return `rgb(${r}, ${g}, ${b})`;
+          };
+
+          // Business Navbar Consultation Button Blue (#4a577d -> #61709e)
+          const blueInner = [74, 87, 125];      // Business Button Slate (#4a577d)
+          const blueOuter = [104, 120, 170];    // Business Button Accent Blue (#61709e luminous tint)
+          const goldBase = [197, 160, 89];      // Signature Gold (#C5A059)
+          const brightGold = [255, 224, 138];   // Radiant Amber Gold Highlight (#ffe08a)
+
+          const drawWave = () => {
+            if (window.innerWidth <= 900 || desktopPill.classList.contains('is-expanded')) {
+              animId = requestAnimationFrame(drawWave);
+              return;
+            }
+
+            ctx.clearRect(0, 0, size, size);
+            currentEnergy += (targetEnergy - currentEnergy) * 0.08;
+            time += 0.026 * currentEnergy;
+
+            // Smooth color transition based on section background
+            const targetBlend = desktopPill.classList.contains('is-on-dark') ? 1.0 : 0.0;
+            colorBlend += (targetBlend - colorBlend) * 0.08;
+
+            const currentInnerColor = lerpColor(blueInner, goldBase, colorBlend);
+            const currentOuterColor = lerpColor(blueOuter, brightGold, colorBlend);
+
+            ctx.lineWidth = 2.4;
+            ctx.lineCap = 'round';
+
+            for (let i = 0; i < N; i++) {
+              const theta = i * (2 * Math.PI / N);
+
+              // Multi-harmonic undulating wave traveling along circumference
+              const w1 = Math.sin(theta * 3 - time * 2.0);
+              const w2 = Math.sin(theta * 5 + time * 1.5);
+              const w3 = Math.cos(theta * 2 - time * 0.85);
+              const mod = 0.65 + 0.35 * Math.sin(theta * 2 + time * 1.1);
+
+              const rawWave = ((w1 * 0.55 + w2 * 0.3 + w3 * 0.15) + 1) * 0.5; // 0 to 1
+              const waveHeight = (2.2 + rawWave * 6.8 * mod) * currentEnergy;
+
+              // Subtle organic base breathing
+              const baseWobble = Math.sin(theta * 2 - time * 0.75) * 0.8 * currentEnergy;
+              const rInner = baseRadius + baseWobble;
+              const rOuter = rInner + waveHeight;
+
+              const cos = Math.cos(theta);
+              const sin = Math.sin(theta);
+
+              const x1 = cx + cos * rInner;
+              const y1 = cy + sin * rInner;
+              const x2 = cx + cos * rOuter;
+              const y2 = cy + sin * rOuter;
+
+              // Volumetric luminescence pulse: solid on light sections, luminous on dark
+              const baseAlpha = 0.85 - colorBlend * 0.13;
+              ctx.globalAlpha = baseAlpha + rawWave * (1 - baseAlpha);
+
+              // Dynamic wave gradient based on background luminance
+              const grad = ctx.createLinearGradient(x1, y1, x2, y2);
+              grad.addColorStop(0, currentInnerColor);
+              grad.addColorStop(1, currentOuterColor);
+
+              ctx.beginPath();
+              ctx.moveTo(x1, y1);
+              ctx.lineTo(x2, y2);
+              ctx.strokeStyle = grad;
+              ctx.stroke();
+            }
+
+            animId = requestAnimationFrame(drawWave);
+          };
+
+          animId = requestAnimationFrame(drawWave);
+        }
+
+        // Dynamic Section Theme Detector (Black vs White Bulb)
+        let themeScrollTicking = false;
+        const updateBulbTheme = () => {
+          if (desktopPill.classList.contains('is-expanded')) return;
+
+          const btnRect = pillBulbBtn.getBoundingClientRect();
+          const testX = btnRect.left + btnRect.width / 2;
+          const testY = btnRect.top + btnRect.height / 2;
+
+          let isDark = false;
+
+          // Check elements under floating button center
+          if (typeof document.elementsFromPoint === 'function') {
+            const elements = document.elementsFromPoint(testX, testY);
+            for (const el of elements) {
+              if (el === desktopPill || desktopPill.contains(el) || el === orbCanvas || (pillThinkingOrb && pillThinkingOrb.contains(el))) {
+                continue;
+              }
+
+              // Explicit dark section selectors
+              if (
+                el.closest('.hero-editorial') ||
+                el.closest('.hero-editorial-business') ||
+                el.closest('.site-footer') ||
+                el.closest('.footer-editorial') ||
+                el.closest('.footer-bottom') ||
+                el.closest('.bg-dark') ||
+                el.closest('.dark-section') ||
+                el.closest('[data-theme="dark"]')
+              ) {
+                isDark = true;
+                break;
+              }
+
+              // Check computed background color luminance
+              const style = window.getComputedStyle(el);
+              const bg = style.backgroundColor;
+              if (bg && bg !== 'transparent' && !bg.startsWith('rgba(0, 0, 0, 0)')) {
+                const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+                if (match) {
+                  const r = parseInt(match[1], 10);
+                  const g = parseInt(match[2], 10);
+                  const b = parseInt(match[3], 10);
+                  const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+                  isDark = lum < 135;
+                  break;
+                }
+              }
+            }
+          }
+
+          // Fallback for top hero on index (residential) and commercial portal
+          if (!isDark && window.scrollY < 650) {
+            const topHero = document.querySelector('.hero-editorial, .hero-editorial-business');
+            if (topHero && topHero.getBoundingClientRect().bottom > btnRect.top + 20) {
+              isDark = true;
+            }
+          }
+
+          if (isDark) {
+            desktopPill.classList.add('is-on-dark');
+            desktopPill.classList.remove('is-on-light');
+          } else {
+            desktopPill.classList.add('is-on-light');
+            desktopPill.classList.remove('is-on-dark');
+          }
+        };
+
+        window.addEventListener('scroll', () => {
+          if (!themeScrollTicking) {
+            requestAnimationFrame(() => {
+              updateBulbTheme();
+              themeScrollTicking = false;
+            });
+            themeScrollTicking = true;
+          }
+        }, { passive: true });
+
+        window.addEventListener('resize', updateBulbTheme, { passive: true });
+        updateBulbTheme();
+      }
+
       // Mobile Toggle with Smooth Hamburger-to-X Transition
       const toggleBtn = document.getElementById('mobileToggle');
       const mainNav = document.getElementById('mainNav');

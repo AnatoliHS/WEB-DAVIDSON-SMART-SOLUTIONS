@@ -141,10 +141,11 @@ ul {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(248, 247, 244, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   border-bottom: 1px solid var(--border-subtle);
+  box-shadow: none !important;
   transition: var(--transition-fast);
 }
 
@@ -456,6 +457,9 @@ body.business-portal .brand-logo-text .accent-s {
     padding: 1.25rem;
     border: 1px solid rgba(0, 0, 0, 0.08);
     scroll-snap-align: start;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
   }
 
@@ -467,6 +471,9 @@ body.business-portal .brand-logo-text .accent-s {
     height: 100%;
     background-size: cover;
     background-position: center;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -503,17 +510,15 @@ body.business-portal .brand-logo-text .accent-s {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.32);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.85rem;
     flex-shrink: 0;
-    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
   }
 
   .mega-card-item:hover {
@@ -952,10 +957,606 @@ body.business-portal .hero-editorial-business .hero-text-block .link-arrow:activ
 body.business-portal .hero-editorial-business .link-arrow:hover i,
 body.business-portal .hero-editorial-business .link-arrow:active i,
 .hero-editorial-business .hero-text-block .link-arrow:hover i,
-.hero-editorial-business .hero-text-block .link-arrow:active i,
 .hero-editorial-business .link-arrow:hover i,
 .hero-editorial-business .link-arrow:active i {
   transform: translateX(5px) !important;
+}
+
+/* ========================================================================== */
+/*   Desktop Expanding Pill Navigation (Circle in Left Corner -> Long Pill)   */
+/* ========================================================================== */
+
+/* Hidden by default on mobile / tablet devices (min-width: 901px only) */
+.desktop-pill-nav,
+.pill-thinking-orb,
+.orb-wave-canvas {
+  display: none !important;
+}
+
+@media (min-width: 901px) {
+  :root {
+    --header-height: 0px;
+  }
+
+  /* Hide traditional full-width navbar on desktop */
+  .site-header {
+    display: none !important;
+  }
+
+  /* ========================================================================== */
+  /*   Golden Thinking Orb (Living Aura Around Closed Navigation Circle)        */
+  /* ========================================================================== */
+  /*   Radial Waveform Thinking Ring (Undulating Radial Equalizer Capsule Aura) */
+  /* ========================================================================== */
+  .pill-thinking-orb {
+    display: block !important;
+    position: fixed;
+    top: calc(1.5rem - 31px);
+    left: calc(1.75rem - 31px);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1090;
+    filter: drop-shadow(0 2px 8px rgba(11, 30, 54, 0.12));
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.35s ease,
+                visibility 0.4s;
+    will-change: opacity, transform, filter;
+  }
+
+  /* When over dark sections: radiant golden luminescence */
+  body:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb,
+  body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 10px rgba(197, 160, 89, 0.45));
+  }
+
+  .pill-thinking-orb .orb-wave-canvas {
+    width: 140px;
+    height: 140px;
+    display: block !important;
+    pointer-events: none;
+  }
+
+  /* Hide gracefully when navbar is expanded */
+  .pill-thinking-orb.is-hidden,
+  body:has(.desktop-pill-nav.is-expanded) .pill-thinking-orb {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: scale(0.7) !important;
+    pointer-events: none !important;
+  }
+
+  /* Circle Hover State when Collapsed: scales in sync with closed navbar circle */
+  body:has(.desktop-pill-nav:not(.is-expanded):hover) .pill-thinking-orb {
+    transform: scale(1.05);
+  }
+
+  /* The Floating Bulb Trigger (Collapsed State: Frameless Floating Living Icon) */
+  .desktop-pill-nav {
+    display: flex !important;
+    position: fixed;
+    top: 1.5rem;
+    left: 1.75rem;
+    height: 78px;
+    width: 78px;
+    max-width: 78px;
+    border-radius: 9999px;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    overflow: hidden;
+    align-items: center;
+    z-index: 1100;
+    transition: max-width 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+                width 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.35s ease,
+                background 0.35s ease,
+                border-color 0.35s ease,
+                transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Hover State when Collapsed */
+  .desktop-pill-nav:not(.is-expanded):hover {
+    transform: scale(1.06);
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  body:not(.business-portal) .desktop-pill-nav:not(.is-expanded):hover {
+    background: transparent !important;
+  }
+
+  /* Expanded Pill State (Residential: 100% Solid Pure White matching Dropdowns) */
+  .desktop-pill-nav.is-expanded {
+    width: max-content;
+    max-width: min(1380px, calc(100vw - 3.5rem));
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: 1px solid #C5A059 !important;
+    transform: none !important;
+  }
+
+  /* Allow mega dropdowns to overflow outside pill once expansion completes */
+  .desktop-pill-nav.overflow-visible {
+    overflow: visible !important;
+  }
+
+  /* Circular Bulb Trigger Button (Always Anchored on Left) */
+  .pill-bulb-btn {
+    width: 78px;
+    height: 78px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 50%;
+    outline: none;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Stacked Dual Bulb Icons for Seamless Cross-Fade */
+  .pill-bulb-icon {
+    width: 74px;
+    height: 74px;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.28s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  }
+
+  /* Dynamic Bulb Color Cross-Fade (Light vs Dark Section Background) */
+  .desktop-pill-nav:not(.is-expanded).is-on-dark .bulb-icon-dark {
+    opacity: 0;
+  }
+  .desktop-pill-nav:not(.is-expanded).is-on-dark .bulb-icon-light {
+    opacity: 1;
+  }
+
+  .desktop-pill-nav:not(.is-expanded):not(.is-on-dark) .bulb-icon-dark,
+  .desktop-pill-nav:not(.is-expanded).is-on-light .bulb-icon-dark {
+    opacity: 1;
+  }
+  .desktop-pill-nav:not(.is-expanded):not(.is-on-dark) .bulb-icon-light,
+  .desktop-pill-nav:not(.is-expanded).is-on-light .bulb-icon-light {
+    opacity: 0;
+  }
+
+  /* Expanded State: Keep Bulb Matching Current Expanded Navbar Colors */
+  body:not(.business-portal) .desktop-pill-nav.is-expanded .bulb-icon-dark {
+    opacity: 1 !important;
+  }
+  body:not(.business-portal) .desktop-pill-nav.is-expanded .bulb-icon-light {
+    opacity: 0 !important;
+  }
+
+  body.business-portal .desktop-pill-nav.is-expanded .bulb-icon-light {
+    opacity: 1 !important;
+  }
+  body.business-portal .desktop-pill-nav.is-expanded .bulb-icon-dark {
+    opacity: 0 !important;
+  }
+
+  .desktop-pill-nav:not(.is-expanded) .pill-bulb-btn:hover .pill-bulb-icon {
+    transform: translate(-50%, -50%) rotate(6deg) scale(1.06);
+    filter: drop-shadow(0 2px 10px rgba(197, 160, 89, 0.5));
+  }
+
+  .desktop-pill-nav.is-expanded .pill-bulb-btn:hover .pill-bulb-icon {
+    transform: translate(-50%, -50%) scale(0.94);
+    opacity: 0.8;
+  }
+
+  /* Expanded Pill Content Wrapper (Contains all links & actions) */
+  .pill-content {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding-right: 1.25rem;
+    padding-left: 0.25rem;
+    opacity: 0;
+    transform: translateX(-15px);
+    pointer-events: none;
+    visibility: hidden;
+    white-space: nowrap;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.3s;
+  }
+
+  .desktop-pill-nav.is-expanded .pill-content {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    visibility: visible;
+    transition-delay: 0.12s;
+  }
+
+  /* Thin Elegant Vertical Divider */
+  .pill-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+  }
+
+  /* Navigation Links in Pill */
+  .pill-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .pill-nav-links .nav-link {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-primary);
+    padding: 0.4rem 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .pill-nav-links .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--color-accent);
+    transition: width 0.25s ease;
+  }
+
+  .pill-nav-links .nav-link:hover::after,
+  .pill-nav-links .nav-link.active::after {
+    width: 100%;
+  }
+
+  /* Mega Dropdown Inside Pill (Aligned to Left of Navbar) */
+  .desktop-pill-nav .has-mega-dropdown {
+    position: static;
+  }
+
+  .desktop-pill-nav .mega-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 1.25rem);
+    left: 0;
+    transform: translateY(6px) translateZ(0);
+    width: min(1260px, calc(100vw - 3.5rem));
+    min-width: 0;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.08));
+    color: #0f172a;
+    white-space: normal !important;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    will-change: opacity, transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    isolation: isolate;
+    contain: layout style;
+    transition: opacity 0.16s ease-out,
+                transform 0.16s ease-out,
+                visibility 0.16s;
+    z-index: 1200;
+  }
+
+  /* Compact width for Industry Professionals mega dropdown */
+  .desktop-pill-nav .mega-dropdown-menu.pro-mega-dropdown-menu {
+    width: min(800px, calc(100vw - 3.5rem));
+    left: 0;
+  }
+
+  /* Invisible hover bridge spanning between navbar bottom edge and mega dropdown card */
+  .desktop-pill-nav .mega-dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -1.5rem;
+    left: 0;
+    width: 100%;
+    height: 1.5rem;
+    background: transparent;
+    pointer-events: auto;
+  }
+
+  .desktop-pill-nav .has-dropdown:hover .mega-dropdown-menu,
+  .desktop-pill-nav .has-dropdown .mega-dropdown-menu:hover,
+  .desktop-pill-nav .mega-dropdown-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) translateZ(0);
+  }
+
+  .desktop-pill-nav .mobile-dropdown-list {
+    display: none !important;
+  }
+
+  /* Preserve Exact Original Flex & Grid Layouts for Dropdowns */
+  .desktop-pill-nav .mega-cards-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    white-space: normal !important;
+  }
+
+  .desktop-pill-nav .mega-cards-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 1.25rem !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-behavior: smooth !important;
+    scroll-snap-type: x mandatory !important;
+    padding-bottom: 0.75rem !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--color-accent, #0066cc) rgba(0, 0, 0, 0.06) !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .desktop-pill-nav .about-mega-container {
+    display: grid !important;
+    grid-template-columns: 340px 1fr !important;
+    gap: 1.5rem !important;
+    align-items: stretch !important;
+    white-space: normal !important;
+  }
+
+  .desktop-pill-nav .pro-mega-dropdown-menu .about-mega-container {
+    grid-template-columns: 310px 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .desktop-pill-nav .about-mega-links {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.85rem 1.5rem !important;
+    align-content: center !important;
+    padding: 0.5rem 0 !important;
+    white-space: normal !important;
+  }
+
+  .desktop-pill-nav .pro-mega-links-single {
+    grid-template-columns: 1fr !important;
+  }
+
+  .desktop-pill-nav .about-link-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    padding: 0.85rem 1rem !important;
+    border-radius: 10px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+  }
+
+  .desktop-pill-nav .about-link-text {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+  }
+
+  .desktop-pill-nav .about-link-desc {
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    color: var(--text-secondary, #64748b) !important;
+    line-height: 1.4 !important;
+    margin-top: 0.25rem !important;
+  }
+
+  .desktop-pill-nav .about-link-title {
+    white-space: normal !important;
+    color: var(--text-primary, #0f172a) !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
+  }
+
+  .desktop-pill-nav .about-feature-title,
+  .desktop-pill-nav .about-feature-text {
+    white-space: normal !important;
+  }
+
+  .desktop-pill-nav .about-link-arrow {
+    flex-shrink: 0 !important;
+  }
+
+  /* Ensure text colors inside mega dropdown remain crisp original dark theme */
+  .desktop-pill-nav .mega-dropdown-menu a {
+    color: var(--text-primary, #0f172a);
+  }
+
+  .desktop-pill-nav .mega-dropdown-menu .mega-card-title {
+    color: #ffffff !important;
+    white-space: normal !important;
+  }
+
+  .desktop-pill-nav .mega-dropdown-menu .mega-footer-link {
+    color: var(--text-primary, #0f172a);
+    white-space: normal !important;
+  }
+
+  /* Actions inside Pill */
+  .pill-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .pill-btn-consult {
+    padding: 0.5rem 1.15rem !important;
+    font-size: 0.74rem !important;
+    border-radius: 9999px !important;
+    white-space: nowrap;
+  }
+
+  .pill-switch-link {
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+    border-bottom: 1.5px solid currentColor;
+    padding-bottom: 2px;
+    text-decoration: none;
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .pill-switch-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* Close Button on Right of Pill */
+  .pill-close-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.25s ease, transform 0.25s ease, color 0.25s ease;
+    outline: none;
+  }
+
+  .pill-close-btn:hover {
+    background: var(--color-accent);
+    color: #ffffff;
+    transform: rotate(90deg);
+  }
+
+  /* Business Portal Theme Styling */
+  body.business-portal .desktop-pill-nav:not(.is-expanded) {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  body.business-portal .desktop-pill-nav:not(.is-expanded):hover {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  body.business-portal .desktop-pill-nav.is-expanded {
+    width: max-content !important;
+    max-width: min(1380px, calc(100vw - 3.5rem)) !important;
+    background: rgba(18, 22, 34, 0.96) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.55), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid #C5A059 !important;
+    transform: none !important;
+  }
+
+  body.business-portal .desktop-pill-nav .pill-bulb-btn:hover .pill-bulb-icon {
+    filter: drop-shadow(0 2px 8px rgba(97, 112, 158, 0.6));
+  }
+
+  body.business-portal .desktop-pill-nav .pill-divider {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  body.business-portal .desktop-pill-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  body.business-portal .desktop-pill-nav .nav-link:hover {
+    color: #ffffff;
+  }
+
+  body.business-portal .desktop-pill-nav .pill-switch-link,
+  body.business-portal .desktop-pill-nav .link-arrow.pill-switch-link {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    border-bottom-color: #ffffff !important;
+  }
+
+  body.business-portal .desktop-pill-nav .pill-switch-link i,
+  body.business-portal .desktop-pill-nav .link-arrow.pill-switch-link i {
+    color: #ffffff !important;
+  }
+
+  body.business-portal .desktop-pill-nav .pill-switch-link:hover,
+  body.business-portal .desktop-pill-nav .link-arrow.pill-switch-link:hover {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    border-bottom-color: #ffffff !important;
+    opacity: 0.85;
+  }
+
+  body.business-portal .desktop-pill-nav .pill-switch-link:hover i,
+  body.business-portal .desktop-pill-nav .link-arrow.pill-switch-link:hover i {
+    color: #ffffff !important;
+  }
+
+  body.business-portal .desktop-pill-nav .pill-close-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+
+  body.business-portal .desktop-pill-nav .pill-close-btn:hover {
+    background: var(--color-accent);
+    color: #ffffff;
+  }
+
+  /* Breathing room for non-hero pages on desktop */
+  .section-statement {
+    padding-top: 6rem !important;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .desktop-pill-nav,
+  .pill-content,
+  .pill-bulb-btn,
+  .pill-close-btn {
+    transition: none !important;
+  }
 }
 
 /*   Davidson Smart Solutions - Editorial Luxury Design System
@@ -1215,6 +1816,392 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
 .hero-editorial-portfolio .container,
 .hero-editorial-blog .container {
   margin-top: -3.5rem;
+}
+
+/* ==========================================================================
+   Editorial Full-Bleed Services Hero Section (Match Reference Showcase)
+   ========================================================================== */
+.hero-editorial-service {
+  position: relative;
+  min-height: 88vh;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding: 8.5rem 0 5.5rem 0 !important;
+  background-color: #0b0f17 !important;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Ensure no white veil overlay targets the services hero */
+.hero-editorial-service::before {
+  display: none !important;
+}
+
+.hero-editorial-service .hero-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center 32%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-service-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    /* Left side contrast gradient for text */
+    linear-gradient(90deg, rgba(8, 10, 14, 0.94) 0%, rgba(8, 10, 14, 0.82) 42%, rgba(8, 10, 14, 0.45) 75%, rgba(8, 10, 14, 0.25) 100%),
+    /* Top vignette for clean floating navbar clearance */
+    linear-gradient(180deg, rgba(8, 10, 14, 0.8) 0%, rgba(8, 10, 14, 0.2) 20%, transparent 40%),
+    /* Bottom soft blend into next section */
+    linear-gradient(0deg, rgba(8, 10, 14, 0.95) 0%, transparent 25%);
+}
+
+.hero-service-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero-service-content {
+  max-width: 680px;
+  text-align: left;
+}
+
+.hero-service-headline {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  margin: 0 0 1.25rem 0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+}
+
+.hero-service-subtitle {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  color: var(--color-accent, #C5A059);
+  margin: 0 0 1.25rem 0;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.hero-service-description {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(1.02rem, 1.25vw, 1.15rem);
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 2.25rem 0;
+  max-width: 580px;
+}
+
+.hero-service-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.85rem;
+}
+
+/* Primary Gold Action Button */
+.btn-service-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background: var(--color-accent, #C5A059);
+  color: #ffffff !important;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.9rem 1.75rem;
+  border-radius: 6px;
+  text-decoration: none !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(197, 160, 89, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-service-action i {
+  font-size: 0.9rem;
+  transition: transform 0.25s ease;
+}
+
+.btn-service-action:hover {
+  background: #d4af37;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(197, 160, 89, 0.5);
+  color: #ffffff !important;
+}
+
+.btn-service-action:hover i {
+  transform: translateX(4px);
+}
+
+.btn-service-action:active {
+  transform: translateY(0);
+}
+
+/* Secondary Explore Link (Gold with down arrow) */
+.service-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-accent, #C5A059) !important;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  letter-spacing: 0.01em;
+  transition: all 0.25s ease;
+}
+
+.service-action-link i {
+  font-size: 0.85rem;
+  transition: transform 0.25s ease;
+}
+
+.service-action-link:hover {
+  color: #e5c378 !important;
+  transform: translateY(2px);
+}
+
+.service-action-link:hover i {
+  transform: translateY(3px);
+}
+
+/* Business Portal Variations for Service Hero Buttons (Blue Family Hover Glow) */
+body.business-portal .btn-service-action {
+  background: #61709e !important;
+  box-shadow: 0 4px 16px rgba(97, 112, 158, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.business-portal .btn-service-action:hover {
+  background: #7384b5 !important;
+  box-shadow: 0 6px 24px rgba(97, 112, 158, 0.65) !important;
+  transform: translateY(-2px);
+  color: #ffffff !important;
+}
+
+body.business-portal .service-action-link {
+  color: #8b9bc7 !important;
+}
+
+body.business-portal .service-action-link:hover {
+  color: #b0bef0 !important;
+  transform: translateY(2px);
+}
+
+body.business-portal .hero-service-subtitle,
+.hero-service-subtitle {
+  color: #C5A059 !important;
+}
+
+@media (max-width: 900px) {
+  .hero-editorial.hero-editorial-service,
+  .hero-editorial-service {
+    min-height: 80vh !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding: 3.75rem 0 4rem 0 !important;
+  }
+
+  .hero-service-overlay {
+    background:
+      /* Top vignette for clean floating navbar clearance */
+      linear-gradient(180deg, rgba(8, 10, 14, 0.92) 0%, transparent 25%),
+      /* Bottom soft blend into next section */
+      linear-gradient(0deg, rgba(8, 10, 14, 0.98) 0%, transparent 20%),
+      /* Dark uniform overlay across the whole image for mobile readability */
+      linear-gradient(rgba(8, 10, 14, 0.8), rgba(8, 10, 14, 0.84));
+  }
+
+  .hero-editorial-service .hero-service-headline,
+  .hero-service-headline {
+    font-size: clamp(3.2rem, 13vw, 4.8rem) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.04em !important;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  .hero-service-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .hero-service-description {
+    font-size: 1.02rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-service-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  .btn-service-action {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   Built Properly, From Ground Up Section
+   ========================================================================== */
+.built-groundup-section {
+  padding: 6.5rem 0 7rem 0;
+  border-top: 1px solid var(--border-subtle, #e5e5e0);
+  border-bottom: 1px solid var(--border-subtle, #e5e5e0);
+  position: relative;
+}
+
+.built-groundup-container {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.built-groundup-header {
+  position: sticky;
+  top: 110px;
+}
+
+.built-groundup-tag {
+  font-family: var(--font-mono, SFMono-Regular, Consolas, Monaco, monospace);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent, #C5A059);
+  margin-bottom: 1.25rem;
+}
+
+.built-groundup-title {
+  font-family: var(--font-sans);
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: #001621;
+  margin: 0 0 1.5rem 0;
+}
+
+.built-groundup-title span {
+  color: var(--color-accent, #C5A059);
+}
+
+.built-groundup-lead {
+  font-family: var(--font-sans);
+  font-size: 1.08rem;
+  line-height: 1.68;
+  color: #444444;
+  max-width: 480px;
+  margin: 0;
+}
+
+.built-groundup-points {
+  display: flex;
+  flex-direction: column;
+}
+
+.built-point-card {
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  gap: 1.5rem;
+  padding: 2.25rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.built-point-card:first-child {
+  border-top: 1.5px solid rgba(0, 0, 0, 0.18);
+}
+
+.built-point-card:last-child {
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.18);
+}
+
+.built-point-num {
+  font-family: var(--font-sans);
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-accent, #C5A059);
+  letter-spacing: -0.03em;
+  padding-top: 0.2rem;
+}
+
+.built-point-dot {
+  color: var(--color-accent, #C5A059);
+}
+
+.built-point-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.built-point-title {
+  font-family: var(--font-sans);
+  font-size: clamp(1.2rem, 1.8vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #001621;
+  margin: 0 0 0.65rem 0;
+  letter-spacing: -0.015em;
+}
+
+.built-point-desc {
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #555555;
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .built-groundup-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .built-groundup-header {
+    position: static;
+  }
+
+  .built-groundup-lead {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .built-point-card {
+    grid-template-columns: 45px 1fr;
+    gap: 1rem;
+    padding: 1.85rem 0;
+  }
+
+  .built-point-num {
+    font-size: 1.45rem;
+  }
 }
 
 .hero-editorial-grid {
@@ -2318,19 +3305,24 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
     background-color: var(--color-accent, #C5A059);
   }
 
+  body:has(.main-nav.mobile-active) .site-header {
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+
   .main-nav {
     display: flex !important;
     position: absolute;
     top: var(--header-height);
     left: 0;
     width: 100%;
-    background: var(--bg-surface);
+    background: #ffffff !important;
     border-bottom: 1px solid var(--border-subtle);
     padding: 0 2rem;
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+    box-shadow: none !important;
     z-index: 999;
     opacity: 0;
     visibility: hidden;
@@ -3929,17 +4921,17 @@ body.business-portal .hero-scroll-label,
 }
 
 /* 8. Link Arrows & Interactive Phone/Email Links */
-body.business-portal .link-arrow {
+body.business-portal .link-arrow:not(.pill-switch-link) {
   color: var(--text-primary) !important;
   border-bottom-color: var(--text-primary) !important;
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-body.business-portal .link-arrow i {
+body.business-portal .link-arrow:not(.pill-switch-link) i {
   color: var(--color-accent, #252b3d) !important;
 }
 
-body.business-portal .link-arrow:hover {
+body.business-portal .link-arrow:not(.pill-switch-link):hover {
   color: var(--color-accent, #252b3d) !important;
   border-bottom-color: var(--color-accent, #252b3d) !important;
 }
@@ -4731,7 +5723,7 @@ p[style*="border-left"] {
 
 /* Dark Theme Security Packages Layout */
 .packages-pricing-section {
-  background: #252b3d;
+  background: #1c1d22;
   width: 100%;
   padding: 6rem 0;
   margin: 0;
