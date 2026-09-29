@@ -4,29 +4,30 @@ title: Featured Client Project Portfolio | Davidson Smart Solutions
 description: Explore our portfolio of commercial and residential smart home automation, motorized shades, security, and AV projects across Belleville, Quinte, and Eastern Ontario.
 ---
 
-<!-- Editorial Fullwidth Background Hero Section for Portfolio -->
-<section class="hero-editorial-portfolio">
-  <div class="hero-bg-layer" aria-hidden="true"></div>
-  <div class="container">
-    <div class="hero-editorial-grid">
-      <div>
-        <h1 class="hero-display-title">
-          <span class="hero-title-line-mask"><span class="hero-title-line">Featured Project</span></span>
-          <span class="hero-title-line-mask"><span class="hero-title-line"><em>Portfolio.</em></span></span>
-        </h1>
-      </div>
-
-      <div class="hero-text-block">
-        <p class="hero-subtitle">
-          A curated collection of custom smart home automation, architectural audio-visual, commercial security, and motorized shading installations completed by our master electricians across Eastern Ontario.
-        </p>
-        <div style="display: flex; gap: 1rem; align-items: center;">
-          <a href="#portfolio-showcase" class="link-arrow">Explore Spotlight Projects <i class="fa-solid fa-arrow-down"></i></a>
-        </div>
+<!-- Hero Editorial Showcase (Matching About & Services Look & Feel) -->
+<section class="hero-editorial hero-editorial-service hero-editorial-portfolio dark-section" id="hero-portfolio" style="background-color: #0b0f17;">
+  <div class="hero-bg-layer" style="background-image: url('/assets/portfolio.jpg');"></div>
+  <div class="hero-service-overlay"></div>
+  <div class="container hero-service-container">
+    <div class="hero-service-content">
+      <h1 class="hero-service-headline">
+        <span class="hero-title-line-mask"><span class="hero-title-line">Featured Project</span></span>
+        <span class="hero-title-line-mask"><span class="hero-title-line">Portfolio.</span></span>
+      </h1>
+      <p class="hero-service-subtitle">Commercial &amp; Residential Smart Installations.</p>
+      <p class="hero-service-description">
+        A curated collection of custom smart home automation, architectural audio-visual, commercial security, and motorized shading installations completed by our master electricians across Eastern Ontario.
+      </p>
+      <div class="hero-service-actions">
+        <a href="#portfolio-showcase" class="btn-service-action">
+          Explore Projects <i class="fa-solid fa-arrow-down"></i>
+        </a>
+        <a href="/contact/" class="service-action-link">
+          Discuss Your Project <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
     </div>
   </div>
-  <div class="hero-scroll-label">Scroll ↓</div>
 </section>
 
 <!-- Interactive Accordion Portfolio Showcase Section (Off-White Theme) -->
@@ -504,98 +505,5 @@ description: Explore our portfolio of commercial and residential smart home auto
       }
     });
 
-    // Scroll-Controlled Exit Animations for Hero Title & Subtitle/Button
-    const heroTitleLines = document.querySelectorAll('.hero-editorial-portfolio .hero-display-title .hero-title-line');
-    const heroTextItems = document.querySelectorAll('.hero-editorial-portfolio .hero-text-block > *');
-
-    if (heroTitleLines.length > 0 || heroTextItems.length > 0) {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      let initialLoaded = false;
-
-      const loadTimer = setTimeout(() => {
-        initialLoaded = true;
-        heroTitleLines.forEach(line => {
-          line.style.animation = 'none';
-          line.style.transform = 'translateY(0%)';
-          line.style.opacity = '1';
-        });
-        heroTextItems.forEach(item => {
-          item.style.animation = 'none';
-          item.style.transform = 'translateX(0%)';
-          item.style.opacity = '1';
-        });
-      }, 1800);
-
-      function updateHeroScroll() {
-        if (prefersReducedMotion) return;
-
-        const scrollY = window.scrollY || window.pageYOffset;
-        
-        if (scrollY > 5 && !initialLoaded) {
-          initialLoaded = true;
-          clearTimeout(loadTimer);
-          heroTitleLines.forEach(line => {
-            line.style.animation = 'none';
-          });
-          heroTextItems.forEach(item => {
-            item.style.animation = 'none';
-          });
-        }
-
-        if (!initialLoaded && scrollY === 0) return;
-
-        const maxScroll = 320;
-        const scrollProgress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
-
-        heroTitleLines.forEach((line, index) => {
-          const start = index * 0.12;
-          const end = Math.min(start + 0.76, 1);
-          
-          let lineProgress = 0;
-          if (scrollProgress > start) {
-            lineProgress = Math.min((scrollProgress - start) / (end - start), 1);
-          }
-
-          const translateY = -120 * lineProgress;
-          const opacity = 1 - lineProgress;
-
-          line.style.transform = `translateY(${translateY.toFixed(2)}%)`;
-          line.style.opacity = opacity.toFixed(3);
-        });
-
-        heroTextItems.forEach((item, index) => {
-          const start = index * 0.10;
-          const end = Math.min(start + 0.80, 1);
-
-          let itemProgress = 0;
-          if (scrollProgress > start) {
-            itemProgress = Math.min((scrollProgress - start) / (end - start), 1);
-          }
-
-          const translateX = 115 * itemProgress;
-          const opacity = 1 - itemProgress;
-
-          item.style.transform = `translateX(${translateX.toFixed(2)}%)`;
-          item.style.opacity = opacity.toFixed(3);
-        });
-      }
-
-      let heroScrollTicking = false;
-      window.addEventListener('scroll', () => {
-        if (!heroScrollTicking) {
-          requestAnimationFrame(() => {
-            updateHeroScroll();
-            heroScrollTicking = false;
-          });
-          heroScrollTicking = true;
-        }
-      }, { passive: true });
-
-      window.addEventListener('resize', () => {
-        updateHeroScroll();
-      }, { passive: true });
-
-      updateHeroScroll();
-    }
   });
 </script>

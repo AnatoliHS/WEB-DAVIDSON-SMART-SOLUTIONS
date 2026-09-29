@@ -754,6 +754,116 @@
           brandGrid.classList.add('revealed');
         }
       }
+
+      // Universal Hero Text Entrance & Scroll Animation for Service/Content Pages
+      document.querySelectorAll('.hero-service-headline').forEach(headline => {
+        if (!headline.querySelector('.hero-title-line')) {
+          const raw = headline.innerHTML.trim();
+          const parts = raw.split(/<br\s*\/?>/i);
+          headline.innerHTML = parts
+            .map(part => `<span class="hero-title-line-mask"><span class="hero-title-line">${part.trim()}</span></span>`)
+            .join('');
+        }
+      });
+
+      const serviceHeroTitleLines = document.querySelectorAll(
+        '.hero-editorial-service .hero-title-line, .hero-editorial-automation .hero-title-line'
+      );
+      const serviceHeroTextItems = document.querySelectorAll(
+        '.hero-editorial-service .hero-service-content > *:not(.hero-service-headline), .hero-editorial-automation .hero-text-block > *'
+      );
+
+      if (serviceHeroTitleLines.length > 0 || serviceHeroTextItems.length > 0) {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let initialLoaded = false;
+
+        const loadTimer = setTimeout(() => {
+          initialLoaded = true;
+          serviceHeroTitleLines.forEach(line => {
+            line.style.animation = 'none';
+            line.style.transform = 'translateY(0%)';
+            line.style.opacity = '1';
+          });
+          serviceHeroTextItems.forEach(item => {
+            item.style.animation = 'none';
+            item.style.transform = 'translateX(0%)';
+            item.style.opacity = '1';
+          });
+        }, 1800);
+
+        function updateServiceHeroScroll() {
+          if (prefersReducedMotion) return;
+
+          const scrollY = window.scrollY || window.pageYOffset;
+
+          if (scrollY > 5 && !initialLoaded) {
+            initialLoaded = true;
+            clearTimeout(loadTimer);
+            serviceHeroTitleLines.forEach(line => {
+              line.style.animation = 'none';
+            });
+            serviceHeroTextItems.forEach(item => {
+              item.style.animation = 'none';
+            });
+          }
+
+          if (!initialLoaded && scrollY === 0) return;
+
+          const maxScroll = 320;
+          const scrollProgress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
+
+          // 1. Hero Title Lines (Animate Upwards -Y out of mask)
+          serviceHeroTitleLines.forEach((line, index) => {
+            const start = index * 0.12;
+            const end = Math.min(start + 0.76, 1);
+
+            let lineProgress = 0;
+            if (scrollProgress > start) {
+              lineProgress = Math.min((scrollProgress - start) / (end - start), 1);
+            }
+
+            const translateY = -120 * lineProgress;
+            const opacity = 1 - lineProgress;
+
+            line.style.transform = `translateY(${translateY.toFixed(2)}%)`;
+            line.style.opacity = opacity.toFixed(3);
+          });
+
+          // 2. Hero Subtitle, Description & Actions (Animate Rightwards +X off screen)
+          serviceHeroTextItems.forEach((item, index) => {
+            const start = index * 0.10;
+            const end = Math.min(start + 0.80, 1);
+
+            let itemProgress = 0;
+            if (scrollProgress > start) {
+              itemProgress = Math.min((scrollProgress - start) / (end - start), 1);
+            }
+
+            const translateX = 115 * itemProgress;
+            const opacity = 1 - itemProgress;
+
+            item.style.transform = `translateX(${translateX.toFixed(2)}%)`;
+            item.style.opacity = opacity.toFixed(3);
+          });
+        }
+
+        let serviceHeroScrollTicking = false;
+        window.addEventListener('scroll', () => {
+          if (!serviceHeroScrollTicking) {
+            requestAnimationFrame(() => {
+              updateServiceHeroScroll();
+              serviceHeroScrollTicking = false;
+            });
+            serviceHeroScrollTicking = true;
+          }
+        }, { passive: true });
+
+        window.addEventListener('resize', () => {
+          updateServiceHeroScroll();
+        }, { passive: true });
+
+        updateServiceHeroScroll();
+      }
     });
   </script>
 </body>
