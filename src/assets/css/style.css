@@ -1565,7 +1565,6 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
 /* Editorial Full-Screen Hero Sections */
 .hero-editorial,
 .hero-editorial-business,
-.hero-editorial-automation,
 .hero-editorial-contact {
   position: relative;
   min-height: calc(100vh - var(--header-height));
@@ -1634,14 +1633,12 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
   pointer-events: none;
 }
 
-.hero-editorial-automation,
 .hero-editorial-contact {
   position: relative;
   overflow: hidden;
   background-image: none !important;
 }
 
-.hero-editorial-automation .hero-bg-layer,
 .hero-editorial-contact .hero-bg-layer {
   position: absolute;
   top: 0;
@@ -1655,18 +1652,13 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
   pointer-events: none;
 }
 
-.hero-editorial-automation .hero-bg-layer {
-  background-image: url('/assets/images/pro_hero_white_grey.jpg');
-}
-
 .hero-editorial-contact .hero-bg-layer {
   background-image: url('/assets/images/contact_hero_white_grey.jpg');
 }
 
-/* White Veil Overlay for Home, Business, About & Automation Hero Sections */
+/* White Veil Overlay for Home, Business, & Contact Hero Sections */
 .hero-editorial::before,
 .hero-editorial-business::before,
-.hero-editorial-automation::before,
 .hero-editorial-contact::before {
   content: '';
   position: absolute;
@@ -1756,7 +1748,6 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
 
 .hero-editorial .container,
 .hero-editorial-business .container,
-.hero-editorial-automation .container,
 .hero-editorial-contact .container {
   position: relative;
   z-index: 2;
@@ -3219,7 +3210,6 @@ body.business-portal .hero-service-subtitle,
 
   .hero-editorial,
   .hero-editorial-business,
-  .hero-editorial-automation,
   .hero-editorial-contact {
     height: auto !important;
     min-height: 0 !important;
@@ -3572,14 +3562,6 @@ body.business-portal .hero-service-subtitle,
     justify-items: center !important;
   }
 
-  .hero-editorial-automation .hero-display-title {
-    font-size: clamp(3rem, 10.5vw, 4.5rem) !important;
-    line-height: 1.05 !important;
-    white-space: normal !important;
-    text-align: center !important;
-    margin-bottom: 0.85rem !important;
-    word-break: break-word !important;
-  }
 
   .hero-text-block {
     margin-top: 1rem !important;
@@ -6542,8 +6524,15 @@ p[style*="border-left"] {
    Editorial Contact Page Section (Matching Reference Card & Info Layout)
    ========================================================================== */
 .contact-editorial-section {
+  position: relative;
   padding: 5.5rem 0 7.5rem 0;
-  background-color: #252b3d !important;
+  background-color: #121212 !important;
+  background-image: 
+    linear-gradient(135deg, rgba(18, 18, 18, 0.85) 0%, rgba(28, 28, 28, 0.76) 50%, rgba(14, 14, 14, 0.89) 100%),
+    url('/assets/images/work-together.jpg') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
   color: #ffffff;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -6568,13 +6557,15 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
 }
 
 .contact-dark-card {
-  background: #252b3d !important;
-  background-color: #252b3d !important;
+  background: rgba(30, 30, 30, 0.92) !important;
+  background-color: rgba(30, 30, 30, 0.92) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 16px;
   padding: 2.25rem;
   margin-bottom: 1.75rem;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
 }
 
 .contact-dark-input {
@@ -6600,7 +6591,7 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
 }
 
 .contact-dark-input option {
-  background-color: #252b3d;
+  background-color: #1f1f1f;
   color: #ffffff;
 }
 
