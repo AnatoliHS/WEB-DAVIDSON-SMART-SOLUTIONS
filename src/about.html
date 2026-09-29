@@ -5,34 +5,34 @@ description: "Davidson Smart Solutions is Belleville's premier Control4 dealer s
 County, Kingston & Oshawa. Residential, commercial & industrial automation."
 ---
 
-<!-- Editorial Full-Screen Hero Section with White overlay -->
-<section class="hero-editorial-about">
-  <div class="hero-bg-layer" aria-hidden="true"></div>
-  <div class="container">
-    <div class="hero-editorial-grid">
-      <div>
-        <h1 class="hero-display-title">
-          <span class="hero-title-line-mask"><span class="hero-title-line">About</span></span>
-          <span class="hero-title-line-mask"><span class="hero-title-line">Quinte Smart <em>Homes.</em></span></span>
-        </h1>
-      </div>
-
-      <div class="hero-text-block">
-        <p class="hero-subtitle">
-          A proudly local Belleville business specializing in the design and installation of advanced smart home,
-          commercial, and industrial automation systems across Eastern Ontario.
-        </p>
-        <div style="display: flex; gap: 1rem; align-items: center;">
-          <a href="#about-quote" class="link-arrow">Schedule Walkthrough <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
+<!-- Hero Editorial Showcase (Matching Networking Page Look & Feel) -->
+<section class="hero-editorial hero-editorial-service hero-editorial-about dark-section" id="hero-about" style="background-color: #0b0f17;">
+  <div class="hero-bg-layer" style="background-image: url('/assets/about-davidson.jpg');"></div>
+  <div class="hero-service-overlay"></div>
+  <div class="container hero-service-container">
+    <div class="hero-service-content">
+      <h1 class="hero-service-headline">
+        About<br>Quinte Smart Homes.
+      </h1>
+      <p class="hero-service-subtitle">Davidson Smart Solutions &amp; Automation.</p>
+      <p class="hero-service-description">
+        A proudly local Belleville business specializing in the design and installation of advanced smart home,
+        commercial, and industrial automation systems across Eastern Ontario.
+      </p>
+      <div class="hero-service-actions">
+        <a href="#about-quote" class="btn-service-action">
+          Schedule Walkthrough <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="#about-statement" class="service-action-link">
+          Explore Our Story <i class="fa-solid fa-arrow-down"></i>
+        </a>
       </div>
     </div>
   </div>
-  <div class="hero-scroll-label">Scroll ↓</div>
 </section>
 
 <!-- Master Electrician Partnership Statement Section -->
-<section class="section-statement">
+<section class="section-statement" id="about-statement">
   <div class="container">
     <h2 class="statement-title scroll-text-reveal"
       style="max-width: 980px; margin: 0 auto; font-size: clamp(1.8rem, 3.2vw, 2.6rem); line-height: 1.35; text-align: center; font-weight: 500;">
@@ -531,6 +531,74 @@ County, Kingston & Oshawa. Residential, commercial & industrial automation."
   </div>
 </section>
 
+<!-- News & Insights Section (Featured Most Recent Article) -->
+<section class="section about-news-section" id="about-news" style="padding: 6rem 0 6.5rem 0; background: #ffffff; border-top: 1px solid var(--border-subtle);">
+  <div class="container">
+    
+    <!-- Section Header with Title and "Explore All Articles" Button -->
+    <div class="about-news-header" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem;">
+      <div>
+        <span class="eyebrow" style="color: var(--color-accent, #C5A059); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.82rem; display: block; margin-bottom: 0.65rem;">
+          News &amp; Insights
+        </span>
+        <h2 style="font-family: var(--font-sans); font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 800; letter-spacing: -0.03em; color: var(--text-primary); margin: 0; line-height: 1.12;">
+          Latest From Our Blog.
+        </h2>
+      </div>
+      <div>
+        <a href="/blog/" class="btn-pill-dark" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.85rem 1.6rem; font-size: 0.9rem;">
+          Explore All Articles <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Featured Most Recent Post Card -->
+    {% for post in collections.blog | reverse %}
+    {% if loop.first %}
+    <article class="featured-news-card">
+      <!-- Left: Featured Image Wrap -->
+      <a href="{{ post.url }}" class="featured-news-img-wrap" aria-label="{{ post.data.title }}">
+        <img src="{{ post.data.image | default('/assets/images/smart_home_automation_hero.jpg') }}" alt="{{ post.data.title }}" class="featured-news-img" loading="lazy" />
+        <span class="featured-news-pill">Latest Post</span>
+      </a>
+
+      <!-- Right: Content -->
+      <div class="featured-news-content">
+        <div class="featured-news-meta">
+          <span class="featured-meta-cat">{{ post.data.category | default('Article') }}</span>
+          <span class="featured-meta-dot">&bull;</span>
+          <span class="featured-meta-date">{{ post.date | postDate }}</span>
+        </div>
+
+        <h3 class="featured-news-title">
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+        </h3>
+
+        <p class="featured-news-excerpt">
+          {{ post.data.description }}
+        </p>
+
+        <div class="featured-news-footer">
+          {% if post.data.tag %}
+          <span class="featured-news-tag">
+            <i class="fa-solid fa-tag" style="font-size: 0.75rem; color: var(--color-accent, #C5A059);"></i>
+            {{ post.data.tag }}
+          </span>
+          {% else %}
+          <span></span>
+          {% endif %}
+          <a href="{{ post.url }}" class="featured-read-link">
+            Read Full Article <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </article>
+    {% endif %}
+    {% endfor %}
+
+  </div>
+</section>
+
 <!-- Editorial Contact Section -->
 <section class="section contact-editorial-section" id="about-quote" style="padding-top: 6.5rem;">
   <div class="container">
@@ -615,101 +683,3 @@ County, Kingston & Oshawa. Residential, commercial & industrial automation."
     </div>
   </div>
 </section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Scroll-Controlled Exit Animations for Hero Title & Subtitle/Button
-    const heroTitleLines = document.querySelectorAll('.hero-editorial-about .hero-display-title .hero-title-line');
-    const heroTextItems = document.querySelectorAll('.hero-editorial-about .hero-text-block > *');
-
-    if (heroTitleLines.length > 0 || heroTextItems.length > 0) {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      let initialLoaded = false;
-
-      const loadTimer = setTimeout(() => {
-        initialLoaded = true;
-        heroTitleLines.forEach(line => {
-          line.style.animation = 'none';
-          line.style.transform = 'translateY(0%)';
-          line.style.opacity = '1';
-        });
-        heroTextItems.forEach(item => {
-          item.style.animation = 'none';
-          item.style.transform = 'translateX(0%)';
-          item.style.opacity = '1';
-        });
-      }, 1800);
-
-      function updateHeroScroll() {
-        if (prefersReducedMotion) return;
-
-        const scrollY = window.scrollY || window.pageYOffset;
-
-        if (scrollY > 5 && !initialLoaded) {
-          initialLoaded = true;
-          clearTimeout(loadTimer);
-          heroTitleLines.forEach(line => {
-            line.style.animation = 'none';
-          });
-          heroTextItems.forEach(item => {
-            item.style.animation = 'none';
-          });
-        }
-
-        if (!initialLoaded && scrollY === 0) return;
-
-        const maxScroll = 320;
-        const scrollProgress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
-
-        heroTitleLines.forEach((line, index) => {
-          const start = index * 0.12;
-          const end = Math.min(start + 0.76, 1);
-
-          let lineProgress = 0;
-          if (scrollProgress > start) {
-            lineProgress = Math.min((scrollProgress - start) / (end - start), 1);
-          }
-
-          const translateY = -120 * lineProgress;
-          const opacity = 1 - lineProgress;
-
-          line.style.transform = `translateY(${translateY.toFixed(2)}%)`;
-          line.style.opacity = opacity.toFixed(3);
-        });
-
-        heroTextItems.forEach((item, index) => {
-          const start = index * 0.10;
-          const end = Math.min(start + 0.80, 1);
-
-          let itemProgress = 0;
-          if (scrollProgress > start) {
-            itemProgress = Math.min((scrollProgress - start) / (end - start), 1);
-          }
-
-          const translateX = 115 * itemProgress;
-          const opacity = 1 - itemProgress;
-
-          item.style.transform = `translateX(${translateX.toFixed(2)}%)`;
-          item.style.opacity = opacity.toFixed(3);
-        });
-      }
-
-      let heroScrollTicking = false;
-      window.addEventListener('scroll', () => {
-        if (!heroScrollTicking) {
-          requestAnimationFrame(() => {
-            updateHeroScroll();
-            heroScrollTicking = false;
-          });
-          heroScrollTicking = true;
-        }
-      }, { passive: true });
-
-      window.addEventListener('resize', () => {
-        updateHeroScroll();
-      }, { passive: true });
-
-      updateHeroScroll();
-    }
-  });
-</script>
