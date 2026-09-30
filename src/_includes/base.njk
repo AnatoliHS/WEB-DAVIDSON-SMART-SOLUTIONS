@@ -65,43 +65,231 @@
     </div>
   </aside>
 
-  <!-- Mobile Navigation Header (Mobile Only: max-width 900px) -->
-  <header class="site-header" id="top">
-    <div class="container header-inner">
-      {% if isBusinessPage or page.url == "/business/" %}
-      <a href="/business/" class="brand-logo" aria-label="Davidson Smart Solutions Commercial Division">
-        <img src="/assets/davidson-logo.png" alt="Davidson Smart Solutions Logo" class="nav-brand-logo-img" />
-      </a>
-      {% else %}
-      <a href="/" class="brand-logo" aria-label="Davidson Smart Solutions Home">
-        <img src="/assets/davidson-logo.png" alt="Davidson Smart Solutions Logo" class="nav-brand-logo-img" />
-      </a>
-      {% endif %}
+  <!-- Mobile Navigation Backdrop Overlay -->
+  <div class="mobile-island-backdrop" id="mobileIslandBackdrop" aria-hidden="true"></div>
 
-      <nav class="main-nav" id="mainNav">
-        {% include "components/nav-links.njk" %}
+  <!-- Mobile Constant Floating Dark Glass Pill Navbar (Mobile Only: max-width 900px) -->
+  <!-- Mobile Constant Floating Dark Glass Pill Navbar (Mobile Only: max-width 900px) -->
+  <header class="mobile-island-header" id="mobileIslandHeader">
+    <div class="mobile-island-shell" id="mobileIslandShell">
+      <div class="mobile-island-bar" id="mobileIslandBar">
+        <!-- Left: 2-Line Minimal Hamburger -->
+        <div class="island-left-group">
+          <button class="mobile-island-toggle-btn" id="mobileIslandToggle" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+            <span class="island-toggle-box">
+              <span class="island-toggle-bar bar-top"></span>
+              <span class="island-toggle-bar bar-bot"></span>
+            </span>
+          </button>
+        </div>
 
-        <!-- Mobile Action Links Inside Menu Drawer -->
-        <div class="mobile-actions-wrapper">
-          <a href="/contact/" class="btn btn-primary" style="width: 100%;">Book Consultation</a>
+        <!-- Center: Bulb Trigger with Animated Thinking Wave Aura -->
+        <button class="mobile-island-bulb-btn" id="mobileIslandBulbBtn" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+          <div class="mobile-island-wave-wrap" aria-hidden="true">
+            <canvas class="orb-wave-canvas mobile-wave-canvas" id="mobileOrbWaveCanvas" width="140" height="140"></canvas>
+          </div>
+          <img src="/assets/bulb-white.png" alt="Davidson Bulb Logo" class="mobile-island-bulb-img" />
+        </button>
+
+        <!-- Right: Connect Action Link -->
+        <div class="island-right-group">
+          <a href="/contact/" class="mobile-island-connect-btn">Connect</a>
+        </div>
+      </div>
+
+      <!-- The Floating Dark Glass Dropdown Expansion Drawer -->
+      <nav class="mobile-island-dropdown" id="mobileIslandDropdown" aria-label="Mobile Navigation" aria-hidden="true">
+      <div class="island-dropdown-scroll">
+
+        <!-- Top Centered Division Switch -->
+        <div class="drawer-top-switch-wrap">
           {% if page.url == "/business/" or isBusinessPage %}
-          <a href="/" class="link-arrow" style="margin-top: 0.75rem;">Residential <i
-              class="fa-solid fa-arrow-right"></i></a>
+          <a href="/" class="drawer-switch-link drawer-switch-residential">
+            <span class="switch-link-text">Switch to Residential</span>
+            <i class="fa-solid fa-arrow-right drawer-switch-arrow"></i>
+          </a>
           {% else %}
-          <a href="/business/" class="link-arrow" style="margin-top: 0.75rem;">Commercial <i
-              class="fa-solid fa-arrow-right"></i></a>
+          <a href="/business/" class="drawer-switch-link drawer-switch-commercial">
+            <span class="switch-link-text">Switch to Commercial</span>
+            <i class="fa-solid fa-arrow-right drawer-switch-arrow"></i>
+          </a>
           {% endif %}
         </div>
-      </nav>
 
-      <div class="header-actions">
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
-          <span class="hamburger-box">
-            <span class="hamburger-line line-top"></span>
-            <span class="hamburger-line line-bottom"></span>
-          </span>
-        </button>
+        <!-- Editorial Navigation Links Stack -->
+        <div class="drawer-editorial-nav" id="drawerEditorialNav">
+          <!-- 1. Home -->
+          <div class="drawer-nav-row">
+            <a href="{% if isBusinessPage or page.url == '/business/' %}/business/{% else %}/{% endif %}"
+               class="drawer-nav-link">
+              <span>Home</span>
+            </a>
+          </div>
+
+          <!-- 2. About Dropdown -->
+          <div class="drawer-nav-row drawer-has-sub">
+            <button class="drawer-nav-link drawer-sub-toggle" id="drawerAboutToggle" aria-expanded="false" type="button">
+              <span>About</span>
+              <i class="fa-solid fa-chevron-down drawer-chevron"></i>
+            </button>
+            <div class="drawer-sub-menu" id="drawerAboutMenu">
+              <a href="/about/" class="drawer-sub-link">
+                <span>About Company</span>
+              </a>
+              <a href="/about/smart-home-automation/" class="drawer-sub-link">
+                <span>About Smart Home</span>
+              </a>
+              <a href="/portfolio/" class="drawer-sub-link">
+                <span>Portfolio</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- 4. Industry Professionals -->
+          <div class="drawer-nav-row">
+            <a href="/industry-professionals/" class="drawer-nav-link">
+              <span>Industry Professionals</span>
+            </a>
+          </div>
+
+          <!-- 5. Connect -->
+          <div class="drawer-nav-row">
+            <a href="/contact/" class="drawer-nav-link">
+              <span>Connect</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 7. Services Section with Large Image Cards -->
+        <div class="drawer-services-section">
+          <div class="drawer-services-title-wrap">
+            <h3 class="drawer-services-title">Services</h3>
+          </div>
+
+          <div class="drawer-services-cards">
+            {% if isBusinessPage or page.url == "/business/" %}
+            <a href="/services/business-security/" class="drawer-service-card">
+              <div class="service-card-media" style="background-image: url('/assets/images/business-security.jpg');"></div>
+              <div class="service-card-scrim"></div>
+              <div class="service-card-body">
+                <span class="service-card-name">Small Business Security</span>
+                <span class="service-card-desc">Surveillance &amp; Cloud Access</span>
+              </div>
+            </a>
+
+            <a href="/services/business-networking/" class="drawer-service-card">
+              <div class="service-card-media" style="background-image: url('/assets/images/business-network.jpg');"></div>
+              <div class="service-card-scrim"></div>
+              <div class="service-card-body">
+                <span class="service-card-name">Business Networking</span>
+                <span class="service-card-desc">Enterprise Wi-Fi &amp; Fiber Architecture</span>
+              </div>
+            </a>
+
+            <a href="/services/construction-security/" class="drawer-service-card">
+              <div class="service-card-media" style="background-image: url('/assets/images/construction-security.jpg');"></div>
+              <div class="service-card-scrim"></div>
+              <div class="service-card-body">
+                <span class="service-card-name">Construction Site Security</span>
+                <span class="service-card-desc">Solar Cellular Guard Trailers</span>
+              </div>
+            </a>
+            {% else %}
+            <!-- 1. Home Networking -->
+            <a href="/services/networking/" class="drawer-service-card">
+              <div class="service-card-media" style="background-image: url('/assets/images/home-network.jpg');"></div>
+              <div class="service-card-scrim"></div>
+              <div class="service-card-body">
+                <span class="service-card-name">Home Networking</span>
+                <span class="service-card-desc">Whole-Home Wi-Fi 7 &amp; Gigabit Infrastructure</span>
+              </div>
+            </a>
+
+            <!-- 2. Starlink Installation -->
+            <a href="/services/starlink/" class="drawer-service-card">
+              <div class="service-card-media" style="background-image: url('/assets/images/starlink.jpg');"></div>
+              <div class="service-card-scrim"></div>
+              <div class="service-card-body">
+                <span class="service-card-name">Starlink Installation</span>
+                <span class="service-card-desc">Certified High-Speed Satellite Integration</span>
+              </div>
+            </a>
+
+            <!-- 3. Home Security -->
+            <a href="/services/home-security/" class="drawer-service-card">
+              <div class="service-card-media" style="background-image: url('/assets/images/home-sec.jpg');"></div>
+              <div class="service-card-scrim"></div>
+              <div class="service-card-body">
+                <span class="service-card-name">Home Security</span>
+                <span class="service-card-desc">Smart Surveillance &amp; Keyless Access</span>
+              </div>
+            </a>
+
+            <!-- 4. Architectural Audio -->
+            <a href="/services/audio/" class="drawer-service-card">
+              <div class="service-card-media" style="background-image: url('/assets/images/showcase_audio.jpg');"></div>
+              <div class="service-card-scrim"></div>
+              <div class="service-card-body">
+                <span class="service-card-name">Architectural Audio</span>
+                <span class="service-card-desc">Multi-Room High Fidelity Sound Systems</span>
+              </div>
+            </a>
+
+            <!-- 5. Home Theatre -->
+            <a href="/services/home-theatre/" class="drawer-service-card">
+              <div class="service-card-media" style="background-image: url('/assets/images/home-theater.jpg');"></div>
+              <div class="service-card-scrim"></div>
+              <div class="service-card-body">
+                <span class="service-card-name">Home Theatre</span>
+                <span class="service-card-desc">Dolby Atmos Screening Rooms &amp; Cinema</span>
+              </div>
+            </a>
+
+            <!-- 6. Outdoor Screens -->
+            <a href="/services/outdoor-screens/" class="drawer-service-card">
+              <div class="service-card-media" style="background-image: url('/assets/images/showcase_outdoor_screens.jpg');"></div>
+              <div class="service-card-scrim"></div>
+              <div class="service-card-body">
+                <span class="service-card-name">Outdoor Screens</span>
+                <span class="service-card-desc">All-Weather Ultra-Bright Entertainment Displays</span>
+              </div>
+            </a>
+
+            <!-- 7. Smart Lights -->
+            <a href="/services/smart-lights/" class="drawer-service-card">
+              <div class="service-card-media" style="background-image: url('/assets/images/lights.jpg');"></div>
+              <div class="service-card-scrim"></div>
+              <div class="service-card-body">
+                <span class="service-card-name">Smart Lights</span>
+                <span class="service-card-desc">Lutron Systems &amp; Circadian Lighting</span>
+              </div>
+            </a>
+
+            <!-- 8. Window Shades -->
+            <a href="/services/window-shades/" class="drawer-service-card">
+              <div class="service-card-media" style="background-image: url('/assets/images/showcase_window_shades.jpg');"></div>
+              <div class="service-card-scrim"></div>
+              <div class="service-card-body">
+                <span class="service-card-name">Window Shades</span>
+                <span class="service-card-desc">Whisper-Quiet Motorized Architectural Shading</span>
+              </div>
+            </a>
+
+            <!-- 9. Louvered Pergola -->
+            <a href="/services/pergola/" class="drawer-service-card">
+              <div class="service-card-media" style="background-image: url('/assets/images/Pergola.webp');"></div>
+              <div class="service-card-scrim"></div>
+              <div class="service-card-body">
+                <span class="service-card-name">Louvered Pergola</span>
+                <span class="service-card-desc">Motorized All-Weather Outdoor Living</span>
+              </div>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+
       </div>
+    </nav>
     </div>
   </header>
 
@@ -184,7 +372,124 @@
   <!-- Scripts: Desktop Expanding Pill, Mobile Hamburger, Word Writing Reveal & Stat Count-Up -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Desktop Expanding Pill Navbar Interaction
+      // 1. Mobile Floating Dark Glass Island Controls
+      const mobileIslandHeader = document.getElementById('mobileIslandHeader');
+      const mobileIslandDropdown = document.getElementById('mobileIslandDropdown');
+      const mobileIslandToggle = document.getElementById('mobileIslandToggle');
+      const mobileIslandBulbBtn = document.getElementById('mobileIslandBulbBtn');
+      const mobileIslandBackdrop = document.getElementById('mobileIslandBackdrop');
+      const drawerAboutToggle = document.getElementById('drawerAboutToggle');
+      const drawerAboutMenu = document.getElementById('drawerAboutMenu');
+
+      const openMobileIsland = () => {
+        if (!mobileIslandDropdown) return;
+        if (mobileIslandHeader) mobileIslandHeader.classList.add('is-open');
+        mobileIslandDropdown.classList.add('active');
+        mobileIslandDropdown.setAttribute('aria-hidden', 'false');
+        if (mobileIslandToggle) {
+          mobileIslandToggle.classList.add('active');
+          mobileIslandToggle.setAttribute('aria-expanded', 'true');
+        }
+        if (mobileIslandBulbBtn) mobileIslandBulbBtn.setAttribute('aria-expanded', 'true');
+        if (mobileIslandBackdrop) mobileIslandBackdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeMobileIsland = () => {
+        if (!mobileIslandDropdown) return;
+        if (mobileIslandHeader) mobileIslandHeader.classList.remove('is-open');
+        mobileIslandDropdown.classList.remove('active');
+        mobileIslandDropdown.setAttribute('aria-hidden', 'true');
+        if (mobileIslandToggle) {
+          mobileIslandToggle.classList.remove('active');
+          mobileIslandToggle.setAttribute('aria-expanded', 'false');
+        }
+        if (mobileIslandBulbBtn) mobileIslandBulbBtn.setAttribute('aria-expanded', 'false');
+        if (mobileIslandBackdrop) mobileIslandBackdrop.classList.remove('active');
+        document.body.style.overflow = '';
+
+        const scrollContainer = mobileIslandDropdown.querySelector('.island-dropdown-scroll');
+        if (scrollContainer) {
+          setTimeout(() => {
+            if (mobileIslandHeader && !mobileIslandHeader.classList.contains('is-open')) {
+              scrollContainer.scrollTop = 0;
+            }
+          }, 450);
+        }
+      };
+
+      if (mobileIslandToggle) {
+        mobileIslandToggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (mobileIslandDropdown && mobileIslandDropdown.classList.contains('active')) {
+            closeMobileIsland();
+          } else {
+            openMobileIsland();
+          }
+        });
+      }
+
+      if (mobileIslandBulbBtn) {
+        mobileIslandBulbBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (mobileIslandDropdown && mobileIslandDropdown.classList.contains('active')) {
+            closeMobileIsland();
+          } else {
+            openMobileIsland();
+          }
+        });
+      }
+
+      if (mobileIslandBackdrop) {
+        mobileIslandBackdrop.addEventListener('click', (e) => {
+          e.preventDefault();
+          closeMobileIsland();
+        });
+      }
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileIslandDropdown && mobileIslandDropdown.classList.contains('active')) {
+          closeMobileIsland();
+        }
+      });
+
+      // Smooth Accordion for About Dropdown inside Drawer
+      if (drawerAboutToggle && drawerAboutMenu) {
+        drawerAboutToggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const parentRow = drawerAboutToggle.closest('.drawer-has-sub');
+          const isExpanded = drawerAboutToggle.getAttribute('aria-expanded') === 'true';
+          const nextState = !isExpanded;
+
+          drawerAboutToggle.setAttribute('aria-expanded', String(nextState));
+          if (parentRow) {
+            parentRow.classList.toggle('open', nextState);
+          }
+          if (nextState) {
+            drawerAboutMenu.style.maxHeight = drawerAboutMenu.scrollHeight + 30 + 'px';
+            drawerAboutMenu.style.opacity = '1';
+          } else {
+            drawerAboutMenu.style.maxHeight = '0px';
+            drawerAboutMenu.style.opacity = '0';
+          }
+        });
+      }
+
+      // Close drawer on click of navigation links
+      const drawerNavLinks = document.querySelectorAll('.drawer-top-switch-wrap a, .drawer-editorial-nav a, .drawer-services-cards a, .island-right-group a');
+      drawerNavLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          setTimeout(() => {
+            closeMobileIsland();
+          }, 120);
+        });
+      });
+
+      // 2. Desktop Expanding Pill Navbar Controls
       const desktopPill = document.getElementById('desktopPillNav');
       const pillBulbBtn = document.getElementById('pillBulbBtn');
       const pillCloseBtn = document.getElementById('pillCloseBtn');
@@ -200,7 +505,6 @@
           pillBulbBtn.setAttribute('aria-expanded', 'true');
           pillBulbBtn.setAttribute('aria-label', 'Close Navigation Menu');
           pillBulbBtn.title = 'Close Menu';
-          // Enable overflow once expansion animation finishes so mega-dropdown menus are unclipped
           expandTimer = setTimeout(() => {
             if (desktopPill.classList.contains('is-expanded')) {
               desktopPill.classList.add('overflow-visible');
@@ -234,158 +538,194 @@
           });
         }
 
-        // Close when clicking anywhere outside of the pill
         document.addEventListener('click', (e) => {
           if (desktopPill.classList.contains('is-expanded') && !desktopPill.contains(e.target)) {
             closeDesktopPill();
           }
         });
+      }
 
-        // Close on Escape key
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && desktopPill.classList.contains('is-expanded')) {
-            closeDesktopPill();
-            pillBulbBtn.focus();
+      // Escape Key Dismissal (Both Desktop & Mobile)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (desktopPill && desktopPill.classList.contains('is-expanded')) {
+            desktopPill.classList.remove('is-expanded', 'overflow-visible');
+            if (pillThinkingOrb) pillThinkingOrb.classList.remove('is-hidden');
+            if (pillBulbBtn) {
+              pillBulbBtn.setAttribute('aria-expanded', 'false');
+              pillBulbBtn.focus();
+            }
+          }
+          if (mobileIslandDropdown && mobileIslandDropdown.classList.contains('active')) {
+            closeMobileIsland();
+            if (mobileIslandToggle) mobileIslandToggle.focus();
+          }
+        }
+      });
+
+      // Auto-close on in-page navigation
+      document.querySelectorAll('.mobile-island-dropdown a:not(.island-sub-toggle), .desktop-pill-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          setTimeout(() => {
+            if (desktopPill && desktopPill.classList.contains('is-expanded')) {
+              desktopPill.classList.remove('is-expanded', 'overflow-visible');
+              if (pillThinkingOrb) pillThinkingOrb.classList.remove('is-hidden');
+            }
+            closeMobileIsland();
+          }, 180);
+        });
+      });
+
+      // 3. Radial Waveform Equalizer Ring Animation Controller (Desktop & Mobile)
+      const desktopCanvas = document.getElementById('orbWaveCanvas');
+      const mobileCanvas = document.getElementById('mobileOrbWaveCanvas');
+
+      const activeCanvases = [];
+      const initCanvas = (canvas, isMobile) => {
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const dpr = window.devicePixelRatio || 1;
+        const size = 140;
+        canvas.width = size * dpr;
+        canvas.height = size * dpr;
+        ctx.scale(dpr, dpr);
+        activeCanvases.push({ canvas, ctx, isMobile });
+      };
+      initCanvas(desktopCanvas, false);
+      initCanvas(mobileCanvas, true);
+
+      const N = 48; // 48 radial tick capsules like reference animation
+      const cx = 70;
+      const cy = 70;
+      const baseRadius = 41.5;
+      let time = 0;
+      let targetEnergy = 1.0;
+      let currentEnergy = 1.0;
+      let animId = null;
+
+      if (desktopPill) {
+        desktopPill.addEventListener('mouseenter', () => {
+          if (!desktopPill.classList.contains('is-expanded')) {
+            targetEnergy = 1.35;
           }
         });
-
-        // Auto-close on in-page anchor navigation
-        desktopPill.querySelectorAll('a[href^="#"], a[href*="/#"]').forEach(link => {
-          link.addEventListener('click', () => {
-            setTimeout(closeDesktopPill, 160);
-          });
+        desktopPill.addEventListener('mouseleave', () => {
+          targetEnergy = 1.0;
         });
+      }
 
-        // Radial Waveform Equalizer Ring Animation Controller
-        const orbCanvas = document.getElementById('orbWaveCanvas');
-        if (orbCanvas) {
-          const ctx = orbCanvas.getContext('2d');
-          const dpr = window.devicePixelRatio || 1;
-          const size = 140;
-          orbCanvas.width = size * dpr;
-          orbCanvas.height = size * dpr;
-          ctx.scale(dpr, dpr);
+      if (mobileIslandBulbBtn) {
+        mobileIslandBulbBtn.addEventListener('touchstart', () => {
+          targetEnergy = 1.35;
+        }, { passive: true });
+        mobileIslandBulbBtn.addEventListener('touchend', () => {
+          setTimeout(() => { targetEnergy = 1.0; }, 350);
+        }, { passive: true });
+      }
 
-          const N = 48; // 48 radial tick capsules like reference animation
-          const cx = 70;
-          const cy = 70;
-          const baseRadius = 41.5; // Sits just outside the 78px circle (radius 39px)
-          let time = 0;
-          let targetEnergy = 1.0;
-          let currentEnergy = 1.0;
-          let animId = null;
+      let desktopColorBlend = 1.0;
+      let mobileColorBlend = 1.0;
 
-          desktopPill.addEventListener('mouseenter', () => {
-            if (!desktopPill.classList.contains('is-expanded')) {
-              targetEnergy = 1.35;
-            }
-          });
-          desktopPill.addEventListener('mouseleave', () => {
-            targetEnergy = 1.0;
-          });
+      const lerpColor = (c1, c2, factor) => {
+        const r = Math.round(c1[0] + (c2[0] - c1[0]) * factor);
+        const g = Math.round(c1[1] + (c2[1] - c1[1]) * factor);
+        const b = Math.round(c1[2] + (c2[2] - c1[2]) * factor);
+        return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+      };
 
-          let colorBlend = 1.0; // 1 = dark section (amber-gold), 0 = light section (navy + gold accent)
+      const blueInner = [74, 87, 125];
+      const blueOuter = [104, 120, 170];
+      const mobileBlueInner = [105, 140, 205]; // Lighter luminous navy-blue
+      const mobileBlueOuter = [155, 192, 248]; // Lighter radiant sky/ice blue aura
+      const goldBase = [197, 160, 89];
+      const brightGold = [255, 224, 138];
 
-          const lerpColor = (c1, c2, factor) => {
-            const r = Math.round(c1[0] + (c2[0] - c1[0]) * factor);
-            const g = Math.round(c1[1] + (c2[1] - c1[1]) * factor);
-            const b = Math.round(c1[2] + (c2[2] - c1[2]) * factor);
-            return `rgb(${r}, ${g}, ${b})`;
-          };
+      const drawWave = () => {
+        currentEnergy += (targetEnergy - currentEnergy) * 0.08;
+        time += 0.026 * currentEnergy;
 
-          // Business Navbar Consultation Button Blue (#4a577d -> #61709e)
-          const blueInner = [74, 87, 125];      // Business Button Slate (#4a577d)
-          const blueOuter = [104, 120, 170];    // Business Button Accent Blue (#61709e luminous tint)
-          const goldBase = [197, 160, 89];      // Signature Gold (#C5A059)
-          const brightGold = [255, 224, 138];   // Radiant Amber Gold Highlight (#ffe08a)
+        // Desktop blend: driven purely by the desktop dynamic section theme detector (is-on-dark)
+        const targetDesktopBlend = (desktopPill && desktopPill.classList.contains('is-on-dark')) ? 1.0 : 0.0;
+        desktopColorBlend += (targetDesktopBlend - desktopColorBlend) * 0.08;
 
-          const drawWave = () => {
-            if (window.innerWidth <= 900 || desktopPill.classList.contains('is-expanded')) {
-              animId = requestAnimationFrame(drawWave);
-              return;
-            }
+        // Mobile blend: light navy in Commercial, gold in Residential
+        const isBusiness = document.body.classList.contains('business-portal');
+        const targetMobileBlend = isBusiness ? 0.0 : 1.0;
+        mobileColorBlend += (targetMobileBlend - mobileColorBlend) * 0.08;
 
-            ctx.clearRect(0, 0, size, size);
-            currentEnergy += (targetEnergy - currentEnergy) * 0.08;
-            time += 0.026 * currentEnergy;
+        for (const item of activeCanvases) {
+          if (item.canvas.getBoundingClientRect().width === 0) continue;
+          if (!item.isMobile && desktopPill && desktopPill.classList.contains('is-expanded')) continue;
 
-            // Smooth color transition based on section background
-            const targetBlend = desktopPill.classList.contains('is-on-dark') ? 1.0 : 0.0;
-            colorBlend += (targetBlend - colorBlend) * 0.08;
+          const blend = item.isMobile ? mobileColorBlend : desktopColorBlend;
+          const innerColorBase = item.isMobile ? mobileBlueInner : blueInner;
+          const outerColorBase = item.isMobile ? mobileBlueOuter : blueOuter;
+          const currentInnerColor = lerpColor(innerColorBase, goldBase, blend);
+          const currentOuterColor = lerpColor(outerColorBase, brightGold, blend);
 
-            const currentInnerColor = lerpColor(blueInner, goldBase, colorBlend);
-            const currentOuterColor = lerpColor(blueOuter, brightGold, colorBlend);
+          const ctx = item.ctx;
+          ctx.clearRect(0, 0, 140, 140);
+          ctx.lineWidth = 2.4;
+          ctx.lineCap = 'round';
 
-            ctx.lineWidth = 2.4;
-            ctx.lineCap = 'round';
+          for (let i = 0; i < N; i++) {
+            const theta = i * (2 * Math.PI / N);
+            const w1 = Math.sin(theta * 3 - time * 2.0);
+            const w2 = Math.sin(theta * 5 + time * 1.5);
+            const w3 = Math.cos(theta * 2 - time * 0.85);
+            const mod = 0.65 + 0.35 * Math.sin(theta * 2 + time * 1.1);
 
-            for (let i = 0; i < N; i++) {
-              const theta = i * (2 * Math.PI / N);
+            const rawWave = ((w1 * 0.55 + w2 * 0.3 + w3 * 0.15) + 1) * 0.5;
+            const waveHeight = (2.2 + rawWave * 6.8 * mod) * currentEnergy;
 
-              // Multi-harmonic undulating wave traveling along circumference
-              const w1 = Math.sin(theta * 3 - time * 2.0);
-              const w2 = Math.sin(theta * 5 + time * 1.5);
-              const w3 = Math.cos(theta * 2 - time * 0.85);
-              const mod = 0.65 + 0.35 * Math.sin(theta * 2 + time * 1.1);
+            const baseWobble = Math.sin(theta * 2 - time * 0.75) * 0.8 * currentEnergy;
+            const rInner = baseRadius + baseWobble;
+            const rOuter = rInner + waveHeight;
 
-              const rawWave = ((w1 * 0.55 + w2 * 0.3 + w3 * 0.15) + 1) * 0.5; // 0 to 1
-              const waveHeight = (2.2 + rawWave * 6.8 * mod) * currentEnergy;
+            const cos = Math.cos(theta);
+            const sin = Math.sin(theta);
 
-              // Subtle organic base breathing
-              const baseWobble = Math.sin(theta * 2 - time * 0.75) * 0.8 * currentEnergy;
-              const rInner = baseRadius + baseWobble;
-              const rOuter = rInner + waveHeight;
+            const x1 = cx + cos * rInner;
+            const y1 = cy + sin * rInner;
+            const x2 = cx + cos * rOuter;
+            const y2 = cy + sin * rOuter;
 
-              const cos = Math.cos(theta);
-              const sin = Math.sin(theta);
+            const baseAlpha = 0.85 - blend * 0.13;
+            ctx.globalAlpha = baseAlpha + rawWave * (1 - baseAlpha);
 
-              const x1 = cx + cos * rInner;
-              const y1 = cy + sin * rInner;
-              const x2 = cx + cos * rOuter;
-              const y2 = cy + sin * rOuter;
+            const grad = ctx.createLinearGradient(x1, y1, x2, y2);
+            grad.addColorStop(0, currentInnerColor);
+            grad.addColorStop(1, currentOuterColor);
 
-              // Volumetric luminescence pulse: solid on light sections, luminous on dark
-              const baseAlpha = 0.85 - colorBlend * 0.13;
-              ctx.globalAlpha = baseAlpha + rawWave * (1 - baseAlpha);
-
-              // Dynamic wave gradient based on background luminance
-              const grad = ctx.createLinearGradient(x1, y1, x2, y2);
-              grad.addColorStop(0, currentInnerColor);
-              grad.addColorStop(1, currentOuterColor);
-
-              ctx.beginPath();
-              ctx.moveTo(x1, y1);
-              ctx.lineTo(x2, y2);
-              ctx.strokeStyle = grad;
-              ctx.stroke();
-            }
-
-            animId = requestAnimationFrame(drawWave);
-          };
-
-          animId = requestAnimationFrame(drawWave);
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.strokeStyle = grad;
+            ctx.stroke();
+          }
         }
 
-        // Dynamic Section Theme Detector (Black vs White Bulb)
+        animId = requestAnimationFrame(drawWave);
+      };
+
+      animId = requestAnimationFrame(drawWave);
+
+      // 4. Desktop Dynamic Section Theme Detector
+      if (desktopPill && pillBulbBtn) {
         let themeScrollTicking = false;
         const updateBulbTheme = () => {
           if (desktopPill.classList.contains('is-expanded')) return;
-
           const btnRect = pillBulbBtn.getBoundingClientRect();
           const testX = btnRect.left + btnRect.width / 2;
           const testY = btnRect.top + btnRect.height / 2;
 
           let isDark = false;
-
-          // Check elements under floating button center
           if (typeof document.elementsFromPoint === 'function') {
             const elements = document.elementsFromPoint(testX, testY);
             for (const el of elements) {
-              if (el === desktopPill || desktopPill.contains(el) || el === orbCanvas || (pillThinkingOrb && pillThinkingOrb.contains(el))) {
+              if (el === desktopPill || desktopPill.contains(el) || el === desktopCanvas || (pillThinkingOrb && pillThinkingOrb.contains(el))) {
                 continue;
               }
-
-              // Explicit dark section selectors
               if (
                 el.closest('.hero-editorial') ||
                 el.closest('.hero-editorial-business') ||
@@ -399,8 +739,6 @@
                 isDark = true;
                 break;
               }
-
-              // Check computed background color luminance
               const style = window.getComputedStyle(el);
               const bg = style.backgroundColor;
               if (bg && bg !== 'transparent' && !bg.startsWith('rgba(0, 0, 0, 0)')) {
@@ -417,7 +755,6 @@
             }
           }
 
-          // Fallback for top hero on index (residential) and commercial portal
           if (!isDark && window.scrollY < 650) {
             const topHero = document.querySelector('.hero-editorial, .hero-editorial-business');
             if (topHero && topHero.getBoundingClientRect().bottom > btnRect.top + 20) {
@@ -446,78 +783,6 @@
 
         window.addEventListener('resize', updateBulbTheme, { passive: true });
         updateBulbTheme();
-      }
-
-      // Mobile Toggle with Smooth Hamburger-to-X Transition
-      const toggleBtn = document.getElementById('mobileToggle');
-      const mainNav = document.getElementById('mainNav');
-
-      if (toggleBtn && mainNav) {
-        const closeMobileNav = () => {
-          mainNav.classList.remove('mobile-active');
-          toggleBtn.classList.remove('active');
-          mainNav.querySelectorAll('.has-dropdown.dropdown-open').forEach(el => {
-            el.classList.remove('dropdown-open');
-            const l = el.querySelector('.nav-link');
-            if (l) l.blur();
-          });
-        };
-
-        toggleBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const isActive = mainNav.classList.contains('mobile-active');
-          if (isActive) {
-            closeMobileNav();
-          } else {
-            mainNav.classList.add('mobile-active');
-            toggleBtn.classList.add('active');
-          }
-        });
-
-        // Close mobile nav when clicking outside
-        document.addEventListener('click', (e) => {
-          if (mainNav.classList.contains('mobile-active') && !mainNav.contains(e.target) && !toggleBtn.contains(e.target)) {
-            closeMobileNav();
-          }
-        });
-
-        // Handle link clicks inside mobile navigation
-        mainNav.querySelectorAll('a').forEach(link => {
-          let handledByTouch = false;
-
-          const handleToggle = (e) => {
-            const parentDropdown = link.closest('.has-dropdown');
-            const isParentHeaderLink = parentDropdown && parentDropdown.querySelector('.nav-link') === link;
-
-            if (window.innerWidth <= 900 && isParentHeaderLink) {
-              e.preventDefault();
-              e.stopPropagation();
-
-              const toggleState = () => {
-                const isOpen = parentDropdown.classList.toggle('dropdown-open');
-                if (!isOpen) {
-                  link.blur();
-                }
-              };
-
-              if (e.type === 'pointerdown' || e.type === 'touchstart') {
-                handledByTouch = true;
-                toggleState();
-              } else if (e.type === 'click') {
-                if (handledByTouch) {
-                  handledByTouch = false;
-                  return;
-                }
-                toggleState();
-              }
-            } else if (e.type === 'click') {
-              closeMobileNav();
-            }
-          };
-
-          link.addEventListener('pointerdown', handleToggle, { passive: false });
-          link.addEventListener('click', handleToggle);
-        });
       }
 
       // Scroll-Driven Word Writing Reveal Effect (HTML Preserving)
