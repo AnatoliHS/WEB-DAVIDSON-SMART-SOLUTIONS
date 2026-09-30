@@ -1000,9 +1000,9 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
     z-index: 1090;
     filter: drop-shadow(0 2px 8px rgba(11, 30, 54, 0.12));
     transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.35s ease,
-                visibility 0.4s;
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.35s ease,
+      visibility 0.4s;
     will-change: opacity, transform, filter;
   }
 
@@ -1052,11 +1052,11 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
     align-items: center;
     z-index: 1100;
     transition: max-width 0.48s cubic-bezier(0.16, 1, 0.3, 1),
-                width 0.48s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.35s ease,
-                background 0.35s ease,
-                border-color 0.35s ease,
-                transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      width 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.35s ease,
+      background 0.35s ease,
+      border-color 0.35s ease,
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   /* Hover State when Collapsed */
@@ -1125,6 +1125,7 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
   .desktop-pill-nav:not(.is-expanded).is-on-dark .bulb-icon-dark {
     opacity: 0;
   }
+
   .desktop-pill-nav:not(.is-expanded).is-on-dark .bulb-icon-light {
     opacity: 1;
   }
@@ -1133,6 +1134,7 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
   .desktop-pill-nav:not(.is-expanded).is-on-light .bulb-icon-dark {
     opacity: 1;
   }
+
   .desktop-pill-nav:not(.is-expanded):not(.is-on-dark) .bulb-icon-light,
   .desktop-pill-nav:not(.is-expanded).is-on-light .bulb-icon-light {
     opacity: 0;
@@ -1142,6 +1144,7 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
   body:not(.business-portal) .desktop-pill-nav.is-expanded .bulb-icon-dark {
     opacity: 1 !important;
   }
+
   body:not(.business-portal) .desktop-pill-nav.is-expanded .bulb-icon-light {
     opacity: 0 !important;
   }
@@ -1149,6 +1152,7 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
   body.business-portal .desktop-pill-nav.is-expanded .bulb-icon-light {
     opacity: 1 !important;
   }
+
   body.business-portal .desktop-pill-nav.is-expanded .bulb-icon-dark {
     opacity: 0 !important;
   }
@@ -1176,8 +1180,8 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
     visibility: hidden;
     white-space: nowrap;
     transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.3s;
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0.3s;
   }
 
   .desktop-pill-nav.is-expanded .pill-content {
@@ -1264,8 +1268,8 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
     isolation: isolate;
     contain: layout style;
     transition: opacity 0.16s ease-out,
-                transform 0.16s ease-out,
-                visibility 0.16s;
+      transform 0.16s ease-out,
+      visibility 0.16s;
     z-index: 1200;
   }
 
@@ -1551,6 +1555,7 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+
   .desktop-pill-nav,
   .pill-content,
   .pill-bulb-btn,
@@ -1956,6 +1961,7 @@ body.business-portal .hero-service-subtitle,
 }
 
 @media (max-width: 900px) {
+
   .hero-editorial.hero-editorial-service,
   .hero-editorial-service {
     min-height: 80vh !important;
@@ -2176,6 +2182,7 @@ body.business-portal .hero-service-subtitle,
   padding-bottom: 0.25em;
   margin-bottom: -0.25em;
 }
+
 .hero-editorial .hero-display-title,
 .hero-editorial .hero-title-line,
 .hero-service-headline .hero-title-line {
@@ -2280,6 +2287,7 @@ body.business-portal .hero-service-subtitle,
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .hero-title-line,
   .hero-text-block>*,
   .hero-sub-content>*,
@@ -6535,7 +6543,7 @@ p[style*="border-left"] {
   position: relative;
   padding: 5.5rem 0 7.5rem 0;
   background-color: #121212 !important;
-  background-image: 
+  background-image:
     linear-gradient(135deg, rgba(18, 18, 18, 0.85) 0%, rgba(28, 28, 28, 0.76) 50%, rgba(14, 14, 14, 0.89) 100%),
     url('/assets/images/work-together.jpg') !important;
   background-size: cover !important;
@@ -7140,18 +7148,25 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
 .products-fullscreen-section {
   position: relative;
   background-color: #080b11;
-  padding: 6.5rem 0 7rem 0;
+  padding: 0.75rem 0 3.5rem 0;
   overflow: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  scroll-margin-top: 0;
+}
+
+#home-services,
+#home-products,
+#commercial-services {
+  scroll-margin-top: 0;
 }
 
 .products-header-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: 1.75rem;
-  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+  gap: 1.25rem;
 }
 
 .products-eyebrow {
@@ -7475,12 +7490,17 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
 
 /* Mobile Responsiveness */
 @media (max-width: 900px) {
-  .products-fullscreen-section {
-    padding: 4.5rem 0 5rem 0;
+
+  .products-fullscreen-section,
+  #home-services,
+  #home-products,
+  #commercial-services {
+    padding: 1.25rem 0 3.5rem 0;
+    scroll-margin-top: 75px;
   }
 
   .products-header-container {
-    margin-bottom: 1.75rem;
+    margin-bottom: 0.85rem;
   }
 
   .products-scroll-track {
