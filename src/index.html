@@ -55,183 +55,130 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
   </div>
 </section>
 
-<!-- Editorial Split Interactive Showcase (component--contentscrollcenter) -->
-<section class="showcase-editorial" id="home-services">
-  <div class="container">
-    <h2 class="statement-title title-color-wipe" style="margin-bottom: 3rem; text-align: center;"><span
-        class="title-color-wipe-dark">Our Key Smart </span><span class="title-color-wipe-red">Automation
-        Strategies</span></h2>
+<!-- Full-Screen Horizontal Scrollable "Our Products" Section (Desert Tour Aesthetic) -->
+<section class="products-fullscreen-section dark-section" id="home-products">
+  <div id="home-services" style="position: absolute; top: -80px; left: 0;"></div>
 
-    <div class="showcase-tabs" id="showcaseTabs">
-      <button class="tab-btn active" data-target="networking">01. Home Networking</button>
-      <button class="tab-btn" data-target="starlink">02. Starlink Installation</button>
-      <button class="tab-btn" data-target="home-security">03. Home Security</button>
-      <button class="tab-btn" data-target="audio">04. Audio</button>
-      <button class="tab-btn" data-target="home-theatre">05. Home Theatre</button>
-      <button class="tab-btn" data-target="outdoor-screens">06. Outdoor Motorized Screens</button>
-      <button class="tab-btn" data-target="smart-lights">07. Smart Lights</button>
-      <button class="tab-btn" data-target="window-shades">08. Window Shades</button>
-      <button class="tab-btn" data-target="pergola">09. Pergola</button>
+  <div class="container products-header-container">
+    <div class="products-header-actions">
+      <div class="products-counter-badge" id="productsGlobalCounter">
+        <span id="currentProductIdx">01</span> <span style="opacity: 0.35;">/</span> 05
+      </div>
+      <div class="products-slider-nav">
+        <button class="products-nav-btn prev" id="productPrevBtn" aria-label="Previous slide">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="products-nav-btn next" id="productNextBtn" aria-label="Next slide">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
     </div>
+  </div>
 
-    <div style="position: relative;">
-      <!-- Navigation Arrows -->
-      <button class="slider-arrow --prev" id="sliderPrev" aria-label="Previous service"><i
-          class="fa-solid fa-chevron-left"></i></button>
-      <button class="slider-arrow --next" id="sliderNext" aria-label="Next service"><i
-          class="fa-solid fa-chevron-right"></i></button>
+  <!-- Horizontal Scroll Track Container -->
+  <div class="products-scroll-wrapper" id="productsScrollWrapper">
+    <div class="products-scroll-track" id="productsScrollTrack">
 
-      <!-- Panel 1: Networking -->
-      <div class="showcase-panel active" id="panel-networking">
-        <div class="service-banner-card" style="background-image: url('/assets/images/home-network.jpg');">
-          <div class="service-banner-content">
-            <h3 class="service-banner-title">Home Networking</h3>
-            <p class="service-banner-subtitle">
-              Enterprise Wi-Fi 6/7 residential networks, optical fiber backbones, and structured Cat6a gigabit cabling
-              for zero dead zones.
-            </p>
-            <div class="service-banner-actions">
-              <a href="/services/networking/" class="btn-pill-white">Learn More</a>
-              <a href="/contact/" class="btn-pill-accent">Book a Quote</a>
+      <!-- Slide 01: Effortless Whole-Home Control -->
+      <article class="product-fullscreen-card" style="background-image: url('/assets/images/lights.jpg');" data-index="1">
+        <div class="product-card-overlay"></div>
+        <div class="product-card-inner">
+          <div class="product-card-top">
+            <h3 class="product-card-title">
+              Effortless<br>Whole-Home Living
+            </h3>
+          </div>
+
+          <div class="product-card-bottom">
+            <div class="product-card-meta">
+              <p class="product-card-description">
+                Synchronized architectural lighting, motorized shades, climate, and sound tailored to your daily rhythm with a single touch.
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <!-- Panel 2: Starlink -->
-      <div class="showcase-panel" id="panel-starlink">
-        <div class="service-banner-card" style="background-image: url('/assets/images/starlink.jpg');">
-          <div class="service-banner-content">
-            <h3 class="service-banner-title">Starlink Installation</h3>
-            <p class="service-banner-subtitle">
-              Certified roof peak & chimney dish mounting, obstruction testing, and weather sealed ethernet integration
-              for rural homes.
-            </p>
-            <div class="service-banner-actions">
-              <a href="/services/starlink/" class="btn-pill-white">Learn More</a>
-              <a href="/contact/" class="btn-pill-accent">Book a Quote</a>
+      <!-- Slide 02: Private Cinema & Acoustic Havens -->
+      <article class="product-fullscreen-card" style="background-image: url('/assets/images/home-theater.jpg');" data-index="2">
+        <div class="product-card-overlay"></div>
+        <div class="product-card-inner">
+          <div class="product-card-top">
+            <h3 class="product-card-title">
+              Private Cinema &amp;<br>Acoustic Havens
+            </h3>
+          </div>
+
+          <div class="product-card-bottom">
+            <div class="product-card-meta">
+              <p class="product-card-description">
+                Dedicated 4K laser projection, immersive Dolby Atmos spatial audio, and acoustic dampening for the ultimate home cinema experience.
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <!-- Panel 3: Home Security -->
-      <div class="showcase-panel" id="panel-home-security">
-        <div class="service-banner-card" style="background-image: url('/assets/images/home-sec.jpg');">
-          <div class="service-banner-content">
-            <h3 class="service-banner-title">Home Security</h3>
-            <p class="service-banner-subtitle">
-              4K HDR night vision cameras, smart keyless door locks, and encrypted local NVR video storage with zero
-              monthly fees.
-            </p>
-            <div class="service-banner-actions">
-              <a href="/services/home-security/" class="btn-pill-white">Learn More</a>
-              <a href="/contact/" class="btn-pill-accent">Book a Quote</a>
+      <!-- Slide 03: Four-Season Outdoor Living -->
+      <article class="product-fullscreen-card" style="background-image: url('/assets/images/Pergola.webp');" data-index="3">
+        <div class="product-card-overlay"></div>
+        <div class="product-card-inner">
+          <div class="product-card-top">
+            <h3 class="product-card-title">
+              Four-Season<br>Outdoor Living
+            </h3>
+          </div>
+
+          <div class="product-card-bottom">
+            <div class="product-card-meta">
+              <p class="product-card-description">
+                Architectural motorized louvered pergolas, motorized insect screens, and patio audio extending your living space outdoors year-round.
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <!-- Panel 4: Audio -->
-      <div class="showcase-panel" id="panel-audio">
-        <div class="service-banner-card" style="background-image: url('/assets/images/showcase_audio.jpg');">
-          <div class="service-banner-content">
-            <h3 class="service-banner-title">Architectural Audio</h3>
-            <p class="service-banner-subtitle">
-              Multi-zone high resolution streaming, paintable flush in ceiling architectural speakers, and all-weather
-              patio audio.
-            </p>
-            <div class="service-banner-actions">
-              <a href="/services/audio/" class="btn-pill-white">Learn More</a>
-              <a href="/contact/" class="btn-pill-accent">Book a Quote</a>
+      <!-- Slide 04: Fortified Security & Peace of Mind -->
+      <article class="product-fullscreen-card" style="background-image: url('/assets/images/cameras.jpg');" data-index="4">
+        <div class="product-card-overlay"></div>
+        <div class="product-card-inner">
+          <div class="product-card-top">
+            <h3 class="product-card-title">
+              Fortified Security &amp;<br>Peace of Mind
+            </h3>
+          </div>
+
+          <div class="product-card-bottom">
+            <div class="product-card-meta">
+              <p class="product-card-description">
+                Intelligent 4K night-vision surveillance, smart access control, and encrypted local recording with zero recurring monthly subscription fees.
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <!-- Panel 5: Home Theatre -->
-      <div class="showcase-panel" id="panel-home-theatre">
-        <div class="service-banner-card" style="background-image: url('/assets/images/home-theater.jpg');">
-          <div class="service-banner-content">
-            <h3 class="service-banner-title">Home Theatre & 4K Cinema</h3>
-            <p class="service-banner-subtitle">
-              Private screening rooms featuring 4K HDR laser projectors, 3D Dolby Atmos surround sound, and acoustic
-              panels.
-            </p>
-            <div class="service-banner-actions">
-              <a href="/services/home-theatre/" class="btn-pill-white">Learn More</a>
-              <a href="/contact/" class="btn-pill-accent">Book a Quote</a>
+      <!-- Slide 05: The Connected Estate -->
+      <article class="product-fullscreen-card" style="background-image: url('/assets/images/starlink.jpg');" data-index="5">
+        <div class="product-card-overlay"></div>
+        <div class="product-card-inner">
+          <div class="product-card-top">
+            <h3 class="product-card-title">
+              The Connected<br>Estate &amp; Acreage
+            </h3>
+          </div>
+
+          <div class="product-card-bottom">
+            <div class="product-card-meta">
+              <p class="product-card-description">
+                Enterprise Wi-Fi 7 mesh coverage and certified Starlink satellite installations engineered for flawless property-wide reliability.
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <!-- Panel 6: Outdoor Motorized Screens -->
-      <div class="showcase-panel" id="panel-outdoor-screens">
-        <div class="service-banner-card" style="background-image: url('/assets/images/showcase_outdoor_screens.jpg');">
-          <div class="service-banner-content">
-            <h3 class="service-banner-title">Outdoor Motorized Screens</h3>
-            <p class="service-banner-subtitle">
-              Zipper track patio screens that seal out insects, solar glare, and wind. Custom motorized 3-season vinyl
-              enclosures.
-            </p>
-            <div class="service-banner-actions">
-              <a href="/services/outdoor-screens/" class="btn-pill-white">Learn More</a>
-              <a href="/contact/" class="btn-pill-accent">Book a Quote</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel 7: Smart Lights -->
-      <div class="showcase-panel" id="panel-smart-lights">
-        <div class="service-banner-card" style="background-image: url('/assets/images/lights.jpg');">
-          <div class="service-banner-content">
-            <h3 class="service-banner-title">Smart Lights</h3>
-            <p class="service-banner-subtitle">
-              Lutron RadioRA3 & Homeworks smart lighting systems with custom-engraved backlit keypads and warm dimming.
-            </p>
-            <div class="service-banner-actions">
-              <a href="/services/smart-lights/" class="btn-pill-white">Learn More</a>
-              <a href="/contact/" class="btn-pill-accent">Book a Quote</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel 10: Window Shades -->
-      <div class="showcase-panel" id="panel-window-shades">
-        <div class="service-banner-card" style="background-image: url('/assets/images/showcase_window_shades.jpg');">
-          <div class="service-banner-content">
-            <h3 class="service-banner-title">Window Shades</h3>
-            <p class="service-banner-subtitle">
-              Ultra-silent motorized roller shades, blackout bedroom blinds, and automated sheer drapery for privacy
-              control.
-            </p>
-            <div class="service-banner-actions">
-              <a href="/services/window-shades/" class="btn-pill-white">Learn More</a>
-              <a href="/contact/" class="btn-pill-accent">Book a Quote</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel 11: Pergola -->
-      <div class="showcase-panel" id="panel-pergola">
-        <div class="service-banner-card" style="background-image: url('/assets/images/Pergola.webp');">
-          <div class="service-banner-content">
-            <h3 class="service-banner-title">Motorized Pergolas</h3>
-            <p class="service-banner-subtitle">
-              Motorized rotating louvered roof pergolas featuring automatic rain sensors, infrared patio heaters, and
-              LED lighting.
-            </p>
-            <div class="service-banner-actions">
-              <a href="/services/pergola/" class="btn-pill-white">Learn More</a>
-              <a href="/contact/" class="btn-pill-accent">Book a Quote</a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -361,41 +308,96 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
   </div>
 </section>
 
-<!-- Tab & Slider Navigation Script -->
+<!-- Products Fullscreen Carousel & Drag Navigation Script -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const tabBtns = document.querySelectorAll('#showcaseTabs .tab-btn');
-    const panels = document.querySelectorAll('.showcase-panel');
-    const prevBtn = document.getElementById('sliderPrev');
-    const nextBtn = document.getElementById('sliderNext');
-    let currentIndex = 0;
+    const prodScroller = document.getElementById('productsScrollWrapper');
+    const prodTrack = document.getElementById('productsScrollTrack');
+    const prodPrev = document.getElementById('productPrevBtn');
+    const prodNext = document.getElementById('productNextBtn');
+    const prodCounter = document.getElementById('currentProductIdx');
 
-    function activateSlide(index) {
-      if (index < 0) index = tabBtns.length - 1;
-      if (index >= tabBtns.length) index = 0;
-      currentIndex = index;
+    if (prodScroller && prodTrack) {
+      const cards = prodTrack.querySelectorAll('.product-fullscreen-card');
+      const totalCards = cards.length;
 
-      tabBtns.forEach(b => b.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-
-      tabBtns[currentIndex].classList.add('active');
-      const target = tabBtns[currentIndex].getAttribute('data-target');
-      const targetPanel = document.getElementById(`panel-${target}`);
-      if (targetPanel) {
-        targetPanel.classList.add('active');
+      function getCardStep() {
+        if (cards.length > 1) {
+          const rect0 = cards[0].getBoundingClientRect();
+          const rect1 = cards[1].getBoundingClientRect();
+          const step = rect1.left - rect0.left;
+          if (step > 50) return step;
+        }
+        return cards[0] ? cards[0].offsetWidth + 32 : 360;
       }
 
-      tabBtns[currentIndex].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    }
+      if (prodPrev) {
+        prodPrev.addEventListener('click', () => {
+          prodScroller.scrollBy({ left: -getCardStep(), behavior: 'smooth' });
+        });
+      }
 
-    tabBtns.forEach((btn, idx) => {
-      btn.addEventListener('click', () => {
-        activateSlide(idx);
+      if (prodNext) {
+        prodNext.addEventListener('click', () => {
+          prodScroller.scrollBy({ left: getCardStep(), behavior: 'smooth' });
+        });
+      }
+
+      // Update Global Counter on Scroll
+      let scrollTimeout;
+      prodScroller.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          const step = getCardStep();
+          const activeIdx = Math.min(Math.max(Math.round(prodScroller.scrollLeft / step) + 1, 1), totalCards);
+          if (prodCounter) {
+            prodCounter.textContent = activeIdx < 10 ? `0${activeIdx}` : activeIdx;
+          }
+        }, 40);
+      }, { passive: true });
+
+      // Desktop Mouse Drag-To-Scroll
+      let isDown = false;
+      let startX = 0;
+      let scrollStart = 0;
+      let hasDragged = false;
+
+      prodScroller.addEventListener('mousedown', (e) => {
+        isDown = true;
+        hasDragged = false;
+        startX = e.pageX - prodScroller.offsetLeft;
+        scrollStart = prodScroller.scrollLeft;
+        prodScroller.style.scrollSnapType = 'none';
+        prodScroller.style.cursor = 'grabbing';
       });
-    });
 
-    if (prevBtn) prevBtn.addEventListener('click', () => activateSlide(currentIndex - 1));
-    if (nextBtn) nextBtn.addEventListener('click', () => activateSlide(currentIndex + 1));
+      window.addEventListener('mouseup', () => {
+        if (isDown) {
+          isDown = false;
+          prodScroller.style.scrollSnapType = 'x mandatory';
+          prodScroller.style.cursor = 'grab';
+        }
+      });
+
+      prodScroller.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - prodScroller.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        if (Math.abs(walk) > 5) hasDragged = true;
+        prodScroller.scrollLeft = scrollStart - walk;
+      });
+
+      // Prevent link clicks if user was dragging
+      prodScroller.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          if (hasDragged) {
+            e.preventDefault();
+            hasDragged = false;
+          }
+        });
+      });
+    }
 
     // FAQ Accordion Toggle
     const faqItems = document.querySelectorAll('.faq-item');
