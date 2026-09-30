@@ -6328,16 +6328,20 @@ p[style*="border-left"] {
   align-items: center;
   padding: 12rem 0;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
 }
 
 .home-together-cta::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(5, 5, 5, 0.85) 0%, rgba(5, 5, 5, 0.45) 50%, rgba(5, 5, 5, 0.85) 100%),
+  background:
+    linear-gradient(180deg, #080b11 0%, rgba(5, 5, 5, 0.96) 8%, rgba(5, 5, 5, 0.6) 24%, transparent 48%),
+    linear-gradient(0deg, #080b11 0%, rgba(5, 5, 5, 0.96) 8%, transparent 40%),
+    linear-gradient(90deg, rgba(5, 5, 5, 0.88) 0%, rgba(5, 5, 5, 0.45) 50%, rgba(5, 5, 5, 0.88) 100%),
     radial-gradient(circle at center, rgba(5, 5, 5, 0.2) 0%, rgba(5, 5, 5, 0.75) 80%, #050505 100%);
   pointer-events: none;
+  z-index: 1;
 }
 
 .together-cta-grid {
@@ -6435,16 +6439,20 @@ p[style*="border-left"] {
   align-items: center;
   padding: 12rem 0;
   overflow: hidden;
-  border-top: 1px solid rgba(37, 43, 61, 0.25);
+  border-top: none;
 }
 
 .biz-together-cta::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(5, 7, 20, 0.88) 0%, rgba(5, 7, 20, 0.52) 50%, rgba(5, 7, 20, 0.88) 100%),
-    radial-gradient(circle at center, rgba(5, 7, 20, 0.15) 0%, rgba(5, 7, 20, 0.8) 80%, #050714 100%);
+  background:
+    linear-gradient(180deg, #080b11 0%, rgba(5, 7, 20, 0.96) 8%, rgba(5, 7, 20, 0.6) 24%, transparent 50%),
+    linear-gradient(0deg, #080b11 0%, rgba(5, 7, 20, 0.96) 8%, transparent 40%),
+    linear-gradient(90deg, rgba(5, 7, 20, 0.92) 0%, rgba(5, 7, 20, 0.55) 50%, rgba(5, 7, 20, 0.92) 100%),
+    radial-gradient(circle at center, rgba(5, 7, 20, 0.2) 0%, rgba(5, 7, 20, 0.8) 80%, #050714 100%);
   pointer-events: none;
+  z-index: 1;
 }
 
 .biz-together-cta .together-cta-btn,

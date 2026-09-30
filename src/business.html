@@ -165,76 +165,88 @@ isBusinessPage: true
   </div>
 </section>
 
-<!-- Business Services Showcase Slider (Strictly Business Security & Networking) -->
-<section class="showcase-editorial" id="commercial-services">
-  <div class="container">
-    <h2 class="statement-title title-color-wipe" style="margin-bottom: 3rem; text-align: center;"><span
-        class="title-color-wipe-dark">Core Business </span><span class="title-color-wipe-red">Technology Services</span>
-    </h2>
-
-    <div class="showcase-tabs" id="bizShowcaseTabs">
-      <button class="tab-btn active" data-target="biz-security">01. Business Security</button>
-      <button class="tab-btn" data-target="biz-networking">02. Business Networking</button>
-      <button class="tab-btn" data-target="biz-construction">03. Construction Security</button>
+<!-- Full-Screen Horizontal Scrollable "Core Business Technology Services" Section (Matching Index Aesthetic) -->
+<section class="products-fullscreen-section dark-section" id="commercial-services">
+  <div class="container products-header-container">
+    <div class="products-header-actions">
+      <div class="products-counter-badge" id="bizProductsGlobalCounter">
+        <span id="bizCurrentProductIdx">01</span> <span style="opacity: 0.35;">/</span> 03
+      </div>
+      <div class="products-slider-nav">
+        <button class="products-nav-btn prev" id="bizProductPrevBtn" aria-label="Previous slide">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="products-nav-btn next" id="bizProductNextBtn" aria-label="Next slide">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
     </div>
+  </div>
 
-    <div style="position: relative;">
-      <!-- Navigation Arrows -->
-      <button class="slider-arrow --prev" id="bizSliderPrev" aria-label="Previous service"><i
-          class="fa-solid fa-chevron-left"></i></button>
-      <button class="slider-arrow --next" id="bizSliderNext" aria-label="Next service"><i
-          class="fa-solid fa-chevron-right"></i></button>
+  <!-- Horizontal Scroll Track Container -->
+  <div class="products-scroll-wrapper" id="bizProductsScrollWrapper">
+    <div class="products-scroll-track" id="bizProductsScrollTrack">
 
-      <!-- Service 1: Business Security -->
-      <div class="showcase-panel active" id="panel-biz-security">
-        <div class="service-banner-card" style="background-image: url('/assets/images/business-security.jpg');">
-          <div class="service-banner-content">
-            <h3 class="service-banner-title">Business Security</h3>
-            <p class="service-banner-subtitle">
-              4 HD motion sensitive cameras, 24/7 live monitoring with instant incident alerts, and local Ontario
-              operators to protect your bottom line against theft and vandalism.
-            </p>
-            <div class="service-banner-actions">
-              <a href="/services/business-security/" class="btn-pill-white">Learn More</a>
-              <a href="#biz-contact" class="btn-pill-accent">Request Pricing</a>
+      <!-- Slide 01: Business Security -->
+      <article class="product-fullscreen-card" style="background-image: url('/assets/images/business-security.jpg');" data-index="1">
+        <div class="product-card-overlay"></div>
+        <div class="product-card-inner">
+          <div class="product-card-top">
+            <h3 class="product-card-title">
+              Enterprise &amp;<br>Business Security
+            </h3>
+          </div>
+
+          <div class="product-card-bottom">
+            <div class="product-card-meta">
+              <p class="product-card-description">
+                4 HD motion-sensitive cameras, 24/7 live monitoring with instant incident alerts, and local Ontario operators protecting your assets against theft and vandalism.
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <!-- Service 2: Business Networking -->
-      <div class="showcase-panel" id="panel-biz-networking">
-        <div class="service-banner-card" style="background-image: url('/assets/images/business-network.jpg');">
-          <div class="service-banner-content">
-            <h3 class="service-banner-title">Business Networking</h3>
-            <p class="service-banner-subtitle">
-              The backbone of modern operations — Wi-Fi 6/7 coverage, structured Cat6a cabling, clean equipment racks,
-              guest VLAN isolation, and proactive remote monitoring.
-            </p>
-            <div class="service-banner-actions">
-              <a href="/services/business-networking/" class="btn-pill-white">Learn More</a>
-              <a href="#biz-contact" class="btn-pill-accent">Get Network Quote</a>
+      <!-- Slide 02: Business Networking -->
+      <article class="product-fullscreen-card" style="background-image: url('/assets/images/business-network.jpg');" data-index="2">
+        <div class="product-card-overlay"></div>
+        <div class="product-card-inner">
+          <div class="product-card-top">
+            <h3 class="product-card-title">
+              High-Density<br>Business Networking
+            </h3>
+          </div>
+
+          <div class="product-card-bottom">
+            <div class="product-card-meta">
+              <p class="product-card-description">
+                Enterprise Wi-Fi 6/7 coverage, structured Cat6a gigabit cabling, clean equipment racks, guest VLAN isolation, and proactive remote monitoring.
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <!-- Service 3: Construction Security -->
-      <div class="showcase-panel" id="panel-biz-construction">
-        <div class="service-banner-card" style="background-image: url('/assets/images/construction-security.jpg');">
-          <div class="service-banner-content">
-            <h3 class="service-banner-title">Construction Security</h3>
-            <p class="service-banner-subtitle">
-              Flexible &amp; portable job site protection — 4 HD motion cameras, 24/7 live monitoring by Ontario
-              operators, free camera loan with a 2-month contract, plus complimentary installation and removal.
-            </p>
-            <div class="service-banner-actions">
-              <a href="/services/construction-security/" class="btn-pill-white">Learn More</a>
-              <a href="#biz-contact" class="btn-pill-accent">Request Pricing</a>
+      <!-- Slide 03: Construction Security -->
+      <article class="product-fullscreen-card" style="background-image: url('/assets/images/construction-security.jpg');" data-index="3">
+        <div class="product-card-overlay"></div>
+        <div class="product-card-inner">
+          <div class="product-card-top">
+            <h3 class="product-card-title">
+              Mobile Job-Site &amp;<br>Construction Security
+            </h3>
+          </div>
+
+          <div class="product-card-bottom">
+            <div class="product-card-meta">
+              <p class="product-card-description">
+                Flexible and portable job-site protection featuring 4 HD motion cameras, 24/7 live monitoring by Ontario operators, and complimentary installation.
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -259,41 +271,91 @@ isBusinessPage: true
   </div>
 </section>
 
-<!-- Business Slider Script -->
+<!-- Business Fullscreen Carousel & Drag Navigation Script -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const tabBtns = document.querySelectorAll('#bizShowcaseTabs .tab-btn');
-    const panels = document.querySelectorAll('#commercial-services .showcase-panel');
-    const prevBtn = document.getElementById('bizSliderPrev');
-    const nextBtn = document.getElementById('bizSliderNext');
-    let currentIndex = 0;
+    const prodScroller = document.getElementById('bizProductsScrollWrapper');
+    const prodTrack = document.getElementById('bizProductsScrollTrack');
+    const prodPrev = document.getElementById('bizProductPrevBtn');
+    const prodNext = document.getElementById('bizProductNextBtn');
+    const prodCounter = document.getElementById('bizCurrentProductIdx');
 
-    function activateSlide(index) {
-      if (index < 0) index = tabBtns.length - 1;
-      if (index >= tabBtns.length) index = 0;
-      currentIndex = index;
+    if (prodScroller && prodTrack) {
+      const cards = prodTrack.querySelectorAll('.product-fullscreen-card');
+      const totalCards = cards.length;
 
-      tabBtns.forEach(b => b.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-
-      tabBtns[currentIndex].classList.add('active');
-      const target = tabBtns[currentIndex].getAttribute('data-target');
-      const targetPanel = document.getElementById(`panel-${target}`);
-      if (targetPanel) {
-        targetPanel.classList.add('active');
+      function getCardStep() {
+        if (cards.length > 1) {
+          const rect0 = cards[0].getBoundingClientRect();
+          const rect1 = cards[1].getBoundingClientRect();
+          const step = rect1.left - rect0.left;
+          if (step > 50) return step;
+        }
+        return cards[0] ? cards[0].offsetWidth + 32 : 360;
       }
 
-      tabBtns[currentIndex].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    }
+      if (prodPrev) {
+        prodPrev.addEventListener('click', () => {
+          prodScroller.scrollBy({ left: -getCardStep(), behavior: 'smooth' });
+        });
+      }
 
-    tabBtns.forEach((btn, idx) => {
-      btn.addEventListener('click', () => {
-        activateSlide(idx);
+      if (prodNext) {
+        prodNext.addEventListener('click', () => {
+          prodScroller.scrollBy({ left: getCardStep(), behavior: 'smooth' });
+        });
+      }
+
+      // Update Global Counter on Scroll
+      let scrollTimeout;
+      prodScroller.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          const step = getCardStep();
+          const activeIdx = Math.min(Math.max(Math.round(prodScroller.scrollLeft / step) + 1, 1), totalCards);
+          if (prodCounter) {
+            prodCounter.textContent = activeIdx < 10 ? `0${activeIdx}` : activeIdx;
+          }
+        }, 40);
+      }, { passive: true });
+
+      // Desktop Mouse Drag-To-Scroll
+      let isDown = false;
+      let startX = 0;
+      let scrollStart = 0;
+
+      prodScroller.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - prodScroller.offsetLeft;
+        scrollStart = prodScroller.scrollLeft;
+        prodScroller.style.scrollSnapType = 'none';
+        prodScroller.style.cursor = 'grabbing';
       });
-    });
 
-    if (prevBtn) prevBtn.addEventListener('click', () => activateSlide(currentIndex - 1));
-    if (nextBtn) nextBtn.addEventListener('click', () => activateSlide(currentIndex + 1));
+      window.addEventListener('mouseup', () => {
+        if (isDown) {
+          isDown = false;
+          prodScroller.style.scrollSnapType = 'x mandatory';
+          prodScroller.style.cursor = 'grab';
+        }
+      });
+
+      prodScroller.addEventListener('mouseleave', () => {
+        if (isDown) {
+          isDown = false;
+          prodScroller.style.scrollSnapType = 'x mandatory';
+          prodScroller.style.cursor = 'grab';
+        }
+      });
+
+      prodScroller.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - prodScroller.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        prodScroller.scrollLeft = scrollStart - walk;
+      });
+    }
 
     // Scroll-Controlled Exit Animations for Hero Title & Subtitle/Button
     const heroTitleLines = document.querySelectorAll('.hero-editorial-business .hero-display-title .hero-title-line');
