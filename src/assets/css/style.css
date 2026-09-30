@@ -3537,12 +3537,20 @@ body.business-portal .hero-service-subtitle,
     cursor: pointer !important;
     position: relative !important;
     outline: none !important;
+    text-decoration: none !important;
     -webkit-tap-highlight-color: transparent !important;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease, visibility 0.22s ease !important;
   }
 
   .mobile-island-bulb-btn:active {
     transform: scale(0.92) !important;
+  }
+
+  .mobile-island-header.is-open .mobile-island-bulb-btn {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: scale(0.85) !important;
   }
 
   .mobile-island-bulb-img {
@@ -3597,24 +3605,31 @@ body.business-portal .hero-service-subtitle,
   }
 
   .mobile-island-connect-btn {
-    font-size: 0.88rem !important;
-    font-weight: 600 !important;
-    color: rgba(255, 255, 255, 0.95) !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.15rem !important;
+    color: rgba(255, 255, 255, 0.92) !important;
     text-decoration: none !important;
-    letter-spacing: -0.01em !important;
-    padding: 0.35rem 0.65rem !important;
-    transition: color 0.2s ease, transform 0.2s ease !important;
+    padding: 0 !important;
+    background: transparent !important;
+    transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
   }
 
   .mobile-island-connect-btn:hover,
   .mobile-island-connect-btn:active {
     color: #C5A059 !important;
+    transform: scale(0.92) !important;
   }
 
   /* Commercial Mode (body.business-portal) Overrides */
   body.business-portal .mobile-island-connect-btn:hover,
   body.business-portal .mobile-island-connect-btn:active {
-    color: #7b8cb8 !important;
+    color: #8eb8fa !important;
   }
 
   body.business-portal .mobile-island-header.is-open .bar-top,
@@ -3676,12 +3691,15 @@ body.business-portal .hero-service-subtitle,
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
     padding: 0.95rem 1.25rem 1.6rem 1.25rem !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   /* Staggered One-by-One Entrance Animation for Links & Elements */
   .drawer-top-switch-wrap,
   .drawer-editorial-nav .drawer-nav-row,
-  .drawer-services-section {
+  .drawer-services-section,
+  .drawer-footer-brand {
     opacity: 0 !important;
     transform: translateY(16px) !important;
     transition: opacity 0.2s ease, transform 0.2s ease !important;
@@ -3690,7 +3708,8 @@ body.business-portal .hero-service-subtitle,
 
   .mobile-island-dropdown.active .drawer-top-switch-wrap,
   .mobile-island-dropdown.active .drawer-editorial-nav .drawer-nav-row,
-  .mobile-island-dropdown.active .drawer-services-section {
+  .mobile-island-dropdown.active .drawer-services-section,
+  .mobile-island-dropdown.active .drawer-footer-brand {
     opacity: 1 !important;
     transform: translateY(0) !important;
     transition: opacity 0.38s ease, transform 0.44s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -3723,6 +3742,43 @@ body.business-portal .hero-service-subtitle,
 
   .mobile-island-dropdown.active .drawer-services-section {
     transition-delay: 0.38s !important;
+  }
+
+  .mobile-island-dropdown.active .drawer-footer-brand {
+    transition-delay: 0.40s !important;
+  }
+
+  /* Drawer Brand Footer / Logo under Connect */
+  .drawer-footer-brand {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 2.2rem 1rem 1.25rem 1rem !important;
+    margin-top: auto !important;
+    width: 100% !important;
+  }
+
+  .drawer-brand-logo-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    transition: opacity 0.2s ease, transform 0.2s ease !important;
+  }
+
+  .drawer-brand-logo-link:hover {
+    opacity: 0.8 !important;
+    transform: scale(0.98) !important;
+  }
+
+  .drawer-brand-logo-img {
+    height: 125px !important;
+    width: auto !important;
+    max-width: min(310px, 86vw) !important;
+    object-fit: contain !important;
+    filter: brightness(0) invert(1) !important;
+    opacity: 0.95 !important;
+    transition: opacity 0.2s ease !important;
   }
 
   /* Editorial Navigation Stack */
@@ -7219,42 +7275,124 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
   gap: 2rem;
 }
 
+.contact-editorial-desc {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
+  max-width: 460px;
+}
+
+.contact-submit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.contact-legal-text {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 240px;
+  line-height: 1.45;
+}
+
+.contact-call-prompt {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2rem;
+}
+
+.contact-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin: 2rem 0 2.25rem 0;
+}
+
 @media (max-width: 991px) {
   .contact-editorial-section {
-    padding: 3.5rem 0 4.5rem 0 !important;
+    padding-top: clamp(7.5rem, 16vh, 9.5rem) !important;
+    padding-bottom: 4.5rem !important;
     overflow: hidden !important;
   }
 
   .contact-editorial-grid {
     grid-template-columns: 1fr !important;
-    gap: 2.5rem !important;
+    gap: 2.25rem !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
 
   .contact-editorial-section .together-cta-heading {
-    font-size: clamp(2.8rem, 11vw, 4.4rem) !important;
-    line-height: 0.95 !important;
+    font-size: clamp(2.6rem, 11vw, 4.2rem) !important;
+    line-height: 0.96 !important;
     letter-spacing: -0.035em !important;
     word-break: break-word !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .contact-editorial-desc {
+    font-size: 1.05rem !important;
+    line-height: 1.55 !important;
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
   }
 
   .contact-dark-card {
-    padding: 1.25rem !important;
+    padding: 1.5rem 1.25rem !important;
     margin-bottom: 1.5rem !important;
     width: 100% !important;
     box-sizing: border-box !important;
     overflow: hidden !important;
+    border-radius: 16px !important;
   }
 
   .contact-form-row {
     grid-template-columns: 1fr !important;
     gap: 0.85rem !important;
+    margin-bottom: 0.85rem !important;
   }
 
   .contact-dark-input {
     width: 100% !important;
     box-sizing: border-box !important;
+    font-size: 16px !important; /* Prevents auto-zoom on iOS inputs */
+  }
+
+  .contact-submit-row {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    align-items: stretch !important;
+    gap: 0.85rem !important;
+    margin-top: 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .contact-submit-row .together-cta-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0.95rem 1.5rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .contact-legal-text {
+    max-width: 100% !important;
+    text-align: center !important;
+    font-size: 0.76rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .contact-call-prompt {
+    font-size: 1rem !important;
+    margin-bottom: 1.5rem !important;
+    text-align: left !important;
+  }
+
+  .contact-divider {
+    margin: 1.5rem 0 !important;
   }
 
   .contact-info-grid {

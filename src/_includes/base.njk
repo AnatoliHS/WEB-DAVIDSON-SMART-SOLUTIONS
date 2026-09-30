@@ -84,17 +84,19 @@
           </button>
         </div>
 
-        <!-- Center: Bulb Trigger with Animated Thinking Wave Aura -->
-        <button class="mobile-island-bulb-btn" id="mobileIslandBulbBtn" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+        <!-- Center: Bulb Logo Home Navigation with Animated Thinking Wave Aura -->
+        <a href="{% if isBusinessPage or page.url == '/business/' %}/business/{% else %}/{% endif %}" class="mobile-island-bulb-btn" id="mobileIslandBulbBtn" aria-label="Navigate to Home">
           <div class="mobile-island-wave-wrap" aria-hidden="true">
             <canvas class="orb-wave-canvas mobile-wave-canvas" id="mobileOrbWaveCanvas" width="140" height="140"></canvas>
           </div>
           <img src="/assets/bulb-white.png" alt="Davidson Bulb Logo" class="mobile-island-bulb-img" />
-        </button>
+        </a>
 
         <!-- Right: Connect Action Link -->
         <div class="island-right-group">
-          <a href="/contact/" class="mobile-island-connect-btn">Connect</a>
+          <a href="/contact/" class="mobile-island-connect-btn" aria-label="Connect" title="Connect">
+            <i class="fa-regular fa-message"></i>
+          </a>
         </div>
       </div>
 
@@ -127,7 +129,56 @@
             </a>
           </div>
 
-          <!-- 2. About Dropdown -->
+          <!-- 2. Services Dropdown -->
+          <div class="drawer-nav-row drawer-has-sub">
+            <button class="drawer-nav-link drawer-sub-toggle" id="drawerServicesToggle" aria-expanded="false" type="button">
+              <span>Services</span>
+              <i class="fa-solid fa-chevron-down drawer-chevron"></i>
+            </button>
+            <div class="drawer-sub-menu" id="drawerServicesMenu">
+              {% if isBusinessPage or page.url == "/business/" %}
+              <a href="/services/business-security/" class="drawer-sub-link">
+                <span>Small Business Security</span>
+              </a>
+              <a href="/services/business-networking/" class="drawer-sub-link">
+                <span>Business Networking</span>
+              </a>
+              <a href="/services/construction-security/" class="drawer-sub-link">
+                <span>Construction Site Security</span>
+              </a>
+              {% else %}
+              <a href="/services/networking/" class="drawer-sub-link">
+                <span>Home Networking</span>
+              </a>
+              <a href="/services/starlink/" class="drawer-sub-link">
+                <span>Starlink Installation</span>
+              </a>
+              <a href="/services/home-security/" class="drawer-sub-link">
+                <span>Home Security</span>
+              </a>
+              <a href="/services/audio/" class="drawer-sub-link">
+                <span>Architectural Audio</span>
+              </a>
+              <a href="/services/home-theatre/" class="drawer-sub-link">
+                <span>Home Theatre</span>
+              </a>
+              <a href="/services/outdoor-screens/" class="drawer-sub-link">
+                <span>Outdoor Screens</span>
+              </a>
+              <a href="/services/smart-lights/" class="drawer-sub-link">
+                <span>Smart Lights</span>
+              </a>
+              <a href="/services/window-shades/" class="drawer-sub-link">
+                <span>Window Shades</span>
+              </a>
+              <a href="/services/pergola/" class="drawer-sub-link">
+                <span>Louvered Pergola</span>
+              </a>
+              {% endif %}
+            </div>
+          </div>
+
+          <!-- 3. About Dropdown -->
           <div class="drawer-nav-row drawer-has-sub">
             <button class="drawer-nav-link drawer-sub-toggle" id="drawerAboutToggle" aria-expanded="false" type="button">
               <span>About</span>
@@ -153,140 +204,19 @@
             </a>
           </div>
 
-          <!-- 5. Connect -->
+          <!-- 5. Contact -->
           <div class="drawer-nav-row">
             <a href="/contact/" class="drawer-nav-link">
-              <span>Connect</span>
+              <span>Contact</span>
             </a>
           </div>
         </div>
 
-        <!-- 7. Services Section with Large Image Cards -->
-        <div class="drawer-services-section">
-          <div class="drawer-services-title-wrap">
-            <h3 class="drawer-services-title">Services</h3>
-          </div>
-
-          <div class="drawer-services-cards">
-            {% if isBusinessPage or page.url == "/business/" %}
-            <a href="/services/business-security/" class="drawer-service-card">
-              <div class="service-card-media" style="background-image: url('/assets/images/business-security.jpg');"></div>
-              <div class="service-card-scrim"></div>
-              <div class="service-card-body">
-                <span class="service-card-name">Small Business Security</span>
-                <span class="service-card-desc">Surveillance &amp; Cloud Access</span>
-              </div>
-            </a>
-
-            <a href="/services/business-networking/" class="drawer-service-card">
-              <div class="service-card-media" style="background-image: url('/assets/images/business-network.jpg');"></div>
-              <div class="service-card-scrim"></div>
-              <div class="service-card-body">
-                <span class="service-card-name">Business Networking</span>
-                <span class="service-card-desc">Enterprise Wi-Fi &amp; Fiber Architecture</span>
-              </div>
-            </a>
-
-            <a href="/services/construction-security/" class="drawer-service-card">
-              <div class="service-card-media" style="background-image: url('/assets/images/construction-security.jpg');"></div>
-              <div class="service-card-scrim"></div>
-              <div class="service-card-body">
-                <span class="service-card-name">Construction Site Security</span>
-                <span class="service-card-desc">Solar Cellular Guard Trailers</span>
-              </div>
-            </a>
-            {% else %}
-            <!-- 1. Home Networking -->
-            <a href="/services/networking/" class="drawer-service-card">
-              <div class="service-card-media" style="background-image: url('/assets/images/home-network.jpg');"></div>
-              <div class="service-card-scrim"></div>
-              <div class="service-card-body">
-                <span class="service-card-name">Home Networking</span>
-                <span class="service-card-desc">Whole-Home Wi-Fi 7 &amp; Gigabit Infrastructure</span>
-              </div>
-            </a>
-
-            <!-- 2. Starlink Installation -->
-            <a href="/services/starlink/" class="drawer-service-card">
-              <div class="service-card-media" style="background-image: url('/assets/images/starlink.jpg');"></div>
-              <div class="service-card-scrim"></div>
-              <div class="service-card-body">
-                <span class="service-card-name">Starlink Installation</span>
-                <span class="service-card-desc">Certified High-Speed Satellite Integration</span>
-              </div>
-            </a>
-
-            <!-- 3. Home Security -->
-            <a href="/services/home-security/" class="drawer-service-card">
-              <div class="service-card-media" style="background-image: url('/assets/images/home-sec.jpg');"></div>
-              <div class="service-card-scrim"></div>
-              <div class="service-card-body">
-                <span class="service-card-name">Home Security</span>
-                <span class="service-card-desc">Smart Surveillance &amp; Keyless Access</span>
-              </div>
-            </a>
-
-            <!-- 4. Architectural Audio -->
-            <a href="/services/audio/" class="drawer-service-card">
-              <div class="service-card-media" style="background-image: url('/assets/images/showcase_audio.jpg');"></div>
-              <div class="service-card-scrim"></div>
-              <div class="service-card-body">
-                <span class="service-card-name">Architectural Audio</span>
-                <span class="service-card-desc">Multi-Room High Fidelity Sound Systems</span>
-              </div>
-            </a>
-
-            <!-- 5. Home Theatre -->
-            <a href="/services/home-theatre/" class="drawer-service-card">
-              <div class="service-card-media" style="background-image: url('/assets/images/home-theater.jpg');"></div>
-              <div class="service-card-scrim"></div>
-              <div class="service-card-body">
-                <span class="service-card-name">Home Theatre</span>
-                <span class="service-card-desc">Dolby Atmos Screening Rooms &amp; Cinema</span>
-              </div>
-            </a>
-
-            <!-- 6. Outdoor Screens -->
-            <a href="/services/outdoor-screens/" class="drawer-service-card">
-              <div class="service-card-media" style="background-image: url('/assets/images/showcase_outdoor_screens.jpg');"></div>
-              <div class="service-card-scrim"></div>
-              <div class="service-card-body">
-                <span class="service-card-name">Outdoor Screens</span>
-                <span class="service-card-desc">All-Weather Ultra-Bright Entertainment Displays</span>
-              </div>
-            </a>
-
-            <!-- 7. Smart Lights -->
-            <a href="/services/smart-lights/" class="drawer-service-card">
-              <div class="service-card-media" style="background-image: url('/assets/images/lights.jpg');"></div>
-              <div class="service-card-scrim"></div>
-              <div class="service-card-body">
-                <span class="service-card-name">Smart Lights</span>
-                <span class="service-card-desc">Lutron Systems &amp; Circadian Lighting</span>
-              </div>
-            </a>
-
-            <!-- 8. Window Shades -->
-            <a href="/services/window-shades/" class="drawer-service-card">
-              <div class="service-card-media" style="background-image: url('/assets/images/showcase_window_shades.jpg');"></div>
-              <div class="service-card-scrim"></div>
-              <div class="service-card-body">
-                <span class="service-card-name">Window Shades</span>
-                <span class="service-card-desc">Whisper-Quiet Motorized Architectural Shading</span>
-              </div>
-            </a>
-
-            <!-- 9. Louvered Pergola -->
-            <a href="/services/pergola/" class="drawer-service-card">
-              <div class="service-card-media" style="background-image: url('/assets/images/Pergola.webp');"></div>
-              <div class="service-card-scrim"></div>
-              <div class="service-card-body">
-                <span class="service-card-name">Louvered Pergola</span>
-                <span class="service-card-desc">Motorized All-Weather Outdoor Living</span>
-              </div>
-            </a>
-            {% endif %}
-          </div>
+        <!-- Drawer Brand Footer Logo -->
+        <div class="drawer-footer-brand">
+          <a href="{% if isBusinessPage or page.url == '/business/' %}/business/{% else %}/{% endif %}" class="drawer-brand-logo-link" aria-label="Davidson Smart Solutions Home">
+            <img src="/assets/davidson-logo.png" alt="Davidson Smart Solutions Logo" class="drawer-brand-logo-img" />
+          </a>
         </div>
 
       </div>
@@ -409,6 +339,17 @@
         if (mobileIslandBackdrop) mobileIslandBackdrop.classList.remove('active');
         document.body.style.overflow = '';
 
+        document.querySelectorAll('.drawer-has-sub.open').forEach(row => {
+          row.classList.remove('open');
+          const toggle = row.querySelector('.drawer-sub-toggle');
+          if (toggle) toggle.setAttribute('aria-expanded', 'false');
+          const sub = row.querySelector('.drawer-sub-menu');
+          if (sub) {
+            sub.style.maxHeight = '0px';
+            sub.style.opacity = '0';
+          }
+        });
+
         const scrollContainer = mobileIslandDropdown.querySelector('.island-dropdown-scroll');
         if (scrollContainer) {
           setTimeout(() => {
@@ -433,12 +374,22 @@
 
       if (mobileIslandBulbBtn) {
         mobileIslandBulbBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          if (mobileIslandDropdown && mobileIslandDropdown.classList.contains('active')) {
-            closeMobileIsland();
+          const targetHref = mobileIslandBulbBtn.getAttribute('href');
+          const currentPath = window.location.pathname;
+          const isAtHome = (targetHref === currentPath) ||
+                           (targetHref === '/' && (currentPath === '' || currentPath === '/index.html' || currentPath === '/')) ||
+                           (targetHref === '/business/' && (currentPath === '/business' || currentPath === '/business/index.html' || currentPath === '/business/'));
+
+          if (isAtHome) {
+            e.preventDefault();
+            if (mobileIslandDropdown && mobileIslandDropdown.classList.contains('active')) {
+              closeMobileIsland();
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           } else {
-            openMobileIsland();
+            if (mobileIslandDropdown && mobileIslandDropdown.classList.contains('active')) {
+              closeMobileIsland();
+            }
           }
         });
       }
@@ -457,31 +408,35 @@
         }
       });
 
-      // Smooth Accordion for About Dropdown inside Drawer
-      if (drawerAboutToggle && drawerAboutMenu) {
-        drawerAboutToggle.addEventListener('click', (e) => {
+      // Smooth Accordion for Dropdowns (Services, About, etc.) inside Drawer
+      const drawerSubToggles = document.querySelectorAll('.drawer-sub-toggle');
+      drawerSubToggles.forEach((toggleBtn) => {
+        const parentRow = toggleBtn.closest('.drawer-has-sub');
+        const subMenu = parentRow ? parentRow.querySelector('.drawer-sub-menu') : null;
+        if (!subMenu) return;
+
+        toggleBtn.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-          const parentRow = drawerAboutToggle.closest('.drawer-has-sub');
-          const isExpanded = drawerAboutToggle.getAttribute('aria-expanded') === 'true';
+          const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
           const nextState = !isExpanded;
 
-          drawerAboutToggle.setAttribute('aria-expanded', String(nextState));
+          toggleBtn.setAttribute('aria-expanded', String(nextState));
           if (parentRow) {
             parentRow.classList.toggle('open', nextState);
           }
           if (nextState) {
-            drawerAboutMenu.style.maxHeight = drawerAboutMenu.scrollHeight + 30 + 'px';
-            drawerAboutMenu.style.opacity = '1';
+            subMenu.style.maxHeight = subMenu.scrollHeight + 30 + 'px';
+            subMenu.style.opacity = '1';
           } else {
-            drawerAboutMenu.style.maxHeight = '0px';
-            drawerAboutMenu.style.opacity = '0';
+            subMenu.style.maxHeight = '0px';
+            subMenu.style.opacity = '0';
           }
         });
-      }
+      });
 
       // Close drawer on click of navigation links
-      const drawerNavLinks = document.querySelectorAll('.drawer-top-switch-wrap a, .drawer-editorial-nav a, .drawer-services-cards a, .island-right-group a');
+      const drawerNavLinks = document.querySelectorAll('.drawer-top-switch-wrap a, .drawer-editorial-nav a, .drawer-services-cards a, .island-right-group a, .drawer-footer-brand a');
       drawerNavLinks.forEach((link) => {
         link.addEventListener('click', () => {
           setTimeout(() => {
