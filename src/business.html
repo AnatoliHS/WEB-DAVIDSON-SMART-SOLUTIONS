@@ -357,6 +357,28 @@ isBusinessPage: true
       });
     }
 
+    // Lock hero height on mobile load to fill whole screen without stretching/resizing on scroll
+    function setMobileHeroHeight() {
+      const hero = document.querySelector('.hero-editorial-business');
+      if (!hero) return;
+      if (window.innerWidth <= 900) {
+        // Floating pill island nav floats over hero; hero covers the full visible screen
+        const stableH = window.innerHeight;
+        hero.style.setProperty('min-height', Math.max(stableH, 500) + 'px', 'important');
+      } else {
+        hero.style.removeProperty('min-height');
+      }
+    }
+    setMobileHeroHeight();
+    setTimeout(setMobileHeroHeight, 100);
+    let lastWinWidth = window.innerWidth;
+    window.addEventListener('resize', () => {
+      if (window.innerWidth !== lastWinWidth) {
+        lastWinWidth = window.innerWidth;
+        setMobileHeroHeight();
+      }
+    }, { passive: true });
+
     // Scroll-Controlled Exit Animations for Hero Title & Subtitle/Button
     const heroTitleLines = document.querySelectorAll('.hero-editorial-business .hero-display-title .hero-title-line');
     const heroTextItems = document.querySelectorAll('.hero-editorial-business .hero-text-block > *');

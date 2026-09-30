@@ -468,9 +468,8 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
       const hero = document.querySelector('.hero-editorial');
       if (!hero) return;
       if (window.innerWidth <= 900) {
-        const header = document.querySelector('.site-header');
-        const headerH = header ? header.offsetHeight : (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 90);
-        const stableH = window.innerHeight - headerH;
+        // Floating pill island nav floats over hero; hero covers the full visible screen
+        const stableH = window.innerHeight;
         hero.style.setProperty('min-height', Math.max(stableH, 500) + 'px', 'important');
       } else {
         hero.style.removeProperty('min-height');
