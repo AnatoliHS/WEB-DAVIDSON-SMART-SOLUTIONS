@@ -3456,6 +3456,8 @@ body.business-portal .hero-service-subtitle,
     gap: 0.65rem !important;
     flex: 1 1 0 !important;
     justify-content: flex-start !important;
+    position: relative !important;
+    z-index: 6 !important;
   }
 
   .mobile-island-toggle-btn {
@@ -3522,28 +3524,31 @@ body.business-portal .hero-service-subtitle,
     user-select: none !important;
   }
 
-  /* Center: Bulb Trigger & Animated Wave Aura */
+  /* Center: Brand Logo Home Trigger */
   .mobile-island-bulb-btn {
-    width: 52px !important;
-    height: 52px !important;
+    width: auto !important;
+    max-width: 195px !important;
+    height: 72px !important;
+    max-height: 72px !important;
     flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     background: transparent !important;
     border: none !important;
-    border-radius: 50% !important;
+    border-radius: 0 !important;
     padding: 0 !important;
     cursor: pointer !important;
     position: relative !important;
     outline: none !important;
     text-decoration: none !important;
     -webkit-tap-highlight-color: transparent !important;
+    overflow: visible !important;
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease, visibility 0.22s ease !important;
   }
 
   .mobile-island-bulb-btn:active {
-    transform: scale(0.92) !important;
+    transform: scale(0.95) !important;
   }
 
   .mobile-island-header.is-open .mobile-island-bulb-btn {
@@ -3551,6 +3556,18 @@ body.business-portal .hero-service-subtitle,
     visibility: hidden !important;
     pointer-events: none !important;
     transform: scale(0.85) !important;
+  }
+
+  .mobile-island-brand-logo {
+    height: 70px !important;
+    max-height: none !important;
+    width: auto !important;
+    max-width: 185px !important;
+    object-fit: contain !important;
+    filter: brightness(0) invert(1) !important;
+    opacity: 1 !important;
+    transition: opacity 0.2s ease, transform 0.2s ease !important;
+    pointer-events: none !important;
   }
 
   .mobile-island-bulb-img {
@@ -3596,12 +3613,51 @@ body.business-portal .hero-service-subtitle,
     filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.45)) !important;
   }
 
+  /* Center Division Switch Pill (between X and Message Icon when Drawer is Open) */
+  .island-bar-switch-wrap {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) scale(0.92) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 5 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease !important;
+  }
+
+  .mobile-island-header.is-open .island-bar-switch-wrap {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+
+  .island-bar-switch-link {
+    font-size: 0.92rem !important;
+    padding: 0.42rem 1.05rem !important;
+    white-space: nowrap !important;
+  }
+
+  @media (max-width: 360px) {
+    .island-bar-switch-link {
+      font-size: 0.82rem !important;
+      padding: 0.36rem 0.8rem !important;
+      gap: 0.38rem !important;
+    }
+  }
+
   /* Right Group: Connect CTA Link */
   .island-right-group {
     display: flex !important;
     align-items: center !important;
     justify-content: flex-end !important;
     flex: 1 1 0 !important;
+    position: relative !important;
+    z-index: 6 !important;
   }
 
   .mobile-island-connect-btn {
@@ -3612,7 +3668,7 @@ body.business-portal .hero-service-subtitle,
     align-items: center !important;
     justify-content: center !important;
     font-size: 1.15rem !important;
-    color: rgba(255, 255, 255, 0.92) !important;
+    color: #C5A059 !important;
     text-decoration: none !important;
     padding: 0 !important;
     background: transparent !important;
@@ -3622,14 +3678,18 @@ body.business-portal .hero-service-subtitle,
 
   .mobile-island-connect-btn:hover,
   .mobile-island-connect-btn:active {
-    color: #C5A059 !important;
+    color: #dfb76c !important;
     transform: scale(0.92) !important;
   }
 
   /* Commercial Mode (body.business-portal) Overrides */
+  body.business-portal .mobile-island-connect-btn {
+    color: #4fa3e3 !important;
+  }
+
   body.business-portal .mobile-island-connect-btn:hover,
   body.business-portal .mobile-island-connect-btn:active {
-    color: #8eb8fa !important;
+    color: #7bbbfa !important;
   }
 
   body.business-portal .mobile-island-header.is-open .bar-top,
@@ -3690,7 +3750,7 @@ body.business-portal .hero-service-subtitle,
     max-height: none !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
-    padding: 0.95rem 1.25rem 1.6rem 1.25rem !important;
+    padding: 0.55rem 1.25rem 1.6rem 1.25rem !important;
     display: flex !important;
     flex-direction: column !important;
   }
@@ -3748,7 +3808,7 @@ body.business-portal .hero-service-subtitle,
     transition-delay: 0.40s !important;
   }
 
-  /* Drawer Brand Footer / Logo under Connect */
+  /* Drawer Brand Footer / Logo under Contact */
   .drawer-footer-brand {
     display: flex !important;
     justify-content: center !important;
@@ -3759,16 +3819,44 @@ body.business-portal .hero-service-subtitle,
   }
 
   .drawer-brand-logo-link {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: inline-block !important;
+    position: relative !important;
     text-decoration: none !important;
     transition: opacity 0.2s ease, transform 0.2s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
   }
 
   .drawer-brand-logo-link:hover {
-    opacity: 0.8 !important;
+    opacity: 0.95 !important;
     transform: scale(0.98) !important;
+  }
+
+  .drawer-logo-wave-wrap {
+    position: absolute !important;
+    top: calc(47.5% + 2px) !important;
+    left: 18.1% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 140px !important;
+    height: 140px !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .drawer-wave-canvas {
+    width: 140px !important;
+    height: 140px !important;
+    display: block !important;
+    pointer-events: none !important;
+    transform: scale(1.32) !important;
+    transform-origin: center center !important;
+    filter: drop-shadow(0 0 16px rgba(197, 160, 89, 0.7)) !important;
+  }
+
+  body.business-portal .drawer-wave-canvas {
+    filter: drop-shadow(0 0 18px rgba(125, 160, 230, 0.8)) !important;
   }
 
   .drawer-brand-logo-img {
@@ -3777,7 +3865,10 @@ body.business-portal .hero-service-subtitle,
     max-width: min(310px, 86vw) !important;
     object-fit: contain !important;
     filter: brightness(0) invert(1) !important;
-    opacity: 0.95 !important;
+    opacity: 0.96 !important;
+    position: relative !important;
+    z-index: 2 !important;
+    display: block !important;
     transition: opacity 0.2s ease !important;
   }
 
@@ -3820,6 +3911,99 @@ body.business-portal .hero-service-subtitle,
   }
 
   .drawer-nav-link.active {
+    color: #ffffff !important;
+  }
+
+  /* Start Your Project Link inside Mobile Drawer */
+  .drawer-nav-row-project {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin-top: 1.25rem !important;
+    margin-bottom: 0.35rem !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+  }
+
+  .drawer-nav-link-project {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    padding: 0.95rem 1.75rem !important;
+    border-radius: 9999px !important;
+    background: linear-gradient(135deg, rgba(197, 160, 89, 0.22) 0%, rgba(197, 160, 89, 0.08) 100%) !important;
+    border: 1.5px solid rgba(197, 160, 89, 0.7) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(197, 160, 89, 0.25), inset 0 0 12px rgba(197, 160, 89, 0.1) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .drawer-nav-link-project:hover {
+    background: rgba(197, 160, 89, 0.28) !important;
+    border-color: #dfb76c !important;
+    box-shadow: 0 6px 28px rgba(197, 160, 89, 0.45), inset 0 0 16px rgba(197, 160, 89, 0.18) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+    opacity: 1 !important;
+  }
+
+  .drawer-nav-link-project:active {
+    transform: translateY(0) scale(0.98) !important;
+  }
+
+  body.business-portal .drawer-nav-link-project {
+    background: linear-gradient(135deg, rgba(79, 163, 227, 0.22) 0%, rgba(79, 163, 227, 0.08) 100%) !important;
+    border-color: rgba(79, 163, 227, 0.7) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(79, 163, 227, 0.25), inset 0 0 12px rgba(79, 163, 227, 0.1) !important;
+  }
+
+  body.business-portal .drawer-nav-link-project:hover {
+    background: rgba(79, 163, 227, 0.28) !important;
+    border-color: #7bbbfa !important;
+    box-shadow: 0 6px 28px rgba(79, 163, 227, 0.45), inset 0 0 16px rgba(79, 163, 227, 0.18) !important;
+  }
+
+  body.business-portal .drawer-project-heading .project-word-your {
+    color: #4fa3e3 !important;
+  }
+
+  .drawer-project-heading {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: row !important;
+    gap: 0.45rem !important;
+    font-family: var(--font-sans) !important;
+    font-weight: 800 !important;
+    font-size: clamp(1.05rem, 3.8vw, 1.25rem) !important;
+    line-height: 1 !important;
+    letter-spacing: 0.02em !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+  }
+
+  .drawer-project-heading span {
+    display: inline !important;
+    white-space: nowrap !important;
+  }
+
+  .drawer-project-heading .project-word-start {
+    color: #ffffff !important;
+  }
+
+  .drawer-project-heading .project-word-your {
+    color: #C5A059 !important;
+  }
+
+  .drawer-project-heading .project-word-project {
     color: #ffffff !important;
   }
 

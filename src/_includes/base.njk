@@ -84,13 +84,25 @@
           </button>
         </div>
 
-        <!-- Center: Bulb Logo Home Navigation with Animated Thinking Wave Aura -->
-        <a href="{% if isBusinessPage or page.url == '/business/' %}/business/{% else %}/{% endif %}" class="mobile-island-bulb-btn" id="mobileIslandBulbBtn" aria-label="Navigate to Home">
-          <div class="mobile-island-wave-wrap" aria-hidden="true">
-            <canvas class="orb-wave-canvas mobile-wave-canvas" id="mobileOrbWaveCanvas" width="140" height="140"></canvas>
-          </div>
-          <img src="/assets/bulb-white.png" alt="Davidson Bulb Logo" class="mobile-island-bulb-img" />
+        <!-- Center: Brand Logo Home Navigation -->
+        <a href="{% if isBusinessPage or page.url == '/business/' %}/business/{% else %}/{% endif %}" class="mobile-island-bulb-btn mobile-island-brand-link" id="mobileIslandBulbBtn" aria-label="Davidson Smart Solutions Home">
+          <img src="/assets/davidson-logo.png" alt="Davidson Smart Solutions Logo" class="mobile-island-brand-logo" />
         </a>
+
+        <!-- Center: Switch to Division Pill (between X and message icon when drawer is open) -->
+        <div class="island-bar-switch-wrap" id="islandBarSwitchWrap">
+          {% if page.url == "/business/" or isBusinessPage %}
+          <a href="/" class="drawer-switch-link drawer-switch-residential island-bar-switch-link">
+            <span class="switch-link-text">Switch to Residential</span>
+            <i class="fa-solid fa-arrow-right drawer-switch-arrow"></i>
+          </a>
+          {% else %}
+          <a href="/business/" class="drawer-switch-link drawer-switch-commercial island-bar-switch-link">
+            <span class="switch-link-text">Switch to Commercial</span>
+            <i class="fa-solid fa-arrow-right drawer-switch-arrow"></i>
+          </a>
+          {% endif %}
+        </div>
 
         <!-- Right: Connect Action Link -->
         <div class="island-right-group">
@@ -103,21 +115,6 @@
       <!-- The Floating Dark Glass Dropdown Expansion Drawer -->
       <nav class="mobile-island-dropdown" id="mobileIslandDropdown" aria-label="Mobile Navigation" aria-hidden="true">
       <div class="island-dropdown-scroll">
-
-        <!-- Top Centered Division Switch -->
-        <div class="drawer-top-switch-wrap">
-          {% if page.url == "/business/" or isBusinessPage %}
-          <a href="/" class="drawer-switch-link drawer-switch-residential">
-            <span class="switch-link-text">Switch to Residential</span>
-            <i class="fa-solid fa-arrow-right drawer-switch-arrow"></i>
-          </a>
-          {% else %}
-          <a href="/business/" class="drawer-switch-link drawer-switch-commercial">
-            <span class="switch-link-text">Switch to Commercial</span>
-            <i class="fa-solid fa-arrow-right drawer-switch-arrow"></i>
-          </a>
-          {% endif %}
-        </div>
 
         <!-- Editorial Navigation Links Stack -->
         <div class="drawer-editorial-nav" id="drawerEditorialNav">
@@ -204,17 +201,24 @@
             </a>
           </div>
 
-          <!-- 5. Contact -->
-          <div class="drawer-nav-row">
-            <a href="/contact/" class="drawer-nav-link">
-              <span>Contact</span>
+          <!-- 5. Start Your Project -->
+          <div class="drawer-nav-row drawer-nav-row-project">
+            <a href="/contact/" class="drawer-nav-link drawer-nav-link-project" aria-label="Start Your Project">
+              <span class="drawer-project-heading">
+                <span class="project-word-start">START</span>
+                <span class="project-word-your">YOUR</span>
+                <span class="project-word-project">PROJECT</span>
+              </span>
             </a>
           </div>
         </div>
 
-        <!-- Drawer Brand Footer Logo -->
+        <!-- Drawer Brand Footer Logo with Animated Thinking Wave Aura around Bulb -->
         <div class="drawer-footer-brand">
           <a href="{% if isBusinessPage or page.url == '/business/' %}/business/{% else %}/{% endif %}" class="drawer-brand-logo-link" aria-label="Davidson Smart Solutions Home">
+            <div class="drawer-logo-wave-wrap" aria-hidden="true">
+              <canvas class="orb-wave-canvas drawer-wave-canvas" id="drawerOrbWaveCanvas" width="140" height="140"></canvas>
+            </div>
             <img src="/assets/davidson-logo.png" alt="Davidson Smart Solutions Logo" class="drawer-brand-logo-img" />
           </a>
         </div>
@@ -535,6 +539,7 @@
       // 3. Radial Waveform Equalizer Ring Animation Controller (Desktop & Mobile)
       const desktopCanvas = document.getElementById('orbWaveCanvas');
       const mobileCanvas = document.getElementById('mobileOrbWaveCanvas');
+      const drawerCanvas = document.getElementById('drawerOrbWaveCanvas');
 
       const activeCanvases = [];
       const initCanvas = (canvas, isMobile) => {
@@ -549,6 +554,7 @@
       };
       initCanvas(desktopCanvas, false);
       initCanvas(mobileCanvas, true);
+      initCanvas(drawerCanvas, true);
 
       const N = 48; // 48 radial tick capsules like reference animation
       const cx = 70;
@@ -575,6 +581,16 @@
           targetEnergy = 1.35;
         }, { passive: true });
         mobileIslandBulbBtn.addEventListener('touchend', () => {
+          setTimeout(() => { targetEnergy = 1.0; }, 350);
+        }, { passive: true });
+      }
+
+      const drawerBrandLink = document.querySelector('.drawer-brand-logo-link');
+      if (drawerBrandLink) {
+        drawerBrandLink.addEventListener('touchstart', () => {
+          targetEnergy = 1.35;
+        }, { passive: true });
+        drawerBrandLink.addEventListener('touchend', () => {
           setTimeout(() => { targetEnergy = 1.0; }, 350);
         }, { passive: true });
       }
@@ -612,6 +628,7 @@
         for (const item of activeCanvases) {
           if (item.canvas.getBoundingClientRect().width === 0) continue;
           if (!item.isMobile && desktopPill && desktopPill.classList.contains('is-expanded')) continue;
+          if (item.canvas === drawerCanvas && (!mobileIslandDropdown || !mobileIslandDropdown.classList.contains('active'))) continue;
 
           const blend = item.isMobile ? mobileColorBlend : desktopColorBlend;
           const innerColorBase = item.isMobile ? mobileBlueInner : blueInner;
@@ -631,15 +648,23 @@
             const w3 = Math.cos(theta * 2 - time * 0.85);
             const mod = 0.65 + 0.35 * Math.sin(theta * 2 + time * 1.1);
 
+            const isDrawer = (item.canvas === drawerCanvas);
             const rawWave = ((w1 * 0.55 + w2 * 0.3 + w3 * 0.15) + 1) * 0.5;
-            const waveHeight = (2.2 + rawWave * 6.8 * mod) * currentEnergy;
+            const baseLen = isDrawer ? 4.8 : 2.2;
+            const waveAmp = isDrawer ? 9.2 : 6.8;
+            const waveHeight = (baseLen + rawWave * waveAmp * mod) * currentEnergy;
 
             const baseWobble = Math.sin(theta * 2 - time * 0.75) * 0.8 * currentEnergy;
-            const rInner = baseRadius + baseWobble;
+            const rInner = (baseRadius - (isDrawer ? 1.5 : 0)) + baseWobble;
             const rOuter = rInner + waveHeight;
 
             const cos = Math.cos(theta);
             const sin = Math.sin(theta);
+
+            // In the drawer logo, remove only the orb lines that overlap directly with the letter 'D'
+            if (isDrawer && cos > 0.82) {
+              continue;
+            }
 
             const x1 = cx + cos * rInner;
             const y1 = cy + sin * rInner;
