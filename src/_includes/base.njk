@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- Editorial Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css?v=7.0" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=7.6" />
 
   <!-- Favicon -->
   <link rel="icon"
@@ -608,6 +608,12 @@
       const goldBase = [197, 160, 89];
       const brightGold = [255, 224, 138];
 
+      // Light Blue Palette for Business pages and services
+      const bizLightBlueInner = [115, 155, 225]; // Radiant light cornflower blue
+      const bizLightBlueOuter = [175, 218, 255]; // Luminous sky light blue tips
+      const bizLightBlueSoftInner = [85, 120, 190];
+      const bizLightBlueSoftOuter = [140, 180, 245];
+
       const drawWave = () => {
         currentEnergy += (targetEnergy - currentEnergy) * 0.08;
         time += 0.026 * currentEnergy;
@@ -616,7 +622,7 @@
         const targetDesktopBlend = (desktopPill && desktopPill.classList.contains('is-on-dark')) ? 1.0 : 0.0;
         desktopColorBlend += (targetDesktopBlend - desktopColorBlend) * 0.08;
 
-        // Mobile blend: light navy in Commercial, gold in Residential
+        // Mobile blend: light blue in Commercial, gold in Residential
         const isBusiness = document.body.classList.contains('business-portal');
         const targetMobileBlend = isBusiness ? 0.0 : 1.0;
         mobileColorBlend += (targetMobileBlend - mobileColorBlend) * 0.08;
@@ -626,11 +632,20 @@
           if (!item.isMobile && desktopPill && desktopPill.classList.contains('is-expanded')) continue;
           if (item.canvas === drawerCanvas && (!mobileIslandDropdown || !mobileIslandDropdown.classList.contains('active'))) continue;
 
+          let currentInnerColor, currentOuterColor;
           const blend = item.isMobile ? mobileColorBlend : desktopColorBlend;
-          const innerColorBase = item.isMobile ? mobileBlueInner : blueInner;
-          const outerColorBase = item.isMobile ? mobileBlueOuter : blueOuter;
-          const currentInnerColor = lerpColor(innerColorBase, goldBase, blend);
-          const currentOuterColor = lerpColor(outerColorBase, brightGold, blend);
+
+          if (isBusiness) {
+            // Business pages and services: radiant light blue
+            currentInnerColor = lerpColor(bizLightBlueSoftInner, bizLightBlueInner, blend);
+            currentOuterColor = lerpColor(bizLightBlueSoftOuter, bizLightBlueOuter, blend);
+          } else {
+            // Residential pages: gold when on dark, slate when on light
+            const innerColorBase = item.isMobile ? mobileBlueInner : blueInner;
+            const outerColorBase = item.isMobile ? mobileBlueOuter : blueOuter;
+            currentInnerColor = lerpColor(innerColorBase, goldBase, blend);
+            currentOuterColor = lerpColor(outerColorBase, brightGold, blend);
+          }
 
           const ctx = item.ctx;
           ctx.clearRect(0, 0, 140, 140);
@@ -667,7 +682,7 @@
             const x2 = cx + cos * rOuter;
             const y2 = cy + sin * rOuter;
 
-            const baseAlpha = 0.85 - blend * 0.13;
+            const baseAlpha = isBusiness ? 0.90 : (0.85 - blend * 0.13);
             ctx.globalAlpha = baseAlpha + rawWave * (1 - baseAlpha);
 
             const grad = ctx.createLinearGradient(x1, y1, x2, y2);

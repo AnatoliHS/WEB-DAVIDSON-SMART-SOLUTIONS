@@ -953,7 +953,7 @@ body.business-portal .hero-editorial-business .hero-text-block .link-arrow i,
 body.business-portal .hero-editorial-business .link-arrow i,
 .hero-editorial-business .hero-text-block .link-arrow i,
 .hero-editorial-business .link-arrow i {
-  color: #C5A059 !important;
+  color: #829cd8 !important;
   transition: transform 0.25s ease !important;
 }
 
@@ -966,8 +966,8 @@ body.business-portal .hero-editorial-business .link-arrow:active,
 .hero-editorial-business .link-arrow:hover,
 .hero-editorial-business .link-arrow:active {
   background: rgba(28, 34, 48, 0.95) !important;
-  border-color: #C5A059 !important;
-  border-bottom-color: #C5A059 !important;
+  border-color: #829cd8 !important;
+  border-bottom-color: #829cd8 !important;
   color: #ffffff !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.38) !important;
@@ -1035,10 +1035,12 @@ body.business-portal .hero-editorial-business .link-arrow:active i,
   opacity: 0 !important;
 }
 
-/* Radiant golden drop-shadow when over dark sections (Universal) */
-body:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb,
-body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
+/* Radiant drop-shadow when over dark sections: Gold for residential, Light Blue for business */
+body:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 10px rgba(197, 160, 89, 0.45));
+}
+body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 12px rgba(145, 190, 255, 0.55));
 }
 
 /* Mobile Island Navigation Elements (Hidden on Desktop: min-width 901px) */
@@ -1080,10 +1082,12 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     will-change: opacity, transform, filter;
   }
 
-  /* When over dark sections: radiant golden luminescence */
-  body:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb,
-  body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
+  /* When over dark sections: radiant golden luminescence for residential, light blue for business */
+  body:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 10px rgba(197, 160, 89, 0.45));
+  }
+  body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 12px rgba(145, 190, 255, 0.55));
   }
 
   .pill-thinking-orb .orb-wave-canvas {
@@ -5879,8 +5883,8 @@ body.business-portal .hero-title-line-mask,
 body.business-portal .hero-title-line em,
 body.business-portal .hero-display-title em,
 .hero-editorial-business .hero-display-title em {
-  color: #C5A059 !important;
-  -webkit-text-fill-color: #C5A059 !important;
+  color: #829cd8 !important;
+  -webkit-text-fill-color: #829cd8 !important;
   background: none !important;
   -webkit-background-clip: unset !important;
   background-clip: unset !important;
@@ -5970,7 +5974,7 @@ body.business-portal .hero-text-block,
   -webkit-backdrop-filter: none !important;
   box-shadow: none !important;
   border: none !important;
-  border-left: 3px solid #C5A059 !important;
+  border-left: 3px solid #829cd8 !important;
   padding: 0.25rem 0 0.25rem 1.75rem !important;
 }
 
@@ -7647,19 +7651,22 @@ body.business-portal .process-section-wrap.dark-section .title-color-wipe.reveal
 
 .biz-together-cta .together-cta-btn,
 .together-cta-btn.biz-cta-btn {
-  border-color: #61709e !important;
-  color: #61709e !important;
-  background: rgba(37, 43, 61, 0.08) !important;
-  box-shadow: 0 0 25px rgba(37, 43, 61, 0.22), inset 0 0 15px rgba(37, 43, 61, 0.1) !important;
+  background: #61709e !important;
+  background-image: none !important;
+  border: 1.5px solid #61709e !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 18px rgba(97, 112, 158, 0.45) !important;
 }
 
 .biz-together-cta .together-cta-btn:hover,
 .together-cta-btn.biz-cta-btn:hover {
-  background: linear-gradient(135deg, #61709e 0%, #4a577d 100%) !important;
+  background: #7687ba !important;
+  background-image: none !important;
+  border-color: #7687ba !important;
   color: #ffffff !important;
-  border-color: #61709e !important;
-  box-shadow: 0 0 40px rgba(37, 43, 61, 0.65) !important;
-  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(118, 135, 186, 0.65) !important;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 991px) {
@@ -7766,10 +7773,15 @@ body:has(.contact-editorial-section) {
 }
 
 .contact-editorial-section .together-cta-heading span[style*="color"],
-.contact-editorial-section .together-cta-heading span:nth-child(2),
-body.business-portal .contact-editorial-section .together-cta-heading span[style*="color"],
-body.business-portal .contact-editorial-section .together-cta-heading span:nth-child(2) {
+.contact-editorial-section .together-cta-heading span:nth-child(2) {
   color: #C5A059 !important;
+}
+
+body.business-portal .contact-editorial-section .together-cta-heading span[style*="color"],
+body.business-portal .contact-editorial-section .together-cta-heading span:nth-child(2),
+body.business-portal .together-cta-heading span[style*="color"],
+body.business-portal .together-cta-heading span:nth-child(2) {
+  color: #61709e !important;
 }
 
 .contact-editorial-grid {
@@ -7818,18 +7830,26 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
   color: #ffffff;
 }
 
-/* Submit Buttons in Contact Cards across Business & Home Services */
+/* ==========================================================================
+   Contact Form Submit Buttons (Residential = Gold / Lighter Gold, Business = Blue / Lighter Blue)
+   ========================================================================== */
+
+/* Residential Contact Form Submit Buttons (Gold default, lighter gold on hover) */
 .contact-dark-card .btn-primary,
 .contact-dark-card .btn-pill-accent,
 .contact-editorial-section .btn-primary,
 .contact-editorial-section .btn-pill-accent,
 .contact-dark-card button[type="submit"],
-.contact-editorial-section button[type="submit"] {
-  background: linear-gradient(135deg, #988678 0%, #C5A059 100%) !important;
-  background-size: 160% 160% !important;
-  border: none !important;
+.contact-editorial-section button[type="submit"],
+.contact-dark-card .together-cta-btn,
+.contact-editorial-section .together-cta-btn {
+  background: #C5A059 !important;
+  background-image: none !important;
+  border: 1.5px solid #C5A059 !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 18px rgba(197, 160, 89, 0.35) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 18px rgba(197, 160, 89, 0.45) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .contact-dark-card .btn-primary:hover,
@@ -7837,9 +7857,54 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
 .contact-editorial-section .btn-primary:hover,
 .contact-editorial-section .btn-pill-accent:hover,
 .contact-dark-card button[type="submit"]:hover,
-.contact-editorial-section button[type="submit"]:hover {
-  background-position: 100% 0 !important;
-  box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5) !important;
+.contact-editorial-section button[type="submit"]:hover,
+.contact-dark-card .together-cta-btn:hover,
+.contact-editorial-section .together-cta-btn:hover {
+  background: #d8b776 !important;
+  background-image: none !important;
+  border-color: #d8b776 !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(216, 183, 118, 0.65) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Business Services Contact Form Submit Buttons (Blue default, lighter blue on hover) */
+body.business-portal .contact-dark-card .btn-primary,
+body.business-portal .contact-dark-card .btn-pill-accent,
+body.business-portal .contact-editorial-section .btn-primary,
+body.business-portal .contact-editorial-section .btn-pill-accent,
+body.business-portal .contact-dark-card button[type="submit"],
+body.business-portal .contact-editorial-section button[type="submit"],
+body.business-portal .contact-dark-card .together-cta-btn,
+body.business-portal .contact-editorial-section .together-cta-btn,
+.biz-dark-card button[type="submit"],
+.biz-dark-card .together-cta-btn,
+.together-cta-btn.biz-cta-btn {
+  background: #61709e !important;
+  background-image: none !important;
+  border: 1.5px solid #61709e !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 18px rgba(97, 112, 158, 0.45) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body.business-portal .contact-dark-card .btn-primary:hover,
+body.business-portal .contact-dark-card .btn-pill-accent:hover,
+body.business-portal .contact-editorial-section .btn-primary:hover,
+body.business-portal .contact-editorial-section .btn-pill-accent:hover,
+body.business-portal .contact-dark-card button[type="submit"]:hover,
+body.business-portal .contact-editorial-section button[type="submit"]:hover,
+body.business-portal .contact-dark-card .together-cta-btn:hover,
+body.business-portal .contact-editorial-section .together-cta-btn:hover,
+.biz-dark-card button[type="submit"]:hover,
+.biz-dark-card .together-cta-btn:hover,
+.together-cta-btn.biz-cta-btn:hover {
+  background: #7687ba !important;
+  background-image: none !important;
+  border-color: #7687ba !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(118, 135, 186, 0.65) !important;
   transform: translateY(-2px) !important;
 }
 
