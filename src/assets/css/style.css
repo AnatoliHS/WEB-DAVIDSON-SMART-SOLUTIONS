@@ -4,6 +4,18 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
+/* Brown Sugar Editorial Display Font */
+@font-face {
+  font-family: 'Brown Sugar';
+  src: url('/assets/fonts/Brown-Sugar-Regular.otf') format('opentype'),
+       url('/assets/fonts/Brown-Sugar-Regular.ttf') format('truetype'),
+       url('../fonts/Brown-Sugar-Regular.otf') format('opentype'),
+       url('../fonts/Brown-Sugar-Regular.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Color Palette - Warm Architectural Canvas */
   --bg-canvas: #f8f7f4;
@@ -26,6 +38,7 @@
   --border-strong: rgba(24, 24, 24, 0.25);
 
   /* Typography */
+  --font-display: 'Brown Sugar', 'Cormorant Garamond', Georgia, serif;
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
@@ -77,14 +90,22 @@ h6 {
   letter-spacing: -0.015em;
 }
 
+h1,
+h1 *,
 .section-statement h1,
 .hero-title,
-.hero h1 {
-  font-family: var(--font-serif);
+.hero h1,
+.hero-display-title,
+.hero-service-headline,
+.together-cta-heading,
+.blog-post-hero-title {
+  font-family: 'Brown Sugar', 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 400 !important;
 }
 
 h1 {
   font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+  letter-spacing: 0.01em;
 }
 
 h2 {
@@ -2015,11 +2036,11 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
 }
 
 .hero-service-headline {
-  font-family: var(--font-sans);
-  font-weight: 800;
+  font-family: 'Brown Sugar', var(--font-serif) !important;
+  font-weight: 400 !important;
   font-size: clamp(2.8rem, 5.5vw, 4.8rem);
   line-height: 1.06;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.01em;
   color: #ffffff;
   margin: 0 0 1.25rem 0;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
@@ -2341,6 +2362,123 @@ body.business-portal .hero-service-subtitle,
   }
 }
 
+/* Mobile Reveal Animation for Built Properly, From Ground Up (01-05) */
+@media (max-width: 768px) {
+  .built-groundup-section .built-groundup-header,
+  .built-groundup-section .built-point-card {
+    opacity: 0;
+    transform: translateY(45px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+
+  .built-groundup-section .built-groundup-header.revealed,
+  .built-groundup-section .built-point-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .built-groundup-section .built-groundup-header,
+  .built-groundup-section .built-point-card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* All Services & Industry Professionals "Built Properly, From Ground Up" Custom Black (#121212) with Faint Gray Dots */
+.networking-gradient-bg,
+.built-groundup-section.networking-gradient-bg,
+#why-choose.built-groundup-section,
+#about-why.built-groundup-section,
+#networking-solutions.built-groundup-section,
+#business-networking-solutions.built-groundup-section,
+#starlink-solutions.built-groundup-section,
+#security-solutions.built-groundup-section,
+#business-security-solutions.built-groundup-section,
+#construction-security-solutions.built-groundup-section,
+#audio-solutions.built-groundup-section,
+#theatre-solutions.built-groundup-section,
+#lighting-solutions.built-groundup-section,
+#shades-solutions.built-groundup-section,
+#screens-solutions.built-groundup-section,
+#pergola-solutions.built-groundup-section {
+  background-color: #121212 !important;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px) !important;
+  background-size: 16px 16px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+.networking-gradient-bg .built-groundup-title,
+.built-groundup-section.networking-gradient-bg .built-groundup-title {
+  color: #ffffff !important;
+}
+
+.networking-gradient-bg .built-groundup-title span,
+.built-groundup-section.networking-gradient-bg .built-groundup-title span {
+  color: var(--color-accent, #C5A059) !important;
+}
+
+.networking-gradient-bg .built-groundup-lead,
+.built-groundup-section.networking-gradient-bg .built-groundup-lead {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.networking-gradient-bg .built-point-card,
+.built-groundup-section.networking-gradient-bg .built-point-card {
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.networking-gradient-bg .built-point-card:first-child,
+.built-groundup-section.networking-gradient-bg .built-point-card:first-child {
+  border-top: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+.networking-gradient-bg .built-point-card:last-child,
+.built-groundup-section.networking-gradient-bg .built-point-card:last-child {
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+.networking-gradient-bg .built-point-title,
+.built-groundup-section.networking-gradient-bg .built-point-title {
+  color: #ffffff !important;
+}
+
+.networking-gradient-bg .built-point-desc,
+.built-groundup-section.networking-gradient-bg .built-point-desc {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.networking-gradient-bg .built-point-desc strong,
+.built-groundup-section.networking-gradient-bg .built-point-desc strong {
+  color: #ffffff !important;
+}
+
+.networking-gradient-bg .built-point-num,
+.built-groundup-section.networking-gradient-bg .built-point-num {
+  color: var(--color-accent, #C5A059) !important;
+}
+
+.networking-gradient-bg .btn-pill-dark,
+.built-groundup-section.networking-gradient-bg .btn-pill-dark {
+  background: #1e1d22 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35) !important;
+}
+
+.networking-gradient-bg .btn-pill-dark:hover,
+.built-groundup-section.networking-gradient-bg .btn-pill-dark:hover {
+  background: var(--color-accent, #C5A059) !important;
+  border-color: var(--color-accent, #C5A059) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
 .hero-editorial-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -2349,9 +2487,9 @@ body.business-portal .hero-service-subtitle,
 }
 
 .hero-display-title {
-  font-family: var(--font-sans);
-  font-weight: 900;
-  letter-spacing: -0.035em;
+  font-family: 'Brown Sugar', var(--font-serif) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em;
   font-size: clamp(3.5rem, 6.5vw, 6.2rem);
   line-height: 1.05;
   color: var(--text-primary);
@@ -2657,10 +2795,12 @@ body.business-portal .hero-service-subtitle,
 /* Dark Variant for Statement & Video Section (Residential Division) */
 .section-statement-layout.dark-section,
 .section-statement-layout.section-statement-dark {
-  background: #121212 !important;
+  background-color: #121212 !important;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px) !important;
+  background-size: 16px 16px !important;
   color: #f8f7f4;
-  border-top: none !important;
-  border-bottom: none !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .section-statement-layout.dark-section .statement-layout-label,
@@ -3434,6 +3574,22 @@ body.business-portal .hero-service-subtitle,
   flex-wrap: wrap;
   gap: 1.5rem;
   font-size: 0.85rem;
+}
+
+.footer-credit {
+  color: #a3a3a3;
+}
+
+.footer-credit a {
+  color: var(--color-accent, #C5A059);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer-credit a:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 /* Responsive Queries & Mobile Navigation Drawer */
@@ -5949,13 +6105,24 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
   }
 }
 
-/* Smart Home Ideas for Interior Designers (Dark Modern Grid Layout matching reference) */
+/* Smart Home Ideas for Interior Designers & Index FAQ (Dark Modern Grid Layout) */
 .designer-ideas-section {
   background-color: #121212;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+  background-size: 16px 16px;
   color: #ffffff;
   padding: 6.5rem 0;
   border-top: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.designer-ideas-section#faq,
+#faq.designer-ideas-section {
+  background-color: #121212 !important;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px) !important;
+  background-size: 16px 16px !important;
+  border-top: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .designer-ideas-header {
@@ -7216,9 +7383,11 @@ p[style*="border-left"] {
 /* Dark Variant for The Process Section (Commercial) */
 .process-section-wrap.dark-section {
   background-color: #121212 !important;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px) !important;
+  background-size: 16px 16px !important;
   color: #f8f7f4;
   border-top: none !important;
-  border-bottom: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 body.business-portal .process-section-wrap.dark-section .title-color-wipe-dark,
@@ -7377,11 +7546,11 @@ body.business-portal .process-section-wrap.dark-section .title-color-wipe.reveal
 }
 
 .together-cta-heading {
-  font-family: var(--font-sans);
-  font-weight: 800;
+  font-family: 'Brown Sugar', var(--font-serif) !important;
+  font-weight: 400 !important;
   font-size: clamp(4.2rem, 9.2vw, 8.8rem);
-  line-height: 0.88;
-  letter-spacing: -0.04em;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
   color: #ffffff;
   margin: 0;
@@ -7552,18 +7721,43 @@ body.business-portal .process-section-wrap.dark-section .title-color-wipe.reveal
 /* ==========================================================================
    Editorial Contact Page Section (Matching Reference Card & Info Layout)
    ========================================================================== */
+body.contact-page,
+body:has(.contact-editorial-section) {
+  background-color: #121212 !important;
+}
+
 .contact-editorial-section {
   position: relative;
   padding: 5.5rem 0 7.5rem 0;
+  margin-top: 0 !important;
   background-color: #121212 !important;
   background-image:
-    linear-gradient(135deg, rgba(18, 18, 18, 0.85) 0%, rgba(28, 28, 28, 0.76) 50%, rgba(14, 14, 14, 0.89) 100%),
+    linear-gradient(180deg, rgba(18, 18, 18, 0.98) 0%, rgba(18, 18, 18, 0.9) 6%, transparent 22%),
+    linear-gradient(135deg, rgba(18, 18, 18, 0.88) 0%, rgba(28, 28, 28, 0.78) 50%, rgba(14, 14, 14, 0.92) 100%),
     url('/assets/images/work-together.jpg') !important;
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
   color: #ffffff;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none !important;
+  border: none !important;
+}
+
+.contact-editorial-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient(180deg, #121212 0%, rgba(18, 18, 18, 0.95) 30%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contact-editorial-section .container {
+  position: relative;
+  z-index: 2;
 }
 
 .contact-editorial-section .together-cta-heading {
@@ -8066,24 +8260,46 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
    ========================================================================== */
 .about-news-section {
   position: relative;
-  background: #ffffff;
+  background-color: #121212 !important;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px) !important;
+  background-size: 16px 16px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.about-news-section .about-news-header h2 {
+  color: #ffffff !important;
+}
+
+.about-news-section .btn-pill-dark {
+  background: #1e1d22 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35) !important;
+}
+
+.about-news-section .btn-pill-dark:hover {
+  background: var(--color-accent, #C5A059) !important;
+  border-color: var(--color-accent, #C5A059) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
 }
 
 .featured-news-card {
   display: grid;
   grid-template-columns: 1.08fr 1fr;
-  background: #fbfbfc;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
 }
 
 .featured-news-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
-  border-color: rgba(197, 160, 89, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+  border-color: rgba(197, 160, 89, 0.5);
 }
 
 .featured-news-img-wrap {
@@ -8111,7 +8327,7 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
   position: absolute;
   top: 1.5rem;
   left: 1.5rem;
-  background: rgba(11, 15, 23, 0.82);
+  background: rgba(11, 15, 23, 0.88);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #C5A059;
@@ -8121,7 +8337,7 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
   letter-spacing: 0.08em;
   padding: 0.4rem 0.9rem;
   border-radius: 20px;
-  border: 1px solid rgba(197, 160, 89, 0.3);
+  border: 1px solid rgba(197, 160, 89, 0.4);
   z-index: 2;
 }
 
@@ -8137,7 +8353,7 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
   align-items: center;
   gap: 0.65rem;
   font-size: 0.85rem;
-  color: #888888;
+  color: rgba(255, 255, 255, 0.55);
   margin-bottom: 1.25rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -8149,7 +8365,7 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
 }
 
 .featured-meta-dot {
-  color: #cccccc;
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .featured-news-title {
@@ -8159,11 +8375,11 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
   line-height: 1.2;
   letter-spacing: -0.025em;
   margin: 0 0 1.25rem 0;
-  color: #111111;
+  color: #ffffff;
 }
 
 .featured-news-title a {
-  color: #111111;
+  color: #ffffff;
   text-decoration: none;
   transition: color 0.25s ease;
 }
@@ -8175,7 +8391,7 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
 .featured-news-excerpt {
   font-size: 1.05rem;
   line-height: 1.65;
-  color: #555555;
+  color: rgba(255, 255, 255, 0.75);
   margin: 0 0 2rem 0;
 }
 
@@ -8186,15 +8402,16 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
   flex-wrap: wrap;
   gap: 1.25rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .featured-news-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  background: #f0f0f3;
-  color: #444444;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.8rem;
   font-weight: 600;
   padding: 0.35rem 0.85rem;
@@ -8213,7 +8430,7 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
 }
 
 .featured-read-link:hover {
-  color: #111111;
+  color: #ffffff;
   transform: translateX(4px);
 }
 
@@ -8242,11 +8459,13 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
    ========================================================================== */
 .products-fullscreen-section {
   position: relative;
-  background-color: #121212;
+  background-color: #121212 !important;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px) !important;
+  background-size: 16px 16px !important;
   padding: 0.75rem 0 3.5rem 0;
   overflow: hidden;
-  border-top: none;
-  border-bottom: none;
+  border-top: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   scroll-margin-top: 0;
 }
 

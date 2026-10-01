@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- Editorial Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css?v=5.0" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=7.0" />
 
   <!-- Favicon -->
   <link rel="icon"
@@ -24,7 +24,7 @@
     sizes="32x32" />
 </head>
 
-<body class="{% if isBusinessPage or page.url == '/business/' %}business-portal{% endif %}">
+<body class="{% if isBusinessPage or page.url == '/business/' %}business-portal{% endif %}{% if page.url == '/contact/' or page.url == '/contact' %} contact-page{% endif %}">
   <!-- Thinking Wave Visualizer Ring around Closed Navbar Circle (Desktop Only) -->
   <div class="pill-thinking-orb" id="pillThinkingOrb" aria-hidden="true">
     <canvas class="orb-wave-canvas" id="orbWaveCanvas" width="140" height="140"></canvas>
@@ -286,9 +286,10 @@
 
       <div class="footer-bottom">
         <p>© 2026 Davidson Smart Solutions Inc. All Rights Reserved.</p>
-        <div style="display: flex; gap: 1.5rem;">
+        <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
           <a href="/privacy-policy/" style="color: #a3a3a3;">Privacy Policy</a>
           <a href="/terms-of-service/" style="color: #a3a3a3;">Terms of Service</a>
+          <span class="footer-credit">Web Development by <a href="https://www.ampvisualmedia.com/" target="_blank" rel="noopener">AMP Visual Media</a></span>
         </div>
       </div>
     </div>
@@ -994,6 +995,28 @@
           brandObserver.observe(brandGrid);
         } else {
           brandGrid.classList.add('revealed');
+        }
+      }
+
+      // Built Properly, From Ground Up 01-05 Mobile Bottom-Up Reveal Observer
+      const builtCards = document.querySelectorAll('.built-groundup-section .built-point-card');
+      const builtHeader = document.querySelector('.built-groundup-section .built-groundup-header');
+      if (builtCards.length > 0) {
+        if ('IntersectionObserver' in window && window.innerWidth <= 768) {
+          const builtMobileObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                obs.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+
+          if (builtHeader) builtMobileObserver.observe(builtHeader);
+          builtCards.forEach(card => builtMobileObserver.observe(card));
+        } else {
+          if (builtHeader) builtHeader.classList.add('revealed');
+          builtCards.forEach(card => card.classList.add('revealed'));
         }
       }
 
