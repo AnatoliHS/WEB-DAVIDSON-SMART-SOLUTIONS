@@ -7,7 +7,7 @@
             class="nav-link {% if page.url and page.url.startsWith('/services/') %}active{% endif %}">
             SERVICES <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
           </a>
-          <div class="dropdown-menu mega-dropdown-menu">
+          <div class="dropdown-menu mega-dropdown-menu services-mega-dropdown-menu">
             <!-- Desktop Visual Cards Grid (Osmo Concept - Core Business Services) -->
             <div class="mega-cards-container">
               <div class="mega-cards-grid" style="grid-template-columns: repeat(3, 1fr);">
@@ -112,7 +112,7 @@
           <a href="/about/" class="nav-link {% if page.url and page.url.startsWith('/about/') %}active{% endif %}">
             ABOUT <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
           </a>
-          <div class="dropdown-menu mega-dropdown-menu">
+          <div class="dropdown-menu mega-dropdown-menu about-mega-dropdown-menu">
             <!-- Desktop Visual Split Mega Dropdown for ABOUT (1 Featured Image + Text Link Grid) -->
             <div class="about-mega-container">
               <!-- Left Side: Single Featured Image Spotlight -->
@@ -190,7 +190,7 @@
             {{ item.title }} <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
           </a>
           <div
-            class="dropdown-menu {% if item.title == 'SERVICES' or item.title == 'Services' or item.title == 'ABOUT' or item.title == 'About' or item.title == 'INDUSTRY PROFESSIONALS' or item.title == 'Industry Professionals' or item.href == '/services/' or item.href == '/#home-services' or item.href == '/about/' or item.href == '/industry-professionals/' %}mega-dropdown-menu{% endif %} {% if item.title == 'INDUSTRY PROFESSIONALS' or item.title == 'Industry Professionals' or item.href == '/industry-professionals/' %}pro-mega-dropdown-menu{% endif %}">
+            class="dropdown-menu {% if item.title == 'SERVICES' or item.title == 'Services' or item.title == 'ABOUT' or item.title == 'About' or item.title == 'INDUSTRY PROFESSIONALS' or item.title == 'Industry Professionals' or item.href == '/services/' or item.href == '/#home-services' or item.href == '/about/' or item.href == '/industry-professionals/' %}mega-dropdown-menu{% endif %} {% if item.title == 'INDUSTRY PROFESSIONALS' or item.title == 'Industry Professionals' or item.href == '/industry-professionals/' %}pro-mega-dropdown-menu{% endif %} {% if item.title == 'SERVICES' or item.title == 'Services' or item.href == '/services/' or item.href == '/#home-services' %}services-mega-dropdown-menu{% endif %} {% if item.title == 'ABOUT' or item.title == 'About' or item.href == '/about/' %}about-mega-dropdown-menu{% endif %}">
             {% if item.title == "SERVICES" or item.title == "Services" or item.href == "/services/" or item.href ==
             "/#home-services" %}
             <!-- Desktop Visual Cards Grid (Osmo Concept - All 9 Services) -->

@@ -202,13 +202,13 @@
           </div>
 
           <!-- 5. Start Your Project -->
-          <div class="drawer-nav-row drawer-nav-row-project">
+          <div class="drawer-nav-row">
             <a href="/contact/" class="drawer-nav-link drawer-nav-link-project" aria-label="Start Your Project">
-              <span class="drawer-project-heading">
-                <span class="project-word-start">START</span>
-                <span class="project-word-your">YOUR</span>
-                <span class="project-word-project">PROJECT</span>
-              </span>
+              <span>Start Your Project</span>
+              <svg class="drawer-project-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="6" y1="18" x2="18" y2="6"></line>
+                <polyline points="9 6 18 6 18 15"></polyline>
+              </svg>
             </a>
           </div>
         </div>
@@ -277,14 +277,9 @@
         <div class="footer-col">
           <h4>Contact</h4>
           <ul class="footer-links">
-            <li><i class="fa-solid fa-phone" style="color: var(--color-accent); margin-right: 0.5rem;"></i> {{
-              site.phone }}</li>
-            <li><i class="fa-solid fa-envelope" style="color: var(--color-accent); margin-right: 0.5rem;"></i> {{
-              site.email }}</li>
-            <li><i class="fa-solid fa-location-dot" style="color: var(--color-accent); margin-right: 0.5rem;"></i> {{
-              site.address }}</li>
-            <li><i class="fa-solid fa-certificate" style="color: var(--color-gold); margin-right: 0.5rem;"></i> Davidson
-              Electrical Services</li>
+            <li><i class="fa-solid fa-phone" style="color: var(--color-accent); margin-right: 0.5rem;"></i> <a href="tel:{{ site.phone or '613-779-9044' }}">{{ site.phone or '613-779-9044' }}</a></li>
+            <li><i class="fa-solid fa-envelope" style="color: var(--color-accent); margin-right: 0.5rem;"></i> <a href="mailto:{{ site.email or 'info@quintesmarthomes.ca' }}">{{ site.email or 'info@quintesmarthomes.ca' }}</a></li>
+            <li><i class="fa-solid fa-location-dot" style="color: var(--color-accent); margin-right: 0.5rem;"></i> <span style="color: #d4d4d4;">{{ site.address or 'Belleville, ON &amp; Surrounding Quinte Region' }}</span></li>
           </ul>
         </div>
       </div>

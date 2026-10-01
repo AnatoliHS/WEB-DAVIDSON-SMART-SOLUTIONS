@@ -1301,9 +1301,11 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   .desktop-pill-nav .mega-dropdown-menu {
     position: absolute;
     top: calc(100% + 1.25rem);
-    left: 0;
+    left: -150px;
+    right: 25px;
     transform: translateY(6px) translateZ(0);
-    width: min(1260px, calc(100vw - 3.5rem));
+    width: auto;
+    max-width: none;
     min-width: 0;
     background: #ffffff;
     border-radius: 20px;
@@ -1326,10 +1328,20 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     z-index: 1200;
   }
 
+  /* Dedicated Left Offset and symmetric spacing for Services and About Mega Dropdowns */
+  .desktop-pill-nav .mega-dropdown-menu.services-mega-dropdown-menu,
+  .desktop-pill-nav .mega-dropdown-menu.about-mega-dropdown-menu {
+    left: -150px;
+    right: 25px;
+    width: auto;
+    max-width: none;
+  }
+
   /* Compact width for Industry Professionals mega dropdown */
   .desktop-pill-nav .mega-dropdown-menu.pro-mega-dropdown-menu {
-    width: min(800px, calc(100vw - 3.5rem));
-    left: 0;
+    width: min(800px, calc(100vw - 5rem));
+    left: -150px;
+    right: auto;
   }
 
   /* Invisible hover bridge spanning between navbar bottom edge and mega dropdown card */
@@ -3918,97 +3930,37 @@ body.business-portal .hero-service-subtitle,
     color: #ffffff !important;
   }
 
-  /* Start Your Project Link inside Mobile Drawer */
-  .drawer-nav-row-project {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 100% !important;
-    margin-top: 1.25rem !important;
-    margin-bottom: 0.35rem !important;
-    padding: 0 !important;
-    border-bottom: none !important;
-  }
-
-  .drawer-nav-link-project {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    max-width: 335px !important;
-    margin: 0 auto !important;
-    padding: 0.92rem 1.35rem !important;
-    border-radius: 9999px !important;
-    background: rgba(197, 160, 89, 0.07) !important;
-    border: 1px solid rgba(197, 160, 89, 0.35) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), 0 0 10px rgba(197, 160, 89, 0.08) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    text-decoration: none !important;
-    cursor: pointer !important;
-    -webkit-tap-highlight-color: transparent !important;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  }
-
-  .drawer-nav-link-project:hover {
-    background: rgba(197, 160, 89, 0.14) !important;
-    border-color: rgba(197, 160, 89, 0.6) !important;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 14px rgba(197, 160, 89, 0.15) !important;
-    transform: translateY(-2px) scale(1.015) !important;
-    opacity: 1 !important;
-  }
-
-  .drawer-nav-link-project:active {
-    transform: translateY(0) scale(0.98) !important;
-  }
-
-  body.business-portal .drawer-nav-link-project {
-    background: rgba(97, 112, 158, 0.08) !important;
-    border-color: rgba(97, 112, 158, 0.4) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), 0 0 10px rgba(97, 112, 158, 0.1) !important;
-  }
-
-  body.business-portal .drawer-nav-link-project:hover {
-    background: rgba(97, 112, 158, 0.18) !important;
-    border-color: rgba(97, 112, 158, 0.7) !important;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 14px rgba(97, 112, 158, 0.2) !important;
-  }
-
-  body.business-portal .drawer-project-heading .project-word-your {
-    color: #61709e !important;
-  }
-
-  .drawer-project-heading {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-direction: row !important;
-    gap: 0.42rem !important;
-    font-family: var(--font-sans) !important;
-    font-weight: 800 !important;
-    font-size: clamp(1.2rem, 4.4vw, 1.48rem) !important;
-    line-height: 1 !important;
-    letter-spacing: 0.015em !important;
-    text-transform: uppercase !important;
-    white-space: nowrap !important;
-    text-align: center !important;
-  }
-
-  .drawer-project-heading span {
-    display: inline !important;
-    white-space: nowrap !important;
-  }
-
-  .drawer-project-heading .project-word-start {
-    color: #ffffff !important;
-  }
-
-  .drawer-project-heading .project-word-your {
+  /* Arrow icon for Start Your Project in Mobile Drawer */
+  .drawer-project-arrow {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
     color: #C5A059 !important;
+    stroke: #C5A059 !important;
+    fill: none !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    flex-shrink: 0 !important;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.2s ease, color 0.2s ease !important;
   }
 
-  .drawer-project-heading .project-word-project {
-    color: #ffffff !important;
+  .drawer-nav-link-project:hover .drawer-project-arrow {
+    color: #dfb76c !important;
+    stroke: #dfb76c !important;
+    transform: translate(3px, -3px) !important;
+  }
+
+  /* Commercial / Business Mode Overrides */
+  body.business-portal .drawer-project-arrow {
+    color: #61709e !important;
+    stroke: #61709e !important;
+  }
+
+  body.business-portal .drawer-nav-link-project:hover .drawer-project-arrow {
+    color: #7b8cb8 !important;
+    stroke: #7b8cb8 !important;
+    transform: translate(3px, -3px) !important;
   }
 
   /* About Dropdown inside Drawer */
