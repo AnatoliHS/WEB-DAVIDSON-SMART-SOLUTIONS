@@ -3416,9 +3416,9 @@ body.business-portal .hero-service-subtitle,
     box-shadow: 0 24px 65px rgba(0, 0, 0, 0.75), 0 4px 16px rgba(0, 0, 0, 0.4) !important;
   }
 
-  /* Commercial Mode: Light Navy Border on the Single Shell (Closed State) */
+  /* Commercial Mode: Slate Blue Border on the Single Shell (Closed State) */
   body.business-portal .mobile-island-shell {
-    border-color: rgba(123, 140, 184, 0.45) !important;
+    border-color: rgba(97, 112, 158, 0.45) !important;
   }
 
   body.business-portal .mobile-island-header.is-open .mobile-island-shell {
@@ -3637,15 +3637,19 @@ body.business-portal .hero-service-subtitle,
   }
 
   .island-bar-switch-link {
-    font-size: 0.92rem !important;
-    padding: 0.42rem 1.05rem !important;
+    font-size: 0.94rem !important;
+    padding: 0.25rem 0 !important;
     white-space: nowrap !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
   }
 
   @media (max-width: 360px) {
     .island-bar-switch-link {
-      font-size: 0.82rem !important;
-      padding: 0.36rem 0.8rem !important;
+      font-size: 0.84rem !important;
+      padding: 0.2rem 0 !important;
       gap: 0.38rem !important;
     }
   }
@@ -3684,25 +3688,25 @@ body.business-portal .hero-service-subtitle,
 
   /* Commercial Mode (body.business-portal) Overrides */
   body.business-portal .mobile-island-connect-btn {
-    color: #4fa3e3 !important;
+    color: #61709e !important;
   }
 
   body.business-portal .mobile-island-connect-btn:hover,
   body.business-portal .mobile-island-connect-btn:active {
-    color: #7bbbfa !important;
+    color: #7b8cb8 !important;
   }
 
   body.business-portal .mobile-island-header.is-open .bar-top,
   body.business-portal .mobile-island-header.is-open .bar-bot {
-    background-color: #7b8cb8 !important;
+    background-color: #61709e !important;
   }
 
   body.business-portal .mobile-island-bulb-img {
-    filter: drop-shadow(0 2px 6px rgba(125, 160, 230, 0.65)) !important;
+    filter: drop-shadow(0 2px 6px rgba(97, 112, 158, 0.65)) !important;
   }
 
   body.business-portal .mobile-wave-canvas {
-    filter: drop-shadow(0 0 10px rgba(125, 160, 230, 0.65)) !important;
+    filter: drop-shadow(0 0 10px rgba(97, 112, 158, 0.65)) !important;
   }
 
   body.business-portal .drawer-top-switch-wrap {
@@ -3856,7 +3860,7 @@ body.business-portal .hero-service-subtitle,
   }
 
   body.business-portal .drawer-wave-canvas {
-    filter: drop-shadow(0 0 18px rgba(125, 160, 230, 0.8)) !important;
+    filter: drop-shadow(0 0 18px rgba(97, 112, 158, 0.8)) !important;
   }
 
   .drawer-brand-logo-img {
@@ -3931,13 +3935,13 @@ body.business-portal .hero-service-subtitle,
     align-items: center !important;
     justify-content: center !important;
     width: 100% !important;
-    max-width: 320px !important;
+    max-width: 335px !important;
     margin: 0 auto !important;
-    padding: 0.95rem 1.75rem !important;
+    padding: 0.92rem 1.35rem !important;
     border-radius: 9999px !important;
-    background: linear-gradient(135deg, rgba(197, 160, 89, 0.22) 0%, rgba(197, 160, 89, 0.08) 100%) !important;
-    border: 1.5px solid rgba(197, 160, 89, 0.7) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(197, 160, 89, 0.25), inset 0 0 12px rgba(197, 160, 89, 0.1) !important;
+    background: rgba(197, 160, 89, 0.07) !important;
+    border: 1px solid rgba(197, 160, 89, 0.35) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), 0 0 10px rgba(197, 160, 89, 0.08) !important;
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
     text-decoration: none !important;
@@ -3947,10 +3951,10 @@ body.business-portal .hero-service-subtitle,
   }
 
   .drawer-nav-link-project:hover {
-    background: rgba(197, 160, 89, 0.28) !important;
-    border-color: #dfb76c !important;
-    box-shadow: 0 6px 28px rgba(197, 160, 89, 0.45), inset 0 0 16px rgba(197, 160, 89, 0.18) !important;
-    transform: translateY(-2px) scale(1.02) !important;
+    background: rgba(197, 160, 89, 0.14) !important;
+    border-color: rgba(197, 160, 89, 0.6) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 14px rgba(197, 160, 89, 0.15) !important;
+    transform: translateY(-2px) scale(1.015) !important;
     opacity: 1 !important;
   }
 
@@ -3959,19 +3963,19 @@ body.business-portal .hero-service-subtitle,
   }
 
   body.business-portal .drawer-nav-link-project {
-    background: linear-gradient(135deg, rgba(79, 163, 227, 0.22) 0%, rgba(79, 163, 227, 0.08) 100%) !important;
-    border-color: rgba(79, 163, 227, 0.7) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(79, 163, 227, 0.25), inset 0 0 12px rgba(79, 163, 227, 0.1) !important;
+    background: rgba(97, 112, 158, 0.08) !important;
+    border-color: rgba(97, 112, 158, 0.4) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), 0 0 10px rgba(97, 112, 158, 0.1) !important;
   }
 
   body.business-portal .drawer-nav-link-project:hover {
-    background: rgba(79, 163, 227, 0.28) !important;
-    border-color: #7bbbfa !important;
-    box-shadow: 0 6px 28px rgba(79, 163, 227, 0.45), inset 0 0 16px rgba(79, 163, 227, 0.18) !important;
+    background: rgba(97, 112, 158, 0.18) !important;
+    border-color: rgba(97, 112, 158, 0.7) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 14px rgba(97, 112, 158, 0.2) !important;
   }
 
   body.business-portal .drawer-project-heading .project-word-your {
-    color: #4fa3e3 !important;
+    color: #61709e !important;
   }
 
   .drawer-project-heading {
@@ -3979,12 +3983,12 @@ body.business-portal .hero-service-subtitle,
     align-items: center !important;
     justify-content: center !important;
     flex-direction: row !important;
-    gap: 0.45rem !important;
+    gap: 0.42rem !important;
     font-family: var(--font-sans) !important;
     font-weight: 800 !important;
-    font-size: clamp(1.05rem, 3.8vw, 1.25rem) !important;
+    font-size: clamp(1.2rem, 4.4vw, 1.48rem) !important;
     line-height: 1 !important;
-    letter-spacing: 0.02em !important;
+    letter-spacing: 0.015em !important;
     text-transform: uppercase !important;
     white-space: nowrap !important;
     text-align: center !important;
@@ -4073,33 +4077,52 @@ body.business-portal .hero-service-subtitle,
     align-items: center !important;
     justify-content: center !important;
     gap: 0.55rem !important;
-    font-size: 1.05rem !important;
-    font-weight: 400 !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
     letter-spacing: 0.01em !important;
     text-decoration: none !important;
-    padding: 0.45rem 1.25rem !important;
-    border-radius: 9999px !important;
+    padding: 0.25rem 0 !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
     transition: all 0.25s ease !important;
   }
 
-  /* Switch to Residential: Gold */
+  .drawer-switch-link .switch-link-text {
+    color: #ffffff !important;
+    transition: border-color 0.2s ease, opacity 0.2s ease !important;
+  }
+
+  /* Switch to Residential: White Text, Gold Underline, Gold Arrow */
   .drawer-switch-residential,
   .drawer-switch-link.drawer-switch-residential {
-    color: #C5A059 !important;
-    background: rgba(197, 160, 89, 0.08) !important;
-    border: 1px solid rgba(197, 160, 89, 0.3) !important;
+    color: #ffffff !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .drawer-switch-residential .switch-link-text {
+    color: #ffffff !important;
+    border-bottom: 1.5px solid #C5A059 !important;
+    padding-bottom: 2px !important;
+  }
+
+  .drawer-switch-residential:hover .switch-link-text {
+    border-bottom-color: #dfb76c !important;
   }
 
   .drawer-switch-residential .drawer-switch-arrow {
     font-size: 0.82rem !important;
     color: #C5A059 !important;
-    transition: transform 0.2s ease !important;
+    transition: transform 0.2s ease, color 0.2s ease !important;
   }
 
   .drawer-switch-residential:hover {
-    color: #dfb76c !important;
-    background: rgba(197, 160, 89, 0.16) !important;
-    border-color: rgba(197, 160, 89, 0.5) !important;
+    background: transparent !important;
+    border: none !important;
     opacity: 1 !important;
   }
 
@@ -4108,29 +4131,40 @@ body.business-portal .hero-service-subtitle,
     transform: translateX(4px) !important;
   }
 
-  /* Switch to Commercial: Blue */
+  /* Switch to Commercial: White Text, Blue Underline, Blue Arrow */
   .drawer-switch-commercial,
   .drawer-switch-link.drawer-switch-commercial {
-    color: #4fa3e3 !important;
-    background: rgba(79, 163, 227, 0.08) !important;
-    border: 1px solid rgba(79, 163, 227, 0.3) !important;
+    color: #ffffff !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .drawer-switch-commercial .switch-link-text {
+    color: #ffffff !important;
+    border-bottom: 1.5px solid #61709e !important;
+    padding-bottom: 2px !important;
+  }
+
+  .drawer-switch-commercial:hover .switch-link-text {
+    border-bottom-color: #7b8cb8 !important;
   }
 
   .drawer-switch-commercial .drawer-switch-arrow {
     font-size: 0.82rem !important;
-    color: #4fa3e3 !important;
-    transition: transform 0.2s ease !important;
+    color: #61709e !important;
+    transition: transform 0.2s ease, color 0.2s ease !important;
   }
 
   .drawer-switch-commercial:hover {
-    color: #7bbbfa !important;
-    background: rgba(79, 163, 227, 0.16) !important;
-    border-color: rgba(79, 163, 227, 0.5) !important;
+    background: transparent !important;
+    border: none !important;
     opacity: 1 !important;
   }
 
   .drawer-switch-commercial:hover .drawer-switch-arrow {
-    color: #7bbbfa !important;
+    color: #7b8cb8 !important;
     transform: translateX(4px) !important;
   }
 
