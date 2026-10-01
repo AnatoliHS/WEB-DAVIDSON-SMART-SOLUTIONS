@@ -1124,15 +1124,15 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     background: transparent !important;
   }
 
-  /* Expanded Pill State (Residential: 100% Solid Pure White matching Dropdowns) */
+  /* Expanded Pill State (Dark Glass matching Mobile Island Navbar) */
   .desktop-pill-nav.is-expanded {
     width: calc(100vw - 3.5rem) !important;
     max-width: calc(100vw - 3.5rem) !important;
-    background: #ffffff !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    box-shadow: none !important;
-    border: 1px solid #C5A059 !important;
+    background: rgba(20, 20, 22, 0.74) !important;
+    backdrop-filter: blur(24px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+    border: 1px solid rgba(197, 160, 89, 0.35) !important;
     transform: none !important;
   }
 
@@ -1192,6 +1192,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     object-fit: contain;
     opacity: 1;
     pointer-events: auto;
+    filter: brightness(0) invert(1) !important;
     transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.25s ease;
   }
 
@@ -1241,7 +1242,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   .pill-divider {
     width: 1px;
     height: 24px;
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.15) !important;
     flex-shrink: 0;
     margin: 0 0.5rem;
   }
@@ -1266,7 +1267,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--text-primary);
+    color: rgba(255, 255, 255, 0.9) !important;
     padding: 0.4rem 0;
     display: inline-flex;
     align-items: center;
@@ -1298,7 +1299,8 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     position: static;
   }
 
-  .desktop-pill-nav .mega-dropdown-menu {
+  .desktop-pill-nav .mega-dropdown-menu,
+  .desktop-pill-nav .dropdown-menu {
     position: absolute;
     top: calc(100% + 1.25rem);
     left: -150px;
@@ -1307,12 +1309,14 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     width: auto;
     max-width: none;
     min-width: 0;
-    background: #ffffff;
+    background: rgba(18, 18, 20, 0.99) !important;
+    backdrop-filter: blur(40px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
     border-radius: 20px;
     padding: 1.5rem;
-    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
-    border: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.08));
-    color: #0f172a;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(197, 160, 89, 0.45) !important;
+    color: #f8f7f4;
     white-space: normal !important;
     opacity: 0;
     visibility: hidden;
@@ -1326,6 +1330,11 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
       transform 0.16s ease-out,
       visibility 0.16s;
     z-index: 1200;
+  }
+
+  body.business-portal .desktop-pill-nav .mega-dropdown-menu,
+  body.business-portal .desktop-pill-nav .dropdown-menu {
+    border-color: rgba(97, 112, 158, 0.45) !important;
   }
 
   /* Dedicated Left Offset and symmetric spacing for Services and About Mega Dropdowns */
@@ -1387,8 +1396,28 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     scroll-snap-type: x mandatory !important;
     padding-bottom: 0.75rem !important;
     scrollbar-width: thin !important;
-    scrollbar-color: var(--color-accent, #0066cc) rgba(0, 0, 0, 0.06) !important;
+    scrollbar-color: var(--color-accent) rgba(255, 255, 255, 0.08) !important;
     -webkit-overflow-scrolling: touch !important;
+  }
+
+  .desktop-pill-nav .mega-cards-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-radius: 10px;
+  }
+
+  .desktop-pill-nav .mega-cards-grid::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.18) !important;
+    border-radius: 10px;
+  }
+
+  .desktop-pill-nav .mega-card-item {
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+  }
+
+  .desktop-pill-nav .mega-card-item:hover {
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5) !important;
   }
 
   .desktop-pill-nav .about-mega-container {
@@ -1402,6 +1431,14 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   .desktop-pill-nav .pro-mega-dropdown-menu .about-mega-container {
     grid-template-columns: 310px 1fr !important;
     gap: 1.5rem !important;
+  }
+
+  .desktop-pill-nav .about-mega-feature {
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .desktop-pill-nav .about-mega-feature:hover {
+    border-color: var(--color-accent) !important;
   }
 
   .desktop-pill-nav .about-mega-links {
@@ -1427,6 +1464,36 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     width: 100% !important;
     min-width: 0 !important;
     white-space: normal !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease !important;
+  }
+
+  .desktop-pill-nav .about-link-item:hover {
+    background: rgba(255, 255, 255, 0.09) !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    transform: translateX(4px) !important;
+  }
+
+  .desktop-pill-nav .about-link-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: var(--color-accent) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
+  }
+
+  .desktop-pill-nav .about-link-item:hover .about-link-icon {
+    background: var(--color-accent) !important;
+    color: #ffffff !important;
+    border-color: var(--color-accent) !important;
   }
 
   .desktop-pill-nav .about-link-text {
@@ -1441,17 +1508,22 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     white-space: normal !important;
     overflow-wrap: break-word !important;
     word-break: normal !important;
-    color: var(--text-secondary, #64748b) !important;
+    color: rgba(248, 247, 244, 0.65) !important;
     line-height: 1.4 !important;
     margin-top: 0.25rem !important;
   }
 
   .desktop-pill-nav .about-link-title {
     white-space: normal !important;
-    color: var(--text-primary, #0f172a) !important;
+    color: #f8f7f4 !important;
     font-size: 1.05rem !important;
     font-weight: 700 !important;
     line-height: 1.3 !important;
+    transition: color 0.2s ease !important;
+  }
+
+  .desktop-pill-nav .about-link-item:hover .about-link-title {
+    color: var(--color-accent) !important;
   }
 
   .desktop-pill-nav .about-feature-title,
@@ -1461,11 +1533,18 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
 
   .desktop-pill-nav .about-link-arrow {
     flex-shrink: 0 !important;
+    color: rgba(255, 255, 255, 0.35) !important;
+    transition: color 0.2s ease, transform 0.2s ease !important;
   }
 
-  /* Ensure text colors inside mega dropdown remain crisp original dark theme */
+  .desktop-pill-nav .about-link-item:hover .about-link-arrow {
+    color: var(--color-accent) !important;
+    transform: translateX(4px) !important;
+  }
+
+  /* Ensure text colors inside mega dropdown remain crisp in dark theme */
   .desktop-pill-nav .mega-dropdown-menu a {
-    color: var(--text-primary, #0f172a);
+    color: #f8f7f4;
   }
 
   .desktop-pill-nav .mega-dropdown-menu .mega-card-title {
@@ -1473,9 +1552,31 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     white-space: normal !important;
   }
 
+  .desktop-pill-nav .mega-dropdown-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
   .desktop-pill-nav .mega-dropdown-menu .mega-footer-link {
-    color: var(--text-primary, #0f172a);
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #f8f7f4 !important;
     white-space: normal !important;
+  }
+
+  .desktop-pill-nav .mega-dropdown-menu .mega-footer-link:hover {
+    background: rgba(255, 255, 255, 0.09) !important;
+    border-color: rgba(255, 255, 255, 0.16) !important;
+    color: #ffffff !important;
+  }
+
+  /* Standard Dropdown items (fallback / non-mega) */
+  .desktop-pill-nav .dropdown-menu .dropdown-item {
+    color: rgba(255, 255, 255, 0.85) !important;
+  }
+
+  .desktop-pill-nav .dropdown-menu .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: var(--color-accent) !important;
   }
 
   /* Actions inside Pill */
@@ -1493,22 +1594,35 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     white-space: nowrap;
   }
 
+  /* Residential Portal: Switch to Commercial Link with Blue Underline & Blue Arrow */
   .pill-switch-link {
     font-size: 0.82rem;
     font-weight: 700;
     white-space: nowrap;
-    border-bottom: 1.5px solid currentColor;
+    border: none !important;
+    border-bottom: 1.5px solid #61709e !important;
     padding-bottom: 2px;
     text-decoration: none;
-    color: var(--text-primary);
+    color: rgba(255, 255, 255, 0.95) !important;
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
     transition: color 0.2s ease, border-color 0.2s ease;
   }
 
+  .pill-switch-link i {
+    color: #61709e !important;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
   .pill-switch-link:hover {
-    color: var(--color-accent);
+    color: #ffffff !important;
+    border-bottom-color: #7b8cb8 !important;
+  }
+
+  .pill-switch-link:hover i {
+    color: #7b8cb8 !important;
+    transform: translateX(3px);
   }
 
   /* Close Button on Right of Pill */
@@ -1516,8 +1630,8 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1530,8 +1644,8 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   }
 
   .pill-close-btn:hover {
-    background: var(--color-accent);
-    color: #ffffff;
+    background: var(--color-accent) !important;
+    color: #ffffff !important;
     transform: rotate(90deg);
   }
 
@@ -1553,11 +1667,11 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   body.business-portal .desktop-pill-nav.is-expanded {
     width: calc(100vw - 3.5rem) !important;
     max-width: calc(100vw - 3.5rem) !important;
-    background: rgba(18, 22, 34, 0.96) !important;
-    backdrop-filter: blur(20px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.55), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
-    border: 1px solid rgba(123, 140, 184, 0.6) !important;
+    background: rgba(20, 20, 22, 0.74) !important;
+    backdrop-filter: blur(24px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+    border: 1px solid rgba(97, 112, 158, 0.45) !important;
     transform: none !important;
   }
 
@@ -1566,50 +1680,58 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   }
 
   body.business-portal .desktop-pill-nav .pill-divider {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.15) !important;
   }
 
   body.business-portal .desktop-pill-nav .nav-link {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9) !important;
   }
 
-  body.business-portal .desktop-pill-nav .nav-link:hover {
-    color: #ffffff;
+  body.business-portal .desktop-pill-nav .nav-link:hover,
+  body.business-portal .desktop-pill-nav .nav-link.active {
+    color: #ffffff !important;
   }
 
+  body.business-portal .desktop-pill-nav .nav-link::after {
+    background: var(--color-accent, #61709e) !important;
+  }
+
+  /* Commercial Portal: Switch to Residential Link with Gold Underline & Gold Arrow */
   body.business-portal .desktop-pill-nav .pill-switch-link,
   body.business-portal .desktop-pill-nav .link-arrow.pill-switch-link {
-    color: #ffffff !important;
-    border-color: #ffffff !important;
-    border-bottom-color: #ffffff !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    border: none !important;
+    border-bottom: 1.5px solid #C5A059 !important;
+    padding-bottom: 2px;
   }
 
   body.business-portal .desktop-pill-nav .pill-switch-link i,
   body.business-portal .desktop-pill-nav .link-arrow.pill-switch-link i {
-    color: #ffffff !important;
+    color: #C5A059 !important;
+    transition: color 0.2s ease, transform 0.2s ease;
   }
 
   body.business-portal .desktop-pill-nav .pill-switch-link:hover,
   body.business-portal .desktop-pill-nav .link-arrow.pill-switch-link:hover {
     color: #ffffff !important;
-    border-color: #ffffff !important;
-    border-bottom-color: #ffffff !important;
-    opacity: 0.85;
+    border-bottom-color: #d8b56f !important;
+    opacity: 1 !important;
   }
 
   body.business-portal .desktop-pill-nav .pill-switch-link:hover i,
   body.business-portal .desktop-pill-nav .link-arrow.pill-switch-link:hover i {
-    color: #ffffff !important;
+    color: #d8b56f !important;
+    transform: translateX(3px);
   }
 
   body.business-portal .desktop-pill-nav .pill-close-btn {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
   }
 
   body.business-portal .desktop-pill-nav .pill-close-btn:hover {
-    background: var(--color-accent);
-    color: #ffffff;
+    background: var(--color-accent, #61709e) !important;
+    color: #ffffff !important;
   }
 
   /* Breathing room for non-hero pages on desktop */
@@ -1643,7 +1765,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   display: flex;
   align-items: center;
   padding: 4rem 0;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: none !important;
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
@@ -1666,7 +1788,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-image: url('/assets/Davidson-House-Main.jpg');
+  background-image: url('/assets/Davidson-House-Main.png');
   background-position: center var(--hero-bg-y, 10%);
   background-size: cover;
   background-repeat: no-repeat;
@@ -1743,7 +1865,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   z-index: 1;
 }
 
-/* Index Hero Slight Dark Overlay for Premium Contrast */
+/* Index Hero Dark Overlay for Enhanced Contrast */
 .hero-editorial::before {
   content: '';
   position: absolute;
@@ -1753,7 +1875,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   bottom: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.48) 0%, rgba(0, 0, 0, 0.32) 50%, rgba(0, 0, 0, 0.45) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.50) 50%, rgba(0, 0, 0, 0.62) 100%);
   pointer-events: none;
   z-index: 1;
   display: block !important;
@@ -2530,6 +2652,42 @@ body.business-portal .hero-service-subtitle,
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Dark Variant for Statement & Video Section (Residential Division) */
+.section-statement-layout.dark-section,
+.section-statement-layout.section-statement-dark {
+  background: #121212 !important;
+  color: #f8f7f4;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.section-statement-layout.dark-section .statement-layout-label,
+.section-statement-layout.section-statement-dark .statement-layout-label {
+  color: rgba(248, 247, 244, 0.7) !important;
+}
+
+.section-statement-layout.dark-section .statement-layout-title,
+.section-statement-layout.section-statement-dark .statement-layout-title {
+  color: #f8f7f4 !important;
+}
+
+.section-statement-layout.dark-section .statement-layout-title .scroll-word,
+.section-statement-layout.section-statement-dark .statement-layout-title .scroll-word {
+  color: rgba(248, 247, 244, 0.22) !important;
+}
+
+.section-statement-layout.dark-section .statement-layout-title .scroll-word.active,
+.section-statement-layout.section-statement-dark .statement-layout-title .scroll-word.active {
+  color: #f8f7f4 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.section-statement-layout.dark-section .statement-layout-video-wrap,
+.section-statement-layout.section-statement-dark .statement-layout-video-wrap {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 868px) {
@@ -5796,7 +5954,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
   background-color: #121212;
   color: #ffffff;
   padding: 6.5rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -7055,6 +7213,65 @@ p[style*="border-left"] {
   display: none;
 }
 
+/* Dark Variant for The Process Section (Commercial) */
+.process-section-wrap.dark-section {
+  background-color: #121212 !important;
+  color: #f8f7f4;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+body.business-portal .process-section-wrap.dark-section .title-color-wipe-dark,
+.process-section-wrap.dark-section .title-color-wipe-dark {
+  background: linear-gradient(90deg, #f8f7f4 50%, rgba(248, 247, 244, 0.28) 50%) !important;
+  background-size: 200% 100% !important;
+  background-position: 100% 0 !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+body.business-portal .process-section-wrap.dark-section .title-color-wipe.revealed .title-color-wipe-dark,
+.process-section-wrap.dark-section .title-color-wipe.revealed .title-color-wipe-dark {
+  background-position: 0 0 !important;
+}
+
+.process-section-wrap.dark-section .process-card-featured,
+.process-section-wrap.dark-section .process-card-secondary {
+  background: #181818 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.process-section-wrap.dark-section .process-card-featured.revealed:hover,
+.process-section-wrap.dark-section .process-card-secondary.revealed:hover {
+  border-color: rgba(97, 112, 158, 0.45) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+.process-section-wrap.dark-section .process-card-featured h3,
+.process-section-wrap.dark-section .process-card-secondary h3 {
+  color: #f8f7f4 !important;
+}
+
+.process-section-wrap.dark-section .process-card-featured p,
+.process-section-wrap.dark-section .process-card-secondary p {
+  color: rgba(248, 247, 244, 0.72) !important;
+}
+
+.process-section-wrap.dark-section .process-btn-desktop a,
+.process-section-wrap.dark-section .process-btn-mobile a {
+  background: #1e222d !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  color: #ffffff !important;
+}
+
+.process-section-wrap.dark-section .process-btn-desktop a:hover,
+.process-section-wrap.dark-section .process-btn-mobile a:hover {
+  background: var(--color-accent, #61709e) !important;
+  border-color: var(--color-accent, #61709e) !important;
+}
+
 @media (max-width: 767px) {
   .process-section-wrap {
     padding: 3rem 0 3.5rem 0 !important;
@@ -7232,7 +7449,7 @@ p[style*="border-left"] {
    ========================================================================== */
 .biz-together-cta {
   position: relative;
-  background-color: #050714;
+  background-color: #121212;
   background-image: url('/assets/images/business-cta-bg.jpg');
   background-size: cover;
   background-position: center center;
@@ -7251,10 +7468,10 @@ p[style*="border-left"] {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, #080b11 0%, rgba(5, 7, 20, 0.96) 8%, rgba(5, 7, 20, 0.6) 24%, transparent 50%),
-    linear-gradient(0deg, #080b11 0%, rgba(5, 7, 20, 0.96) 8%, transparent 40%),
-    linear-gradient(90deg, rgba(5, 7, 20, 0.92) 0%, rgba(5, 7, 20, 0.55) 50%, rgba(5, 7, 20, 0.92) 100%),
-    radial-gradient(circle at center, rgba(5, 7, 20, 0.2) 0%, rgba(5, 7, 20, 0.8) 80%, #050714 100%);
+    linear-gradient(180deg, #121212 0%, rgba(18, 18, 18, 0.96) 8%, rgba(20, 20, 20, 0.6) 24%, transparent 50%),
+    linear-gradient(0deg, #121212 0%, rgba(18, 18, 18, 0.96) 8%, transparent 40%),
+    linear-gradient(90deg, rgba(20, 20, 20, 0.92) 0%, rgba(20, 20, 20, 0.55) 50%, rgba(20, 20, 20, 0.92) 100%),
+    radial-gradient(circle at center, rgba(25, 25, 25, 0.2) 0%, rgba(18, 18, 18, 0.8) 80%, #121212 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -8025,11 +8242,11 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
    ========================================================================== */
 .products-fullscreen-section {
   position: relative;
-  background-color: #080b11;
+  background-color: #121212;
   padding: 0.75rem 0 3.5rem 0;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
+  border-bottom: none;
   scroll-margin-top: 0;
 }
 
@@ -8146,7 +8363,10 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
 }
 
 .products-scroll-wrapper::-webkit-scrollbar {
-  display: none;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
 }
 
 .products-scroll-track {
@@ -8375,6 +8595,24 @@ body.business-portal .contact-editorial-section .together-cta-heading span:nth-c
   #commercial-services {
     padding: 1.25rem 0 3.5rem 0;
     scroll-margin-top: 75px;
+    border-top: none !important;
+    border-bottom: none !important;
+  }
+
+  .designer-ideas-section,
+  #faq {
+    border-top: none !important;
+  }
+
+  .section-statement-layout,
+  .process-section-wrap {
+    border-top: none !important;
+    border-bottom: none !important;
+  }
+
+  .hero-editorial,
+  .hero-editorial-business {
+    border-bottom: none !important;
   }
 
   .products-header-container {
