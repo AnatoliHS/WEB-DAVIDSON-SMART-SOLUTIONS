@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "deep-foods",
+    "client": "Deep Foods Inc.",
+    "sector": "Corporate",
+    "discipline": "Commercial Shading",
+    "location": "Mississauga, ON",
+    "image": "/assets/deep-restaurant.jpg",
+    "alt": "Deep Foods Inc. Commercial Motorized Shades",
+    "challenge": "Glare on executive workstations and heavy summer solar gain across the corporate headquarters.",
+    "solution": "Custom Lutron motorized interior shades with automated glare control and keypad scenes.",
+    "outcome": "Glare-free workstations, a lighter summer cooling load and single-touch sunlight control.",
+    "systems": ["Lutron Shades", "Automated Glare Control", "Keypad Scenes", "HVAC Energy Savings"],
+    "gallery": ["/assets/images/deep-food-1.webp", "/assets/images/deep-food-2.webp", "/assets/images/deep-food-3.webp", "/assets/images/deep-food-4.webp"]
+  },
+  {
+    "slug": "once-upon-a-child",
+    "client": "Once Upon a Child",
+    "sector": "Retail",
+    "discipline": "Commercial Security",
+    "location": "Belleville, ON",
+    "image": "/assets/once-upon-a-child.jpg",
+    "alt": "Once Upon a Child Belleville Commercial Security",
+    "challenge": "Protecting retail stock and staff without locking into monthly monitoring contracts.",
+    "solution": "Hikvision ColorVu 4K cameras, encrypted local NVR storage, keycard entry and smartphone alerts.",
+    "outcome": "Full-colour 4K night coverage and instant alerts, with zero monthly fees.",
+    "systems": ["Hikvision ColorVu 4K", "Encrypted NVR Storage", "Smart Access Control", "Zero Monthly Fees"],
+    "gallery": ["/assets/images/Once-Upon-a-Child-Belleville-1.webp", "/assets/images/Once-Upon-a-Child-Belleville-2.webp", "/assets/images/Once-Upon-a-Child-Belleville-3.webp", "/assets/images/Once-Upon-a-Child-Belleville-4.webp"]
+  },
+  {
+    "slug": "selby-united-church",
+    "client": "Selby United Church",
+    "sector": "Institutional",
+    "discipline": "Architectural Audio",
+    "location": "Greater Napanee, ON",
+    "image": "/assets/Selby.webp",
+    "alt": "Selby United Church Architectural Sound",
+    "challenge": "Clear speech and dependable live broadcasts for weekly services in a traditional sanctuary.",
+    "solution": "Multi-zone audio, beamforming wireless microphones and an intuitive single-touch control system.",
+    "outcome": "Intelligible sound in every pew and web broadcasts any volunteer can run.",
+    "systems": ["Multi-Zone Audio", "Beamforming Microphones", "Live Web Broadcasting", "Single Touch Control"],
+    "gallery": ["/assets/images/united-1.webp", "/assets/images/united-2.webp", "/assets/images/united-3.webp", "/assets/images/united-4.webp"]
+  },
+  {
+    "slug": "kita-beauty-lounge",
+    "client": "Kita Beauty Lounge",
+    "sector": "Wellness",
+    "discipline": "Smart Lighting & Audio",
+    "location": "Belleville, ON",
+    "image": "/assets/Kita.webp",
+    "alt": "Kita Beauty Lounge Commercial Lighting and Audio",
+    "challenge": "A boutique salon needing distinct, calm atmospheres across every treatment room.",
+    "solution": "Lutron keypads with custom scenes, warm-dim LED accent lighting and flush in-ceiling speakers.",
+    "outcome": "One-touch salon modes that set lighting and audio for every part of the business day.",
+    "systems": ["Lutron Keypads", "Warm Dimming Scenes", "In Ceiling Audio", "Automated Salon Modes"],
+    "gallery": ["/assets/images/kita-1.webp", "/assets/images/kita-2.webp", "/assets/images/kita-3.webp", "/assets/images/kita-4.webp"]
+  }
+]

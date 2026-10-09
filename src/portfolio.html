@@ -30,156 +30,128 @@ description: Explore our portfolio of commercial and residential smart home auto
   </div>
 </section>
 
-<!-- Interactive Accordion Portfolio Showcase Section (Off-White Theme) -->
-<section class="portfolio-redesign-section" id="portfolio-showcase">
-  <div class="container">
-    <div class="portfolio-list-wrapper">
+<!-- Portfolio Showcase: bento overview by default; selecting a project opens the
+     slide view on desktop or the stacked brief view on mobile (projects from _data/projects.json) -->
+<section class="pf-showcase" id="portfolio-showcase" data-view="grid">
 
-      <!-- PROJECT 01: Deep Foods Inc. -->
-      <div class="portfolio-list-item" data-index="0">
-        <!-- Collapsed Header View (Always Visible at Top) -->
-        <div class="portfolio-collapsed-header" role="button" aria-expanded="false">
-          <span class="portfolio-collapsed-title">Deep Foods Inc.</span>
-          <span class="portfolio-collapsed-num">01<span style="color: var(--color-accent);">.</span></span>
-          <span class="portfolio-arrow-icon" aria-label="Toggle details">
-            <i class="fa-solid fa-arrow-right"></i>
-          </span>
-        </div>
-        <!-- Smooth Expandable Wrapper -->
-        <div class="portfolio-expandable-wrapper">
-          <div class="portfolio-expandable-inner">
-            <div class="portfolio-expanded-content">
-              <div class="portfolio-img-frame">
-                <img src="/assets/deep-restaurant.jpg" alt="Deep Foods Inc. Commercial Motorized Shades" />
-              </div>
-              <div class="portfolio-info-col">
-                <div class="portfolio-project-location">COMMERCIAL SHADING • MISSISSAUGA, ON</div>
-                <h2 class="portfolio-project-title">Deep Foods Inc.</h2>
-                <p class="portfolio-project-desc">
-                  Davidson Smart Solutions partnered with Deep Foods Inc. to design and install custom motorized interior shades across their corporate headquarters. The automated system eliminates glare on executive workstations, lowers summer HVAC cooling costs, and provides effortless single touch sunlight control.
-                </p>
-                <div class="portfolio-pills-row">
-                  <span class="portfolio-pill">Lutron Shades</span>
-                  <span class="portfolio-pill">Automated Glare Control</span>
-                  <span class="portfolio-pill">Keypad Scenes</span>
-                  <span class="portfolio-pill">HVAC Energy Savings</span>
-                </div>
-                <a href="/contact/" class="portfolio-action-link">VIEW PROJECT DETAILS <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- ===== Overview: Bento Grid ===== -->
+  <div class="pf-grid-view">
+    <div class="container">
+      <div class="pf-grid-head">
+        <h2 class="pf-display pf-grid-title">Selected Projects<span class="pf-dot">.</span></h2>
+        <p class="pf-grid-sub">
+          {{ projects.length }} featured engagements across corporate, retail, institutional and wellness spaces.
+          Select a project to see the brief, what we delivered and the result.
+        </p>
       </div>
 
-      <!-- PROJECT 02: Once Upon a Child -->
-      <div class="portfolio-list-item" data-index="1">
-        <!-- Collapsed Header View (Always Visible at Top) -->
-        <div class="portfolio-collapsed-header" role="button" aria-expanded="false">
-          <span class="portfolio-collapsed-title">Once Upon a Child</span>
-          <span class="portfolio-collapsed-num">02<span style="color: var(--color-accent);">.</span></span>
-          <span class="portfolio-arrow-icon" aria-label="Toggle details">
-            <i class="fa-solid fa-arrow-right"></i>
-          </span>
-        </div>
-        <!-- Smooth Expandable Wrapper -->
-        <div class="portfolio-expandable-wrapper">
-          <div class="portfolio-expandable-inner">
-            <div class="portfolio-expanded-content">
-              <div class="portfolio-img-frame">
-                <img src="/assets/once-upon-a-child.jpg" alt="Once Upon a Child Belleville Commercial Security" />
-              </div>
-              <div class="portfolio-info-col">
-                <div class="portfolio-project-location">COMMERCIAL SECURITY • BELLEVILLE, ON</div>
-                <h2 class="portfolio-project-title">Once Upon a Child</h2>
-                <p class="portfolio-project-desc">
-                  Complete commercial security architecture upgrade for Once Upon a Child Belleville. Installed Hikvision ColorVu full color 4K night vision cameras, encrypted local NVR video storage, smart keycard door entry, and instant smartphone alert telemetry to safeguard retail stock and staff.
-                </p>
-                <div class="portfolio-pills-row">
-                  <span class="portfolio-pill">Hikvision ColorVu 4K</span>
-                  <span class="portfolio-pill">Encrypted NVR Storage</span>
-                  <span class="portfolio-pill">Smart Access Control</span>
-                  <span class="portfolio-pill">Zero Monthly Fees</span>
-                </div>
-                <a href="/contact/" class="portfolio-action-link">VIEW PROJECT DETAILS <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              </div>
-            </div>
+      <div class="pf-bento">
+        {% for p in projects %}
+        <a href="#{{ p.slug }}" class="pf-tile" data-i="{{ loop.index0 }}" aria-label="View project: {{ p.client }}">
+          <img src="{{ p.image }}" alt="{{ p.alt }}" loading="lazy" />
+          <div class="pf-tile-overlay">
+            <span class="pf-kicker">{{ p.sector }} &middot; {{ p.discipline }}</span>
+            <h3 class="pf-tile-title">{{ p.client }}</h3>
+            <p class="pf-tile-outcome">{{ p.outcome }}</p>
+            <span class="pf-tile-cta">View Project <i class="fa-solid fa-arrow-right"></i></span>
           </div>
-        </div>
+          <span class="pf-tile-num">0{{ loop.index }}</span>
+        </a>
+        {% endfor %}
       </div>
-
-      <!-- PROJECT 03: Selby United Church -->
-      <div class="portfolio-list-item" data-index="2">
-        <!-- Collapsed Header View (Always Visible at Top) -->
-        <div class="portfolio-collapsed-header" role="button" aria-expanded="false">
-          <span class="portfolio-collapsed-title">Selby United Church</span>
-          <span class="portfolio-collapsed-num">03<span style="color: var(--color-accent);">.</span></span>
-          <span class="portfolio-arrow-icon" aria-label="Toggle details">
-            <i class="fa-solid fa-arrow-right"></i>
-          </span>
-        </div>
-        <!-- Smooth Expandable Wrapper -->
-        <div class="portfolio-expandable-wrapper">
-          <div class="portfolio-expandable-inner">
-            <div class="portfolio-expanded-content">
-              <div class="portfolio-img-frame">
-                <img src="/assets/Selby.webp" alt="Selby United Church Architectural Sound" />
-              </div>
-              <div class="portfolio-info-col">
-                <div class="portfolio-project-location">ARCHITECTURAL AUDIO • GREATER NAPANEE, ON</div>
-                <h2 class="portfolio-project-title">Selby United Church</h2>
-                <p class="portfolio-project-desc">
-                  Revitalizing sanctuary worship spaces and community connection through custom audio-visual upgrades. Designed an integrated system with beamforming wireless microphones, clear speech amplification, and intuitive single touch controls for weekly services and live web broadcasts.
-                </p>
-                <div class="portfolio-pills-row">
-                  <span class="portfolio-pill">Multi-Zone Audio</span>
-                  <span class="portfolio-pill">Beamforming Microphones</span>
-                  <span class="portfolio-pill">Live Web Broadcasting</span>
-                  <span class="portfolio-pill">Single Touch Control</span>
-                </div>
-                <a href="/contact/" class="portfolio-action-link">VIEW PROJECT DETAILS <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PROJECT 04: Kita Beauty Lounge -->
-      <div class="portfolio-list-item" data-index="3">
-        <!-- Collapsed Header View (Always Visible at Top) -->
-        <div class="portfolio-collapsed-header" role="button" aria-expanded="false">
-          <span class="portfolio-collapsed-title">Kita Beauty Lounge</span>
-          <span class="portfolio-collapsed-num">04<span style="color: var(--color-accent);">.</span></span>
-          <span class="portfolio-arrow-icon" aria-label="Toggle details">
-            <i class="fa-solid fa-arrow-right"></i>
-          </span>
-        </div>
-        <!-- Smooth Expandable Wrapper -->
-        <div class="portfolio-expandable-wrapper">
-          <div class="portfolio-expandable-inner">
-            <div class="portfolio-expanded-content">
-              <div class="portfolio-img-frame">
-                <img src="/assets/Kita.webp" alt="Kita Beauty Lounge Commercial Lighting and Audio" />
-              </div>
-              <div class="portfolio-info-col">
-                <div class="portfolio-project-location">SMART LIGHTING &amp; AUDIO • BELLEVILLE, ON</div>
-                <h2 class="portfolio-project-title">Kita Beauty Lounge</h2>
-                <p class="portfolio-project-desc">
-                  Boutique commercial lighting scenes and relaxing ambient audio designed for Kita Beauty Lounge. Implemented Lutron smart keypads with custom scene programming, warm dimming LED accent lighting, and flush in ceiling architectural speakers throughout treatment rooms.
-                </p>
-                <div class="portfolio-pills-row">
-                  <span class="portfolio-pill">Lutron Keypads</span>
-                  <span class="portfolio-pill">Warm Dimming Scenes</span>
-                  <span class="portfolio-pill">In Ceiling Audio</span>
-                  <span class="portfolio-pill">Automated Salon Modes</span>
-                </div>
-                <a href="/contact/" class="portfolio-action-link">VIEW PROJECT DETAILS <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
+  </div>
+
+  <!-- ===== Project View ===== -->
+  <div class="pf-project-view">
+
+    <!-- Desktop: Boardroom Slides -->
+    <div class="pf-slides" tabindex="-1" aria-roledescription="carousel" aria-label="Project details">
+      {% for p in projects %}
+      <article class="pf-slide" data-i="{{ loop.index0 }}" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ projects.length }}: {{ p.client }}">
+        <img class="pf-slide-img" src="{{ p.image }}" alt="{{ p.alt }}" loading="lazy" />
+        <div class="container pf-slide-inner">
+          <div class="pf-panel">
+            <span class="pf-kicker">Project 0{{ loop.index }} &middot; {{ p.sector }}</span>
+            <h3 class="pf-display pf-panel-title">{{ p.client }}</h3>
+            <dl class="pf-facts">
+              <div><dt>Sector</dt><dd>{{ p.sector }}</dd></div>
+              <div><dt>Discipline</dt><dd>{{ p.discipline }}</dd></div>
+              <div><dt>Location</dt><dd>{{ p.location }}</dd></div>
+            </dl>
+            <dl class="pf-csr">
+              <div><dt>The Brief</dt><dd>{{ p.challenge }}</dd></div>
+              <div><dt>Delivered</dt><dd>{{ p.solution }}</dd></div>
+              <div class="is-outcome"><dt>The Result</dt><dd>{{ p.outcome }}</dd></div>
+            </dl>
+            <div class="pf-pills">{% for s in p.systems %}<span>{{ s }}</span>{% endfor %}</div>
+            <a href="/contact/" class="pf-btn">Discuss a Similar Project <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          {% if p.gallery %}
+          <div class="pf-gallery">
+            {% for g in p.gallery %}<img src="{{ g }}" alt="{{ p.client }} project photo {{ loop.index }}" loading="lazy" />{% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+
+      <div class="container pf-slides-bar">
+        <button type="button" class="pf-view-all" data-action="view-all">
+          <i class="fa-solid fa-table-cells-large"></i> View All
+        </button>
+        <div class="pf-tabs" role="tablist" aria-label="Projects">
+          {% for p in projects %}
+          <button type="button" role="tab" data-i="{{ loop.index0 }}" aria-selected="false">
+            <span>0{{ loop.index }}</span>{{ p.client }}
+          </button>
+          {% endfor %}
+        </div>
+        <div class="pf-arrows">
+          <button type="button" data-action="prev" aria-label="Previous project"><i class="fa-solid fa-arrow-left"></i></button>
+          <button type="button" data-action="next" aria-label="Next project"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile: stacked briefs (image scrolls with each brief; only the View All bar stays pinned) -->
+    <div class="pf-stack">
+      <div class="pf-stack-bar">
+        <div class="container pf-stack-bar-inner">
+          <button type="button" class="pf-view-all" data-action="view-all">
+            <i class="fa-solid fa-table-cells-large"></i> View All
+          </button>
+          <span class="pf-counter"><b>01</b> / 0{{ projects.length }}</span>
+        </div>
+      </div>
+
+      <div class="container pf-briefs">
+        {% for p in projects %}
+        <article class="pf-brief" data-i="{{ loop.index0 }}">
+          <img class="pf-brief-img" src="{{ p.image }}" alt="{{ p.alt }}" loading="lazy" />
+          <span class="pf-kicker">Project 0{{ loop.index }} &middot; {{ p.sector }}</span>
+          <h3 class="pf-display pf-brief-title">{{ p.client }}</h3>
+          <dl class="pf-facts">
+            <div><dt>Discipline</dt><dd>{{ p.discipline }}</dd></div>
+            <div><dt>Location</dt><dd>{{ p.location }}</dd></div>
+          </dl>
+          <dl class="pf-csr">
+            <div><dt>The Brief</dt><dd>{{ p.challenge }}</dd></div>
+            <div><dt>Delivered</dt><dd>{{ p.solution }}</dd></div>
+            <div class="is-outcome"><dt>The Result</dt><dd>{{ p.outcome }}</dd></div>
+          </dl>
+          <div class="pf-pills">{% for s in p.systems %}<span>{{ s }}</span>{% endfor %}</div>
+          {% if p.gallery %}
+          <div class="pf-gallery">
+            {% for g in p.gallery %}<img src="{{ g }}" alt="{{ p.client }} project photo {{ loop.index }}" loading="lazy" />{% endfor %}
+          </div>
+          {% endif %}
+          <a href="/contact/" class="pf-text-link">Discuss a similar project <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -202,308 +174,577 @@ description: Explore our portfolio of commercial and residential smart home auto
   </div>
 </section>
 
-<!-- Portfolio Accordion Styles & Downward Expand Script -->
 <style>
-  .portfolio-redesign-section {
-    background: #f5f5f7;
-    padding: 3rem 0 6rem 0;
-    color: #111111;
-  }
-
-  .portfolio-list-wrapper {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
-  }
-
-  .portfolio-list-item {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    background: #f5f5f7;
-    transition: background 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
-    overflow: hidden;
-  }
-
-  .portfolio-list-item.active {
-    background: #ffffff;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
-  }
-
-  /* Header View (Always Visible at Top of Item) */
-  .portfolio-collapsed-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 2.85rem 2.5rem;
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.3s ease, padding 0.3s ease;
-    width: 100%;
-  }
-
-  .portfolio-collapsed-title {
-    font-family: var(--font-sans);
-    font-size: clamp(1.25rem, 2.2vw, 1.9rem);
-    font-weight: 700;
-    color: #111111;
-    letter-spacing: -0.02em;
-    display: inline-block;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
-    transform-origin: left center;
-  }
-
-  .portfolio-collapsed-num {
-    font-family: var(--font-sans);
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 800;
-    color: #111111;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    display: none;
-  }
-
-  /* Orange Arrow Icon sitting directly after the title/number */
-  .portfolio-arrow-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
-    color: var(--color-accent);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    transform-origin: center center;
-    transform: rotate(0deg);
-  }
-
-  /* Desktop Hover (when collapsed): Title and Arrow increase in size slightly */
-  .portfolio-list-item:not(.active):hover .portfolio-collapsed-title {
-    transform: scale(1.04);
-    color: var(--color-accent);
-  }
-
-  .portfolio-list-item:not(.active):hover .portfolio-arrow-icon {
-    transform: scale(1.18) translateX(4px);
-  }
-
-  /* When Item is Expanded (Active via Click): Swap Title for Number & Rotate Arrow Down */
-  .portfolio-list-item.active .portfolio-collapsed-title {
-    display: none;
-  }
-
-  .portfolio-list-item.active .portfolio-collapsed-num {
-    display: inline-block;
-  }
-
-  .portfolio-list-item.active .portfolio-arrow-icon {
-    transform: rotate(90deg);
-  }
-
-  .portfolio-list-item.active:hover .portfolio-arrow-icon {
-    transform: scale(1.18) rotate(90deg);
-  }
-
-  /* Expandable Grid Animation Container */
-  .portfolio-expandable-wrapper {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .portfolio-list-item.active .portfolio-expandable-wrapper {
-    grid-template-rows: 1fr;
-  }
-
-  .portfolio-expandable-inner {
-    min-height: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-  }
-
-  /* Expanded Grid Content (Pinned Top so it expands strictly DOWNWARDS) */
-  .portfolio-expanded-content {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 2.5rem;
-    padding: 0.5rem 2rem 2.5rem 2rem;
-    align-items: start;
-    opacity: 0;
-    transform-origin: top left;
-    transform: translateY(-10px);
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
-                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
-  }
-
-  .portfolio-list-item.active .portfolio-expanded-content {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Center Image Frame */
-  .portfolio-img-frame {
-    width: 100%;
-    height: 250px;
-    border-radius: 16px;
-    overflow: hidden;
+  .pf-showcase {
+    --pf-line: rgba(255, 255, 255, 0.1);
+    --pf-text-2: rgba(255, 255, 255, 0.72);
+    --pf-text-3: rgba(255, 255, 255, 0.48);
+    --pf-accent: var(--color-accent, #C5A059);
+    --pf-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --pf-nav-offset: 96px;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-    background: #e8e8ed;
-  }
-
-  .portfolio-img-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .portfolio-list-item.active .portfolio-img-frame img {
-    transform: scale(1.05);
-  }
-
-  /* Right Details Column */
-  .portfolio-info-col {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .portfolio-project-location {
-    font-size: 0.78rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--color-accent);
-    margin-bottom: 0.5rem;
-  }
-
-  .portfolio-project-title {
+    color: #ffffff;
     font-family: var(--font-sans);
-    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
-    font-weight: 700;
-    color: #111111;
-    line-height: 1.18;
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.02em;
+    background-color: #121212;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+    background-size: 16px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .portfolio-project-desc {
-    font-size: 0.96rem;
-    color: #444444;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
+  /* ---------- Shared type & controls ---------- */
+  .pf-display {
+    font-family: var(--font-display) !important;
+    font-weight: 400 !important;
+    color: #ffffff;
+    line-height: 1.02;
+    margin: 0;
   }
+  .pf-dot { color: var(--pf-accent); }
 
-  .portfolio-pills-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-    margin-bottom: 1.75rem;
+  .pf-kicker {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pf-accent);
   }
+  .pf-kicker { margin-bottom: 0.65rem; }
 
-  .portfolio-pill {
-    font-size: 0.76rem;
+  .pf-facts { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 0 2.25rem; margin: 0; }
+  .pf-facts dt, .pf-csr dt {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pf-text-3);
+    margin-bottom: 0.3rem;
+  }
+  .pf-facts dd { margin: 0; font-weight: 600; font-size: 0.95rem; color: #ffffff; }
+
+  .pf-csr { margin: 0; border-top: 1px solid var(--pf-line); }
+  .pf-csr > div {
+    display: grid;
+    grid-template-columns: 105px 1fr;
+    gap: 1.25rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--pf-line);
+  }
+  .pf-csr dt { padding-top: 0.2rem; margin: 0; }
+  .pf-csr dd { margin: 0; color: var(--pf-text-2); line-height: 1.55; font-size: 0.95rem; }
+  .pf-csr .is-outcome dt { color: var(--pf-accent); }
+  .pf-csr .is-outcome dd { color: #ffffff; font-weight: 600; }
+
+  .pf-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pf-pills span {
+    font-size: 0.74rem;
     font-weight: 600;
-    color: #222222;
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.14);
+    color: rgba(255, 255, 255, 0.86);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     padding: 0.35rem 0.85rem;
     border-radius: 30px;
     white-space: nowrap;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
   }
 
-  .portfolio-action-link {
+  .pf-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    font-size: 0.82rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #111111;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    gap: 0.6rem;
     align-self: flex-start;
+    padding: 0.95rem 1.6rem;
+    border-radius: 40px;
+    background: var(--pf-accent);
+    color: #111111;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: transform 0.3s var(--pf-ease), box-shadow 0.3s ease;
+  }
+  .pf-btn:hover { color: #111111; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(197, 160, 89, 0.3); }
+
+  .pf-text-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #ffffff;
+  }
+  .pf-text-link i { color: var(--pf-accent); transition: transform 0.25s ease; }
+  .pf-text-link:hover { color: var(--pf-accent); }
+  .pf-text-link:hover i { transform: translateX(4px); }
+
+  .pf-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.8rem 1.3rem;
+    border-radius: 40px;
+    border: 1px solid rgba(197, 160, 89, 0.55);
+    background: rgba(12, 12, 12, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #ffffff;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+  .pf-view-all i { color: var(--pf-accent); transition: color 0.25s ease; }
+  .pf-view-all:hover { background: var(--pf-accent); border-color: var(--pf-accent); color: #111111; }
+  .pf-view-all:hover i { color: #111111; }
+
+  /* ---------- View switching ---------- */
+  .pf-showcase[data-view="grid"] .pf-project-view,
+  .pf-showcase[data-view="project"] .pf-grid-view { display: none; }
+
+  .pf-showcase[data-view="grid"] .pf-grid-view,
+  .pf-showcase[data-view="project"] .pf-project-view { animation: pf-enter 0.6s var(--pf-ease); }
+
+  @keyframes pf-enter {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: none; }
   }
 
-  .portfolio-action-link i {
-    color: var(--color-accent);
-    transition: transform 0.25s ease;
+  /* ---------- Bento overview ---------- */
+  .pf-grid-view { padding: 6rem 0 7rem; }
+  .pf-grid-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem 4rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  .pf-grid-title { font-size: clamp(2.8rem, 5.5vw, 4.6rem); }
+  .pf-grid-sub { max-width: 430px; margin: 0; color: var(--pf-text-2); line-height: 1.6; }
+
+  .pf-bento {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 270px;
+    gap: 1.25rem;
+  }
+  /* Repeating 4-tile rhythm: large feature, two stacked, one full-width */
+  .pf-tile:nth-child(4n + 1) { grid-column: span 4; grid-row: span 2; }
+  .pf-tile:nth-child(4n + 2), .pf-tile:nth-child(4n + 3) { grid-column: span 2; }
+  .pf-tile:nth-child(4n + 4) { grid-column: span 6; }
+  .pf-tile:nth-child(4n + 1):last-child { grid-column: span 6; }
+  .pf-tile:nth-child(4n + 2):last-child { grid-row: span 2; }
+
+  .pf-tile {
+    position: relative;
+    display: block;
+    border-radius: 20px;
+    overflow: hidden;
+    color: #ffffff;
+    border: 1px solid var(--pf-line);
+    background: #1a1a1a;
+    cursor: pointer;
+  }
+  .pf-tile:hover, .pf-tile:focus-visible { color: #ffffff; }
+  .pf-tile:focus-visible { outline: 2px solid var(--pf-accent); outline-offset: 3px; }
+  .pf-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--pf-ease); }
+  .pf-tile:hover img { transform: scale(1.05); }
+
+  .pf-tile-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.6rem;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.35) 45%, transparent 75%);
+  }
+  .pf-tile-title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.25rem, 2vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0;
+  }
+  .pf-tile:nth-child(4n + 1) .pf-tile-title { font-size: clamp(1.6rem, 2.8vw, 2.4rem); }
+
+  .pf-tile-outcome, .pf-tile-cta {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s var(--pf-ease), opacity 0.4s ease, margin 0.4s ease;
+  }
+  .pf-tile-outcome { margin: 0; color: rgba(255, 255, 255, 0.82); font-size: 0.92rem; line-height: 1.5; max-width: 520px; }
+  .pf-tile-cta {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.76rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--pf-accent);
+  }
+  .pf-tile:hover .pf-tile-outcome, .pf-tile:focus-visible .pf-tile-outcome { max-height: 6rem; opacity: 1; margin-top: 0.6rem; }
+  .pf-tile:hover .pf-tile-cta, .pf-tile:focus-visible .pf-tile-cta { max-height: 2rem; opacity: 1; margin-top: 0.9rem; }
+
+  .pf-tile-num {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--pf-accent);
+    border: 1px solid rgba(255, 255, 255, 0.14);
   }
 
-  .portfolio-action-link:hover {
-    color: var(--color-accent);
+  /* ---------- Desktop project view: Boardroom Slides ---------- */
+  .pf-stack { display: none; }
+
+  .pf-slides {
+    position: relative;
+    height: max(720px, 100vh);
+    overflow: hidden;
+    background: #050505;
+    outline: none;
+  }
+  .pf-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s;
+  }
+  .pf-slide.is-active { opacity: 1; visibility: visible; }
+  .pf-slide-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.06);
+    transition: transform 6s var(--pf-ease);
+  }
+  .pf-slide.is-active .pf-slide-img { transform: scale(1); }
+  .pf-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(5, 5, 5, 0.9) 0%, rgba(5, 5, 5, 0.6) 50%, rgba(5, 5, 5, 0.45) 100%),
+      linear-gradient(0deg, rgba(5, 5, 5, 0.95) 0%, transparent 30%),
+      linear-gradient(180deg, rgba(5, 5, 5, 0.7) 0%, transparent 20%),
+      rgba(5, 5, 5, 0.3);
+  }
+  .pf-slide-inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 1.75rem;
+    align-items: center;
+    padding-top: 120px;
+    padding-bottom: 125px;
+  }
+  .pf-panel {
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 2.5rem 2.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.05rem;
+    background: rgba(16, 16, 16, 0.62);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 22px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.8s var(--pf-ease) 0.2s, opacity 0.8s ease 0.2s;
+    scrollbar-width: thin;
+  }
+  .pf-slide.is-active .pf-panel { transform: none; opacity: 1; }
+  .pf-panel .pf-kicker { margin: 0; }
+  .pf-panel-title { font-size: clamp(2.4rem, 3.8vw, 3.4rem); margin-top: -0.4rem; }
+
+  .pf-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+  .pf-gallery img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: #1a1a1a;
+  }
+  /* Square tiles: cap the gallery width so its height fits between the nav and the tab bar */
+  .pf-slide-inner .pf-gallery {
+    width: 100%;
+    max-width: calc(max(720px, 100vh) - 270px);
+    justify-self: end;
+  }
+  .pf-slide-inner .pf-gallery img {
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: transform 0.8s var(--pf-ease), opacity 0.8s ease;
+  }
+  .pf-slide.is-active .pf-gallery img { opacity: 1; transform: none; }
+  .pf-slide.is-active .pf-gallery img:nth-child(1) { transition-delay: 0.3s; }
+  .pf-slide.is-active .pf-gallery img:nth-child(2) { transition-delay: 0.38s; }
+  .pf-slide.is-active .pf-gallery img:nth-child(3) { transition-delay: 0.46s; }
+  .pf-slide.is-active .pf-gallery img:nth-child(4) { transition-delay: 0.54s; }
+
+  .pf-slides-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2rem;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .pf-tabs { flex: 1; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 1.25rem; }
+  .pf-tabs button {
+    text-align: left;
+    background: none;
+    border: 0;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 0.9rem 0 0;
+    color: var(--pf-text-3);
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+  .pf-tabs button span { display: block; font-size: 0.7rem; font-weight: 800; color: var(--pf-accent); margin-bottom: 0.2rem; }
+  .pf-tabs button:hover { color: #ffffff; }
+  .pf-tabs button[aria-selected="true"] { color: #ffffff; border-top-color: var(--pf-accent); }
+
+  .pf-arrows { display: flex; gap: 0.6rem; }
+  .pf-arrows button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  }
+  .pf-arrows button:hover { background: var(--pf-accent); border-color: var(--pf-accent); color: #111111; }
+
+  @media (max-height: 780px) {
+    .pf-panel .pf-pills { display: none; }
   }
 
-  .portfolio-action-link:hover i {
-    transform: translateX(4px) translateY(-2px);
+  /* The wider panel gets a roomier label column for the brief / delivered / result rows */
+  .pf-panel .pf-csr > div { grid-template-columns: 130px 1fr; gap: 1.75rem; }
+  .pf-panel .pf-facts { gap: 0 3rem; }
+
+  /* Smaller laptops: give the details more width and tighten vertical rhythm so the CTA stays in view */
+  @media (max-width: 1280px) {
+    .pf-slide-inner { grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.85fr); gap: 1.25rem; }
+    .pf-panel { padding: 2rem 2.1rem; }
+    .pf-panel .pf-csr > div { grid-template-columns: 100px 1fr; gap: 1.25rem; }
+    .pf-gallery { gap: 0.65rem; }
+  }
+  @media (max-height: 820px) {
+    .pf-slide-inner { padding-top: 104px; padding-bottom: 112px; }
+    .pf-panel { gap: 0.85rem; padding-top: 1.75rem; padding-bottom: 1.75rem; }
+    .pf-panel-title { font-size: clamp(2.1rem, 3.2vw, 2.8rem); }
+    .pf-panel .pf-csr > div { padding: 0.7rem 0; }
+    .pf-panel .pf-csr dd { font-size: 0.9rem; line-height: 1.5; }
   }
 
-  /* Responsive Design for Mobile & Tablet */
+  /* Keep the arrows clear of the floating chat button when the container nears the viewport edge */
+  @media (max-width: 1500px) {
+    .pf-arrows { margin-right: 4rem; }
+  }
+
+  /* ---------- Mobile project view: Sticky Brief ---------- */
   @media (max-width: 991px), (hover: none) and (pointer: coarse) {
-    .portfolio-collapsed-header {
-      padding: 2.25rem 1.5rem;
+    .pf-grid-view { padding: 4.5rem 0 5rem; }
+    .pf-grid-head { margin-bottom: 2rem; }
+
+    .pf-bento { grid-template-columns: 1fr; grid-auto-rows: 300px; gap: 1rem; }
+    .pf-bento .pf-tile:nth-child(n) { grid-column: auto; grid-row: auto; }
+    .pf-tile-outcome { max-height: 6rem; opacity: 1; margin-top: 0.6rem; }
+    .pf-tile-cta { max-height: 2rem; opacity: 1; margin-top: 0.9rem; }
+    /* Text is always shown on mobile, so darken the photo more for legibility */
+    .pf-tile-overlay {
+      background:
+        linear-gradient(0deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.15) 100%),
+        rgba(0, 0, 0, 0.25);
     }
 
-    .portfolio-collapsed-title {
-      font-size: clamp(1.1rem, 4vw, 1.4rem);
-    }
+    .pf-slides { display: none; }
+    .pf-stack { display: block; padding-bottom: 4rem; }
 
-    .portfolio-expanded-content {
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-      padding: 0.25rem 1.25rem 2rem 1.25rem;
+    /* Only the View All bar stays pinned under the floating nav; images scroll with their brief */
+    .pf-stack-bar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      padding-top: var(--pf-nav-offset);
+      padding-bottom: 1.25rem;
+      background: linear-gradient(180deg, #121212 80%, rgba(18, 18, 18, 0));
     }
+    .pf-stack-bar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .pf-stack-bar .pf-view-all { padding: 0.65rem 1.1rem; font-size: 0.72rem; }
+    .pf-counter { font-size: 0.85rem; color: var(--pf-text-3); }
+    .pf-counter b { color: var(--pf-accent); }
 
-    .portfolio-img-frame {
-      height: 220px;
+    .pf-brief {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      padding: 0.5rem 0 3.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--pf-line);
+      scroll-margin-top: calc(var(--pf-nav-offset) + 4.5rem);
+    }
+    .pf-brief:last-child { border-bottom: 0; margin-bottom: 0; }
+    .pf-brief-img {
+      width: 100%;
+      height: max(34svh, 220px);
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--pf-line);
+      background: #1a1a1a;
+      margin-bottom: 0.4rem;
+    }
+    .pf-brief .pf-kicker { margin: 0; }
+    .pf-brief-title { font-size: clamp(2.2rem, 9vw, 3rem); margin-top: -0.3rem; }
+    .pf-facts { gap: 0 1.75rem; grid-template-columns: repeat(2, auto); }
+    .pf-csr > div { grid-template-columns: 1fr; gap: 0.25rem; }
+    .pf-brief .pf-gallery { gap: 0.6rem; margin: 0.4rem 0 0.6rem; }
+    .pf-brief .pf-gallery img { border-radius: 12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pf-showcase *, .pf-showcase .pf-grid-view, .pf-showcase .pf-project-view {
+      animation: none !important;
+      transition: none !important;
     }
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const listItems = document.querySelectorAll('.portfolio-list-item');
-    if (listItems.length === 0) return;
+    const showcase = document.getElementById('portfolio-showcase');
+    if (!showcase) return;
 
-    listItems.forEach(item => {
-      const header = item.querySelector('.portfolio-collapsed-header');
+    const tiles = showcase.querySelectorAll('.pf-tile');
+    const slidesEl = showcase.querySelector('.pf-slides');
+    const slides = showcase.querySelectorAll('.pf-slide');
+    const tabs = showcase.querySelectorAll('.pf-tabs button');
+    const briefs = showcase.querySelectorAll('.pf-brief');
+    const counter = showcase.querySelector('.pf-counter b');
+    const slugs = Array.from(tiles, t => t.getAttribute('href').slice(1));
+    const count = slugs.length;
+    let current = 0;
+    let trackingPausedUntil = 0;
 
-      // Click/Tap toggle handler for header & close button (+)
-      header.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isActive = item.classList.contains('active');
-        listItems.forEach(i => {
-          i.classList.remove('active');
-          const headerEl = i.querySelector('.portfolio-collapsed-header');
-          if (headerEl) headerEl.setAttribute('aria-expanded', 'false');
-        });
+    const isMobile = () => isMobileLayout(991);
+    const pad = (n) => String(n + 1).padStart(2, '0');
 
-        if (!isActive) {
-          item.classList.add('active');
-          header.setAttribute('aria-expanded', 'true');
+    // Highlight project i in both project layouts so switching breakpoints stays in sync
+    const setActive = (i) => {
+      current = (i + count) % count;
+      slides.forEach((s, n) => s.classList.toggle('is-active', n === current));
+      tabs.forEach((t, n) => t.setAttribute('aria-selected', n === current ? 'true' : 'false'));
+      if (counter) counter.textContent = pad(current);
+    };
 
-          if (isMobileLayout(991)) {
-            setTimeout(() => {
-              item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 80);
-          }
+    const scrollToShowcase = () => {
+      showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    const openProject = (i, { push = true } = {}) => {
+      showcase.dataset.view = 'project';
+      setActive(i);
+      if (push) history.pushState({ pf: slugs[current] }, '', '#' + slugs[current]);
+
+      requestAnimationFrame(() => {
+        if (isMobile()) {
+          // Jump straight to the brief ('instant' overrides the site-wide smooth scrolling)
+          trackingPausedUntil = performance.now() + 400;
+          briefs[current].scrollIntoView({ behavior: 'instant', block: 'start' });
+        } else {
+          scrollToShowcase();
+          slidesEl.focus({ preventScroll: true });
         }
+      });
+    };
+
+    const showAll = ({ push = true } = {}) => {
+      if (showcase.dataset.view === 'grid') return;
+      showcase.dataset.view = 'grid';
+      if (push) history.pushState({ pf: null }, '', location.pathname + location.search);
+      requestAnimationFrame(scrollToShowcase);
+    };
+
+    // Moving between projects updates the URL without adding history entries
+    const goTo = (i) => {
+      setActive(i);
+      history.replaceState({ pf: slugs[current] }, '', '#' + slugs[current]);
+    };
+
+    tiles.forEach((tile, i) => {
+      tile.addEventListener('click', (e) => {
+        e.preventDefault();
+        openProject(i);
       });
     });
 
-    // Close when clicking outside portfolio items
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.portfolio-list-item')) {
-        listItems.forEach(i => {
-          i.classList.remove('active');
-          const headerEl = i.querySelector('.portfolio-collapsed-header');
-          if (headerEl) headerEl.setAttribute('aria-expanded', 'false');
-        });
-      }
+    showcase.querySelectorAll('[data-action="view-all"]').forEach(btn => btn.addEventListener('click', () => showAll()));
+    showcase.querySelector('[data-action="prev"]').addEventListener('click', () => goTo(current - 1));
+    showcase.querySelector('[data-action="next"]').addEventListener('click', () => goTo(current + 1));
+    tabs.forEach((tab, i) => tab.addEventListener('click', () => goTo(i)));
+
+    document.addEventListener('keydown', (e) => {
+      if (showcase.dataset.view !== 'project' || isMobile()) return;
+      if (e.target.closest('input, textarea, select')) return;
+      if (e.key === 'ArrowRight') goTo(current + 1);
+      if (e.key === 'ArrowLeft') goTo(current - 1);
+      if (e.key === 'Escape') showAll();
     });
 
+    // Mobile stacked briefs: the brief that has reached the pinned bar is the active one
+    const stackBar = showcase.querySelector('.pf-stack-bar');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking || showcase.dataset.view !== 'project' || !isMobile()) return;
+      if (performance.now() < trackingPausedUntil) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const line = stackBar.getBoundingClientRect().bottom + 40;
+        let active = 0;
+        briefs.forEach((b, n) => { if (b.getBoundingClientRect().top <= line) active = n; });
+        if (active !== current) goTo(active);
+      });
+    }, { passive: true });
+
+    // Back/forward and deep links (e.g. /portfolio/#selby-united-church)
+    const syncFromHash = () => {
+      const i = slugs.indexOf(location.hash.slice(1));
+      if (i >= 0) openProject(i, { push: false });
+      else showAll({ push: false });
+    };
+    window.addEventListener('popstate', syncFromHash);
+    if (slugs.includes(location.hash.slice(1))) {
+      syncFromHash();
+      // Fonts and images can shift the layout after first paint, so land on the brief again once loaded
+      window.addEventListener('load', () => { if (isMobile()) openProject(current, { push: false }); });
+    }
   });
 </script>

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ title | default("Automation - Convenience at your fingertips") }} — {{ site.title }}</title>
   <meta name="description" content="{{ description | default(site.description) }}" />
+  {% if robots %}<meta name="robots" content="{{ robots }}" />{% endif %}
 
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
