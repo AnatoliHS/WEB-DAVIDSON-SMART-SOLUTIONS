@@ -15,8 +15,13 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
+  <!-- Layout helper: touch tablets (no hover, coarse pointer) get the mobile layout at any width, matching the CSS media queries -->
+  <script>
+    window.isMobileLayout = (px) => window.matchMedia('(max-width: ' + px + 'px), (hover: none) and (pointer: coarse)').matches;
+  </script>
+
   <!-- Editorial Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css?v=7.7" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=8.5" />
 
   <!-- Favicon -->
   <link rel="icon"
@@ -31,7 +36,8 @@
   </div>
 
   <!-- Desktop Expanding Pill Navigation (Desktop Only: min-width 901px) -->
-  <aside class="desktop-pill-nav" id="desktopPillNav" aria-label="Main Navigation">
+  <!-- Every section is dark, so the pill is always in its on-dark theme (white bulb, gold orb) -->
+  <aside class="desktop-pill-nav is-on-dark" id="desktopPillNav" aria-label="Main Navigation">
     <!-- Circle Bulb Trigger Button (Always visible on left) -->
     <button class="pill-bulb-btn" id="pillBulbBtn" aria-label="Open Navigation Menu" aria-expanded="false" title="Menu">
       <img src="/assets/bulb-black.png" alt="Davidson Smart Solutions Logo" class="pill-bulb-icon bulb-icon-dark" />
@@ -499,6 +505,37 @@
             closeDesktopPill();
           }
         });
+
+        // Open at the top of the page, collapse to the bulb once scrolling starts.
+        // Only auto-opens are auto-closed: if the user opens it while scrolled, it stays open.
+        const TOP_THRESHOLD = 10;
+        let autoOpened = false;
+        let wasAtTop = null;
+
+        const syncPillToScroll = () => {
+          if (isMobileLayout(900)) return;
+          const atTop = window.scrollY <= TOP_THRESHOLD;
+          if (atTop === wasAtTop) return;
+          wasAtTop = atTop;
+          if (atTop && !desktopPill.classList.contains('is-expanded')) {
+            openDesktopPill();
+            autoOpened = true;
+          } else if (!atTop && autoOpened) {
+            closeDesktopPill();
+          }
+        };
+
+        // Any manual toggle hands control back to the user
+        pillBulbBtn.addEventListener('click', () => (autoOpened = false));
+        if (pillCloseBtn) pillCloseBtn.addEventListener('click', () => (autoOpened = false));
+
+        // First sync is instant so the pill doesn't animate open on every page load
+        desktopPill.classList.add('pill-instant');
+        syncPillToScroll();
+        if (desktopPill.classList.contains('is-expanded')) desktopPill.classList.add('overflow-visible');
+        requestAnimationFrame(() => requestAnimationFrame(() => desktopPill.classList.remove('pill-instant')));
+
+        window.addEventListener('scroll', syncPillToScroll, { passive: true });
       }
 
       // Escape Key Dismissal (Both Desktop & Mobile)
@@ -618,7 +655,7 @@
         currentEnergy += (targetEnergy - currentEnergy) * 0.08;
         time += 0.026 * currentEnergy;
 
-        // Desktop blend: driven purely by the desktop dynamic section theme detector (is-on-dark)
+        // Desktop blend: follows the pill's on-dark theme
         const targetDesktopBlend = (desktopPill && desktopPill.classList.contains('is-on-dark')) ? 1.0 : 0.0;
         desktopColorBlend += (targetDesktopBlend - desktopColorBlend) * 0.08;
 
@@ -702,80 +739,6 @@
 
       animId = requestAnimationFrame(drawWave);
 
-      // 4. Desktop Dynamic Section Theme Detector
-      if (desktopPill && pillBulbBtn) {
-        let themeScrollTicking = false;
-        const updateBulbTheme = () => {
-          if (desktopPill.classList.contains('is-expanded')) return;
-          const btnRect = pillBulbBtn.getBoundingClientRect();
-          const testX = btnRect.left + btnRect.width / 2;
-          const testY = btnRect.top + btnRect.height / 2;
-
-          let isDark = false;
-          if (typeof document.elementsFromPoint === 'function') {
-            const elements = document.elementsFromPoint(testX, testY);
-            for (const el of elements) {
-              if (el === desktopPill || desktopPill.contains(el) || el === desktopCanvas || (pillThinkingOrb && pillThinkingOrb.contains(el))) {
-                continue;
-              }
-              if (
-                el.closest('.hero-editorial') ||
-                el.closest('.hero-editorial-business') ||
-                el.closest('.site-footer') ||
-                el.closest('.footer-editorial') ||
-                el.closest('.footer-bottom') ||
-                el.closest('.bg-dark') ||
-                el.closest('.dark-section') ||
-                el.closest('[data-theme="dark"]')
-              ) {
-                isDark = true;
-                break;
-              }
-              const style = window.getComputedStyle(el);
-              const bg = style.backgroundColor;
-              if (bg && bg !== 'transparent' && !bg.startsWith('rgba(0, 0, 0, 0)')) {
-                const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
-                if (match) {
-                  const r = parseInt(match[1], 10);
-                  const g = parseInt(match[2], 10);
-                  const b = parseInt(match[3], 10);
-                  const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-                  isDark = lum < 135;
-                  break;
-                }
-              }
-            }
-          }
-
-          if (!isDark && window.scrollY < 650) {
-            const topHero = document.querySelector('.hero-editorial, .hero-editorial-business');
-            if (topHero && topHero.getBoundingClientRect().bottom > btnRect.top + 20) {
-              isDark = true;
-            }
-          }
-
-          if (isDark) {
-            desktopPill.classList.add('is-on-dark');
-            desktopPill.classList.remove('is-on-light');
-          } else {
-            desktopPill.classList.add('is-on-light');
-            desktopPill.classList.remove('is-on-dark');
-          }
-        };
-
-        window.addEventListener('scroll', () => {
-          if (!themeScrollTicking) {
-            requestAnimationFrame(() => {
-              updateBulbTheme();
-              themeScrollTicking = false;
-            });
-            themeScrollTicking = true;
-          }
-        }, { passive: true });
-
-        window.addEventListener('resize', updateBulbTheme, { passive: true });
-        updateBulbTheme();
-      }
 
       // Scroll-Driven Word Writing Reveal Effect (HTML Preserving)
       const revealContainers = document.querySelectorAll('.scroll-text-reveal');
@@ -896,13 +859,13 @@
       }
 
       // Desktop Staggered Stat Box Scroll Parallax Fallback
-      if (window.innerWidth > 900 && !CSS.supports('(animation-timeline: view()) and (animation-range: entry)')) {
+      if (!isMobileLayout(900) && !CSS.supports('(animation-timeline: view()) and (animation-range: entry)')) {
         const container = document.querySelector('.staggered-cards-container');
         const rightCol = document.querySelector('.staggered-col-right');
         if (container && rightCol) {
           let ticking = false;
           const updateParallax = () => {
-            if (window.innerWidth <= 900) return;
+            if (isMobileLayout(900)) return;
             const rect = container.getBoundingClientRect();
             const windowHeight = window.innerHeight;
             if (rect.bottom >= 0 && rect.top <= windowHeight) {
@@ -967,7 +930,7 @@
       const processGrid = document.querySelector('.process-cards-grid');
       if (processCards.length > 0) {
         if ('IntersectionObserver' in window) {
-          if (window.innerWidth > 991 && processGrid) {
+          if (!isMobileLayout(991) && processGrid) {
             const gridObserver = new IntersectionObserver((entries, obs) => {
               entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1017,7 +980,7 @@
       const builtCards = document.querySelectorAll('.built-groundup-section .built-point-card');
       const builtHeader = document.querySelector('.built-groundup-section .built-groundup-header');
       if (builtCards.length > 0) {
-        if ('IntersectionObserver' in window && window.innerWidth <= 768) {
+        if ('IntersectionObserver' in window && isMobileLayout(768)) {
           const builtMobileObserver = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
               if (entry.isIntersecting) {

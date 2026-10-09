@@ -202,7 +202,7 @@ ul {
   transition: height 0.2s ease, max-width 0.2s ease;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
   .nav-brand-logo-img {
     height: 68px;
     max-width: 300px;
@@ -270,7 +270,7 @@ body.business-portal .brand-logo-text .accent-s {
   width: 100%;
 }
 
-@media (min-width: 901px) {
+@media (min-width: 901px) and (hover: hover), (min-width: 901px) and (pointer: fine) {
   .main-nav {
     height: 100%;
     align-self: stretch;
@@ -359,7 +359,7 @@ body.business-portal .brand-logo-text .accent-s {
 }
 
 /* Desktop Visual Cards Mega Dropdown (Osmo Concept - Desktop Only) */
-@media (min-width: 901px) {
+@media (min-width: 901px) and (hover: hover), (min-width: 901px) and (pointer: fine) {
   .has-mega-dropdown {
     position: static !important;
   }
@@ -774,7 +774,7 @@ body.business-portal .brand-logo-text .accent-s {
 }
 
 /* Mobile View Fallback */
-@media (max-width: 900px) {
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
 
   .mega-cards-container,
   .about-mega-container {
@@ -1049,7 +1049,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   display: none !important;
 }
 
-@media (min-width: 901px) {
+@media (min-width: 901px) and (hover: hover), (min-width: 901px) and (pointer: fine) {
   :root {
     --header-height: 0px;
   }
@@ -1095,6 +1095,13 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     height: 140px;
     display: block !important;
     pointer-events: none;
+  }
+
+  /* Initial page-load sync: skip the open animation */
+  .desktop-pill-nav.pill-instant,
+  .desktop-pill-nav.pill-instant *,
+  body:has(.desktop-pill-nav.pill-instant) .pill-thinking-orb {
+    transition: none !important;
   }
 
   /* Hide gracefully when navbar is expanded */
@@ -2172,7 +2179,7 @@ body.business-portal .hero-service-subtitle,
   color: #C5A059 !important;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
 
   .hero-editorial.hero-editorial-service,
   .hero-editorial-service {
@@ -2339,7 +2346,7 @@ body.business-portal .hero-service-subtitle,
   margin: 0;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 991px), (hover: none) and (pointer: coarse) {
   .built-groundup-container {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -2367,7 +2374,7 @@ body.business-portal .hero-service-subtitle,
 }
 
 /* Mobile Reveal Animation for Built Properly, From Ground Up (01-05) */
-@media (max-width: 768px) {
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
   .built-groundup-section .built-groundup-header,
   .built-groundup-section .built-point-card {
     opacity: 0;
@@ -2563,7 +2570,7 @@ body.business-portal .hero-service-subtitle,
   animation-delay: 0.72s;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) and (hover: hover), (min-width: 992px) and (pointer: fine) {
   .hero-editorial .hero-display-title em {
     color: #D4AF37 !important;
     -webkit-text-fill-color: #D4AF37 !important;
@@ -2834,7 +2841,7 @@ body.business-portal .hero-service-subtitle,
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
 }
 
-@media (max-width: 868px) {
+@media (max-width: 868px), (hover: none) and (pointer: coarse) {
   .statement-layout-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -2901,7 +2908,7 @@ body.business-portal .hero-service-subtitle,
   display: block;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 960px), (hover: none) and (pointer: coarse) {
   .home-split-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -2991,7 +2998,7 @@ body.business-portal .hero-service-subtitle,
   display: block;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 960px), (hover: none) and (pointer: coarse) {
   .founder-quote-section {
     padding: 3.5rem 0 0 0;
     overflow: hidden;
@@ -3184,7 +3191,7 @@ body.business-portal .hero-service-subtitle,
   }
 }
 
-@media (min-width: 901px) {
+@media (min-width: 901px) and (hover: hover), (min-width: 901px) and (pointer: fine) {
   @supports ((animation-timeline: view()) and (animation-range: entry)) {
     .staggered-cards-container {
       view-timeline: --stats-scroll block;
@@ -3597,7 +3604,7 @@ body.business-portal .hero-service-subtitle,
 }
 
 /* Responsive Queries & Mobile Navigation Drawer */
-@media (max-width: 900px) {
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
 
   .hero-editorial-contact {
     height: auto !important;
@@ -4554,7 +4561,7 @@ body.business-portal .hero-service-subtitle,
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
   body.business-portal .brand-logo picture img {
     transform: scale(1.2);
     transform-origin: left center;
@@ -4608,7 +4615,7 @@ body.business-portal .hero-service-subtitle,
 }
 
 /* Comprehensive Mobile Responsiveness Fixes (< 900px) */
-@media (max-width: 900px) {
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
   .container {
     padding-left: 1.25rem !important;
     padding-right: 1.25rem !important;
@@ -4911,7 +4918,7 @@ body.business-portal .hero-service-subtitle,
   margin-right: 0.35rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
   .rewired-grid {
     grid-template-columns: 1fr !important;
     gap: 3rem !important;
@@ -5031,7 +5038,7 @@ body.business-portal .hero-service-subtitle,
   border-radius: 4px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
   .map-interactive-wrapper {
     padding: 1.5rem 1rem !important;
   }
@@ -5158,7 +5165,7 @@ body {
   gap: 2.5rem;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 850px), (hover: none) and (pointer: coarse) {
 
   .two-col-grid,
   .about-reviews-grid {
@@ -5196,6 +5203,307 @@ body {
   .pin-label-tag {
     font-size: 0.65rem !important;
     padding: 1px 4px !important;
+  }
+}
+
+/* Dark Service Area Map (About Page) */
+.dark-map-section {
+  padding: 6rem 0;
+  background-color: #121212;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+  background-size: 16px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.dark-map-section .title-color-wipe-dark {
+  background: linear-gradient(90deg, #f8f7f4 50%, rgba(248, 247, 244, 0.28) 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.dark-map-section .title-color-wipe.revealed .title-color-wipe-dark {
+  background-position: 0 0;
+}
+
+/* Flashlight Map: frame keeps the artwork's aspect ratio so % pin positions stay accurate at every width */
+@property --flash-r {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+.flash-map {
+  --mx: 50%;
+  --my: 50%;
+  --flash-r: 0px;
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  aspect-ratio: 1376 / 700;
+  transition: --flash-r 0.45s ease;
+}
+
+.flash-map.lit {
+  --flash-r: 190px;
+}
+
+.flash-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.flash-fade {
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 50%, transparent 78%);
+  mask-image: radial-gradient(ellipse at center, #000 50%, transparent 78%);
+}
+
+.flash-reveal {
+  -webkit-mask-image: radial-gradient(circle var(--flash-r) at var(--mx) var(--my), #000 30%, transparent 100%);
+  mask-image: radial-gradient(circle var(--flash-r) at var(--mx) var(--my), #000 30%, transparent 100%);
+}
+
+.flash-pin {
+  position: absolute;
+  /* Anchor on the dot (6px pin padding + 1px border + 5px pill padding + 4px dot radius) so pills grow away from the location */
+  transform: translate(-16px, -50%);
+  background: none;
+  border: 0;
+  padding: 6px;
+  cursor: pointer;
+  z-index: 5;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.flash-pin:focus-visible {
+  outline: none;
+}
+
+.flash-pin.active {
+  z-index: 8;
+}
+
+.flash-pill {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 18px;
+  padding: 0 4px 0 5px;
+  background: rgba(18, 18, 18, 0.9);
+  border: 1px solid rgba(197, 160, 89, 0.5);
+  border-radius: 999px;
+  transition: gap 0.3s ease, padding 0.3s ease, height 0.3s ease, border-color 0.3s;
+}
+
+.flash-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px rgba(197, 160, 89, 0.8);
+}
+
+.flash-pin.is-hq .flash-dot {
+  background: #ffffff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.9), 0 0 14px rgba(255, 255, 255, 0.45);
+}
+
+.flash-pill-text {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.78rem;
+  line-height: 1;
+  font-weight: 700;
+  color: #ffffff;
+  transition: max-width 0.35s ease;
+}
+
+/* Active pins open into a labelled pill */
+.flash-pin.active .flash-pill {
+  gap: 0.5rem;
+  height: 26px;
+  padding: 0 12px 0 5px;
+}
+
+/* Pins near the east edge grow leftward */
+.flash-pin.edge-right {
+  transform: translate(calc(-100% + 16px), -50%);
+}
+
+.flash-pin.edge-right .flash-pill {
+  flex-direction: row-reverse;
+  padding: 0 5px 0 4px;
+}
+
+.flash-pin.edge-right.active .flash-pill {
+  padding: 0 5px 0 12px;
+}
+
+.flash-pin.active .flash-pill {
+  border-color: var(--color-accent);
+}
+
+.flash-pin.active .flash-pill-text {
+  max-width: 260px;
+}
+
+/* Description sits on its own dark card so it stays readable over the lit map */
+.flash-card {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 6px;
+  width: 250px;
+  display: block;
+  text-align: left;
+  padding: 0.75rem 0.9rem 0.85rem;
+  background: rgba(18, 18, 18, 0.92);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease 0.1s, transform 0.25s ease 0.1s;
+  pointer-events: none;
+}
+
+.flash-pin.edge-right .flash-card {
+  left: auto;
+  right: 6px;
+}
+
+.flash-pin.active .flash-card {
+  opacity: 1;
+  transform: none;
+}
+
+.flash-badge {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: rgba(197, 160, 89, 0.12);
+  padding: 3px 7px;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.flash-desc {
+  display: block;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: #c9ced8;
+}
+
+.flash-caption,
+.flash-swipe-hint {
+  display: none;
+}
+
+@media (max-width: 850px), (hover: none) and (pointer: coarse) {
+  /* Cards don't fit on the small map: details go in the caption below it */
+  .flash-card {
+    display: none;
+  }
+
+  /* Swipe map: about twice a phone's width, scrolled sideways (tablets are wide enough not to need it) */
+  .flash-swipe {
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .flash-swipe::-webkit-scrollbar {
+    display: none;
+  }
+
+  .flash-swipe .flash-map {
+    width: max(100%, 820px);
+    max-width: none;
+    transition: none;
+  }
+
+  .flash-swipe-hint {
+    display: block;
+    margin-top: 0.6rem;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6f7686;
+  }
+
+  /* Fixed-size spotlight that fades (cheap) rather than an animated mask radius (repaints every frame) */
+  .flash-map,
+  .flash-map.lit {
+    --flash-r: 90px;
+  }
+
+  .flash-reveal {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .flash-map.lit .flash-reveal {
+    opacity: 1;
+  }
+
+  /* No labels on the small map: the selected pin stays a dot and the light marks it instead */
+  .flash-pin.active .flash-pill {
+    gap: 0;
+    height: 18px;
+    padding: 0 4px 0 5px;
+  }
+
+  .flash-pin.edge-right.active .flash-pill {
+    padding: 0 5px 0 4px;
+  }
+
+  .flash-pin.active .flash-pill-text {
+    max-width: 0;
+  }
+
+  .flash-pin.active .flash-dot {
+    background: #ffffff;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.9), 0 0 14px rgba(197, 160, 89, 0.8);
+  }
+
+  .flash-caption {
+    display: block;
+    position: relative;
+    margin: 1rem 16px 0;
+    padding: 0.9rem 1rem;
+    min-height: 4.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(24, 24, 24, 0.8);
+    color: #9ea5b3;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .flash-caption strong {
+    display: block;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0.5rem 0 0.3rem;
   }
 }
 
@@ -5291,7 +5599,7 @@ body {
   overflow-wrap: anywhere;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
   .head-office-card {
     padding: 1.5rem 1.25rem;
     margin-top: 2rem;
@@ -5320,7 +5628,7 @@ body {
   border-radius: 12px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
   .reviews-slider-container {
     padding: 0 40px;
   }
@@ -5453,7 +5761,7 @@ body {
   display: inline-block;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 850px), (hover: none) and (pointer: coarse) {
   .team-grid {
     display: flex !important;
     grid-template-columns: none !important;
@@ -5669,7 +5977,7 @@ body.business-portal .google-preferred-badge:focus-visible {
   box-shadow: 0 6px 24px rgba(97, 112, 158, 0.45) !important;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 850px), (hover: none) and (pointer: coarse) {
   .hero-reveal-grid {
     grid-template-columns: 1fr !important;
     gap: 2.5rem !important;
@@ -5809,7 +6117,7 @@ body.business-portal .google-preferred-badge:focus-visible {
   margin-top: 1.25rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
   .faq-item {
     padding: 1.4rem 0;
   }
@@ -6137,7 +6445,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
   margin-bottom: 4rem;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 992px), (hover: none) and (pointer: coarse) {
   .designer-ideas-header {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -6220,7 +6528,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
   gap: 1.75rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .designer-cards-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -6641,7 +6949,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
   margin-top: 1.25rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
   .designer-ideas-section .faq-item {
     padding: 1.4rem 0;
   }
@@ -6663,7 +6971,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
   align-items: center;
 }
 
-@media (min-width: 851px) {
+@media (min-width: 851px) and (hover: hover), (min-width: 851px) and (pointer: fine) {
   .grid-2col-responsive.staggered-reverse>.grid-text-col {
     order: 2;
   }
@@ -6673,7 +6981,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 850px), (hover: none) and (pointer: coarse) {
   .grid-2col-responsive {
     display: flex !important;
     flex-direction: column !important;
@@ -6701,7 +7009,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
   margin-top: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
   .logo-grid-responsive {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 0.75rem !important;
@@ -6709,7 +7017,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
 }
 
 /* Brand Showcase Section Responsive Rules */
-@media (max-width: 850px) {
+@media (max-width: 850px), (hover: none) and (pointer: coarse) {
   .brand-header-grid {
     grid-template-columns: 1fr !important;
     gap: 1rem !important;
@@ -6761,7 +7069,7 @@ body.business-portal a.dropdown-item[style*="color: var(--color-accent)"] {
   transform: scale(1.06);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
   .logo-single-row {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
@@ -6840,7 +7148,7 @@ p[style*="border-left"] {
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1100px), (hover: none) and (pointer: coarse) {
   .packages-pricing-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -6850,7 +7158,7 @@ p[style*="border-left"] {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
   .packages-pricing-section {
     padding: 3.5rem 0;
   }
@@ -7052,7 +7360,7 @@ p[style*="border-left"] {
   transition-delay: 0.50s;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 992px), (hover: none) and (pointer: coarse) {
   .specialty-sticky-section {
     height: auto !important;
     padding: 5rem 0;
@@ -7220,7 +7528,7 @@ p[style*="border-left"] {
   line-height: 1.45;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 991px), (hover: none) and (pointer: coarse) {
   .stacked-services-section {
     padding: 2rem 0 4rem 0;
   }
@@ -7332,7 +7640,7 @@ p[style*="border-left"] {
   will-change: opacity, transform;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) and (hover: hover), (min-width: 992px) and (pointer: fine) {
   .process-cards-grid .process-card-featured:nth-child(1) {
     transition-delay: 0.05s;
   }
@@ -7346,7 +7654,7 @@ p[style*="border-left"] {
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 991px), (hover: none) and (pointer: coarse) {
   .process-cards-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -7445,7 +7753,7 @@ body.business-portal .process-section-wrap.dark-section .title-color-wipe.reveal
   border-color: var(--color-accent, #61709e) !important;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767px), (hover: none) and (pointer: coarse) {
   .process-section-wrap {
     padding: 3rem 0 3.5rem 0 !important;
   }
@@ -7492,7 +7800,7 @@ body.business-portal .process-section-wrap.dark-section .title-color-wipe.reveal
   padding-top: 0 !important;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 992px), (hover: none) and (pointer: coarse) {
   .section-statement-layout {
     padding: 3.5rem 0 2rem 0 !important;
   }
@@ -7669,7 +7977,7 @@ body.business-portal .process-section-wrap.dark-section .title-color-wipe.reveal
   transform: translateY(-2px);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 991px), (hover: none) and (pointer: coarse) {
 
   .home-together-cta,
   .biz-together-cta {
@@ -7955,7 +8263,7 @@ body.business-portal .contact-editorial-section .together-cta-btn:hover,
   margin: 2rem 0 2.25rem 0;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 991px), (hover: none) and (pointer: coarse) {
   .contact-editorial-section {
     padding-top: clamp(7.5rem, 16vh, 9.5rem) !important;
     padding-bottom: 4.5rem !important;
@@ -8101,14 +8409,14 @@ body.business-portal .contact-editorial-section .together-cta-btn:hover,
   display: block;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1100px), (hover: none) and (pointer: coarse) {
   .brand-staggered-grid {
     grid-template-columns: repeat(5, 1fr);
     gap: 0.85rem;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
   .brand-staggered-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.65rem;
@@ -8197,7 +8505,7 @@ body.business-portal .contact-editorial-section .together-cta-btn:hover,
 }
 
 /* Sequential Left-to-Right 1-by-1 Stagger Animation on Desktop */
-@media (min-width: 769px) {
+@media (min-width: 769px) and (hover: hover), (min-width: 769px) and (pointer: fine) {
 
   .brand-staggered-grid .brand-tile,
   .brand-staggered-grid .brand-tile-empty {
@@ -8499,7 +8807,7 @@ body.business-portal .contact-editorial-section .together-cta-btn:hover,
   transform: translateX(4px);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
   .featured-news-card {
     grid-template-columns: 1fr;
   }
@@ -8871,7 +9179,7 @@ body.business-portal .contact-editorial-section .together-cta-btn:hover,
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 900px) {
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
 
   .products-fullscreen-section,
   #home-services,

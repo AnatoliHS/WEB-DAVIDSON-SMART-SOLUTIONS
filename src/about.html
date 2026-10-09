@@ -88,177 +88,185 @@ County, Kingston & Oshawa. Residential, commercial & industrial automation."
   </div>
 </section>
 
-<!-- Interactive Regional Service Area Map Section (Picture Graphic with Heavy White Radial Blend Overlay) -->
-<section class="section" id="service-area-map"
-  style="padding: 6rem 0; border-bottom: 1px solid var(--border-subtle); background: #ffffff;">
+<!-- Interactive Regional Service Area Map Section (Dark Inverted Map Graphic with Dark Radial Blend Overlay) -->
+<section class="section dark-map-section" id="service-area-map">
   <div class="container">
     <div class="service-area-header" style="text-align: center; max-width: 800px; margin: 0 auto 3.5rem auto;">
       <h2 class="title-color-wipe" style="font-size: 2.8rem; margin-bottom: 1rem;"><span
           class="title-color-wipe-dark">Service </span><span class="title-color-wipe-red">Area &amp; Regional
           Hubs</span></h2>
-      <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.6;">
+      <p style="font-size: 1.15rem; color: #9ea5b3; line-height: 1.6;">
         At Davidson Smart Solutions, we’re happy to go the distance (literally) if we’re the right fit for your project.
-        Hover
-        over any pulsing location pin below to view local installation coverage and office details.
+        Move
+        across the map to light it up, and hover or tap any location for local installation coverage and office details.
       </p>
     </div>
 
-    <!-- Map Picture Container with Heavy White Edge Blend -->
-    <div class="map-picture-wrapper" id="pictureMapWrapper">
+    <!-- Flashlight Map: faint base layer + bright layer revealed in a circle around the cursor -->
+    <!-- On phones the map is wider than the screen and swipes sideways -->
+    <div class="flash-swipe" id="flashSwipe">
+    <div class="flash-map" id="flashMap">
+      <svg class="flash-layer flash-fade" viewBox="0 34 1376 700" aria-hidden="true">
+        <defs>
+          <!-- Turn the light map artwork into transparent water + tinted lines -->
+          <filter id="flash-faint" color-interpolation-filters="sRGB">
+            <feColorMatrix type="matrix" values="0 0 0 0 0.8  0 0 0 0 0.82  0 0 0 0 0.88  -0.27 -0.53 -0.1 0 0.9" />
+          </filter>
+          <filter id="flash-bright" color-interpolation-filters="sRGB">
+            <feColorMatrix type="matrix" values="0 0 0 0 0.95  0 0 0 0 0.86  0 0 0 0 0.66  -1.05 -2.07 -0.38 0 3.5" />
+          </filter>
+        </defs>
+        <image href="/assets/images/service_area_map_bg.jpg" width="1376" height="768" filter="url(#flash-faint)" />
+      </svg>
+      <svg class="flash-layer flash-fade flash-reveal" viewBox="0 34 1376 700" aria-hidden="true">
+        <image href="/assets/images/service_area_map_bg.jpg" width="1376" height="768" filter="url(#flash-bright)" />
+      </svg>
 
-      <!-- Floating White Tooltip Card (Matching Reference Image 3) -->
-      <div class="map-tooltip-card" id="mapTooltip"
-        style="position: absolute; display: none; z-index: 100; pointer-events: none;">
-        <h4 class="map-tooltip-title" id="tooltipTitle"
-          style="font-family: var(--font-sans); font-weight: 700; font-size: 1.2rem; color: #111; margin-bottom: 0.4rem;">
-          Belleville Head Office</h4>
-        <p class="map-tooltip-desc" id="tooltipDesc"
-          style="font-size: 0.9rem; color: #666; line-height: 1.45; margin-bottom: 0.75rem;">
-          Central Operations &amp; Showroom.<br>
-          Zero Travel Fee (&lt;1 Hour Zone).
-        </p>
-        <span class="map-tooltip-badge" id="tooltipBadge"
-          style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #61709e; background: rgba(97, 112, 158, 0.12); padding: 3px 8px; border-radius: 4px; display: inline-block;">HQ
-          &amp; Operations</span>
-      </div>
+      <button type="button" class="flash-pin is-hq" style="left: 65%; top: 40%;">
+        <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Belleville Head Office (HQ)</span></span>
+        <span class="flash-card"><span class="flash-badge">Headquarters HQ</span><span class="flash-desc">Central Operations &amp; Showroom. Primary zero-travel-fee service zone.</span></span>
+      </button>
 
-      <!-- Pulsing Blue Dots on Locations -->
+      <button type="button" class="flash-pin" style="left: 68%; top: 49%;">
+        <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Prince Edward County (Picton)</span></span>
+        <span class="flash-card"><span class="flash-badge">Primary Service Zone</span><span class="flash-desc">Picton, Wellington &amp; Sandbanks estate motorized screens, pergolas, &amp; outdoor sound.</span></span>
+      </button>
 
-      <!-- 1. Belleville HQ (Primary Location) -->
-      <div class="map-picture-pin" style="top: 40%; left: 65%;" data-title="Belleville Head Office (HQ)"
-        data-desc="Central Operations &amp; Showroom. Primary zero-travel-fee service zone."
-        data-badge="Headquarters HQ">
-        <div class="pin-pulse-ring"></div>
-        <div class="pin-red-dot">
-          <div class="pin-inner-black"></div>
-        </div>
-        <span class="pin-label-tag">BELLEVILLE (HQ)</span>
-      </div>
+      <button type="button" class="flash-pin" style="left: 60%; top: 43%;">
+        <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Quinte West (Trenton)</span></span>
+        <span class="flash-card"><span class="flash-badge">Primary Service Zone</span><span class="flash-desc">CFB Trenton &amp; Bayside waterfront smart home automation.</span></span>
+      </button>
 
-      <!-- 2. Prince Edward County (Picton) -->
-      <div class="map-picture-pin" style="top: 49%; left: 68%;" data-title="Prince Edward County (Picton)"
-        data-desc="Picton, Wellington &amp; Sandbanks estate motorized screens, pergolas, &amp; outdoor sound."
-        data-badge="Primary Service Zone">
-        <div class="pin-pulse-ring"></div>
-        <div class="pin-red-dot"></div>
-      </div>
+      <button type="button" class="flash-pin" style="left: 52%; top: 46%;">
+        <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Northumberland (Cobourg)</span></span>
+        <span class="flash-card"><span class="flash-badge">Primary Service Zone</span><span class="flash-desc">Cobourg &amp; Port Hope waterfront motorized shading &amp; lighting.</span></span>
+      </button>
 
-      <!-- 3. Quinte West (Trenton) -->
-      <div class="map-picture-pin" style="top: 43%; left: 60%;" data-title="Quinte West (Trenton)"
-        data-desc="CFB Trenton &amp; Bayside waterfront smart home automation." data-badge="Primary Service Zone">
-        <div class="pin-pulse-ring"></div>
-        <div class="pin-red-dot"></div>
-      </div>
+      <button type="button" class="flash-pin" style="left: 42%; top: 48%;">
+        <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Durham Region (Oshawa)</span></span>
+        <span class="flash-card"><span class="flash-badge">Primary Corridor</span><span class="flash-desc">Commercial business security, enterprise networking &amp; AV rack installations.</span></span>
+      </button>
 
-      <!-- 4. Northumberland (Cobourg) -->
-      <div class="map-picture-pin" style="top: 46%; left: 52%;" data-title="Northumberland (Cobourg)"
-        data-desc="Cobourg &amp; Port Hope waterfront motorized shading &amp; lighting."
-        data-badge="Primary Service Zone">
-        <div class="pin-pulse-ring"></div>
-        <div class="pin-red-dot"></div>
-      </div>
+      <button type="button" class="flash-pin" style="left: 34%; top: 52%;">
+        <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Toronto</span></span>
+        <span class="flash-card"><span class="flash-badge">Greater GTA Zone</span><span class="flash-desc">Luxury condo automation, multi-zone audio, &amp; motorized shading.</span></span>
+      </button>
 
-      <!-- 5. Durham Region (Oshawa) -->
-      <div class="map-picture-pin" style="top: 48%; left: 42%;" data-title="Durham Region (Oshawa)"
-        data-desc="Commercial business security, enterprise networking &amp; AV rack installations."
-        data-badge="Primary Corridor">
-        <div class="pin-pulse-ring"></div>
-        <div class="pin-red-dot"></div>
-      </div>
+      <button type="button" class="flash-pin" style="left: 32%; top: 43%;">
+        <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">York Region (Markham)</span></span>
+        <span class="flash-card"><span class="flash-badge">Greater GTA Zone</span><span class="flash-desc">Markham &amp; Richmond Hill high-end smart lighting &amp; home automation.</span></span>
+      </button>
 
-      <!-- 6. Toronto -->
-      <div class="map-picture-pin" style="top: 52%; left: 34%;" data-title="Toronto"
-        data-desc="Luxury condo automation, multi-zone audio, &amp; motorized shading." data-badge="Greater GTA Zone">
-        <div class="pin-pulse-ring"></div>
-        <div class="pin-red-dot"></div>
-      </div>
+      <button type="button" class="flash-pin edge-right" style="left: 82%; top: 26%;">
+        <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Lanark County</span></span>
+        <span class="flash-card"><span class="flash-badge">North East Region</span><span class="flash-desc">Custom estate security, rural internet routing, &amp; architectural lighting.</span></span>
+      </button>
 
-      <!-- 7. York Region (Markham) -->
-      <div class="map-picture-pin" style="top: 43%; left: 32%;" data-title="York Region (Markham)"
-        data-desc="Markham &amp; Richmond Hill high-end smart lighting &amp; home automation."
-        data-badge="Greater GTA Zone">
-        <div class="pin-pulse-ring"></div>
-        <div class="pin-red-dot"></div>
-      </div>
+      <button type="button" class="flash-pin edge-right" style="left: 85%; top: 34%;">
+        <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Leeds and Grenville (Brockville)</span></span>
+        <span class="flash-card"><span class="flash-badge">1000 Islands Region</span><span class="flash-desc">St. Lawrence island cottage automation, marine audio, &amp; motorized screens.</span></span>
+      </button>
 
-      <div class="map-picture-pin" style="top: 26%; left: 82%;" data-title="Lanark County"
-        data-desc="Custom estate security, rural internet routing, &amp; architectural lighting."
-        data-badge="North East Region">
-        <div class="pin-pulse-ring"></div>
-        <div class="pin-red-dot"></div>
-      </div>
-
-      <!-- 14. Leeds and Grenville (Brockville) -->
-      <div class="map-picture-pin" style="top: 34%; left: 85%;" data-title="Leeds and Grenville (Brockville)"
-        data-desc="St. Lawrence island cottage automation, marine audio, &amp; motorized screens."
-        data-badge="1000 Islands Region">
-        <div class="pin-pulse-ring"></div>
-        <div class="pin-red-dot"></div>
-      </div>
-
-      <!-- 15. Ottawa Region -->
-      <div class="map-picture-pin" style="top: 18%; left: 89%;" data-title="Ottawa Region"
-        data-desc="National Capital Region commercial business security &amp; smart integration."
-        data-badge="Capital Region">
-        <div class="pin-pulse-ring"></div>
-        <div class="pin-red-dot"></div>
-      </div>
-
+      <button type="button" class="flash-pin edge-right" style="left: 89%; top: 18%;">
+        <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Ottawa Region</span></span>
+        <span class="flash-card"><span class="flash-badge">Capital Region</span><span class="flash-desc">National Capital Region commercial business security &amp; smart integration.</span></span>
+      </button>
     </div>
+    </div>
+    <div class="flash-swipe-hint" id="flashSwipeHint" aria-hidden="true">&larr; Swipe the map &rarr;</div>
+
+    <!-- Mobile: details show here instead of on the map -->
+    <div class="flash-caption" id="flashCaption" aria-live="polite">Tap a location to see coverage details.</div>
   </div>
 </section>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const wrapper = document.getElementById('pictureMapWrapper');
-    const tooltip = document.getElementById('mapTooltip');
-    const titleEl = document.getElementById('tooltipTitle');
-    const descEl = document.getElementById('tooltipDesc');
-    const badgeEl = document.getElementById('tooltipBadge');
+    const map = document.getElementById('flashMap');
+    const caption = document.getElementById('flashCaption');
+    if (!map) return;
 
-    if (!wrapper || !tooltip) return;
+    // Desktop: the light follows the cursor
+    let followCursor = false;
+    const isSmall = window.matchMedia('(max-width: 850px), (hover: none) and (pointer: coarse)');
+    map.addEventListener('pointermove', (e) => {
+      followCursor = e.pointerType === 'mouse' && !isSmall.matches;
+      if (!followCursor) return;
+      const r = map.getBoundingClientRect();
+      map.style.setProperty('--mx', e.clientX - r.left + 'px');
+      map.style.setProperty('--my', e.clientY - r.top + 'px');
+      map.classList.add('lit');
+    });
+    map.addEventListener('pointerleave', (e) => {
+      if (followCursor) map.classList.remove('lit');
+    });
 
-    function showTooltip(title, desc, badge, pinEl) {
-      titleEl.textContent = title;
-      descEl.textContent = desc;
-      badgeEl.textContent = badge;
+    let active = null;
+    const pins = [...map.querySelectorAll('.flash-pin')];
+    const EMPTY = caption.textContent;
 
-      tooltip.style.display = 'block';
-
-      const wrapperRect = wrapper.getBoundingClientRect();
-      const pinRect = pinEl.getBoundingClientRect();
-
-      let left = (pinRect.left + pinRect.width / 2) - wrapperRect.left - (tooltip.offsetWidth / 2);
-      let top = (pinRect.top - wrapperRect.top) - tooltip.offsetHeight - 14;
-
-      if (left < 10) left = 10;
-      if (left + tooltip.offsetWidth > wrapperRect.width - 10) {
-        left = wrapperRect.width - tooltip.offsetWidth - 10;
+    // Small screens: the light is a fixed-size spotlight that fades; switching locations fades it out, moves it, then fades it back in
+    let lightTimer = 0;
+    const moveLight = (pin) => {
+      clearTimeout(lightTimer);
+      const place = () => {
+        map.style.setProperty('--mx', pin.style.left);
+        map.style.setProperty('--my', pin.style.top);
+        map.classList.add('lit');
+      };
+      if (isSmall.matches && map.classList.contains('lit')) {
+        map.classList.remove('lit');
+        lightTimer = setTimeout(place, 200);
+      } else {
+        place();
       }
-      if (top < 10) top = (pinRect.top - wrapperRect.top) + 24;
+    };
 
-      tooltip.style.left = left + 'px';
-      tooltip.style.top = top + 'px';
-      tooltip.classList.add('visible');
-    }
+    const open = (pin) => {
+      active = pin;
+      pins.forEach((p) => p.classList.toggle('active', p === pin));
+      // Small screens / touch / keyboard: centre the light on the chosen pin
+      if (isSmall.matches || !followCursor) moveLight(pin);
+      caption.innerHTML = '';
+      const strong = document.createElement('strong');
+      strong.textContent = pin.querySelector('.flash-pill-text').textContent;
+      caption.append(pin.querySelector('.flash-badge').cloneNode(true), strong, pin.querySelector('.flash-desc').textContent);
+    };
+    const close = () => {
+      active = null;
+      clearTimeout(lightTimer);
+      pins.forEach((p) => p.classList.remove('active'));
+      if (isSmall.matches || !followCursor) map.classList.remove('lit');
+      if (isSmall.matches) caption.textContent = EMPTY;
+    };
 
-    function hideTooltip() {
-      tooltip.classList.remove('visible');
-      tooltip.style.display = 'none';
-    }
+    pins.forEach((pin) => {
+      // Hover only applies to a real mouse on the larger layout; taps are handled by click
+      pin.addEventListener('pointerenter', (e) => e.pointerType === 'mouse' && !isSmall.matches && open(pin));
+      pin.addEventListener('pointerleave', (e) => e.pointerType === 'mouse' && !isSmall.matches && close());
+      pin.addEventListener('keyup', (e) => e.key === 'Tab' && open(pin));
+      pin.addEventListener('blur', () => !isSmall.matches && close());
+      // A tap or click always selects, regardless of how the browser labels the input
+      pin.addEventListener('click', () => open(pin));
+    });
 
-    const pins = document.querySelectorAll('.map-picture-pin');
-    pins.forEach(pin => {
-      pin.addEventListener('mouseenter', function () {
-        const title = this.getAttribute('data-title');
-        const desc = this.getAttribute('data-desc');
-        const badge = this.getAttribute('data-badge');
-        showTooltip(title, desc, badge, this);
-      });
+    // Small screens: Belleville HQ is the default selection, and the swipe map starts centred on it.
+    // The hint shows whenever there's something to swipe.
+    const hq = map.querySelector('.flash-pin.is-hq');
+    const swipe = document.getElementById('flashSwipe');
+    const hint = document.getElementById('flashSwipeHint');
+    const syncSwipe = () => {
+      if (!isSmall.matches) return;
+      if (!active) open(hq);
+      swipe.scrollLeft = (parseFloat(hq.style.left) / 100) * map.offsetWidth - swipe.clientWidth / 2;
+      hint.hidden = swipe.scrollWidth <= swipe.clientWidth + 1;
+    };
+    syncSwipe();
+    isSmall.addEventListener('change', syncSwipe);
 
-      pin.addEventListener('mouseleave', function () {
-        hideTooltip();
-      });
+    // On small screens the selection stays until another pin is tapped; tapping empty map space goes back to Belleville HQ
+    map.addEventListener('click', (e) => {
+      if (isSmall.matches && active !== hq && !e.target.closest('.flash-pin')) open(hq);
     });
   });
 </script>
@@ -370,7 +378,7 @@ County, Kingston & Oshawa. Residential, commercial & industrial automation."
     let currentIndex = 0;
 
     function getCardsPerView() {
-      return window.innerWidth < 900 ? 1 : 3;
+      return isMobileLayout(899) ? 1 : 3;
     }
 
     function getMaxIndex() {

@@ -442,7 +442,7 @@ description: Explore our portfolio of commercial and residential smart home auto
   }
 
   /* Responsive Design for Mobile & Tablet */
-  @media (max-width: 991px) {
+  @media (max-width: 991px), (hover: none) and (pointer: coarse) {
     .portfolio-collapsed-header {
       padding: 2.25rem 1.5rem;
     }
@@ -485,7 +485,7 @@ description: Explore our portfolio of commercial and residential smart home auto
           item.classList.add('active');
           header.setAttribute('aria-expanded', 'true');
 
-          if (window.innerWidth <= 991) {
+          if (isMobileLayout(991)) {
             setTimeout(() => {
               item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }, 80);

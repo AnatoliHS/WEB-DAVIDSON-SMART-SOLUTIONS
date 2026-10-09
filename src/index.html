@@ -467,7 +467,7 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
     function setMobileHeroHeight() {
       const hero = document.querySelector('.hero-editorial');
       if (!hero) return;
-      if (window.innerWidth <= 900) {
+      if (isMobileLayout(900)) {
         // Floating pill island nav floats over hero; hero covers the full visible screen
         const stableH = window.innerHeight;
         hero.style.setProperty('min-height', Math.max(stableH, 500) + 'px', 'important');
@@ -534,7 +534,7 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
         // 0. Hero Background Image Scroll Animation (Mobile: Slow Zoom In / Desktop: Parallax Pan)
         const heroBgEl = document.querySelector('.hero-editorial .hero-bg-layer') || document.querySelector('.hero-editorial');
         if (heroBgEl && scrollY <= 800) {
-          if (window.innerWidth < 992) {
+          if (isMobileLayout(991)) {
             const scaleVal = 1 + (scrollY * 0.0006);
             heroBgEl.style.setProperty('--hero-bg-scale', scaleVal.toFixed(3));
           } else {

@@ -237,7 +237,7 @@ description: "High performance residential Wi-Fi 6/7 networks, whole home audio/
   }
 
   /* Desktop Animation: Right to Left entry staggered */
-  @media (min-width: 769px) {
+  @media (min-width: 769px) and (hover: hover), (min-width: 769px) and (pointer: fine) {
     .custom-network-header {
       transform: translateX(60px);
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -274,7 +274,7 @@ description: "High performance residential Wi-Fi 6/7 networks, whole home audio/
   }
 
   /* Mobile Animation: Bottom-up reveal when in view */
-  @media (max-width: 768px) {
+  @media (max-width: 768px), (hover: none) and (pointer: coarse) {
     .custom-network-grid {
       grid-template-columns: 1fr;
       gap: 2.5rem;
@@ -294,7 +294,7 @@ description: "High performance residential Wi-Fi 6/7 networks, whole home audio/
     }
   }
 
-  @media (max-width: 991px) and (min-width: 769px) {
+  @media (max-width: 991px) and (min-width: 769px) and (hover: hover), (max-width: 991px) and (min-width: 769px) and (pointer: fine) {
     .custom-network-grid {
       grid-template-columns: 1fr;
       gap: 2.5rem;
@@ -321,7 +321,7 @@ description: "High performance residential Wi-Fi 6/7 networks, whole home audio/
     if (!customSection) return;
 
     if ('IntersectionObserver' in window) {
-      if (window.innerWidth > 768) {
+      if (!isMobileLayout(768)) {
         // Desktop: Staggered right-to-left entry when section scrolls into view
         const desktopObserver = new IntersectionObserver((entries, obs) => {
           entries.forEach(entry => {

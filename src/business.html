@@ -360,7 +360,7 @@ isBusinessPage: true
     function setMobileHeroHeight() {
       const hero = document.querySelector('.hero-editorial-business');
       if (!hero) return;
-      if (window.innerWidth <= 900) {
+      if (isMobileLayout(900)) {
         // Floating pill island nav floats over hero; hero covers the full visible screen
         const stableH = window.innerHeight;
         hero.style.setProperty('min-height', Math.max(stableH, 500) + 'px', 'important');
