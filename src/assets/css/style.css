@@ -2922,12 +2922,15 @@ body.business-portal .hero-service-subtitle,
 
 /* Founder Quote Feature Section */
 .founder-quote-section {
-  color: #111111;
+  color: #ffffff;
   padding: 5.5rem 0 0 0;
   overflow: visible;
   position: relative;
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
+  background-color: #121212;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+  background-size: 16px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .founder-quote-grid {
@@ -2947,7 +2950,7 @@ body.business-portal .hero-service-subtitle,
   font-size: clamp(1.35rem, 2.2vw, 1.95rem);
   font-weight: 400;
   line-height: 1.45;
-  color: #111111;
+  color: #ffffff;
   letter-spacing: -0.01em;
   margin-bottom: 2.5rem;
 }
@@ -2968,7 +2971,7 @@ body.business-portal .hero-service-subtitle,
 
 .founder-quote-role {
   font-size: 0.95rem;
-  color: #4b5563;
+  color: rgba(255, 255, 255, 0.6);
   font-weight: 600;
   line-height: 1.4;
 }
@@ -2982,6 +2985,20 @@ body.business-portal .hero-service-subtitle,
   justify-content: center;
   overflow: visible;
   z-index: 2;
+}
+
+/* Soft warm glow behind the portrait cut-out so it lifts off the dark background */
+.founder-quote-portrait::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 85%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 50% 60%, rgba(197, 160, 89, 0.22) 0%, rgba(197, 160, 89, 0.06) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .founder-quote-portrait-img {
@@ -8043,7 +8060,8 @@ body:has(.contact-editorial-section) {
 
 .contact-editorial-section {
   position: relative;
-  padding: 5.5rem 0 7.5rem 0;
+  /* Top padding clears the desktop pill navbar, which is open on page load (~120px tall incl. offset) */
+  padding: 10.5rem 0 7.5rem 0;
   margin-top: 0 !important;
   background-color: #121212 !important;
   background-image:
@@ -9248,4 +9266,91 @@ body.business-portal .contact-editorial-section .together-cta-btn:hover,
   .product-card-bottom-right {
     align-self: flex-end;
   }
+}
+/* ==========================================================================
+   Reusable dark conversion for legacy light sections (#121212 with faint dots).
+   Overrides the inline light colours these sections were authored with.
+   ========================================================================== */
+.section-dark {
+  background-color: #121212 !important;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px) !important;
+  background-size: 16px 16px !important;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.section-dark h2,
+.section-dark h3,
+.section-dark h4,
+.section-dark li,
+.section-dark strong {
+  color: #ffffff !important;
+}
+
+.section-dark p {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+/* Scroll colour-wipe headings: light text instead of navy */
+.section-dark .title-color-wipe-dark {
+  background: linear-gradient(90deg, #f8f7f4 50%, rgba(248, 247, 244, 0.28) 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.section-dark .title-color-wipe.revealed .title-color-wipe-dark {
+  background-position: 0 0;
+}
+
+.section-dark .btn-secondary {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.section-dark .btn-secondary:hover {
+  background: #ffffff;
+  color: #111111;
+  border-color: #ffffff;
+}
+
+/* Light feature card inside a dark section */
+.section-dark .section-dark-card {
+  background: #1a1a1a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Brand partner grid: dark tiles, logos rendered white (invert + screen drops any white logo backgrounds) */
+.section-dark .brand-tile {
+  background: #1a1a1a;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.section-dark .brand-tile:hover {
+  background: #202020;
+  border-color: rgba(197, 160, 89, 0.4);
+}
+
+.section-dark .brand-logo-img {
+  filter: grayscale(1) invert(1);
+  mix-blend-mode: screen;
+  opacity: 0.8;
+}
+
+.section-dark .brand-tile:hover .brand-logo-img {
+  opacity: 1;
+}
+
+/* Single-row partner logos on dark: render white, hover brightens instead of restoring the dark original */
+.section-dark .logo-single-row .logo-item img {
+  filter: grayscale(1) invert(1);
+  opacity: 0.75;
+}
+
+.section-dark .logo-single-row .logo-item img:hover {
+  filter: grayscale(1) invert(1);
+  opacity: 1;
 }

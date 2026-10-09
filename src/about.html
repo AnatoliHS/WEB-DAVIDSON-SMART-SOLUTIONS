@@ -272,180 +272,212 @@ County, Kingston & Oshawa. Residential, commercial & industrial automation."
 </script>
 
 
-<!-- Client Testimonials & Reviews Carousel Section (Matching Designer Ideas Layout & Dark Background) -->
-<section class="designer-ideas-section" id="about-reviews">
-  <div class="container">
+<!-- Client Reviews: Editorial Spotlight (one review at a time, reviews from _data/reviews.json) -->
+<section class="designer-ideas-section reviews-spotlight" id="about-reviews">
+  <div class="container rs-grid">
 
-    <!-- Header Row with subtitle under title -->
-    <div style="margin-bottom: 3.5rem;">
+    <div class="rs-side">
       <h2 class="designer-ideas-heading" style="margin-bottom: 1rem;">
         <span class="heading-white">What Our </span><span class="heading-red">Clients Say</span>
       </h2>
-      <p style="font-size: 1.15rem; color: #9ea5b3; max-width: 780px; line-height: 1.6; margin: 0;">
+      <p class="rs-sub">
         Hear from homeowners and business owners across Eastern Ontario who trust Davidson Smart Solutions for luxury
         residential and commercial property automation.
       </p>
+      <div class="rs-rating">
+        <span class="rs-stars" aria-label="5 out of 5 stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </span>
+        <span>Five-star client reviews</span>
+      </div>
     </div>
 
-    <!-- Testimonials Slider Container -->
-    <div class="reviews-slider-container">
-
-      <button class="reviews-slider-arrow prev" id="reviewsPrevBtn" aria-label="Previous reviews">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-
-      <div class="reviews-slider-track-wrapper">
-        <div class="reviews-slider-track" id="reviewsTrack">
-
-          <!-- Slide 1 -->
-          <div class="review-slide-card">
-            <div style="color: #f59e0b; margin-bottom: 1rem; font-size: 1rem;">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">
-              "Justin really knows his stuff! He installed some Lutron blinds and other smart products at our place, and
-              they are great. We get lots of compliments on the blinds."
-            </p>
-            <div class="review-author-name">— James E., <span class="review-author-role">Homeowner</span></div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="review-slide-card">
-            <div style="color: #f59e0b; margin-bottom: 1rem; font-size: 1rem;">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">
-              "I wanted to share my positive experience with Justin's team, who installed a Control4 system with nine
-              zones for us. They completely revamped our setup, making the main control area look incredibly neat and
-              organized. What impressed us even more is their ability to manage most post installation service
-              remotely."
-            </p>
-            <div class="review-author-name">— Paul, <span class="review-author-role">Homeowner</span></div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="review-slide-card">
-            <div style="color: #f59e0b; margin-bottom: 1rem; font-size: 1rem;">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">
-              "Thanks to Justin and his crew at Davidson Smart Solutions for all their hard work, making the long drive
-              and
-              not falling down 16 feet!"
-            </p>
-            <div class="review-author-name">— Christina C., <span class="review-author-role">Cottage Owner</span></div>
-          </div>
-
-          <!-- Slide 4 -->
-          <div class="review-slide-card">
-            <div style="color: #f59e0b; margin-bottom: 1rem; font-size: 1rem;">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; flex-grow: 1;">
-              "Justin and his team were very knowledgeable and professional. Justin recommended great products which
-              have made our day-to-day living easier!"
-            </p>
-            <div class="review-author-name">— James L., <span class="review-author-role">Homeowner</span></div>
-          </div>
-
-        </div>
+    <div class="rs-main" aria-roledescription="carousel" aria-label="Client reviews">
+      <span class="rs-mark" aria-hidden="true">&ldquo;</span>
+      <div class="rs-stage">
+        {% for r in reviews %}
+        <figure class="rs-quote{% if loop.first %} is-active{% endif %}" aria-roledescription="slide" aria-label="Review by {{ r.name }}">
+          <blockquote>{{ r.quote }}</blockquote>
+          <figcaption>
+            <span class="rs-avatar" aria-hidden="true">{{ r.name | first }}</span>
+            <span><b>{{ r.name }}</b><em>{{ r.role }} &middot; {{ r.service }}</em></span>
+          </figcaption>
+        </figure>
+        {% endfor %}
       </div>
 
-      <button class="reviews-slider-arrow next" id="reviewsNextBtn" aria-label="Next reviews">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-
-      <div class="reviews-slider-dots" id="reviewsDots"></div>
-
+      <div class="rs-controls">
+        <button type="button" class="rs-arrow" data-dir="-1" aria-label="Previous review"><i class="fa-solid fa-arrow-left"></i></button>
+        <div class="rs-ticker" aria-hidden="true"><i class="rs-ticker-fill"></i></div>
+        <button type="button" class="rs-arrow" data-dir="1" aria-label="Next review"><i class="fa-solid fa-arrow-right"></i></button>
+      </div>
     </div>
+
   </div>
 </section>
 
+<style>
+  .reviews-spotlight {
+    --rs-accent: var(--color-accent, #C5A059);
+    --rs-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .rs-grid { display: grid; grid-template-columns: 0.8fr 1.4fr; gap: 5rem; align-items: start; }
+
+  .rs-sub { font-size: 1.1rem; color: #9ea5b3; line-height: 1.6; margin: 0; max-width: 460px; }
+  .rs-rating { display: flex; align-items: center; gap: 0.75rem; margin-top: 2rem; color: rgba(255, 255, 255, 0.72); font-size: 0.9rem; }
+  .rs-stars { display: inline-flex; gap: 3px; color: var(--rs-accent); font-size: 0.8rem; }
+
+  .rs-main { position: relative; padding-left: 4.5rem; }
+  .rs-mark {
+    position: absolute;
+    left: -0.5rem;
+    top: -2.6rem;
+    font-family: var(--font-serif);
+    font-size: 11rem;
+    line-height: 1;
+    color: var(--rs-accent);
+    opacity: 0.9;
+  }
+
+  /* All quotes share one grid cell, so the stage is as tall as the longest review and nothing jumps */
+  .rs-stage { display: grid; }
+  .rs-quote {
+    grid-area: 1 / 1;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(14px);
+    transition: opacity 0.7s ease, transform 0.8s var(--rs-ease), visibility 0.7s;
+  }
+  .rs-quote.is-active { opacity: 1; visibility: visible; transform: none; }
+  .rs-quote blockquote {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+    line-height: 1.32;
+    letter-spacing: -0.005em;
+    color: #ffffff;
+  }
+  .rs-quote figcaption { display: flex; align-items: center; gap: 0.85rem; }
+  .rs-quote figcaption b { display: block; font-size: 0.95rem; color: #ffffff; }
+  .rs-quote figcaption em { display: block; font-style: normal; font-size: 0.82rem; color: rgba(255, 255, 255, 0.48); }
+  .rs-avatar {
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(197, 160, 89, 0.28), rgba(197, 160, 89, 0.08));
+    border: 1px solid rgba(197, 160, 89, 0.45);
+    color: var(--rs-accent);
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+
+  /* Prev / time ticker / next */
+  .rs-controls { display: flex; align-items: center; gap: 1.25rem; margin-top: 2.75rem; }
+  .rs-ticker { position: relative; flex: 1; height: 2px; background: rgba(255, 255, 255, 0.16); border-radius: 2px; overflow: hidden; }
+  .rs-ticker-fill {
+    position: absolute;
+    inset: 0;
+    background: var(--rs-accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  .rs-arrow {
+    flex: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  }
+  .rs-arrow:hover, .rs-arrow:focus-visible { background: var(--rs-accent); border-color: var(--rs-accent); color: #111111; }
+
+  @media (max-width: 991px), (hover: none) and (pointer: coarse) {
+    .rs-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .rs-main { padding-left: 0; padding-top: 3.5rem; }
+    .rs-mark { left: -0.25rem; top: -1.5rem; font-size: 7rem; }
+    .rs-quote { justify-content: flex-start; }
+    .rs-quote blockquote { font-size: 1.45rem; }
+    .rs-controls { margin-top: 2.25rem; gap: 1rem; }
+    .rs-arrow { width: 44px; height: 44px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rs-quote { transition: none; }
+  }
+</style>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const track = document.getElementById('reviewsTrack');
-    const prevBtn = document.getElementById('reviewsPrevBtn');
-    const nextBtn = document.getElementById('reviewsNextBtn');
-    const dotsContainer = document.getElementById('reviewsDots');
+  document.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('about-reviews');
+    if (!section) return;
 
-    if (!track || !prevBtn || !nextBtn) return;
+    const DURATION = 8000;
+    const autoplay = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const quotes = section.querySelectorAll('.rs-quote');
+    const fill = section.querySelector('.rs-ticker-fill');
+    let current = 0;
+    let paused = false;
+    let ticker = null;
 
-    const slides = track.querySelectorAll('.review-slide-card');
-    let currentIndex = 0;
+    // The ticker animation is the timer: when the bar fills, the next review shows
+    const startTicker = () => {
+      if (ticker) ticker.cancel();
+      if (!autoplay) return;
+      ticker = fill.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: DURATION, easing: 'linear' });
+      ticker.onfinish = () => show(current + 1);
+      if (paused) ticker.pause();
+    };
 
-    function getCardsPerView() {
-      return isMobileLayout(899) ? 1 : 3;
-    }
+    const show = (i) => {
+      current = (i + quotes.length) % quotes.length;
+      quotes.forEach((q, n) => q.classList.toggle('is-active', n === current));
+      startTicker();
+    };
 
-    function getMaxIndex() {
-      return Math.max(0, slides.length - getCardsPerView());
-    }
-
-    function updateSlider() {
-      const cardsPerView = getCardsPerView();
-      const maxIdx = getMaxIndex();
-      if (currentIndex > maxIdx) currentIndex = maxIdx;
-      if (currentIndex < 0) currentIndex = 0;
-
-      const gap = 28;
-      let offset = 0;
-      if (cardsPerView === 1) {
-        offset = currentIndex * (track.offsetWidth + gap);
-      } else {
-        const cardWidth = (track.offsetWidth - (gap * 2)) / 3;
-        offset = currentIndex * (cardWidth + gap);
-      }
-
-      track.style.transform = `translateX(-${offset}px)`;
-
-      if (dotsContainer) {
-        const dots = dotsContainer.querySelectorAll('.review-dot');
-        dots.forEach((dot, idx) => {
-          dot.classList.toggle('active', idx === currentIndex);
-        });
-      }
-    }
-
-    function renderDots() {
-      if (!dotsContainer) return;
-      dotsContainer.innerHTML = '';
-      const maxIdx = getMaxIndex();
-      for (let i = 0; i <= maxIdx; i++) {
-        const dot = document.createElement('button');
-        dot.className = `review-dot ${i === currentIndex ? 'active' : ''}`;
-        dot.setAttribute('aria-label', `Go to review slide ${i + 1}`);
-        dot.addEventListener('click', () => {
-          currentIndex = i;
-          updateSlider();
-        });
-        dotsContainer.appendChild(dot);
-      }
-    }
-
-    prevBtn.addEventListener('click', () => {
-      currentIndex = Math.max(0, currentIndex - 1);
-      updateSlider();
+    section.querySelectorAll('.rs-arrow').forEach(btn => {
+      btn.addEventListener('click', () => show(current + Number(btn.dataset.dir)));
     });
 
-    nextBtn.addEventListener('click', () => {
-      currentIndex = Math.min(getMaxIndex(), currentIndex + 1);
-      updateSlider();
-    });
+    // Pause only while a mouse rests on the review text, or while the controls have keyboard focus.
+    // Clicks and taps on the arrows never pause, so the ticker keeps running after navigating.
+    const main = section.querySelector('.rs-main');
+    const stage = section.querySelector('.rs-stage');
+    const pauseReasons = new Set();
+    const setPause = (reason, on) => {
+      if (on) pauseReasons.add(reason);
+      else pauseReasons.delete(reason);
+      paused = pauseReasons.size > 0;
+      if (!ticker) return;
+      if (paused) ticker.pause();
+      else if (ticker.playState === 'paused') ticker.play();
+    };
+    stage.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') setPause('hover', true); });
+    stage.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') setPause('hover', false); });
+    main.addEventListener('focusin', (e) => setPause('keyboard', e.target.matches(':focus-visible')));
+    main.addEventListener('focusout', (e) => { if (!main.contains(e.relatedTarget)) setPause('keyboard', false); });
 
-    window.addEventListener('resize', () => {
-      renderDots();
-      updateSlider();
-    });
-
+    startTicker();
   });
 </script>
 
 <!-- Founder Leadership Quote Section (Matching Reference Image Layout) -->
-<section class="founder-quote-section pastel-dots-bg" id="about-founder">
+<section class="founder-quote-section" id="about-founder">
   <div class="container">
     <div class="founder-quote-grid">
       <div class="founder-quote-content">
