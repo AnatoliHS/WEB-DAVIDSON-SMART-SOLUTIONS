@@ -1,0 +1,14 @@
+[
+  { "name": "Control4", "logo": "/assets/Control4.webp" },
+  { "name": "Lutron", "logo": "/assets/Lutron.webp" },
+  { "name": "Sonos", "logo": "/assets/SONOS.webp" },
+  { "name": "Samsung", "logo": "/assets/Samsung.webp" },
+  { "name": "Lucetta CI", "logo": "/assets/Lucetta-CI.webp" },
+  { "name": "Sonance", "logo": "/assets/Sonance-Logo.webp" },
+  { "name": "Mecho", "logo": "/assets/Mecho.webp" },
+  { "name": "DMF Lighting", "logo": "/assets/DMF.webp" },
+  { "name": "WAC Group", "logo": "/assets/WAC-Group-Technology-Illuminated.webp" },
+  { "name": "Modern Forms", "logo": "/assets/Modern-Forms.webp" },
+  { "name": "Episode", "logo": "/assets/Episode.webp" },
+  { "name": "Integra", "logo": "/assets/Integra-1.webp" }
+]

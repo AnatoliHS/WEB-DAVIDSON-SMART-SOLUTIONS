@@ -156,8 +156,8 @@ description: "Work with a partner who understands design. Smart homes for interi
   </div>
 </section>
 
-<!-- Hardware Selection Architectural Brand Partners Section (Staggered Grid Layout) -->
-<section class="section brand-staggered-section section-dark" style="padding: 5rem 0; overflow: hidden;">
+<!-- Architectural Brand Partners: two rails of logos drifting in opposite directions (logos from _data/brandPartners.json) -->
+<section class="section section-dark brand-rails-section" style="padding: 5rem 0;">
   <div class="container">
     <div style="text-align: center; max-width: 800px; margin: 0 auto 3rem auto;">
       <h2 class="title-color-wipe" style="font-size: 2.8rem; margin-bottom: 1rem;">
@@ -167,38 +167,88 @@ description: "Work with a partner who understands design. Smart homes for interi
         We exclusively install top tier architectural brands renowned for quality, reliability, and aesthetic refinement:
       </p>
     </div>
+  </div>
 
-    <!-- Staggered Full-Width Grid (3 Rows Layout on Desktop) -->
-    <div class="brand-staggered-grid">
-      <!-- Desktop Row 1 (7 cells: 4 logos + 3 empty) -->
-      <div class="brand-tile"><img src="/assets/Control4.webp" alt="Control4 Logo" class="brand-logo-img" /></div>
-      <div class="brand-tile-empty desktop-only"></div>
-      <div class="brand-tile"><img src="/assets/Lutron.webp" alt="Lutron Logo" class="brand-logo-img" /></div>
-      <div class="brand-tile"><img src="/assets/SONOS.webp" alt="Sonos Logo" class="brand-logo-img" /></div>
-      <div class="brand-tile-empty desktop-only"></div>
-      <div class="brand-tile"><img src="/assets/Samsung.webp" alt="Samsung Logo" class="brand-logo-img" /></div>
-      <div class="brand-tile-empty desktop-only"></div>
-
-      <!-- Desktop Row 2 (7 cells: 4 logos + 3 empty) -->
-      <div class="brand-tile-empty desktop-only"></div>
-      <div class="brand-tile"><img src="/assets/Lucetta-CI.webp" alt="Lucetta CI Logo" class="brand-logo-img" /></div>
-      <div class="brand-tile"><img src="/assets/Sonance-Logo.webp" alt="Sonance Logo" class="brand-logo-img" /></div>
-      <div class="brand-tile-empty desktop-only"></div>
-      <div class="brand-tile"><img src="/assets/Mecho.webp" alt="Mecho Logo" class="brand-logo-img" /></div>
-      <div class="brand-tile"><img src="/assets/DMF.webp" alt="DMF Lighting Logo" class="brand-logo-img" /></div>
-      <div class="brand-tile-empty desktop-only"></div>
-
-      <!-- Desktop Row 3 (7 cells: 4 logos + 3 empty) -->
-      <div class="brand-tile"><img src="/assets/WAC-Group-Technology-Illuminated.webp" alt="WAC Group Logo" class="brand-logo-img" /></div>
-      <div class="brand-tile-empty desktop-only"></div>
-      <div class="brand-tile"><img src="/assets/Modern-Forms.webp" alt="Modern Forms Logo" class="brand-logo-img" /></div>
-      <div class="brand-tile-empty desktop-only"></div>
-      <div class="brand-tile"><img src="/assets/Episode.webp" alt="Episode Logo" class="brand-logo-img" /></div>
-      <div class="brand-tile-empty desktop-only"></div>
-      <div class="brand-tile"><img src="/assets/Integra-1.webp" alt="Integra Logo" class="brand-logo-img" /></div>
+  {% set railSplit = (brandPartners.length / 2) | round(0, "ceil") %}
+  <div class="brand-rails" role="list" aria-label="Brand partners">
+    {% for row in [[0, railSplit], [railSplit, brandPartners.length]] %}
+    <div class="brand-rail{% if loop.index == 2 %} is-reverse{% endif %}">
+      <div class="brand-rail-track">
+        {# Each rail holds its logos twice so the loop is seamless; the copy is hidden from screen readers #}
+        {% for pass in [1, 2] %}{% for b in brandPartners.slice(row[0], row[1]) %}
+        <div class="brand-rail-tile"{% if pass == 1 %} role="listitem"{% else %} aria-hidden="true"{% endif %}>
+          <img src="{{ b.logo }}" alt="{% if pass == 1 %}{{ b.name }} logo{% endif %}" loading="lazy" />
+        </div>
+        {% endfor %}{% endfor %}
+      </div>
     </div>
+    {% endfor %}
   </div>
 </section>
+
+<style>
+  .brand-rails {
+    --rail-gap: 1rem;
+    display: grid;
+    gap: var(--rail-gap);
+    /* Soft fade at both edges */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  }
+  .brand-rail { overflow: hidden; }
+  .brand-rail-track { display: flex; gap: var(--rail-gap); width: max-content; animation: brand-drift 38s linear infinite; }
+  .brand-rail.is-reverse .brand-rail-track { animation-direction: reverse; animation-duration: 44s; }
+  /* Hover (or touch-and-hold) pauses a rail */
+  .brand-rail:hover .brand-rail-track,
+  .brand-rail:active .brand-rail-track { animation-play-state: paused; }
+  /* The track holds its logos twice; moving by half (plus half a gap) loops seamlessly */
+  @keyframes brand-drift {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - var(--rail-gap) / 2)); }
+  }
+
+  .brand-rail-tile {
+    flex: none;
+    width: 220px;
+    aspect-ratio: 1.6 / 1;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: #171717;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+  }
+  /* White logos on dark tiles (invert + screen also drops the white backgrounds baked into two logo files) */
+  .brand-rail-tile img {
+    max-width: 72%;
+    max-height: 46%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1) invert(1);
+    mix-blend-mode: screen;
+    opacity: 0.6;
+    transition: opacity 0.35s ease;
+  }
+  .brand-rail-tile:hover {
+    border-color: rgba(255, 214, 140, 0.7);
+    box-shadow: 0 0 26px rgba(255, 214, 140, 0.22);
+    background: #1c1a15;
+  }
+  .brand-rail-tile:hover img { opacity: 1; }
+
+  @media (max-width: 991px), (hover: none) and (pointer: coarse) {
+    .brand-rails { --rail-gap: 0.75rem; }
+    .brand-rail-tile { width: 150px; }
+  }
+
+  /* Reduced motion: rails stay still and scroll by hand instead */
+  @media (prefers-reduced-motion: reduce) {
+    .brand-rail { overflow-x: auto; scrollbar-width: none; }
+    .brand-rail-track { animation: none; }
+    .brand-rail-tile[aria-hidden="true"] { display: none; }
+  }
+</style>
 
 <!-- 5. Smart Home Ideas for Interior Designers: Keypad Selector (solutions from _data/designerIdeas.json) -->
 <section class="designer-ideas-section ks-section" id="design-solutions" data-keypad>
