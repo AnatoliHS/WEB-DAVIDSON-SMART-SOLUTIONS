@@ -200,290 +200,208 @@ description: "Work with a partner who understands design. Smart homes for interi
   </div>
 </section>
 
-<!-- 5. Smart Home Ideas for Interior Designers (Redesigned matching user's layout) -->
-<section class="designer-ideas-section" id="design-solutions">
+<!-- 5. Smart Home Ideas for Interior Designers: Keypad Selector (solutions from _data/designerIdeas.json) -->
+<section class="designer-ideas-section ks-section" id="design-solutions" data-keypad>
   <div class="container">
 
-    <!-- Top Header Layout Row matching user's reference design -->
-    <div class="designer-ideas-header">
+    <div class="designer-ideas-header ks-header">
       <div>
         <h2 class="designer-ideas-heading">
           <span class="heading-white">Smart Home Ideas</span><br>
           <span class="heading-red">for Interior Designers</span>
         </h2>
       </div>
-
       <div class="designer-ideas-intro">
         <p>
           <strong>Technology should enhance architectural beauty — never compromise it.</strong> Our integration experts
           offer continued support beyond installation, helping you maximize your client's space and privacy.
         </p>
-        <a href="#about-quote" class="btn-pill-light">
-          Discover Our Solutions <i class="fa-solid fa-arrow-right"></i>
-        </a>
       </div>
     </div>
 
-    <!-- 3-Column Image Cards Grid matching user's reference design -->
-    <div class="designer-cards-grid">
-
-      <!-- Card 1: Designer Lighting -->
-      <div class="designer-card">
-        <img src="/assets/images/lights.jpg" alt="Designer Lighting Solutions"
-          class="designer-card-img" />
-        <div class="designer-card-overlay"></div>
-        <h3 class="designer-card-title">Designer<br>Lighting</h3>
-        <button type="button" class="designer-card-btn">Learn More <i class="fa-solid fa-arrow-right"></i></button>
-
-        <!-- Information Drawer Overlay -->
-        <div class="designer-card-info-drawer">
-          <div class="designer-card-drawer-body">
-            <div class="designer-card-drawer-header">
-              <span class="designer-card-drawer-tag"><i class="fa-solid fa-lightbulb"></i> SOLUTION 01</span>
-              <button type="button" class="designer-card-drawer-close" aria-label="Close details"><i
-                  class="fa-solid fa-xmark"></i></button>
-            </div>
-            <h4 class="designer-card-drawer-title">Designer Lighting</h4>
-            <p class="designer-card-drawer-desc">
-              Professional-grade fixtures delivering accurate colour &amp; matching hues, custom circadian daylight
-              scenes, and hidden LED strips that keep sightlines clean under cabinets and entryways.
-            </p>
-            <div class="designer-card-scenarios-title">Lighting Lifestyle Examples:</div>
-            <ul class="designer-card-scenarios-list">
-              <li><i class="fa-solid fa-angle-right"></i> Garage opens after dark: outdoor and entryway lights
-                automatically turn on.</li>
-              <li><i class="fa-solid fa-angle-right"></i> Nighttime motion: hallway lights ramp to soft 15% glow to see
-                without glare.</li>
-              <li><i class="fa-solid fa-angle-right"></i> Sunset automation: landscape lights illuminate at dusk,
-                dimming to 20% at 11 p.m.</li>
+    <div class="ks-grid">
+      <div class="ks-stage">
+        {% for item in designerIdeas %}
+        <img src="{{ item.image }}" alt="{{ item.alt }}" class="ks-stage-img{% if loop.first %} is-active{% endif %}" loading="lazy" />
+        {% endfor %}
+        <div class="ks-panels">
+          {% for item in designerIdeas %}
+          <article class="ks-panel{% if loop.first %} is-active{% endif %}" id="ks-panel-{{ item.slug }}" role="tabpanel" aria-labelledby="ks-key-{{ item.slug }}"{% if not loop.first %} hidden{% endif %}>
+            <span class="ks-kicker"><i class="fa-solid {{ item.icon }}"></i> Solution 0{{ loop.index }}</span>
+            <h3 class="ks-title">{{ item.title }}</h3>
+            <p class="ks-desc">{{ item.desc }}</p>
+            <ul class="ks-scenes">
+              {% for s in item.scenarios %}<li><b>{{ s.trigger }}</b><span>{{ s.result }}</span></li>{% endfor %}
             </ul>
-          </div>
-          <a href="#about-quote" class="btn-pill-accent"
-            style="font-size: 0.82rem; padding: 0.55rem 1.3rem; width: 100%; justify-content: center;">
-            Book Showroom Walkthrough &rarr;
-          </a>
+          </article>
+          {% endfor %}
         </div>
       </div>
 
-      <!-- Card 2: Keypads & Controls -->
-      <div class="designer-card">
-        <img src="/assets/images/smart_home_automation_hero.jpg" alt="Design Without Distraction - Keypads & Controls"
-          class="designer-card-img" />
-        <div class="designer-card-overlay"></div>
-        <h3 class="designer-card-title">Design Without<br>Distraction</h3>
-        <button type="button" class="designer-card-btn">Learn More <i class="fa-solid fa-arrow-right"></i></button>
-
-        <!-- Information Drawer Overlay -->
-        <div class="designer-card-info-drawer">
-          <div class="designer-card-drawer-body">
-            <div class="designer-card-drawer-header">
-              <span class="designer-card-drawer-tag"><i class="fa-solid fa-toggle-on"></i> SOLUTION 02</span>
-              <button type="button" class="designer-card-drawer-close" aria-label="Close details"><i
-                  class="fa-solid fa-xmark"></i></button>
-            </div>
-            <h4 class="designer-card-drawer-title">Design Without Distraction</h4>
-            <p class="designer-card-drawer-desc">
-              Custom-engraved designer keypads with RGB backlighting, replacing wall switch clutter with single touch
-              control for lighting, music, drapes, and climate.
-            </p>
-            <div class="designer-card-scenarios-title">Keypad Lifestyle Examples:</div>
-            <ul class="designer-card-scenarios-list">
-              <li><i class="fa-solid fa-angle-right"></i> "Kitchen": favourite lounge playlists start &amp; task lights
-                increase to 30%.</li>
-              <li><i class="fa-solid fa-angle-right"></i> "Entertain": hidden TV emerges, lights dim 60%, motorized
-                shades close.</li>
-              <li><i class="fa-solid fa-angle-right"></i> "All Off": every light turns off, doors lock, and alarm system
-                activates.</li>
-            </ul>
-          </div>
-          <a href="#about-quote" class="btn-pill-accent"
-            style="font-size: 0.82rem; padding: 0.55rem 1.3rem; width: 100%; justify-content: center;">
-            Book Showroom Walkthrough &rarr;
-          </a>
+      <div class="ks-side">
+        <div class="ks-plate" role="tablist" aria-label="Choose a solution">
+          <span class="ks-brand" aria-hidden="true">Davidson</span>
+          {% for item in designerIdeas %}
+          <button type="button" role="tab" class="ks-key{% if loop.first %} is-active{% endif %}" id="ks-key-{{ item.slug }}" aria-controls="ks-panel-{{ item.slug }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}" aria-label="{{ item.title }}" title="{{ item.title }}">
+            <i class="ks-led" aria-hidden="true"></i><span>{{ item.key }}</span>
+          </button>
+          {% endfor %}
         </div>
+        <a href="#about-quote" class="ks-cta">
+          <span class="ks-cta-text">
+            <em>See it in person</em>
+            <strong>Showroom Walkthrough</strong>
+          </span>
+          <span class="ks-cta-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
       </div>
-
-      <!-- Card 3: Motorized Shading -->
-      <div class="designer-card">
-        <img src="/assets/images/showcase_window_shades.jpg" alt="Architectural Shading Solutions"
-          class="designer-card-img" />
-        <div class="designer-card-overlay"></div>
-        <h3 class="designer-card-title">Architectural<br>Shading</h3>
-        <button type="button" class="designer-card-btn">Learn More <i class="fa-solid fa-arrow-right"></i></button>
-
-        <!-- Information Drawer Overlay -->
-        <div class="designer-card-info-drawer">
-          <div class="designer-card-drawer-body">
-            <div class="designer-card-drawer-header">
-              <span class="designer-card-drawer-tag"><i class="fa-solid fa-blinds"></i> SOLUTION 03</span>
-              <button type="button" class="designer-card-drawer-close" aria-label="Close details"><i
-                  class="fa-solid fa-xmark"></i></button>
-            </div>
-            <h4 class="designer-card-drawer-title">Architectural Shading</h4>
-            <p class="designer-card-drawer-desc">
-              Silent, synchronized motorized shades with fabrics curated to match interior design, protecting paintings
-              and furnishings from UV damage.
-            </p>
-            <div class="designer-card-scenarios-title">Shading Lifestyle Examples:</div>
-            <ul class="designer-card-scenarios-list">
-              <li><i class="fa-solid fa-angle-right"></i> Sun Tracking: automatically adjusts shades based on time of
-                day or solar levels.</li>
-              <li><i class="fa-solid fa-angle-right"></i> Away Arming: lowers shades automatically when security system
-                is armed.</li>
-              <li><i class="fa-solid fa-angle-right"></i> Circadian Health: integrates shades with lighting scenes for
-                total wellness.</li>
-            </ul>
-          </div>
-          <a href="#about-quote" class="btn-pill-accent"
-            style="font-size: 0.82rem; padding: 0.55rem 1.3rem; width: 100%; justify-content: center;">
-            Book Showroom Walkthrough &rarr;
-          </a>
-        </div>
-      </div>
-
-      <!-- Card 4: Invisible Architectural Audio -->
-      <div class="designer-card">
-        <img src="/assets/images/showcase_audio.jpg" alt="Invisible Architectural Audio" class="designer-card-img" />
-        <div class="designer-card-overlay"></div>
-        <h3 class="designer-card-title">Invisible<br>Architectural Audio</h3>
-        <button type="button" class="designer-card-btn">Learn More <i class="fa-solid fa-arrow-right"></i></button>
-
-        <!-- Information Drawer Overlay -->
-        <div class="designer-card-info-drawer">
-          <div class="designer-card-drawer-body">
-            <div class="designer-card-drawer-header">
-              <span class="designer-card-drawer-tag"><i class="fa-solid fa-headphones"></i> SOLUTION 04</span>
-              <button type="button" class="designer-card-drawer-close" aria-label="Close details"><i
-                  class="fa-solid fa-xmark"></i></button>
-            </div>
-            <h4 class="designer-card-drawer-title">Invisible Architectural Audio</h4>
-            <p class="designer-card-drawer-desc">
-              Commercial-grade speakers fully hidden within ceilings and walls, processing multiple audio sources for
-              whole home music zones without visual impact.
-            </p>
-            <div class="designer-card-scenarios-title">Audio Lifestyle Examples:</div>
-            <ul class="designer-card-scenarios-list">
-              <li><i class="fa-solid fa-angle-right"></i> Multi-Zone Streaming: different rooms stream independent music
-                via hidden speakers.</li>
-              <li><i class="fa-solid fa-angle-right"></i> Theatre Performance: movie quality acoustics balanced for
-                interior aesthetics.</li>
-              <li><i class="fa-solid fa-angle-right"></i> Wall Integration: home theatre surround sound built directly
-                inside walls.</li>
-            </ul>
-          </div>
-          <a href="#about-quote" class="btn-pill-accent"
-            style="font-size: 0.82rem; padding: 0.55rem 1.3rem; width: 100%; justify-content: center;">
-            Book Showroom Walkthrough &rarr;
-          </a>
-        </div>
-      </div>
-
-      <!-- Card 5: User-Friendly Security -->
-      <div class="designer-card">
-        <img src="/assets/images/home-sec.jpg" alt="User Friendly Security" class="designer-card-img" />
-        <div class="designer-card-overlay"></div>
-        <h3 class="designer-card-title">User Friendly<br>Security</h3>
-        <button type="button" class="designer-card-btn">Learn More <i class="fa-solid fa-arrow-right"></i></button>
-
-        <!-- Information Drawer Overlay -->
-        <div class="designer-card-info-drawer">
-          <div class="designer-card-drawer-body">
-            <div class="designer-card-drawer-header">
-              <span class="designer-card-drawer-tag"><i class="fa-solid fa-shield-halved"></i> SOLUTION 05</span>
-              <button type="button" class="designer-card-drawer-close" aria-label="Close details"><i
-                  class="fa-solid fa-xmark"></i></button>
-            </div>
-            <h4 class="designer-card-drawer-title">User Friendly Security</h4>
-            <p class="designer-card-drawer-desc">
-              Discreet cameras, glass break sensors for large windows without visible wiring, access control intercoms,
-              and temperature monitoring.
-            </p>
-            <div class="designer-card-scenarios-title">Security Lifestyle Examples:</div>
-            <ul class="designer-card-scenarios-list">
-              <li><i class="fa-solid fa-angle-right"></i> Smart Chime: doorbell chimes through speakers with video
-                preview on screens &amp; TVs.</li>
-              <li><i class="fa-solid fa-angle-right"></i> Wine/Media Monitor: notifications if temperature in wine
-                cellar or rack rises.</li>
-              <li><i class="fa-solid fa-angle-right"></i> Access Control: video intercom with temporary codes for
-                cleaners &amp; contractors.</li>
-            </ul>
-          </div>
-          <a href="#about-quote" class="btn-pill-accent"
-            style="font-size: 0.82rem; padding: 0.55rem 1.3rem; width: 100%; justify-content: center;">
-            Book Showroom Walkthrough &rarr;
-          </a>
-        </div>
-      </div>
-
-      <!-- Card 6: Motorized TV & Media Concealment -->
-      <div class="designer-card">
-        <img src="/assets/images/home-theater.jpg" alt="Motorized TV & Media Concealment"
-          class="designer-card-img" />
-        <div class="designer-card-overlay"></div>
-        <h3 class="designer-card-title">Motorized TV &amp;<br>Media Concealment</h3>
-        <button type="button" class="designer-card-btn">Learn More <i class="fa-solid fa-arrow-right"></i></button>
-
-        <!-- Information Drawer Overlay -->
-        <div class="designer-card-info-drawer">
-          <div class="designer-card-drawer-body">
-            <div class="designer-card-drawer-header">
-              <span class="designer-card-drawer-tag"><i class="fa-solid fa-tv"></i> SOLUTION 06</span>
-              <button type="button" class="designer-card-drawer-close" aria-label="Close details"><i
-                  class="fa-solid fa-xmark"></i></button>
-            </div>
-            <h4 class="designer-card-drawer-title">Motorized TV &amp; Media Concealment</h4>
-            <p class="designer-card-drawer-desc">
-              Dual-purpose living spaces where high definition displays emerge from VisionArt framed artwork or lift out
-              of custom cabinetry on command.
-            </p>
-            <div class="designer-card-scenarios-title">Media Concealment Examples:</div>
-            <ul class="designer-card-scenarios-list">
-              <li><i class="fa-solid fa-angle-right"></i> VisionArt Framing: displays transform into museum artwork when
-                powered off.</li>
-              <li><i class="fa-solid fa-angle-right"></i> Millwork Lifts: motorized lifts elevate displays out of
-                footboards or credenzas.</li>
-            </ul>
-          </div>
-          <a href="#about-quote" class="btn-pill-accent"
-            style="font-size: 0.82rem; padding: 0.55rem 1.3rem; width: 100%; justify-content: center;">
-            Book Showroom Walkthrough &rarr;
-          </a>
-        </div>
-      </div>
-
     </div>
 
   </div>
 </section>
 
+<style>
+  .ks-section {
+    --ks-line: rgba(255, 255, 255, 0.1);
+    --ks-text-2: rgba(255, 255, 255, 0.72);
+    --ks-accent: var(--color-accent, #C5A059);
+    --ks-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ks-header { margin-bottom: 3.5rem; }
+
+  .ks-grid { display: grid; grid-template-columns: 1fr 250px; gap: 1.75rem; align-items: stretch; }
+
+  /* Stage: full-bleed room photo with a glass details panel */
+  .ks-stage { position: relative; min-height: 600px; border-radius: 24px; overflow: hidden; border: 1px solid var(--ks-line); background: #1a1a1a; }
+  .ks-stage-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.04); transition: opacity 0.8s ease, transform 1.4s var(--ks-ease); }
+  .ks-stage-img.is-active { opacity: 1; transform: none; }
+  .ks-stage::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8, 8, 8, 0.85) 0%, rgba(8, 8, 8, 0.4) 55%, rgba(8, 8, 8, 0.15) 100%); pointer-events: none; }
+  .ks-panels { position: absolute; left: 2rem; top: 2rem; bottom: 2rem; width: min(470px, calc(100% - 4rem)); z-index: 2; display: grid; align-items: center; }
+  .ks-panel {
+    grid-area: 1 / 1; display: grid; gap: 1.1rem; padding: 2rem;
+    background: rgba(14, 14, 14, 0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 20px;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.6s var(--ks-ease);
+  }
+  .ks-panel.is-active { opacity: 1; transform: none; transition-delay: 0.1s; }
+  .ks-panel[hidden] { display: grid; visibility: hidden; }
+
+  .ks-kicker { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ks-accent); }
+  .ks-title { font-family: var(--font-display) !important; font-weight: 400 !important; font-size: clamp(1.9rem, 2.8vw, 2.6rem); line-height: 1.02; color: #ffffff; margin: 0; }
+  .ks-desc { color: var(--ks-text-2); line-height: 1.65; margin: 0; font-size: 0.98rem; }
+  .ks-scenes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
+  .ks-scenes li { display: grid; gap: 0.15rem; padding-left: 1rem; border-left: 2px solid rgba(197, 160, 89, 0.5); }
+  .ks-scenes b { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ks-accent); }
+  .ks-scenes span { color: var(--ks-text-2); font-size: 0.92rem; line-height: 1.5; }
+
+  /* Engraved keypad */
+  .ks-side { display: flex; flex-direction: column; gap: 1rem; }
+  .ks-plate {
+    flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.65rem; padding: 1.5rem 1.1rem;
+    border-radius: 22px;
+    background: linear-gradient(160deg, #2b2b2d 0%, #1b1b1d 55%, #151517 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 30px 60px rgba(0, 0, 0, 0.5);
+  }
+  .ks-brand { text-align: center; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.35); margin-bottom: 0.5rem; }
+  /* Equal keys: fixed height, one-line engraved label */
+  .ks-key {
+    display: flex; align-items: center; gap: 0.85rem; text-align: left; cursor: pointer;
+    height: 54px; flex: none; padding: 0 1.1rem; border-radius: 12px; font: inherit;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; line-height: 1;
+    white-space: nowrap; color: rgba(255, 255, 255, 0.62);
+    background: linear-gradient(180deg, #262628 0%, #1f1f21 100%);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: color 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .ks-key span { overflow: hidden; text-overflow: ellipsis; }
+  .ks-key:hover, .ks-key.is-active { color: #ffffff; }
+  .ks-key:focus-visible { outline: 2px solid var(--ks-accent); outline-offset: 2px; }
+  .ks-key:active, .ks-key.is-pressed { transform: translateY(2px); box-shadow: 0 0 0 rgba(0, 0, 0, 0.45), inset 0 2px 4px rgba(0, 0, 0, 0.5); }
+  .ks-led { flex: none; width: 7px; height: 7px; border-radius: 50%; background: rgba(255, 255, 255, 0.14); transition: background 0.3s ease, box-shadow 0.3s ease; }
+  .ks-key.is-active .ks-led { background: #f3d58f; box-shadow: 0 0 8px 2px rgba(243, 213, 143, 0.75); }
+
+  /* Walkthrough call to action: its own card under the keypad, gold arrow disc on the right */
+  .ks-cta {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 1.1rem 1.1rem 1.1rem 1.35rem; border-radius: 18px;
+    background: linear-gradient(135deg, rgba(197, 160, 89, 0.16) 0%, rgba(197, 160, 89, 0.04) 100%);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    color: #ffffff; text-decoration: none;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.35s var(--ks-ease);
+  }
+  .ks-cta-text { display: grid; gap: 0.3rem; }
+  .ks-cta-text em { font-style: normal; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ks-accent); }
+  /* Same engraved type as the keypad keys */
+  .ks-cta-text strong { font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; line-height: 1.4; color: #ffffff; }
+  .ks-cta-arrow {
+    flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--ks-accent); color: #111111; font-size: 0.85rem;
+    transition: transform 0.35s var(--ks-ease), box-shadow 0.35s ease;
+  }
+  .ks-cta:hover { color: #ffffff; border-color: var(--ks-accent); background: linear-gradient(135deg, rgba(197, 160, 89, 0.24) 0%, rgba(197, 160, 89, 0.08) 100%); transform: translateY(-2px); }
+  .ks-cta:hover .ks-cta-arrow { transform: rotate(-45deg); box-shadow: 0 0 18px rgba(197, 160, 89, 0.55); }
+
+  /* Mobile: keys become a swipeable row above the photo; details and CTA stack below */
+  @media (max-width: 991px), (hover: none) and (pointer: coarse) {
+    .ks-header { margin-bottom: 2.25rem; }
+    .ks-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    .ks-side { display: contents; }
+    .ks-plate { order: -1; flex-direction: row; justify-content: flex-start; overflow-x: auto; padding: 0.8rem; scrollbar-width: none; }
+    .ks-plate::-webkit-scrollbar { display: none; }
+    .ks-brand { display: none; }
+    .ks-key { height: 48px; }
+    .ks-cta { order: 1; }
+    .ks-stage { min-height: 0; display: grid; }
+    .ks-stage-img { position: relative; grid-area: 1 / 1; height: 260px; }
+    .ks-stage::after { display: none; }
+    .ks-panels { position: static; width: auto; }
+    .ks-panel { border-radius: 0; border: 0; background: #1a1a1a; backdrop-filter: none; -webkit-backdrop-filter: none; padding: 1.5rem; }
+    .ks-panel[hidden] { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ks-stage-img, .ks-panel, .ks-key, .ks-cta, .ks-cta-arrow { transition: none !important; }
+  }
+</style>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const designerCards = document.querySelectorAll('.designer-card');
-    designerCards.forEach(card => {
-      const btn = card.querySelector('.designer-card-btn');
-      const closeBtn = card.querySelector('.designer-card-drawer-close');
+  document.addEventListener('DOMContentLoaded', () => {
+    const root = document.querySelector('.ks-section');
+    if (!root) return;
+    const keys = [...root.querySelectorAll('.ks-key')];
+    const imgs = [...root.querySelectorAll('.ks-stage-img')];
+    const panels = [...root.querySelectorAll('.ks-panel')];
 
-      if (btn) {
-        btn.addEventListener('click', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          card.classList.add('active');
-        });
-      }
-
-      card.addEventListener('click', function (e) {
-        if (!card.classList.contains('active') && !e.target.closest('.designer-card-info-drawer')) {
-          card.classList.add('active');
-        }
+    const select = (i, focus = false) => {
+      keys.forEach((k, n) => {
+        const on = n === i;
+        k.classList.toggle('is-active', on);
+        k.setAttribute('aria-selected', String(on));
+        k.tabIndex = on ? 0 : -1;
       });
+      imgs.forEach((im, n) => im.classList.toggle('is-active', n === i));
+      panels.forEach((p, n) => { p.classList.toggle('is-active', n === i); p.hidden = n !== i; });
+      if (focus) keys[i].focus();
+      keys[i].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    };
 
-      if (closeBtn) {
-        closeBtn.addEventListener('click', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          card.classList.remove('active');
-        });
-      }
+    keys.forEach((key, i) => {
+      key.addEventListener('click', () => {
+        key.classList.add('is-pressed');
+        setTimeout(() => key.classList.remove('is-pressed'), 140);
+        select(i);
+      });
+      // Arrow keys move between keys, like a standard tab list
+      key.addEventListener('keydown', (e) => {
+        const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+        if (!step) return;
+        e.preventDefault();
+        select((i + step + keys.length) % keys.length, true);
+      });
     });
   });
 </script>

@@ -1,0 +1,160 @@
+[
+  {
+    "slug": "lighting",
+    "title": "Designer Lighting",
+    "key": "Lighting",
+    "lines": [
+      "Designer",
+      "Lighting"
+    ],
+    "icon": "fa-lightbulb",
+    "image": "/assets/images/lights.jpg",
+    "alt": "Designer Lighting Solutions",
+    "desc": "Professional-grade fixtures delivering accurate colour & matching hues, custom circadian daylight scenes, and hidden LED strips that keep sightlines clean under cabinets and entryways.",
+    "scenarios": [
+      {
+        "trigger": "Garage opens after dark",
+        "result": "outdoor and entryway lights automatically turn on."
+      },
+      {
+        "trigger": "Nighttime motion",
+        "result": "hallway lights ramp to soft 15% glow to see without glare."
+      },
+      {
+        "trigger": "Sunset automation",
+        "result": "landscape lights illuminate at dusk, dimming to 20% at 11 p.m."
+      }
+    ]
+  },
+  {
+    "slug": "keypads",
+    "title": "Design Without Distraction",
+    "key": "Keypads",
+    "lines": [
+      "Design Without",
+      "Distraction"
+    ],
+    "icon": "fa-toggle-on",
+    "image": "/assets/images/smart_home_automation_hero.jpg",
+    "alt": "Design Without Distraction - Keypads & Controls",
+    "desc": "Custom-engraved designer keypads with RGB backlighting, replacing wall switch clutter with single touch control for lighting, music, drapes, and climate.",
+    "scenarios": [
+      {
+        "trigger": "\"Kitchen\"",
+        "result": "favourite lounge playlists start & task lights increase to 30%."
+      },
+      {
+        "trigger": "\"Entertain\"",
+        "result": "hidden TV emerges, lights dim 60%, motorized shades close."
+      },
+      {
+        "trigger": "\"All Off\"",
+        "result": "every light turns off, doors lock, and alarm system activates."
+      }
+    ]
+  },
+  {
+    "slug": "shading",
+    "title": "Architectural Shading",
+    "key": "Shading",
+    "lines": [
+      "Architectural",
+      "Shading"
+    ],
+    "icon": "fa-sun",
+    "image": "/assets/images/showcase_window_shades.jpg",
+    "alt": "Architectural Shading Solutions",
+    "desc": "Silent, synchronized motorized shades with fabrics curated to match interior design, protecting paintings and furnishings from UV damage.",
+    "scenarios": [
+      {
+        "trigger": "Sun Tracking",
+        "result": "automatically adjusts shades based on time of day or solar levels."
+      },
+      {
+        "trigger": "Away Arming",
+        "result": "lowers shades automatically when security system is armed."
+      },
+      {
+        "trigger": "Circadian Health",
+        "result": "integrates shades with lighting scenes for total wellness."
+      }
+    ]
+  },
+  {
+    "slug": "audio",
+    "title": "Invisible Architectural Audio",
+    "key": "Audio",
+    "lines": [
+      "Invisible",
+      "Architectural Audio"
+    ],
+    "icon": "fa-headphones",
+    "image": "/assets/images/showcase_audio.jpg",
+    "alt": "Invisible Architectural Audio",
+    "desc": "Commercial-grade speakers fully hidden within ceilings and walls, processing multiple audio sources for whole home music zones without visual impact.",
+    "scenarios": [
+      {
+        "trigger": "Multi-Zone Streaming",
+        "result": "different rooms stream independent music via hidden speakers."
+      },
+      {
+        "trigger": "Theatre Performance",
+        "result": "movie quality acoustics balanced for interior aesthetics."
+      },
+      {
+        "trigger": "Wall Integration",
+        "result": "home theatre surround sound built directly inside walls."
+      }
+    ]
+  },
+  {
+    "slug": "security",
+    "title": "User Friendly Security",
+    "key": "Security",
+    "lines": [
+      "User Friendly",
+      "Security"
+    ],
+    "icon": "fa-shield-halved",
+    "image": "/assets/images/home-sec.jpg",
+    "alt": "User Friendly Security",
+    "desc": "Discreet cameras, glass break sensors for large windows without visible wiring, access control intercoms, and temperature monitoring.",
+    "scenarios": [
+      {
+        "trigger": "Smart Chime",
+        "result": "doorbell chimes through speakers with video preview on screens & TVs."
+      },
+      {
+        "trigger": "Wine/Media Monitor",
+        "result": "notifications if temperature in wine cellar or rack rises."
+      },
+      {
+        "trigger": "Access Control",
+        "result": "video intercom with temporary codes for cleaners & contractors."
+      }
+    ]
+  },
+  {
+    "slug": "concealment",
+    "title": "Motorized TV & Media Concealment",
+    "key": "Media",
+    "lines": [
+      "Motorized TV &",
+      "Media Concealment"
+    ],
+    "icon": "fa-tv",
+    "image": "/assets/images/home-theater.jpg",
+    "alt": "Motorized TV & Media Concealment",
+    "desc": "Dual-purpose living spaces where high definition displays emerge from VisionArt framed artwork or lift out of custom cabinetry on command.",
+    "scenarios": [
+      {
+        "trigger": "VisionArt Framing",
+        "result": "displays transform into museum artwork when powered off."
+      },
+      {
+        "trigger": "Millwork Lifts",
+        "result": "motorized lifts elevate displays out of footboards or credenzas."
+      }
+    ]
+  }
+]
