@@ -1,0 +1,10 @@
+[
+  { "key": "lighting", "label": "Lighting", "icon": "fa-lightbulb" },
+  { "key": "shades", "label": "Shades", "icon": "fa-sun" },
+  { "key": "climate", "label": "Climate", "icon": "fa-temperature-half" },
+  { "key": "audio", "label": "Audio", "icon": "fa-music" },
+  { "key": "security", "label": "Security", "icon": "fa-video" },
+  { "key": "locks", "label": "Locks", "icon": "fa-lock" },
+  { "key": "theatre", "label": "Theatre", "icon": "fa-tv" },
+  { "key": "network", "label": "Wi-Fi", "icon": "fa-wifi" }
+]
