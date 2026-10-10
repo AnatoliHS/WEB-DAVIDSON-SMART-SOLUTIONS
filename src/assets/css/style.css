@@ -5362,6 +5362,16 @@ body {
   mask-image: radial-gradient(circle var(--flash-r) at var(--mx) var(--my), #000 30%, transparent 100%);
 }
 
+/* Short location tag: small screens only (the large layout shows full names in the pill) */
+.flash-tag {
+  display: none;
+}
+
+/* Second light layer is only used for the small-screen crossfade */
+.flash-reveal-alt {
+  display: none;
+}
+
 .flash-pin {
   position: absolute;
   /* Anchor on the dot (6px pin padding + 1px border + 5px pill padding + 4px dot radius) so pills grow away from the location */
@@ -5547,13 +5557,20 @@ body {
     --flash-r: 90px;
   }
 
+  /* Two light layers crossfade between locations (opacity only, cheap on phones), with a softer spotlight edge */
   .flash-reveal {
     opacity: 0;
-    transition: opacity 0.35s ease;
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-mask-image: radial-gradient(circle 105px at var(--mx) var(--my), #000 0%, rgba(0, 0, 0, 0.75) 35%, rgba(0, 0, 0, 0.25) 70%, transparent 100%);
+    mask-image: radial-gradient(circle 105px at var(--mx) var(--my), #000 0%, rgba(0, 0, 0, 0.75) 35%, rgba(0, 0, 0, 0.25) 70%, transparent 100%);
   }
 
-  .flash-map.lit .flash-reveal {
+  .flash-reveal.is-on {
     opacity: 1;
+  }
+
+  .flash-reveal-alt {
+    display: block;
   }
 
   /* No labels on the small map: the selected pin stays a dot and the light marks it instead */
@@ -5574,6 +5591,37 @@ body {
   .flash-pin.active .flash-dot {
     background: #ffffff;
     box-shadow: 0 0 6px rgba(255, 255, 255, 0.9), 0 0 14px rgba(197, 160, 89, 0.8);
+  }
+
+  /* Small name tag beside the selected pin (e.g. "Belleville"). The script picks a side that's clear of other pins
+     and sets left/top; --sx/--sy give the short slide it fades in from. */
+  .flash-tag {
+    --sx: 0px;
+    --sy: 6px;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(14, 14, 14, 0.92);
+    border: 1px solid rgba(197, 160, 89, 0.6);
+    color: #ffffff;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(var(--sx), var(--sy));
+    transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .flash-pin.active .flash-tag {
+    opacity: 1;
+    transform: none;
   }
 
   .flash-caption {

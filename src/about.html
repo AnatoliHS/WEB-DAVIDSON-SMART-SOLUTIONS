@@ -121,54 +121,68 @@ County, Kingston & Oshawa. Residential, commercial & industrial automation."
       <svg class="flash-layer flash-fade flash-reveal" viewBox="0 34 1376 700" aria-hidden="true">
         <image href="/assets/images/service_area_map_bg.jpg" width="1376" height="768" filter="url(#flash-bright)" />
       </svg>
+      <!-- Second light layer (small screens only): the old spot fades out while the new one fades in -->
+      <svg class="flash-layer flash-fade flash-reveal flash-reveal-alt" viewBox="0 34 1376 700" aria-hidden="true">
+        <image href="/assets/images/service_area_map_bg.jpg" width="1376" height="768" filter="url(#flash-bright)" />
+      </svg>
 
       <button type="button" class="flash-pin is-hq" style="left: 65%; top: 40%;">
         <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Belleville Head Office (HQ)</span></span>
+        <span class="flash-tag" aria-hidden="true">Belleville</span>
         <span class="flash-card"><span class="flash-badge">Headquarters HQ</span><span class="flash-desc">Central Operations &amp; Showroom. Primary zero-travel-fee service zone.</span></span>
       </button>
 
       <button type="button" class="flash-pin" style="left: 68%; top: 49%;">
         <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Prince Edward County (Picton)</span></span>
+        <span class="flash-tag" aria-hidden="true">Picton</span>
         <span class="flash-card"><span class="flash-badge">Primary Service Zone</span><span class="flash-desc">Picton, Wellington &amp; Sandbanks estate motorized screens, pergolas, &amp; outdoor sound.</span></span>
       </button>
 
       <button type="button" class="flash-pin" style="left: 60%; top: 43%;">
         <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Quinte West (Trenton)</span></span>
+        <span class="flash-tag" aria-hidden="true">Trenton</span>
         <span class="flash-card"><span class="flash-badge">Primary Service Zone</span><span class="flash-desc">CFB Trenton &amp; Bayside waterfront smart home automation.</span></span>
       </button>
 
       <button type="button" class="flash-pin" style="left: 52%; top: 46%;">
         <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Northumberland (Cobourg)</span></span>
+        <span class="flash-tag" aria-hidden="true">Cobourg</span>
         <span class="flash-card"><span class="flash-badge">Primary Service Zone</span><span class="flash-desc">Cobourg &amp; Port Hope waterfront motorized shading &amp; lighting.</span></span>
       </button>
 
       <button type="button" class="flash-pin" style="left: 42%; top: 48%;">
         <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Durham Region (Oshawa)</span></span>
+        <span class="flash-tag" aria-hidden="true">Oshawa</span>
         <span class="flash-card"><span class="flash-badge">Primary Corridor</span><span class="flash-desc">Commercial business security, enterprise networking &amp; AV rack installations.</span></span>
       </button>
 
       <button type="button" class="flash-pin" style="left: 34%; top: 52%;">
         <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Toronto</span></span>
+        <span class="flash-tag" aria-hidden="true">Toronto</span>
         <span class="flash-card"><span class="flash-badge">Greater GTA Zone</span><span class="flash-desc">Luxury condo automation, multi-zone audio, &amp; motorized shading.</span></span>
       </button>
 
       <button type="button" class="flash-pin" style="left: 32%; top: 43%;">
         <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">York Region (Markham)</span></span>
+        <span class="flash-tag" aria-hidden="true">Markham</span>
         <span class="flash-card"><span class="flash-badge">Greater GTA Zone</span><span class="flash-desc">Markham &amp; Richmond Hill high-end smart lighting &amp; home automation.</span></span>
       </button>
 
       <button type="button" class="flash-pin edge-right" style="left: 82%; top: 26%;">
         <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Lanark County</span></span>
+        <span class="flash-tag" aria-hidden="true">Lanark</span>
         <span class="flash-card"><span class="flash-badge">North East Region</span><span class="flash-desc">Custom estate security, rural internet routing, &amp; architectural lighting.</span></span>
       </button>
 
       <button type="button" class="flash-pin edge-right" style="left: 85%; top: 34%;">
         <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Leeds and Grenville (Brockville)</span></span>
+        <span class="flash-tag" aria-hidden="true">Brockville</span>
         <span class="flash-card"><span class="flash-badge">1000 Islands Region</span><span class="flash-desc">St. Lawrence island cottage automation, marine audio, &amp; motorized screens.</span></span>
       </button>
 
       <button type="button" class="flash-pin edge-right" style="left: 89%; top: 18%;">
         <span class="flash-pill"><span class="flash-dot"></span><span class="flash-pill-text">Ottawa Region</span></span>
+        <span class="flash-tag" aria-hidden="true">Ottawa</span>
         <span class="flash-card"><span class="flash-badge">Capital Region</span><span class="flash-desc">National Capital Region commercial business security &amp; smart integration.</span></span>
       </button>
     </div>
@@ -205,26 +219,75 @@ County, Kingston & Oshawa. Residential, commercial & industrial automation."
     const pins = [...map.querySelectorAll('.flash-pin')];
     const EMPTY = caption.textContent;
 
-    // Small screens: the light is a fixed-size spotlight that fades; switching locations fades it out, moves it, then fades it back in
-    let lightTimer = 0;
+    // Small screens: two light layers crossfade, so the old spot fades out while the new one fades in at the chosen pin
+    const lights = [...map.querySelectorAll('.flash-reveal')];
+    let lightIdx = 0;
     const moveLight = (pin) => {
-      clearTimeout(lightTimer);
-      const place = () => {
+      if (!isSmall.matches) {
         map.style.setProperty('--mx', pin.style.left);
         map.style.setProperty('--my', pin.style.top);
         map.classList.add('lit');
-      };
-      if (isSmall.matches && map.classList.contains('lit')) {
-        map.classList.remove('lit');
-        lightTimer = setTimeout(place, 200);
-      } else {
-        place();
+        return;
       }
+      const current = lights[lightIdx];
+      if (current.classList.contains('is-on') && current.style.getPropertyValue('--mx') === pin.style.left && current.style.getPropertyValue('--my') === pin.style.top) return;
+      lightIdx = (lightIdx + 1) % lights.length;
+      const next = lights[lightIdx];
+      next.style.setProperty('--mx', pin.style.left);
+      next.style.setProperty('--my', pin.style.top);
+      void next.getBoundingClientRect(); // commit the new position before it starts fading in
+      next.classList.add('is-on');
+      current.classList.remove('is-on');
+    };
+    const lightsOff = () => lights.forEach((l) => l.classList.remove('is-on'));
+
+    // Small screens: put the selected pin's name tag where it doesn't cover any other pin.
+    // Tries above, below, right, left, then the diagonals; takes the first spot that's clear and inside the map.
+    const GAP = 6;
+    const CLEAR = 3;
+    const placeTag = (pin) => {
+      const tag = pin.querySelector('.flash-tag');
+      if (!tag || !isSmall.matches) return;
+      const P = pin.getBoundingClientRect();
+      const M = map.getBoundingClientRect();
+      const d = pin.querySelector('.flash-dot').getBoundingClientRect();
+      const w = tag.offsetWidth, h = tag.offsetHeight;
+      const cx = d.left + d.width / 2, cy = d.top + d.height / 2;
+      const spots = [
+        ['above', cx - w / 2, d.top - GAP - h, 0, 6],
+        ['below', cx - w / 2, d.bottom + GAP, 0, -6],
+        ['right', d.right + GAP + 2, cy - h / 2, -6, 0],
+        ['left', d.left - GAP - 2 - w, cy - h / 2, 6, 0],
+        ['above-right', d.right, d.top - GAP - h, -4, 4],
+        ['above-left', d.left - w, d.top - GAP - h, 4, 4],
+        ['below-right', d.right, d.bottom + GAP, -4, -4],
+        ['below-left', d.left - w, d.bottom + GAP, 4, -4],
+      ];
+      const others = pins.filter((p) => p !== pin).map((p) => p.querySelector('.flash-pill').getBoundingClientRect());
+      const overlap = (x, y) => others.reduce((sum, o) => {
+        const ox = Math.min(x + w, o.right + CLEAR) - Math.max(x, o.left - CLEAR);
+        const oy = Math.min(y + h, o.bottom + CLEAR) - Math.max(y, o.top - CLEAR);
+        return sum + (ox > 0 && oy > 0 ? ox * oy : 0);
+      }, 0);
+      const inside = (x, y) => x >= M.left && x + w <= M.right && y >= M.top && y + h <= M.bottom;
+      // Best spot: inside the map with no overlap; otherwise the least overlap
+      let best = null;
+      for (const [name, x, y, sx, sy] of spots) {
+        const score = overlap(x, y) + (inside(x, y) ? 0 : 1e6);
+        if (!best || score < best.score) best = { name, x, y, sx, sy, score };
+        if (score === 0) break;
+      }
+      tag.style.left = `${best.x - P.left}px`;
+      tag.style.top = `${best.y - P.top}px`;
+      tag.style.setProperty('--sx', `${best.sx}px`);
+      tag.style.setProperty('--sy', `${best.sy}px`);
+      tag.dataset.place = best.name;
     };
 
     const open = (pin) => {
       active = pin;
       pins.forEach((p) => p.classList.toggle('active', p === pin));
+      placeTag(pin);
       // Small screens / touch / keyboard: centre the light on the chosen pin
       if (isSmall.matches || !followCursor) moveLight(pin);
       caption.innerHTML = '';
@@ -234,8 +297,8 @@ County, Kingston & Oshawa. Residential, commercial & industrial automation."
     };
     const close = () => {
       active = null;
-      clearTimeout(lightTimer);
       pins.forEach((p) => p.classList.remove('active'));
+      if (isSmall.matches) lightsOff();
       if (isSmall.matches || !followCursor) map.classList.remove('lit');
       if (isSmall.matches) caption.textContent = EMPTY;
     };
@@ -256,7 +319,13 @@ County, Kingston & Oshawa. Residential, commercial & industrial automation."
     const swipe = document.getElementById('flashSwipe');
     const hint = document.getElementById('flashSwipeHint');
     const syncSwipe = () => {
-      if (!isSmall.matches) return;
+      if (!isSmall.matches) {
+        // Back on the large layout: the per-layer positions would override the cursor-following light
+        lightsOff();
+        lights.forEach((l) => { l.style.removeProperty('--mx'); l.style.removeProperty('--my'); });
+        return;
+      }
+      if (active) placeTag(active);
       if (!active) open(hq);
       swipe.scrollLeft = (parseFloat(hq.style.left) / 100) * map.offsetWidth - swipe.clientWidth / 2;
       hint.hidden = swipe.scrollWidth <= swipe.clientWidth + 1;
