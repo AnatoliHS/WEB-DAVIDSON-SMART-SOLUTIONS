@@ -284,10 +284,28 @@ County, Kingston & Oshawa. Residential, commercial & industrial automation."
       tag.dataset.place = best.name;
     };
 
+    // Small screens: glide the swipe map so a tapped pin that's away from the middle moves toward the centre.
+    // The map never grows, so pins near its edges stop as far as the map allows.
+    const swipeEl = document.getElementById('flashSwipe');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const centrePin = (pin) => {
+      if (!isSmall.matches || !swipeEl) return;
+      const view = swipeEl.clientWidth;
+      const maxScroll = swipeEl.scrollWidth - view;
+      if (maxScroll <= 0) return;
+      const pinX = (parseFloat(pin.style.left) / 100) * map.offsetWidth;
+      const offCentre = pinX - (swipeEl.scrollLeft + view / 2);
+      // Leave pins that are already near the middle alone
+      if (Math.abs(offCentre) < view * 0.15) return;
+      const target = Math.min(maxScroll, Math.max(0, pinX - view / 2));
+      swipeEl.scrollTo({ left: target, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    };
+
     const open = (pin) => {
       active = pin;
       pins.forEach((p) => p.classList.toggle('active', p === pin));
       placeTag(pin);
+      centrePin(pin);
       // Small screens / touch / keyboard: centre the light on the chosen pin
       if (isSmall.matches || !followCursor) moveLight(pin);
       caption.innerHTML = '';
