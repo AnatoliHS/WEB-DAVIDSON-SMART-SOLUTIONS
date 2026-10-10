@@ -1,0 +1,101 @@
+{#
+  Window Reveal: each item opens from a small framed window to full size as you scroll.
+  Set before including:  wrItems (array of { lines: [line1, line2], image, desc }),
+                         wrId (section id, kept for anchor links), wrKicker (small label)
+  Used on the home page and the business page.
+#}
+<section class="wr-section dark-section" id="{{ wrId }}">
+  <div class="container">
+    <span class="wr-kicker">{{ wrKicker }}</span>
+    {% for item in wrItems %}
+    <article class="wr-item{% if loop.index is even %} is-flipped{% endif %}">
+      <div class="wr-frame"><img src="{{ item.image }}" alt="{{ item.lines[0] }} {{ item.lines[1] }}" loading="lazy" /></div>
+      <div class="wr-body">
+        <span class="wr-num" aria-hidden="true">0{{ loop.index }}</span>
+        <h3 class="wr-title">{{ item.lines[0] }}<br>{{ item.lines[1] }}</h3>
+        <p class="wr-desc">{{ item.desc }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+  /* The section ids are also targeted by older slider rules in style.css, so this selector out-ranks them */
+  section.wr-section.wr-section {
+    --wr-accent: var(--color-accent, #C5A059);
+    position: relative;
+    padding: 5rem 0 6rem;
+    color: #ffffff;
+    background-color: #121212;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+    background-size: 16px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .wr-kicker {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--wr-accent);
+  }
+
+  /* --p runs 0 → 1 as the frame scrolls into view (set by the script below) */
+  .wr-item { --p: 0; display: grid; grid-template-columns: 1.35fr 1fr; gap: 4rem; align-items: center; padding: 5vh 0; }
+  .wr-item.is-flipped .wr-frame { order: 2; }
+
+  .wr-frame {
+    aspect-ratio: 16 / 11;
+    border-radius: 26px;
+    overflow: hidden;
+    background: #1a1a1a;
+    clip-path: inset(calc((1 - var(--p)) * 18%) calc((1 - var(--p)) * 26%) round 26px);
+    will-change: clip-path;
+  }
+  .wr-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(calc(1.25 - var(--p) * 0.25)); will-change: transform; }
+
+  .wr-body { display: grid; gap: 1rem; opacity: calc(var(--p) * 1.6 - 0.3); transform: translateY(calc((1 - var(--p)) * 40px)); }
+  .wr-num { font-family: var(--font-display); font-size: 4rem; line-height: 1; color: var(--wr-accent); }
+  .wr-title { font-family: var(--font-display) !important; font-weight: 400 !important; font-size: clamp(2.2rem, 3.6vw, 3.4rem); line-height: 0.98; letter-spacing: 0; color: #ffffff; margin: 0; }
+  .wr-desc { margin: 0; max-width: 460px; color: rgba(255, 255, 255, 0.72); font-size: 1.02rem; line-height: 1.65; }
+
+  @media (max-width: 991px), (hover: none) and (pointer: coarse) {
+    section.wr-section.wr-section { padding: 3.5rem 0 4rem; }
+    .wr-item, .wr-item.is-flipped { grid-template-columns: 1fr; gap: 1.75rem; padding: 3vh 0 5vh; }
+    .wr-item.is-flipped .wr-frame { order: 0; }
+    .wr-num { font-size: 3rem; }
+  }
+
+  /* No scroll effect: everything shown fully */
+  @media (prefers-reduced-motion: reduce) {
+    .wr-item { --p: 1 !important; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const items = [...document.querySelectorAll('.wr-section .wr-item')];
+    if (!items.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const frames = items.map(item => item.querySelector('.wr-frame'));
+    let ticking = false;
+
+    // Window widens from first sight until the frame is ~75% of a screen into view
+    const update = () => {
+      ticking = false;
+      const vh = innerHeight;
+      items.forEach((item, i) => {
+        const top = frames[i].getBoundingClientRect().top;
+        const p = Math.min(1, Math.max(0, (vh - top) / (vh * 0.75)));
+        item.style.setProperty('--p', p.toFixed(3));
+      });
+    };
+
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener('resize', update);
+    update();
+  });
+</script>

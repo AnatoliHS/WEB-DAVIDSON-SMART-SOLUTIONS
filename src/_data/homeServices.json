@@ -1,0 +1,37 @@
+[
+  {
+    "slug": "whole-home",
+    "lines": ["Effortless", "Whole-Home Living"],
+    "icon": "fa-house-signal",
+    "image": "/assets/images/lights.jpg",
+    "desc": "Synchronized architectural lighting, motorized shades, climate, and sound tailored to your daily rhythm with a single touch."
+  },
+  {
+    "slug": "cinema",
+    "lines": ["Private Cinema &", "Acoustic Havens"],
+    "icon": "fa-film",
+    "image": "/assets/images/home-theater.jpg",
+    "desc": "Dedicated 4K laser projection, immersive Dolby Atmos spatial audio, and acoustic dampening for the ultimate home cinema experience."
+  },
+  {
+    "slug": "outdoor",
+    "lines": ["Four-Season", "Outdoor Living"],
+    "icon": "fa-sun",
+    "image": "/assets/images/four-season.jpg",
+    "desc": "Architectural motorized louvered pergolas, motorized insect screens, and patio audio extending your living space outdoors year-round."
+  },
+  {
+    "slug": "security",
+    "lines": ["Fortified Security &", "Peace of Mind"],
+    "icon": "fa-shield-halved",
+    "image": "/assets/images/cameras.jpg",
+    "desc": "Intelligent 4K night-vision surveillance, smart access control, and encrypted local recording with zero recurring monthly subscription fees."
+  },
+  {
+    "slug": "connected",
+    "lines": ["The Connected", "Estate & Acreage"],
+    "icon": "fa-wifi",
+    "image": "/assets/images/starlink.jpg",
+    "desc": "Enterprise Wi-Fi 7 mesh coverage and certified Starlink satellite installations engineered for flawless property-wide reliability."
+  }
+]

@@ -22,7 +22,7 @@
   </script>
 
   <!-- Editorial Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css?v=9.1" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=9.4" />
 
   <!-- Favicon -->
   <link rel="icon"
@@ -1216,6 +1216,12 @@
       }
     });
   </script>
+  <!-- Contact forms: message-sent / error states, Turnstile, delivery via /api/contact (functions/api/contact.js) -->
+  <script src="/assets/js/contact-form.js?v=1.2" defer
+    data-endpoint="{{ site.forms.endpoint }}"
+    data-turnstile-sitekey="{{ site.forms.turnstileSiteKey }}"
+    data-email="{{ site.email }}"
+    data-phone="{{ site.phone }}"></script>
 </body>
 
 </html>

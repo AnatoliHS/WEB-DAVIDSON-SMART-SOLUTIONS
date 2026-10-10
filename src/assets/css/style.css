@@ -9430,3 +9430,125 @@ body.business-portal .contact-editorial-section .together-cta-btn:hover,
   filter: grayscale(1) invert(1);
   opacity: 1;
 }
+
+/* ==========================================================================
+   Contact form states (src/assets/js/contact-form.js)
+   ========================================================================== */
+.form-status {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.25rem;
+  border-radius: 14px;
+  border: 1px solid;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  animation: form-status-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.form-status[hidden] {
+  display: none;
+}
+
+@keyframes form-status-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.form-status--success {
+  background: rgba(74, 176, 120, 0.12);
+  border-color: rgba(74, 176, 120, 0.45);
+}
+
+.form-status--error {
+  background: rgba(214, 92, 76, 0.12);
+  border-color: rgba(214, 92, 76, 0.5);
+}
+
+.form-status-icon {
+  flex: none;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.form-status--success .form-status-icon { color: #6fcf97; }
+.form-status--error .form-status-icon { color: #ef8a7a; }
+
+.form-status-text strong {
+  display: block;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.form-status-text p {
+  margin: 0.2rem 0 0;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.form-status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.1rem;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.form-status-btn {
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.95rem;
+  border-radius: 30px;
+  cursor: pointer;
+  color: #111111;
+  background: var(--color-accent, #C5A059);
+  border: 0;
+}
+
+.form-status-btn:hover {
+  filter: brightness(1.08);
+}
+
+.form-status-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.form-status-link:hover {
+  color: var(--color-accent, #C5A059) !important;
+}
+
+/* Turnstile check sits under the submit button on every form; empty until the widget renders */
+.form-turnstile {
+  margin-top: 1.5rem;
+}
+
+.form-turnstile:empty {
+  margin-top: 0;
+}
+
+/* Honeypot: kept in the form for bots, invisible and unreachable for people */
+.form-hp {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Fields the server reported as missing or invalid */
+.contact-dark-input[aria-invalid="true"] {
+  border-color: rgba(239, 138, 122, 0.85) !important;
+  box-shadow: 0 0 0 3px rgba(214, 92, 76, 0.2);
+}
+
+form[data-contact-form] [type="submit"]:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}

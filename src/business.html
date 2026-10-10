@@ -164,91 +164,9 @@ isBusinessPage: true
   </div>
 </section>
 
-<!-- Full-Screen Horizontal Scrollable "Core Business Technology Services" Section (Matching Index Aesthetic) -->
-<section class="products-fullscreen-section dark-section" id="commercial-services">
-  <div class="container products-header-container">
-    <div class="products-header-actions">
-      <div class="products-counter-badge" id="bizProductsGlobalCounter">
-        <span id="bizCurrentProductIdx">01</span> <span style="opacity: 0.35;">/</span> 03
-      </div>
-      <div class="products-slider-nav">
-        <button class="products-nav-btn prev" id="bizProductPrevBtn" aria-label="Previous slide">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button class="products-nav-btn next" id="bizProductNextBtn" aria-label="Next slide">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Horizontal Scroll Track Container -->
-  <div class="products-scroll-wrapper" id="bizProductsScrollWrapper">
-    <div class="products-scroll-track" id="bizProductsScrollTrack">
-
-      <!-- Slide 01: Business Security -->
-      <article class="product-fullscreen-card" style="background-image: url('/assets/images/business-security.jpg');" data-index="1">
-        <div class="product-card-overlay"></div>
-        <div class="product-card-inner">
-          <div class="product-card-top">
-            <h3 class="product-card-title">
-              Enterprise &amp;<br>Business Security
-            </h3>
-          </div>
-
-          <div class="product-card-bottom">
-            <div class="product-card-meta">
-              <p class="product-card-description">
-                4 HD motion-sensitive cameras, 24/7 live monitoring with instant incident alerts, and local Ontario operators protecting your assets against theft and vandalism.
-              </p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Slide 02: Business Networking -->
-      <article class="product-fullscreen-card" style="background-image: url('/assets/images/business-network.jpg');" data-index="2">
-        <div class="product-card-overlay"></div>
-        <div class="product-card-inner">
-          <div class="product-card-top">
-            <h3 class="product-card-title">
-              High-Density<br>Business Networking
-            </h3>
-          </div>
-
-          <div class="product-card-bottom">
-            <div class="product-card-meta">
-              <p class="product-card-description">
-                Enterprise Wi-Fi 6/7 coverage, structured Cat6a gigabit cabling, clean equipment racks, guest VLAN isolation, and proactive remote monitoring.
-              </p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Slide 03: Construction Security -->
-      <article class="product-fullscreen-card" style="background-image: url('/assets/images/construction-security.jpg');" data-index="3">
-        <div class="product-card-overlay"></div>
-        <div class="product-card-inner">
-          <div class="product-card-top">
-            <h3 class="product-card-title">
-              Mobile Job-Site &amp;<br>Construction Security
-            </h3>
-          </div>
-
-          <div class="product-card-bottom">
-            <div class="product-card-meta">
-              <p class="product-card-description">
-                Flexible and portable job-site protection featuring 4 HD motion cameras, 24/7 live monitoring by Ontario operators, and complimentary installation.
-              </p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
+<!-- Commercial Services: Window Reveal (shared component; content from _data/businessServices.json) -->
+{% set wrItems = businessServices %}{% set wrId = "commercial-services" %}{% set wrKicker = "Commercial Services" %}
+{% include "components/window-reveal.njk" %}
 
 <!-- High-Impact Commercial Business CTA Banner -->
 <section class="biz-together-cta" id="biz-contact">
@@ -270,92 +188,9 @@ isBusinessPage: true
   </div>
 </section>
 
-<!-- Business Fullscreen Carousel & Drag Navigation Script -->
+<!-- Business Page Scripts: hero sizing and scroll animations -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const prodScroller = document.getElementById('bizProductsScrollWrapper');
-    const prodTrack = document.getElementById('bizProductsScrollTrack');
-    const prodPrev = document.getElementById('bizProductPrevBtn');
-    const prodNext = document.getElementById('bizProductNextBtn');
-    const prodCounter = document.getElementById('bizCurrentProductIdx');
-
-    if (prodScroller && prodTrack) {
-      const cards = prodTrack.querySelectorAll('.product-fullscreen-card');
-      const totalCards = cards.length;
-
-      function getCardStep() {
-        if (cards.length > 1) {
-          const rect0 = cards[0].getBoundingClientRect();
-          const rect1 = cards[1].getBoundingClientRect();
-          const step = rect1.left - rect0.left;
-          if (step > 50) return step;
-        }
-        return cards[0] ? cards[0].offsetWidth + 32 : 360;
-      }
-
-      if (prodPrev) {
-        prodPrev.addEventListener('click', () => {
-          prodScroller.scrollBy({ left: -getCardStep(), behavior: 'smooth' });
-        });
-      }
-
-      if (prodNext) {
-        prodNext.addEventListener('click', () => {
-          prodScroller.scrollBy({ left: getCardStep(), behavior: 'smooth' });
-        });
-      }
-
-      // Update Global Counter on Scroll
-      let scrollTimeout;
-      prodScroller.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          const step = getCardStep();
-          const activeIdx = Math.min(Math.max(Math.round(prodScroller.scrollLeft / step) + 1, 1), totalCards);
-          if (prodCounter) {
-            prodCounter.textContent = activeIdx < 10 ? `0${activeIdx}` : activeIdx;
-          }
-        }, 40);
-      }, { passive: true });
-
-      // Desktop Mouse Drag-To-Scroll
-      let isDown = false;
-      let startX = 0;
-      let scrollStart = 0;
-
-      prodScroller.addEventListener('mousedown', (e) => {
-        isDown = true;
-        startX = e.pageX - prodScroller.offsetLeft;
-        scrollStart = prodScroller.scrollLeft;
-        prodScroller.style.scrollSnapType = 'none';
-        prodScroller.style.cursor = 'grabbing';
-      });
-
-      window.addEventListener('mouseup', () => {
-        if (isDown) {
-          isDown = false;
-          prodScroller.style.scrollSnapType = 'x mandatory';
-          prodScroller.style.cursor = 'grab';
-        }
-      });
-
-      prodScroller.addEventListener('mouseleave', () => {
-        if (isDown) {
-          isDown = false;
-          prodScroller.style.scrollSnapType = 'x mandatory';
-          prodScroller.style.cursor = 'grab';
-        }
-      });
-
-      prodScroller.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - prodScroller.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        prodScroller.scrollLeft = scrollStart - walk;
-      });
-    }
-
     // Lock hero height on mobile load to fill whole screen without stretching/resizing on scroll
     function setMobileHeroHeight() {
       const hero = document.querySelector('.hero-editorial-business');

@@ -26,29 +26,28 @@ description: Contact Davidson Smart Solutions for a free project consultation. P
       <div>
         <!-- Form Card Box (Dark Card Container) -->
         <div class="contact-dark-card">
-          <form
-            onsubmit="event.preventDefault(); alert('Thank you for contacting Davidson Smart Solutions! Our team will reach out within 24 business hours.');">
+          <form data-contact-form data-form-source="{{ title }}">
 
             <div class="contact-form-row">
               <div>
-                <input type="text" class="contact-dark-input" required placeholder="Full Name *" />
+                <input name="name" autocomplete="name" type="text" class="contact-dark-input" required placeholder="Full Name *" />
               </div>
               <div>
-                <input type="email" class="contact-dark-input" required placeholder="Email Address *" />
+                <input name="email" autocomplete="email" type="email" class="contact-dark-input" required placeholder="Email Address *" />
               </div>
             </div>
 
             <div class="contact-form-row">
               <div>
-                <input type="tel" class="contact-dark-input" required placeholder="Phone Number *" />
+                <input name="phone" autocomplete="tel" type="tel" class="contact-dark-input" required placeholder="Phone Number *" />
               </div>
               <div>
-                <input type="text" class="contact-dark-input" required placeholder="City *" />
+                <input name="city" autocomplete="address-level2" type="text" class="contact-dark-input" required placeholder="City *" />
               </div>
             </div>
 
             <div style="margin-bottom: 1rem;">
-              <select class="contact-dark-input" required>
+              <select name="budget" class="contact-dark-input" required>
                 <option value="" disabled selected>Estimated Budget *</option>
                 <option>Under $5,000</option>
                 <option>$5,000 – $15,000</option>
@@ -60,7 +59,7 @@ description: Contact Davidson Smart Solutions for a free project consultation. P
             </div>
 
             <div style="margin-bottom: 1.25rem;">
-              <textarea class="contact-dark-input" rows="4" required placeholder="How can we help you? *"
+              <textarea name="message" class="contact-dark-input" rows="4" required placeholder="How can we help you? *"
                 style="resize: vertical;"></textarea>
             </div>
 

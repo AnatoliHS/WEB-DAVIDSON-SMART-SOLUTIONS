@@ -34,31 +34,44 @@ description: Explore our portfolio of commercial and residential smart home auto
      slide view on desktop or the stacked brief view on mobile (projects from _data/projects.json) -->
 <section class="pf-showcase" id="portfolio-showcase" data-view="grid">
 
-  <!-- ===== Overview: Bento Grid ===== -->
+  <!-- ===== Overview: Circuit (current follows the project in view; selecting a card opens its project view) ===== -->
   <div class="pf-grid-view">
-    <div class="container">
-      <div class="pf-grid-head">
+    <div class="container pfh-layout" data-circuit>
+
+      <!-- Left: pinned heading and rolling counter -->
+      <aside class="pfh-side">
         <h2 class="pf-display pf-grid-title">Selected Projects<span class="pf-dot">.</span></h2>
         <p class="pf-grid-sub">
           {{ projects.length }} featured engagements across corporate, retail, institutional and wellness spaces.
           Select a project to see the brief, what we delivered and the result.
         </p>
-      </div>
+        <span class="pfh-count" aria-hidden="true">
+          <b class="pfh-roll">
+            {%- for place in ["tens", "ones"] -%}
+            <span class="pfh-digit" data-place="{{ place }}"><span class="pfh-roll-strip">{% for d in range(0, 10) %}<span>{{ d }}</span>{% endfor %}</span></span>
+            {%- endfor -%}
+          </b>
+          <span class="pfh-count-total">/ {% if projects.length < 10 %}0{% endif %}{{ projects.length }}</span>
+        </span>
+      </aside>
 
-      <div class="pf-bento">
+      <!-- Right: "Featured" origin, wiring spine and the project cards -->
+      <div class="pfh-board">
+        <svg class="pfh-wires" aria-hidden="true"></svg>
+        <span class="pfh-origin"><i class="pfh-origin-node" aria-hidden="true"></i>Featured</span>
         {% for p in projects %}
-        <a href="#{{ p.slug }}" class="pf-tile" data-i="{{ loop.index0 }}" aria-label="View project: {{ p.client }}">
+        <a href="#{{ p.slug }}" class="pf-hub-card" data-i="{{ loop.index0 }}" aria-label="View project: {{ p.client }}">
           <img src="{{ p.image }}" alt="{{ p.alt }}" loading="lazy" />
-          <div class="pf-tile-overlay">
-            <span class="pf-kicker">{{ p.sector }} &middot; {{ p.discipline }}</span>
-            <h3 class="pf-tile-title">{{ p.client }}</h3>
-            <p class="pf-tile-outcome">{{ p.outcome }}</p>
-            <span class="pf-tile-cta">View Project <i class="fa-solid fa-arrow-right"></i></span>
+          <div class="pfh-card-body">
+            <span class="pfh-num">{% if loop.index < 10 %}0{% endif %}{{ loop.index }} &middot; {{ p.sector }} &middot; {{ p.discipline }}</span>
+            <h3>{{ p.client }}</h3>
+            <p>{{ p.outcome }}</p>
+            <span class="pfh-meta"><i class="fa-solid fa-location-dot"></i> {{ p.location }} <span class="pfh-view">View project <i class="fa-solid fa-arrow-right"></i></span></span>
           </div>
-          <span class="pf-tile-num">0{{ loop.index }}</span>
         </a>
         {% endfor %}
       </div>
+
     </div>
   </div>
 
@@ -309,94 +322,86 @@ description: Explore our portfolio of commercial and residential smart home auto
     to { opacity: 1; transform: none; }
   }
 
-  /* ---------- Bento overview ---------- */
-  .pf-grid-view { padding: 6rem 0 7rem; }
-  .pf-grid-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 2rem 4rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-  }
-  .pf-grid-title { font-size: clamp(2.8rem, 5.5vw, 4.6rem); }
-  .pf-grid-sub { max-width: 430px; margin: 0; color: var(--pf-text-2); line-height: 1.6; }
+  /* ---------- Circuit overview ---------- */
+  .pf-grid-view { padding: 6rem 0 7rem; --pfh-glow: 255, 214, 140; }
+  .pf-grid-title { font-size: clamp(2.6rem, 4vw, 3.8rem); }
+  .pf-grid-sub { margin: 0; max-width: 340px; color: var(--pf-text-2); line-height: 1.6; }
 
-  .pf-bento {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: 270px;
-    gap: 1.25rem;
-  }
-  /* Repeating 4-tile rhythm: large feature, two stacked, one full-width */
-  .pf-tile:nth-child(4n + 1) { grid-column: span 4; grid-row: span 2; }
-  .pf-tile:nth-child(4n + 2), .pf-tile:nth-child(4n + 3) { grid-column: span 2; }
-  .pf-tile:nth-child(4n + 4) { grid-column: span 6; }
-  .pf-tile:nth-child(4n + 1):last-child { grid-column: span 6; }
-  .pf-tile:nth-child(4n + 2):last-child { grid-row: span 2; }
+  /* Desktop: pinned heading on the left, wiring + cards scrolling on the right */
+  .pfh-layout { display: grid; grid-template-columns: minmax(260px, 0.75fr) 2fr; gap: 4rem; align-items: start; }
+  .pfh-side { position: sticky; top: 130px; display: grid; gap: 1.1rem; }
 
-  .pf-tile {
-    position: relative;
-    display: block;
-    border-radius: 20px;
-    overflow: hidden;
-    color: #ffffff;
-    border: 1px solid var(--pf-line);
-    background: #1a1a1a;
-    cursor: pointer;
-  }
-  .pf-tile:hover, .pf-tile:focus-visible { color: #ffffff; }
-  .pf-tile:focus-visible { outline: 2px solid var(--pf-accent); outline-offset: 3px; }
-  .pf-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--pf-ease); }
-  .pf-tile:hover img { transform: scale(1.05); }
+  /* Rolling counter: one 0-9 wheel per digit, so only digits that change actually roll */
+  .pfh-count { margin-top: 1.25rem; display: flex; align-items: flex-end; gap: 0.6rem; font-family: var(--font-display); line-height: 1; color: var(--pf-text-3); }
+  .pfh-count-total { font-size: 1.9rem; padding-bottom: 0.55rem; }
+  .pfh-roll { display: flex; font-weight: 400; font-size: 5.5rem; line-height: 1; color: var(--pf-accent); text-shadow: 0 0 24px rgba(var(--pfh-glow), 0.25); }
+  .pfh-digit { --d: 0; display: block; height: 1em; overflow: hidden; }
+  .pfh-roll-strip { display: block; transform: translateY(calc(var(--d) * -1em)); transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1); }
+  .pfh-roll-strip > span { display: block; height: 1em; }
+  .pfh-digit[data-place="tens"] .pfh-roll-strip { text-align: right; }
+  .pfh-digit[data-place="ones"] .pfh-roll-strip { text-align: left; }
 
-  .pf-tile-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.6rem;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.35) 45%, transparent 75%);
-  }
-  .pf-tile-title {
-    font-family: var(--font-sans);
-    font-size: clamp(1.25rem, 2vw, 1.8rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #ffffff;
-    margin: 0;
-  }
-  .pf-tile:nth-child(4n + 1) .pf-tile-title { font-size: clamp(1.6rem, 2.8vw, 2.4rem); }
+  /* Board: origin on top, spine down the left gutter, cards stacked to the right */
+  .pfh-board { position: relative; display: flex; flex-direction: column; gap: 2rem; padding-left: 72px; }
 
-  .pf-tile-outcome, .pf-tile-cta {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.5s var(--pf-ease), opacity 0.4s ease, margin 0.4s ease;
+  .pfh-wires { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 0; }
+  .pfh-wires .wire-base { fill: none; stroke: rgba(255, 255, 255, 0.08); stroke-width: 1.5; }
+  .pfh-wires .wire-live {
+    fill: none; stroke: #f0cf88; stroke-width: 2; stroke-linecap: round;
+    stroke-dasharray: 1 1; stroke-dashoffset: 1;
+    filter: drop-shadow(0 0 4px rgba(var(--pfh-glow), 0.95)) drop-shadow(0 0 12px rgba(197, 160, 89, 0.6));
+    transition: stroke-dashoffset 0.65s cubic-bezier(0.65, 0, 0.35, 1);
   }
-  .pf-tile-outcome { margin: 0; color: rgba(255, 255, 255, 0.82); font-size: 0.92rem; line-height: 1.5; max-width: 520px; }
-  .pf-tile-cta {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-size: 0.76rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--pf-accent);
+  .pfh-wires .wire-spark {
+    fill: none; stroke: #fff6dc; stroke-width: 3; stroke-linecap: round;
+    stroke-dasharray: 0.04 1.2; stroke-dashoffset: 0.04; opacity: 0;
+    filter: drop-shadow(0 0 6px rgba(var(--pfh-glow), 1));
   }
-  .pf-tile:hover .pf-tile-outcome, .pf-tile:focus-visible .pf-tile-outcome { max-height: 6rem; opacity: 1; margin-top: 0.6rem; }
-  .pf-tile:hover .pf-tile-cta, .pf-tile:focus-visible .pf-tile-cta { max-height: 2rem; opacity: 1; margin-top: 0.9rem; }
+  .pfh-wires g.is-live .wire-live { stroke-dashoffset: 0; }
+  .pfh-wires g.is-live .wire-spark { opacity: 1; animation: pfh-spark 1.8s linear infinite; animation-delay: 0.65s; }
+  @keyframes pfh-spark { from { stroke-dashoffset: 0.04; } to { stroke-dashoffset: -1.16; } }
 
-  .pf-tile-num {
-    position: absolute;
-    top: 1.1rem;
-    right: 1.1rem;
-    padding: 0.35rem 0.75rem;
-    border-radius: 30px;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: var(--pf-accent);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+  /* Spine origin: "Featured" eyebrow with a glowing node; node centre sits half a gutter in */
+  .pfh-origin {
+    --gutter: 72px;
+    align-self: flex-start; margin-left: calc(var(--gutter) * -1); position: relative; z-index: 2;
+    display: flex; align-items: center; gap: calc(var(--gutter) / 2 - 5px + 0.9rem);
+    padding-left: calc(var(--gutter) / 2 - 5px);
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pf-accent); line-height: 1;
+  }
+  .pfh-origin-node { flex: none; width: 10px; height: 10px; border-radius: 50%; background: #f0cf88; box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.15), 0 0 12px 2px rgba(var(--pfh-glow), 0.65); }
+
+  /* Project cards: photo on the left (never sets the height), solid text panel on the right */
+  .pf-hub-card {
+    position: relative; z-index: 1; display: grid; grid-template-columns: 46% 1fr; min-height: 300px; border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--pf-line); background: #1a1a1a; outline: none; color: #ffffff; text-decoration: none; cursor: pointer;
+    transition: border-color 0.5s ease, box-shadow 0.5s ease;
+  }
+  .pf-hub-card:hover { color: #ffffff; }
+  .pf-hub-card:focus-visible { outline: 2px solid var(--pf-accent); outline-offset: 3px; }
+  .pf-hub-card img { position: absolute; left: 0; top: 0; width: 46%; height: 100%; display: block; object-fit: cover; filter: brightness(0.55) saturate(0.8); transition: filter 0.6s ease; }
+  .pf-hub-card::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 46%; background: linear-gradient(270deg, #1a1a1a 0%, rgba(26, 26, 26, 0) 40%); pointer-events: none; }
+  .pfh-card-body { grid-column: 2; position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.6rem; padding: 1.75rem 1.9rem; background: #1a1a1a; transition: background 0.5s ease; }
+  .pfh-num { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pf-accent); }
+  .pf-hub-card h3 { font-family: var(--font-sans); font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.12; color: #ffffff; margin: 0; }
+  .pf-hub-card p { margin: 0; font-size: 0.94rem; line-height: 1.6; color: var(--pf-text-2); transition: color 0.5s ease; }
+  .pfh-meta { margin-top: 0.4rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: var(--pf-text-3); }
+  .pfh-meta > i { color: var(--pf-accent); }
+  .pfh-view { margin-left: auto; white-space: nowrap; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pf-accent); }
+  .pfh-view i { transition: transform 0.35s var(--pf-ease); }
+  /* Lit: full-brightness photo, gold edge glow, faint gold wash on the text panel */
+  .pf-hub-card.is-lit { border-color: rgba(var(--pfh-glow), 0.75); box-shadow: 0 0 0 1px rgba(var(--pfh-glow), 0.35), 0 0 34px rgba(var(--pfh-glow), 0.28), 0 20px 50px rgba(0, 0, 0, 0.45); }
+  .pf-hub-card.is-lit img { filter: brightness(1) saturate(1.05); }
+  .pf-hub-card.is-lit .pfh-card-body { background: linear-gradient(90deg, #1a1a1a 0%, #211d16 100%); }
+  .pf-hub-card.is-lit p { color: rgba(255, 255, 255, 0.85); }
+  .pf-hub-card.is-lit .pfh-view i { transform: translateX(3px); }
+
+  /* Smaller desktops: photo above text inside each card */
+  @media (max-width: 1180px) and (min-width: 992px) {
+    .pf-hub-card { grid-template-columns: 1fr; }
+    .pf-hub-card img { position: relative; width: 100%; height: 190px; }
+    .pfh-card-body { grid-column: auto; }
+    .pf-hub-card::after { width: auto; right: 0; bottom: auto; height: 190px; background: linear-gradient(0deg, #1a1a1a 0%, rgba(26, 26, 26, 0) 55%); }
   }
 
   /* ---------- Desktop project view: Boardroom Slides ---------- */
@@ -432,10 +437,10 @@ description: Explore our portfolio of commercial and residential smart home auto
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(5, 5, 5, 0.9) 0%, rgba(5, 5, 5, 0.6) 50%, rgba(5, 5, 5, 0.45) 100%),
-      linear-gradient(0deg, rgba(5, 5, 5, 0.95) 0%, transparent 30%),
-      linear-gradient(180deg, rgba(5, 5, 5, 0.7) 0%, transparent 20%),
-      rgba(5, 5, 5, 0.3);
+      linear-gradient(90deg, rgba(5, 5, 5, 0.94) 0%, rgba(5, 5, 5, 0.75) 50%, rgba(5, 5, 5, 0.62) 100%),
+      linear-gradient(0deg, rgba(5, 5, 5, 0.97) 0%, transparent 32%),
+      linear-gradient(180deg, rgba(5, 5, 5, 0.8) 0%, transparent 22%),
+      rgba(5, 5, 5, 0.45);
   }
   .pf-slide-inner {
     position: relative;
@@ -571,19 +576,19 @@ description: Explore our portfolio of commercial and residential smart home auto
 
   /* ---------- Mobile project view: Sticky Brief ---------- */
   @media (max-width: 991px), (hover: none) and (pointer: coarse) {
-    .pf-grid-view { padding: 4.5rem 0 5rem; }
-    .pf-grid-head { margin-bottom: 2rem; }
-
-    .pf-bento { grid-template-columns: 1fr; grid-auto-rows: 300px; gap: 1rem; }
-    .pf-bento .pf-tile:nth-child(n) { grid-column: auto; grid-row: auto; }
-    .pf-tile-outcome { max-height: 6rem; opacity: 1; margin-top: 0.6rem; }
-    .pf-tile-cta { max-height: 2rem; opacity: 1; margin-top: 0.9rem; }
-    /* Text is always shown on mobile, so darken the photo more for legibility */
-    .pf-tile-overlay {
-      background:
-        linear-gradient(0deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.15) 100%),
-        rgba(0, 0, 0, 0.25);
-    }
+    /* Circuit overview: heading hidden, spine down the left, photo strip above each card's text */
+    .pf-grid-view { padding: 3rem 0 4.5rem; }
+    .pfh-layout { display: block; }
+    .pfh-side { display: none; }
+    .pfh-board { gap: 1.5rem; padding-left: 56px; }
+    .pfh-origin { --gutter: 56px; }
+    .pf-hub-card { display: flex; flex-direction: column; min-height: 0; }
+    .pf-hub-card img { position: relative; width: 100%; height: 150px; flex: none; }
+    .pf-hub-card::after { width: auto; right: 0; bottom: auto; height: 150px; background: linear-gradient(0deg, #1a1a1a 0%, rgba(26, 26, 26, 0) 55%); }
+    .pfh-card-body { justify-content: flex-start; gap: 0.5rem; padding: 0.4rem 1.25rem 1.3rem; }
+    .pf-hub-card h3 { font-size: 1.3rem; }
+    .pf-hub-card p { font-size: 0.88rem; }
+    .pf-hub-card.is-lit .pfh-card-body { background: linear-gradient(180deg, #1a1a1a 0%, #211d16 100%); }
 
     .pf-slides { display: none; }
     .pf-stack { display: block; padding-bottom: 4rem; }
@@ -642,7 +647,7 @@ description: Explore our portfolio of commercial and residential smart home auto
     const showcase = document.getElementById('portfolio-showcase');
     if (!showcase) return;
 
-    const tiles = showcase.querySelectorAll('.pf-tile');
+    const tiles = showcase.querySelectorAll('.pf-hub-card');
     const slidesEl = showcase.querySelector('.pf-slides');
     const slides = showcase.querySelectorAll('.pf-slide');
     const tabs = showcase.querySelectorAll('.pf-tabs button');
@@ -746,5 +751,143 @@ description: Explore our portfolio of commercial and residential smart home auto
       // Fonts and images can shift the layout after first paint, so land on the brief again once loaded
       window.addEventListener('load', () => { if (isMobile()) openProject(current, { push: false }); });
     }
+  });
+</script>
+
+<!-- Circuit overview: wiring, scroll-driven lighting, rolling counter, equal card heights -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const root = document.querySelector('[data-circuit]');
+    if (!root) return;
+    const showcase = document.getElementById('portfolio-showcase');
+    const mobile = () => isMobileLayout(991);
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const SVGNS = 'http://www.w3.org/2000/svg';
+    const board = root.querySelector('.pfh-board');
+    const svg = root.querySelector('.pfh-wires');
+    const origin = root.querySelector('.pfh-origin-node');
+    const cards = [...root.querySelectorAll('.pf-hub-card')];
+    const tensEl = root.querySelector('.pfh-digit[data-place="tens"]');
+    const onesEl = root.querySelector('.pfh-digit[data-place="ones"]');
+    const overviewShown = () => showcase.dataset.view === 'grid';
+    let groups = [];
+    let active = -1;
+
+    // Orthogonal polyline -> path with softly rounded 90° corners
+    const roundedPath = (pts, r = 12) => {
+      let d = `M ${pts[0][0]} ${pts[0][1]}`;
+      for (let i = 1; i < pts.length - 1; i++) {
+        const [px, py] = pts[i - 1], [x, y] = pts[i], [nx, ny] = pts[i + 1];
+        const inLen = Math.hypot(x - px, y - py), outLen = Math.hypot(nx - x, ny - y);
+        const rr = Math.min(r, inLen / 2, outLen / 2);
+        const ax = x - ((x - px) / inLen) * rr, ay = y - ((y - py) / inLen) * rr;
+        const bx = x + ((nx - x) / outLen) * rr, by = y + ((ny - y) / outLen) * rr;
+        d += ` L ${ax} ${ay} Q ${x} ${y} ${bx} ${by}`;
+      }
+      const last = pts[pts.length - 1];
+      return d + ` L ${last[0]} ${last[1]}`;
+    };
+
+    // Every branch: down the spine from the origin node, then right into its card
+    const draw = () => {
+      const B = board.getBoundingClientRect();
+      if (!B.width) return;
+      const rel = (el) => { const r = el.getBoundingClientRect(); return { l: r.left - B.left, b: r.bottom - B.top, cx: r.left - B.left + r.width / 2, cy: r.top - B.top + r.height / 2 }; };
+      const k = rel(origin);
+      const live = groups.map(g => g.classList.contains('is-live'));
+      svg.replaceChildren();
+      groups = cards.map((card, i) => {
+        const c = rel(card);
+        const d = roundedPath([[k.cx, k.b], [k.cx, c.cy], [c.l, c.cy]]);
+        const g = document.createElementNS(SVGNS, 'g');
+        ['wire-base', 'wire-live', 'wire-spark'].forEach(cls => {
+          const p = document.createElementNS(SVGNS, 'path');
+          p.setAttribute('d', d);
+          p.setAttribute('pathLength', '1');
+          p.setAttribute('class', cls);
+          g.appendChild(p);
+        });
+        if (live[i]) g.classList.add('is-live');
+        svg.appendChild(g);
+        return g;
+      });
+    };
+
+    // Light circuit i on/off; the card glows once the current reaches it
+    const wireTimers = [];
+    const glowTimers = [];
+    const setLive = (i, on) => {
+      clearTimeout(wireTimers[i]);
+      clearTimeout(glowTimers[i]);
+      groups[i]?.classList.toggle('is-live', on);
+      if (on) glowTimers[i] = setTimeout(() => cards[i].classList.add('is-lit'), reduce ? 0 : 450);
+      else cards[i].classList.remove('is-lit');
+    };
+
+    // Desktop: one project live at a time; the rolling counter follows it
+    const setActive = (i) => {
+      if (i === active) return;
+      active = i;
+      cards.forEach((_, n) => setLive(n, n === i));
+      if (i >= 0) {
+        const n = i + 1;
+        tensEl.style.setProperty('--d', Math.floor(n / 10) % 10);
+        onesEl.style.setProperty('--d', n % 10);
+      }
+    };
+
+    const nearestToCentre = () => {
+      const mid = innerHeight / 2;
+      let best = -1, bestDist = Infinity;
+      cards.forEach((c, i) => {
+        const r = c.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) return;
+        const d = Math.abs(r.top + r.height / 2 - mid);
+        if (d < bestDist) { bestDist = d; best = i; }
+      });
+      return best;
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      ticking = false;
+      if (mobile() || !overviewShown()) return;
+      setActive(nearestToCentre());
+    };
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+
+    cards.forEach((card, i) => {
+      card.addEventListener('mouseenter', () => { if (!mobile()) setActive(i); });
+      card.addEventListener('focus', () => { if (!mobile()) setActive(i); else setLive(i, true); });
+      card.addEventListener('blur', () => { if (mobile()) setLive(i, false); });
+    });
+
+    // Phones: each branch lights as its card reaches the middle of the screen
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => entries.forEach(e => {
+        if (!mobile()) return;
+        setLive(cards.indexOf(e.target), e.isIntersecting);
+      }), { rootMargin: '-35% 0px -35% 0px' });
+      cards.forEach(c => io.observe(c));
+    }
+
+    // Every card matches the tallest one at the current width (text length varies by project)
+    const equalise = () => {
+      cards.forEach(c => { c.style.minHeight = ''; });
+      const tallest = Math.max(...cards.map(c => c.getBoundingClientRect().height));
+      if (tallest > 0) cards.forEach(c => { c.style.minHeight = `${Math.ceil(tallest)}px`; });
+    };
+
+    // Re-measure whenever the board's width changes, including when the overview is shown again after "View All"
+    let lastWidth = -1;
+    const relayout = () => {
+      const w = board.clientWidth;
+      if (w && w !== lastWidth) { lastWidth = w; equalise(); }
+      draw();
+      onScroll();
+    };
+    new ResizeObserver(relayout).observe(board);
+    if (document.fonts) document.fonts.ready.then(() => { lastWidth = -1; relayout(); });
+    relayout();
   });
 </script>

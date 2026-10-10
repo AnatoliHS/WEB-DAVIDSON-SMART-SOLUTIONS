@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "business-security",
+    "lines": ["Enterprise &", "Business Security"],
+    "image": "/assets/images/business-security.jpg",
+    "desc": "4 HD motion-sensitive cameras, 24/7 live monitoring with instant incident alerts, and local Ontario operators protecting your assets against theft and vandalism."
+  },
+  {
+    "slug": "business-networking",
+    "lines": ["High-Density", "Business Networking"],
+    "image": "/assets/images/business-network.jpg",
+    "desc": "Enterprise Wi-Fi 6/7 coverage, structured Cat6a gigabit cabling, clean equipment racks, guest VLAN isolation, and proactive remote monitoring."
+  },
+  {
+    "slug": "construction-security",
+    "lines": ["Mobile Job-Site &", "Construction Security"],
+    "image": "/assets/images/construction-security.jpg",
+    "desc": "Flexible and portable job-site protection featuring 4 HD motion cameras, 24/7 live monitoring by Ontario operators, and complimentary installation."
+  }
+]
