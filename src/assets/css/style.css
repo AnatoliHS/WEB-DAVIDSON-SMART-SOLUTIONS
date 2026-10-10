@@ -1114,7 +1114,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   }
 
   /* Circle Hover State when Collapsed: scales in sync with closed navbar circle */
-  body:has(.desktop-pill-nav:not(.is-expanded):hover) .pill-thinking-orb {
+  body:has(.desktop-pill-nav:not(.is-expanded):not(.is-tracing):hover) .pill-thinking-orb {
     transform: scale(1.05);
   }
 
@@ -1145,27 +1145,98 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   }
 
   /* Hover State when Collapsed */
-  .desktop-pill-nav:not(.is-expanded):hover {
+  .desktop-pill-nav:not(.is-expanded):not(.is-tracing):hover {
     transform: scale(1.06);
     background: transparent !important;
     box-shadow: none !important;
     border: none !important;
   }
 
-  body:not(.business-portal) .desktop-pill-nav:not(.is-expanded):hover {
+  body:not(.business-portal) .desktop-pill-nav:not(.is-expanded):not(.is-tracing):hover {
     background: transparent !important;
   }
 
-  /* Expanded Pill State (Dark Glass matching Mobile Island Navbar) */
-  .desktop-pill-nav.is-expanded {
+  /* Expanded Pill State. The dark glass itself lives on .pill-glass so it can fade in under the circuit trace */
+  .desktop-pill-nav.is-expanded,
+  .desktop-pill-nav.is-tracing {
     width: calc(100vw - 3.5rem) !important;
     max-width: calc(100vw - 3.5rem) !important;
-    background: rgba(20, 20, 22, 0.74) !important;
-    backdrop-filter: blur(24px) saturate(160%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.35) !important;
-    border: 1px solid rgba(197, 160, 89, 0.35) !important;
     transform: none !important;
+  }
+
+  /* Circuit Trace in progress: full width at once (width never animates), transparent, glow allowed to spill */
+  .desktop-pill-nav.is-tracing {
+    transition: none !important;
+    overflow: visible !important;
+  }
+
+  .pill-glass {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    background: rgba(20, 20, 22, 0.74);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    opacity: 0;
+  }
+
+  .desktop-pill-nav.is-expanded .pill-glass {
+    opacity: 1;
+  }
+
+  /* Gold current traced from the bulb along both edges (path data is set by JS to the live width) */
+  .pill-circuit {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0;
+    filter: drop-shadow(0 0 4px rgba(255, 214, 140, 0.9)) drop-shadow(0 0 10px rgba(197, 160, 89, 0.6));
+  }
+
+  .pill-circuit path {
+    fill: none;
+    stroke: #e7c47c;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-dasharray: 1 1;
+    stroke-dashoffset: 1;
+  }
+
+  .desktop-pill-nav.is-tracing .pill-circuit {
+    opacity: 1;
+  }
+
+  /* While tracing, the button keeps its open width but the bulb stays at its collapsed position */
+  .desktop-pill-nav.is-tracing .pill-bulb-btn {
+    width: 175px;
+  }
+
+  .desktop-pill-nav.is-tracing .pill-bulb-icon {
+    left: 39px;
+  }
+
+  /* While tracing, menu content is laid out in place and JS animates each piece in or out */
+  .desktop-pill-nav.is-tracing .pill-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    pointer-events: none;
+    transition: none;
+  }
+
+  /* transition: none so pieces with their own CSS transitions (e.g. .btn) don't visibly fade before the JS animation takes over */
+  .desktop-pill-nav.is-tracing :is(.pill-nav-links > *, .pill-content > .pill-divider, .pill-actions > *, .pill-close-btn) {
+    opacity: 0;
+    transition: none !important;
   }
 
   /* Allow mega dropdowns to overflow outside pill once expansion completes */
@@ -1212,7 +1283,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     pointer-events: none !important;
   }
 
-  .desktop-pill-nav.is-expanded .pill-expanded-logo {
+  .desktop-pill-nav:is(.is-expanded, .is-tracing) .pill-expanded-logo {
     display: block !important;
     position: absolute;
     top: 50%;
@@ -1228,6 +1299,10 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.25s ease;
   }
 
+  .desktop-pill-nav.is-tracing .pill-expanded-logo {
+    opacity: 0;
+  }
+
   .desktop-pill-nav.is-expanded .pill-bulb-btn:hover .pill-expanded-logo {
     opacity: 0.85;
     transform: translateY(-50%) scale(0.97);
@@ -1238,7 +1313,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     filter: brightness(0) invert(1) !important;
   }
 
-  .desktop-pill-nav:not(.is-expanded) .pill-bulb-btn:hover .pill-bulb-icon {
+  .desktop-pill-nav:not(.is-expanded):not(.is-tracing) .pill-bulb-btn:hover .pill-bulb-icon {
     transform: translate(-50%, -50%) rotate(6deg) scale(1.06);
     filter: drop-shadow(0 2px 10px rgba(197, 160, 89, 0.5));
   }
@@ -1690,21 +1765,22 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
     -webkit-backdrop-filter: none !important;
   }
 
-  body.business-portal .desktop-pill-nav:not(.is-expanded):hover {
+  body.business-portal .desktop-pill-nav:not(.is-expanded):not(.is-tracing):hover {
     background: transparent !important;
     box-shadow: none !important;
     border: none !important;
   }
 
-  body.business-portal .desktop-pill-nav.is-expanded {
-    width: calc(100vw - 3.5rem) !important;
-    max-width: calc(100vw - 3.5rem) !important;
-    background: rgba(20, 20, 22, 0.74) !important;
-    backdrop-filter: blur(24px) saturate(160%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.35) !important;
-    border: 1px solid rgba(97, 112, 158, 0.45) !important;
-    transform: none !important;
+  body.business-portal .pill-glass {
+    border-color: rgba(97, 112, 158, 0.45);
+  }
+
+  body.business-portal .pill-circuit {
+    filter: drop-shadow(0 0 4px rgba(145, 190, 255, 0.9)) drop-shadow(0 0 10px rgba(115, 155, 225, 0.6));
+  }
+
+  body.business-portal .pill-circuit path {
+    stroke: #a9c6f5;
   }
 
   body.business-portal .desktop-pill-nav .pill-bulb-btn:hover .pill-bulb-icon {

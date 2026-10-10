@@ -22,7 +22,7 @@
   </script>
 
   <!-- Editorial Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css?v=8.9" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=9.1" />
 
   <!-- Favicon -->
   <link rel="icon"
@@ -39,6 +39,10 @@
   <!-- Desktop Expanding Pill Navigation (Desktop Only: min-width 901px) -->
   <!-- Every section is dark, so the pill is always in its on-dark theme (white bulb, gold orb) -->
   <aside class="desktop-pill-nav is-on-dark" id="desktopPillNav" aria-label="Main Navigation">
+    <!-- Open-state glass and the circuit trace drawn around it (sized by JS) -->
+    <span class="pill-glass" aria-hidden="true"></span>
+    <svg class="pill-circuit" aria-hidden="true" focusable="false"><path pathLength="1"></path><path pathLength="1"></path></svg>
+
     <!-- Circle Bulb Trigger Button (Always visible on left) -->
     <button class="pill-bulb-btn" id="pillBulbBtn" aria-label="Open Navigation Menu" aria-expanded="false" title="Menu">
       <img src="/assets/bulb-black.png" alt="Davidson Smart Solutions Logo" class="pill-bulb-icon bulb-icon-dark" />
@@ -452,42 +456,153 @@
         });
       });
 
-      // 2. Desktop Expanding Pill Navbar Controls
+      // 2. Desktop Expanding Pill Navbar Controls (Circuit Trace open / close)
       const desktopPill = document.getElementById('desktopPillNav');
       const pillBulbBtn = document.getElementById('pillBulbBtn');
       const pillCloseBtn = document.getElementById('pillCloseBtn');
       const pillThinkingOrb = document.getElementById('pillThinkingOrb');
 
+      // Shared hooks: the orb animation further down assigns setOrbEnergy; Escape and link handlers use the others
+      let setOrbEnergy = () => {};
+      let desktopPillIsOpen = () => false;
+      let openDesktopPill = () => {};
+      let closeDesktopPill = () => {};
+
       if (desktopPill && pillBulbBtn) {
-        let expandTimer = null;
+        const circuit = desktopPill.querySelector('.pill-circuit');
+        const circuitPaths = circuit ? [...circuit.querySelectorAll('path')] : [];
+        const glass = desktopPill.querySelector('.pill-glass');
+        const pillLogo = desktopPill.querySelector('.pill-expanded-logo');
+        const bulbIcons = [...desktopPill.querySelectorAll('.pill-bulb-icon')];
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-        const openDesktopPill = () => {
-          clearTimeout(expandTimer);
+        // Overall tempo: scales every step evenly (lower = faster)
+        const TEMPO = 0.75;
+        const EASE = 'cubic-bezier(0.16, 1, 0.3, 1)';
+        const TRACE = 'cubic-bezier(0.65, 0, 0.35, 1)';
+        const PILL_H = 78;
+        const PILL_R = PILL_H / 2;
+        const scaleMs = (t) => t * TEMPO;
+        const wait = (t) => new Promise(r => setTimeout(r, scaleMs(t)));
+        const run = (el, keyframes, { duration, delay = 0, easing = EASE } = {}) =>
+          el ? el.animate(keyframes, { duration: scaleMs(duration), delay: scaleMs(delay), easing, fill: 'both' }).finished.catch(() => {}) : Promise.resolve();
+
+        // Bulb icons have !important opacity rules for the light/dark swap, so they fade via filter: opacity() instead
+        const glowRgb = () => (document.body.classList.contains('business-portal') ? '145, 190, 255' : '255, 214, 140');
+        const bulbFilter = (brightness, glow, opacity) =>
+          `brightness(${brightness}) drop-shadow(0 0 ${glow}px rgba(${glowRgb()}, ${glow ? 0.9 : 0})) opacity(${opacity})`;
+        const menuPieces = () => [...desktopPill.querySelectorAll('.pill-nav-links > *, .pill-content > .pill-divider, .pill-actions > *, .pill-close-btn')]
+          .filter(el => getComputedStyle(el).display !== 'none');
+
+        // Two half-outlines start at the bulb (left middle) and meet on the far right
+        const layoutCircuit = () => {
+          if (!circuit) return;
+          const w = desktopPill.offsetWidth;
+          const r = PILL_R - 1;
+          circuit.setAttribute('viewBox', `0 0 ${w} ${PILL_H}`);
+          circuitPaths[0].setAttribute('d', `M 1 ${PILL_R} A ${r} ${r} 0 0 1 ${PILL_R} 1 L ${w - PILL_R} 1 A ${r} ${r} 0 0 1 ${w - 1} ${PILL_R}`);
+          circuitPaths[1].setAttribute('d', `M 1 ${PILL_R} A ${r} ${r} 0 0 0 ${PILL_R} ${PILL_H - 1} L ${w - PILL_R} ${PILL_H - 1} A ${r} ${r} 0 0 0 ${w - 1} ${PILL_R}`);
+        };
+
+        const animateOpen = async () => {
+          desktopPill.classList.add('is-tracing');
+          layoutCircuit();
+          const pieces = menuPieces();
+          // 1. Bulb sparks and the orb surges, as if charging
+          setOrbEnergy(2);
+          await Promise.all(bulbIcons.map(icon => run(icon, [
+            { filter: bulbFilter(1, 0, 1) },
+            { filter: bulbFilter(2.2, 18, 1), offset: 0.5 },
+            { filter: bulbFilter(1.4, 10, 1) }
+          ], { duration: 180 })));
+          setOrbEnergy(1);
+          // 2. Current runs along both edges while the orb fades out
+          const trace = Promise.all(circuitPaths.map(path => run(path, [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], { duration: 480, easing: TRACE })));
           if (pillThinkingOrb) pillThinkingOrb.classList.add('is-hidden');
-          desktopPill.classList.add('is-expanded');
-          pillBulbBtn.setAttribute('aria-expanded', 'true');
-          pillBulbBtn.setAttribute('aria-label', 'Close Navigation Menu');
-          pillBulbBtn.title = 'Close Menu';
-          expandTimer = setTimeout(() => {
-            if (desktopPill.classList.contains('is-expanded')) {
-              desktopPill.classList.add('overflow-visible');
-            }
-          }, 460);
+          // 3. Glass fills in just before the circuit closes
+          await wait(400);
+          await Promise.all([
+            trace,
+            run(glass, [{ opacity: 0 }, { opacity: 1 }], { duration: 280 }),
+            run(circuit, [{ opacity: 1 }, { opacity: 0 }], { duration: 360, delay: 120 }),
+            ...bulbIcons.map(icon => run(icon, [{ filter: bulbFilter(1.4, 10, 1) }, { filter: bulbFilter(1.4, 10, 0) }], { duration: 160 })),
+            run(pillLogo, [{ opacity: 0 }, { opacity: 1 }], { duration: 240, delay: 60 }),
+            ...pieces.map((el, i) => run(el, [{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], { duration: 300, delay: 60 + i * 30 }))
+          ]);
         };
 
-        const closeDesktopPill = () => {
-          clearTimeout(expandTimer);
-          if (pillThinkingOrb) pillThinkingOrb.classList.remove('is-hidden');
+        const animateClose = async () => {
+          const pieces = menuPieces().reverse();
           desktopPill.classList.remove('overflow-visible');
+          desktopPill.classList.add('is-tracing');
           desktopPill.classList.remove('is-expanded');
-          pillBulbBtn.setAttribute('aria-expanded', 'false');
-          pillBulbBtn.setAttribute('aria-label', 'Open Navigation Menu');
-          pillBulbBtn.title = 'Menu';
+          layoutCircuit();
+          // One timeline: the circuit lights up as the menu fades and retracts into the bulb, then the orb returns
+          await Promise.all([
+            ...pieces.map((el, i) => run(el, [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-4px)' }], { duration: 160, delay: i * 15, easing: 'ease-in' })),
+            run(pillLogo, [{ opacity: 1 }, { opacity: 0 }], { duration: 160 }),
+            run(circuit, [{ opacity: 0 }, { opacity: 1 }], { duration: 100 }),
+            run(glass, [{ opacity: 1 }, { opacity: 0 }], { duration: 260, delay: 40 }),
+            ...circuitPaths.map(path => run(path, [{ strokeDashoffset: 0 }, { strokeDashoffset: 1 }], { duration: 420, delay: 60, easing: TRACE })),
+            ...bulbIcons.map(icon => run(icon, [
+              { filter: bulbFilter(2.2, 18, 0) },
+              { filter: bulbFilter(2.2, 18, 1), offset: 0.45 },
+              { filter: bulbFilter(1, 0, 1) }
+            ], { duration: 400, delay: 320 })),
+            // Orb returns on the same tempo as the rest (its .is-hidden rule is !important, so lift it and animate instead)
+            (() => {
+              if (!pillThinkingOrb) return Promise.resolve();
+              pillThinkingOrb.classList.remove('is-hidden');
+              return run(pillThinkingOrb, [{ opacity: 0, transform: 'scale(0.7)' }, { opacity: 1, transform: 'scale(1)' }], { duration: 400, delay: 360 });
+            })()
+          ]);
         };
+
+        // Lock in the final state with transitions off, so no CSS transition replays after the animation
+        const settle = (open) => {
+          desktopPill.classList.add('pill-instant');
+          desktopPill.classList.toggle('is-expanded', open);
+          desktopPill.classList.remove('is-tracing');
+          desktopPill.getAnimations({ subtree: true }).forEach(a => a.cancel());
+          if (pillThinkingOrb) pillThinkingOrb.getAnimations().forEach(a => a.cancel());
+          desktopPill.classList.toggle('overflow-visible', open);
+          if (pillThinkingOrb) pillThinkingOrb.classList.toggle('is-hidden', open);
+          requestAnimationFrame(() => requestAnimationFrame(() => desktopPill.classList.remove('pill-instant')));
+        };
+
+        const setAria = (open) => {
+          pillBulbBtn.setAttribute('aria-expanded', String(open));
+          pillBulbBtn.setAttribute('aria-label', open ? 'Close Navigation Menu' : 'Open Navigation Menu');
+          pillBulbBtn.title = open ? 'Close Menu' : 'Menu';
+        };
+
+        // Requests made mid-animation are remembered and applied once the current animation finishes
+        let isOpen = desktopPill.classList.contains('is-expanded');
+        let wanted = null;
+        let animating = false;
+
+        const goTo = async (open, { instant = false } = {}) => {
+          wanted = open;
+          if (animating) return;
+          while (wanted !== null && wanted !== isOpen) {
+            const target = wanted;
+            animating = true;
+            setAria(target);
+            if (!instant && !reduceMotion.matches) await (target ? animateOpen() : animateClose());
+            settle(target);
+            isOpen = target;
+            animating = false;
+          }
+          wanted = null;
+        };
+
+        desktopPillIsOpen = () => (wanted !== null ? wanted : isOpen);
+        openDesktopPill = (opts) => goTo(true, opts);
+        closeDesktopPill = (opts) => goTo(false, opts);
 
         pillBulbBtn.addEventListener('click', (e) => {
           e.stopPropagation();
-          if (desktopPill.classList.contains('is-expanded')) {
+          if (desktopPillIsOpen()) {
             closeDesktopPill();
           } else {
             openDesktopPill();
@@ -502,7 +617,7 @@
         }
 
         document.addEventListener('click', (e) => {
-          if (desktopPill.classList.contains('is-expanded') && !desktopPill.contains(e.target)) {
+          if (desktopPillIsOpen() && !desktopPill.contains(e.target)) {
             closeDesktopPill();
           }
         });
@@ -513,13 +628,13 @@
         let autoOpened = false;
         let wasAtTop = null;
 
-        const syncPillToScroll = () => {
+        const syncPillToScroll = (instant = false) => {
           if (isMobileLayout(900)) return;
           const atTop = window.scrollY <= TOP_THRESHOLD;
           if (atTop === wasAtTop) return;
           wasAtTop = atTop;
-          if (atTop && !desktopPill.classList.contains('is-expanded')) {
-            openDesktopPill();
+          if (atTop && !desktopPillIsOpen()) {
+            openDesktopPill({ instant });
             autoOpened = true;
           } else if (!atTop && autoOpened) {
             closeDesktopPill();
@@ -531,24 +646,17 @@
         if (pillCloseBtn) pillCloseBtn.addEventListener('click', () => (autoOpened = false));
 
         // First sync is instant so the pill doesn't animate open on every page load
-        desktopPill.classList.add('pill-instant');
-        syncPillToScroll();
-        if (desktopPill.classList.contains('is-expanded')) desktopPill.classList.add('overflow-visible');
-        requestAnimationFrame(() => requestAnimationFrame(() => desktopPill.classList.remove('pill-instant')));
+        syncPillToScroll(true);
 
-        window.addEventListener('scroll', syncPillToScroll, { passive: true });
+        window.addEventListener('scroll', () => syncPillToScroll(), { passive: true });
       }
 
       // Escape Key Dismissal (Both Desktop & Mobile)
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-          if (desktopPill && desktopPill.classList.contains('is-expanded')) {
-            desktopPill.classList.remove('is-expanded', 'overflow-visible');
-            if (pillThinkingOrb) pillThinkingOrb.classList.remove('is-hidden');
-            if (pillBulbBtn) {
-              pillBulbBtn.setAttribute('aria-expanded', 'false');
-              pillBulbBtn.focus();
-            }
+          if (desktopPill && desktopPillIsOpen()) {
+            closeDesktopPill();
+            if (pillBulbBtn) pillBulbBtn.focus();
           }
           if (mobileIslandDropdown && mobileIslandDropdown.classList.contains('active')) {
             closeMobileIsland();
@@ -561,10 +669,7 @@
       document.querySelectorAll('.mobile-island-dropdown a:not(.island-sub-toggle), .desktop-pill-nav a').forEach(link => {
         link.addEventListener('click', () => {
           setTimeout(() => {
-            if (desktopPill && desktopPill.classList.contains('is-expanded')) {
-              desktopPill.classList.remove('is-expanded', 'overflow-visible');
-              if (pillThinkingOrb) pillThinkingOrb.classList.remove('is-hidden');
-            }
+            if (desktopPill && desktopPillIsOpen()) closeDesktopPill();
             closeMobileIsland();
           }, 180);
         });
@@ -597,6 +702,7 @@
       let time = 0;
       let targetEnergy = 1.0;
       let currentEnergy = 1.0;
+      setOrbEnergy = (value) => { targetEnergy = value; };
       let animId = null;
 
       if (desktopPill) {
