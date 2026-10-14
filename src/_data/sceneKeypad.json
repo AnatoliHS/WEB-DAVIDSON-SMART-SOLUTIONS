@@ -1,0 +1,36 @@
+{
+  "home": {
+    "nodes": [
+      { "key": "lighting", "label": "Lighting", "icon": "fa-lightbulb" },
+      { "key": "shades", "label": "Shades", "icon": "fa-sun" },
+      { "key": "climate", "label": "Climate", "icon": "fa-temperature-half" },
+      { "key": "audio", "label": "Audio", "icon": "fa-music" },
+      { "key": "security", "label": "Security", "icon": "fa-video" },
+      { "key": "locks", "label": "Locks", "icon": "fa-lock" },
+      { "key": "theatre", "label": "Theatre", "icon": "fa-tv" },
+      { "key": "network", "label": "Wi-Fi", "icon": "fa-wifi" }
+    ],
+    "scenes": [
+      { "key": "entertain", "label": "Entertain", "devices": ["lighting", "shades", "audio", "theatre", "network"], "note": "Lights dim to 30%, shades close, the projector warms up and surround sound comes on." },
+      { "key": "bedtime", "label": "Bedtime", "devices": ["lighting", "shades", "climate", "locks", "security", "network"], "note": "Lights fade out, shades lower, doors lock, the alarm arms and the temperature drops for the night." },
+      { "key": "away", "label": "Away", "devices": ["lighting", "climate", "security", "locks", "network"], "note": "Everything switches off, doors lock, cameras arm and you get an alert on your phone." }
+    ]
+  },
+  "business": {
+    "nodes": [
+      { "key": "lighting", "label": "Lighting", "icon": "fa-lightbulb" },
+      { "key": "climate", "label": "Climate", "icon": "fa-temperature-half" },
+      { "key": "music", "label": "Music", "icon": "fa-music" },
+      { "key": "cameras", "label": "Cameras", "icon": "fa-video" },
+      { "key": "access", "label": "Access", "icon": "fa-id-card" },
+      { "key": "alarm", "label": "Alarm", "icon": "fa-shield-halved" },
+      { "key": "boardroom", "label": "Boardroom", "icon": "fa-display" },
+      { "key": "network", "label": "Wi-Fi", "icon": "fa-wifi" }
+    ],
+    "scenes": [
+      { "key": "open", "label": "Open", "devices": ["lighting", "climate", "music", "access", "network"], "note": "Lights come up, the building reaches temperature, background music starts and staff key cards unlock the doors." },
+      { "key": "meeting", "label": "Meeting", "devices": ["lighting", "climate", "boardroom", "network"], "note": "Boardroom lights dim, the display and video call system wake up and the room cools for a full table." },
+      { "key": "closed", "label": "Closed", "devices": ["lighting", "climate", "cameras", "access", "alarm", "network"], "note": "Lights switch off, doors go card-only, cameras record, the alarm arms and the manager gets a phone alert." }
+    ]
+  }
+}

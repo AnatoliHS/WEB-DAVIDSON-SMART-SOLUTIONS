@@ -1,0 +1,19 @@
+{# Scene Keypad hub markup. Needs scene-keypad-assets.njk on the page.
+   Set `automationVariant` ('home' | 'business') before including; devices & scenes come from _data/sceneKeypad.json. #}
+{% set sk = sceneKeypad[automationVariant or 'home'] %}
+      <!-- Scene Keypad: each scene lights the devices it controls -->
+      <div class="sk-visual{% if automationVariant == 'business' %} is-business{% endif %}">
+        <div class="sk-stage" role="img" aria-label="Automation hub connecting {% for n in sk.nodes %}{{ n.label | lower }}{% if not loop.last %}, {% endif %}{% endfor %}">
+          <svg class="sk-wires" viewBox="0 0 100 100" aria-hidden="true"></svg>
+          <div class="sk-centre" aria-hidden="true"><span class="sk-centre-halo"></span><img src="/assets/bulb-white.png" alt="" /></div>
+          {% for n in sk.nodes %}
+          <div class="sk-node" data-key="{{ n.key }}" aria-hidden="true"><i class="fa-solid {{ n.icon }}"></i><span class="sk-label">{{ n.label }}</span></div>
+          {% endfor %}
+        </div>
+        <div class="sk-scenes" role="group" aria-label="Choose a scene">
+          {% for s in sk.scenes %}
+          <button type="button" data-scene="{{ s.key }}" data-devices="{{ s.devices | join(' ') }}" data-note="{{ s.note }}" aria-pressed="false">{{ s.label }}</button>
+          {% endfor %}
+        </div>
+        <p class="sk-note" aria-live="polite"></p>
+      </div>

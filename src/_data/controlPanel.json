@@ -1,0 +1,34 @@
+{
+  "home": {
+    "brand": "Davidson Home",
+    "label": "Smart home control panel switching between Morning and Bedtime scenes",
+    "scenes": [
+      { "key": "morning", "label": "Morning", "icon": "fa-sun", "greet": "Good morning" },
+      { "key": "bedtime", "label": "Bedtime", "icon": "fa-moon", "greet": "Good night" }
+    ],
+    "tiles": [
+      { "icon": "fa-sun", "name": "Shades", "morning": { "text": "Open", "bar": 100, "on": true }, "bedtime": { "text": "Closed", "bar": 0 } },
+      { "icon": "fa-lightbulb", "name": "Lights", "morning": { "text": "70%", "bar": 70, "on": true }, "bedtime": { "text": "0%", "bar": 0 } },
+      { "icon": "fa-lock", "name": "Doors", "morning": { "text": "Unlocked" }, "bedtime": { "text": "Locked", "on": true } },
+      { "icon": "fa-shield-halved", "name": "Security", "morning": { "text": "Disarmed" }, "bedtime": { "text": "Armed", "on": true } },
+      { "icon": "fa-temperature-half", "name": "Climate", "morning": { "text": "21°C", "bar": 60, "on": true }, "bedtime": { "text": "19°C", "bar": 45, "on": true, "cool": true } },
+      { "icon": "fa-music", "name": "Audio", "morning": { "text": "News", "on": true }, "bedtime": { "text": "Off" } }
+    ]
+  },
+  "business": {
+    "brand": "Davidson Business",
+    "label": "Business control panel switching between Open and Closed scenes",
+    "scenes": [
+      { "key": "open", "label": "Open", "icon": "fa-store", "greet": "Open for business" },
+      { "key": "closed", "label": "Closed", "icon": "fa-moon", "greet": "Closed for the night" }
+    ],
+    "tiles": [
+      { "icon": "fa-lightbulb", "name": "Lights", "open": { "text": "100%", "bar": 100, "on": true }, "closed": { "text": "0%", "bar": 0 } },
+      { "icon": "fa-wifi", "name": "Guest Wi-Fi", "open": { "text": "On", "on": true }, "closed": { "text": "Off" } },
+      { "icon": "fa-lock", "name": "Doors", "open": { "text": "Unlocked" }, "closed": { "text": "Locked", "on": true } },
+      { "icon": "fa-shield-halved", "name": "Alarm", "open": { "text": "Disarmed" }, "closed": { "text": "Armed", "on": true } },
+      { "icon": "fa-temperature-half", "name": "Climate", "open": { "text": "21°C", "bar": 60, "on": true }, "closed": { "text": "16°C", "bar": 30, "on": true, "cool": true } },
+      { "icon": "fa-music", "name": "Music", "open": { "text": "Playing", "on": true }, "closed": { "text": "Off" } }
+    ]
+  }
+}

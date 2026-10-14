@@ -1,0 +1,70 @@
+{# Automation "sticky story" section: the visual stays pinned and crossfades to match the chapter in view.
+   Set `automationVariant` ('home' | 'business') before including; copy comes from _data/automationStory.json.
+   Needs automation-story-assets.njk once on the page. #}
+{% set story = automationStory[automationVariant or 'home'] %}
+{% set isBiz = automationVariant == 'business' %}
+{% macro credentials(rows) %}
+<div class="as-cert" aria-label="Credentials">
+  {% for r in rows %}
+  <div class="as-cert-row"><i class="fa-solid {{ r.icon }}"></i><div><b>{{ r.title | safe }}</b><span>{{ r.text | safe }}</span></div></div>
+  {% endfor %}
+</div>
+{% endmacro %}
+<section class="as-section{% if isBiz %} is-business{% endif %}" id="{{ story.id }}" data-story>
+  <div class="container">
+    <!-- Header matches the FAQ: two-tone title left, brief description right -->
+    <div class="designer-ideas-header">
+      <div>
+        <h2 class="designer-ideas-heading">
+          <span class="heading-white">{{ story.heading[0] }}</span><br>
+          <span class="heading-red">{{ story.heading[1] }}</span>
+        </h2>
+      </div>
+
+      <div class="designer-ideas-intro">
+        <p>
+          <strong>{{ story.intro.strong }}</strong> {{ story.intro.text }}
+        </p>
+        <a href="{{ story.cta.href }}" class="btn-pill-light">
+          {{ story.cta.label }} <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="as-story-grid">
+      <div class="as-story-media">
+        <div class="as-story-pin">
+          <div class="as-story-layer is-active" data-i="0">{% include "components/control-panel.njk" %}</div>
+          <div class="as-story-layer" data-i="1">{% include "components/scene-keypad.njk" %}</div>
+          <div class="as-story-layer" data-i="2">{{ credentials(story.credentials) }}</div>
+          <ol class="as-rail" aria-hidden="true">{% for c in story.chapters %}<li{% if loop.first %} class="is-active"{% endif %}></li>{% endfor %}</ol>
+        </div>
+      </div>
+
+      <div class="as-story-chapters">
+        {% for c in story.chapters %}
+        <article class="as-chapter{% if loop.first %} is-active{% endif %}" data-i="{{ loop.index0 }}">
+          <span class="as-chapter-num" aria-hidden="true">0{{ loop.index }}</span>
+          <div class="as-copy">
+            <h3 class="as-h">{{ c.title | safe }} <span>{{ c.accent | safe }}</span></h3>
+            {% for para in c.paras %}<p>{{ para | safe }}</p>
+            {% endfor %}
+            {% if c.checks %}
+            <ul class="as-checks">
+              {% for item in c.checks %}<li><i class="fa-solid fa-circle-check"></i> {{ item | safe }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+            {% if c.links %}
+            <div class="as-links">{% for l in c.links %}<a href="{{ l.href }}" class="as-ghost">{{ l.label | safe }}</a>{% endfor %}</div>
+            {% endif %}
+          </div>
+          <div class="as-chapter-visual">
+            {% if loop.index0 == 0 %}{% include "components/control-panel.njk" %}{% elif loop.index0 == 1 %}{% include "components/scene-keypad.njk" %}{% else %}{{ credentials(story.credentials) }}{% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

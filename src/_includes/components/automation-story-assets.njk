@@ -1,0 +1,107 @@
+{# Automation sticky-story section: styles & script, plus the control panel and scene keypad assets it uses. Include once per page. #}
+{% include "components/control-panel-assets.njk" %}
+{% include "components/scene-keypad-assets.njk" %}
+
+<style>
+  .as-section {
+    --as-line: rgba(255, 255, 255, 0.1);
+    --as-text-2: rgba(255, 255, 255, 0.72);
+    --as-text-3: rgba(255, 255, 255, 0.48);
+    --as-accent: #C5A059;
+    --as-accent-rgb: 197, 160, 89;
+    --as-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 6.5rem 0;
+    color: #ffffff;
+    font-family: var(--font-sans);
+    background-color: #121212;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+    background-size: 16px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .as-ghost { display: inline-flex; align-items: center; padding: 0.75rem 1.3rem; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 40px; color: #ffffff; font-size: 0.85rem; font-weight: 700; transition: background 0.25s ease, color 0.25s ease; }
+  .as-ghost:hover { background: #ffffff; color: #111111; }
+
+  .as-copy { display: grid; gap: 1.1rem; align-content: center; min-width: 0; }
+  .as-copy > .as-ghost { justify-self: start; }
+  .as-h { font-family: var(--font-sans); font-size: clamp(2rem, 3.2vw, 2.6rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; margin: 0; color: #ffffff; }
+  .as-h span { color: var(--as-accent); }
+  .as-copy p { margin: 0; color: var(--as-text-2); font-size: 1.05rem; line-height: 1.7; }
+  .as-copy strong { color: #ffffff; }
+  .as-checks { list-style: none; margin: 0.3rem 0 0; padding: 0; display: grid; gap: 0.7rem; }
+  .as-checks li { display: flex; gap: 0.7rem; align-items: center; font-weight: 600; }
+  .as-checks i { color: var(--as-accent); }
+  .as-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.4rem; }
+
+  /* Credentials card (visual for the "Certified" chapter) */
+  .as-cert { width: 100%; max-width: 440px; display: grid; gap: 0.9rem; padding: 1.5rem; border-radius: 22px; background: linear-gradient(160deg, rgba(40, 40, 44, 0.9), rgba(18, 18, 20, 0.95)); border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); }
+  .as-cert-row { display: flex; gap: 1rem; align-items: center; padding: 1rem 1.1rem; border-radius: 14px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); }
+  .as-cert-row i { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: var(--as-accent); background: rgba(var(--as-accent-rgb), 0.1); border: 1px solid rgba(var(--as-accent-rgb), 0.35); }
+  .as-cert-row b { display: block; font-size: 1rem; color: #ffffff; }
+  .as-cert-row span { display: block; font-size: 0.85rem; color: var(--as-text-3); margin-top: 0.15rem; }
+
+  /* Sticky story: pinned visual on the left, chapters scrolling on the right */
+  .as-story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: start; }
+  .as-story-media { position: relative; height: 100%; }
+  .as-story-pin { position: sticky; top: calc(50vh - 290px); height: 580px; display: grid; place-items: center; }
+  .as-story-layer { grid-area: 1 / 1; width: 100%; display: grid; justify-items: center; opacity: 0; visibility: hidden; transform: translateY(16px) scale(0.98); transition: opacity 0.6s ease, transform 0.7s var(--as-ease), visibility 0.6s; }
+  .as-story-layer.is-active { opacity: 1; visibility: visible; transform: none; }
+  /* Components size themselves to their container, so give them the full column width */
+  .as-story-layer > *, .as-chapter-visual > * { width: 100%; }
+  .as-story-layer > .as-cert, .as-chapter-visual > .as-cert { max-width: 440px; }
+  .as-rail { position: absolute; left: -1.75rem; top: 50%; transform: translateY(-50%); list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+  .as-rail li { width: 3px; height: 34px; border-radius: 3px; background: rgba(255, 255, 255, 0.15); transition: background 0.4s ease; }
+  .as-rail li.is-active { background: var(--as-accent); }
+  .as-chapter { min-height: 75vh; display: grid; align-content: center; gap: 1rem; opacity: 0.35; transition: opacity 0.5s ease; }
+  .as-chapter.is-active { opacity: 1; }
+  .as-chapter-num { font-family: var(--font-sans); font-size: 3rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: rgba(255, 255, 255, 0.14); }
+  .as-chapter-visual { display: none; }
+
+  /* Phones & touch tablets: no pinning; each chapter shows its own visual under its text */
+  @media (max-width: 991px), (hover: none) and (pointer: coarse) {
+    .as-section { padding: 4.5rem 0; }
+    .as-story-grid { grid-template-columns: 1fr; gap: 0; }
+    .as-story-media { display: none; }
+    .as-chapter { min-height: 0; opacity: 1; padding: 2rem 0 3rem; border-bottom: 1px solid var(--as-line); }
+    .as-chapter:last-child { border-bottom: 0; padding-bottom: 0; }
+    .as-chapter-visual { display: grid; justify-items: center; margin-top: 1.5rem; }
+  }
+
+  /* Business pages: blue accents to match the animations (the page's own slate blue is too dim on black) */
+  .as-section.is-business { --as-accent: #8ea2e0; --as-accent-rgb: 142, 162, 224; }
+  .as-section.is-business .designer-ideas-heading .heading-red { color: var(--as-accent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .as-section * { transition: none !important; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // The chapter nearest the middle of the screen picks the pinned visual (desktop only)
+    document.querySelectorAll('[data-story]').forEach(root => {
+      const chapters = [...root.querySelectorAll('.as-chapter')];
+      const layers = [...root.querySelectorAll('.as-story-layer')];
+      const rail = [...root.querySelectorAll('.as-rail li')];
+      let active = 0, ticking = false;
+      const update = () => {
+        ticking = false;
+        if (isMobileLayout(991)) return;
+        const mid = innerHeight / 2;
+        let best = active, bestD = Infinity;
+        chapters.forEach((c, i) => {
+          const r = c.getBoundingClientRect();
+          const d = Math.abs(r.top + r.height / 2 - mid);
+          if (d < bestD) { bestD = d; best = i; }
+        });
+        if (best === active) return;
+        active = best;
+        chapters.forEach((c, i) => c.classList.toggle('is-active', i === active));
+        layers.forEach((l, i) => l.classList.toggle('is-active', i === active));
+        rail.forEach((d, i) => d.classList.toggle('is-active', i === active));
+      };
+      addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      update();
+    });
+  });
+</script>

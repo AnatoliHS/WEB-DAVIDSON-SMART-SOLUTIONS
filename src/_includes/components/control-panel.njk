@@ -1,0 +1,9 @@
+{# Floating control panel markup. Needs control-panel-assets.njk on the page.
+   Set `automationVariant` ('home' | 'business') before including; scenes & devices come from _data/controlPanel.json. #}
+{% set cpVariant = automationVariant or 'home' %}
+      <!-- Floating control panel: a two-scene switch updates every device in turn -->
+      <div class="cp-visual{% if cpVariant == 'business' %} is-business{% endif %}">
+        <div class="cp-stage" role="img" aria-label="{{ controlPanel[cpVariant].label }}">
+          <script type="application/json">{{ controlPanel[cpVariant] | dump | safe }}</script>
+        </div>
+      </div>

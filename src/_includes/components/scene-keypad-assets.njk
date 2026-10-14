@@ -1,0 +1,170 @@
+{# Scene Keypad hub: styles & script. Include once per page; works for any number of scene-keypad.njk instances. #}
+<!-- Scene Keypad styles & script -->
+<style>
+  .sk-visual {
+    --sk-glow: 255, 214, 140;      /* bright light colour (rgb) */
+    --sk-accent: #C5A059;
+    --sk-accent-rgb: 197, 160, 89;
+    --sk-wire: #f0cf88;
+    --sk-lit: #f3d58f;             /* lit device icon */
+    --sk-lit-bg: #1e1b15;
+    --sk-centre-bg: #24221d;
+    display: grid;
+    justify-items: center;
+    gap: 1.25rem;
+    min-width: 0;
+  }
+  /* Business pages: blue light instead of gold */
+  .sk-visual.is-business {
+    --sk-glow: 170, 190, 245;
+    --sk-accent: #8ea2e0;
+    --sk-accent-rgb: 142, 162, 224;
+    --sk-wire: #a9bcf0;
+    --sk-lit: #c2d0fa;
+    --sk-lit-bg: #161a24;
+    --sk-centre-bg: #1c2030;
+  }
+
+  /* Phones: in a two-column section the hub sits below its text (desktop keeps it on the left) */
+  @media (max-width: 850px), (hover: none) and (pointer: coarse) {
+    .two-col-grid > .sk-visual, .two-col-grid > .sk-slot { order: 3 !important; }
+  }
+
+  .sk-stage { position: relative; width: 100%; max-width: 520px; aspect-ratio: 1; container-type: inline-size; }
+  .sk-wires { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .sk-wires .ring-guide { fill: none; stroke: rgba(255, 255, 255, 0.07); stroke-width: 0.25; }
+  .sk-wires .spoke-base { fill: none; stroke: rgba(255, 255, 255, 0.14); stroke-width: 0.3; stroke-dasharray: 1 1.2; }
+  .sk-wires .live {
+    fill: none; stroke: var(--sk-wire); stroke-width: 0.55; stroke-linecap: round;
+    filter: drop-shadow(0 0 0.8px rgba(var(--sk-glow), 0.95)) drop-shadow(0 0 2px rgba(var(--sk-accent-rgb), 0.6));
+    /* Hidden when off: a round line-cap would otherwise leave a glowing dot at the start of an undrawn line */
+    stroke-dasharray: 1 1; stroke-dashoffset: 1; opacity: 0;
+    transition: stroke-dashoffset 0.5s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.15s ease;
+  }
+  .sk-wires .live.on { stroke-dashoffset: 0; opacity: 1; }
+
+  .sk-centre {
+    position: absolute; left: 50%; top: 50%; width: 24%; aspect-ratio: 1; transform: translate(-50%, -50%);
+    display: grid; place-items: center; border-radius: 50%; z-index: 2;
+    background: radial-gradient(circle at 50% 45%, var(--sk-centre-bg) 0%, #151515 72%);
+    border: 1px solid rgba(var(--sk-glow), 0.85);
+    box-shadow: 0 0 0 1.8cqw rgba(var(--sk-accent-rgb), 0.06), 0 0 9cqw rgba(var(--sk-glow), 0.3);
+  }
+  .sk-centre img { width: 62%; height: 62%; object-fit: contain; position: relative; z-index: 1; filter: brightness(1.35) drop-shadow(0 0 2cqw rgba(var(--sk-glow), 0.9)); }
+  .sk-centre-halo { position: absolute; inset: -40%; border-radius: 50%; background: radial-gradient(circle, rgba(var(--sk-glow), 0.4) 0%, rgba(var(--sk-accent-rgb), 0.1) 40%, transparent 70%); pointer-events: none; }
+
+  .sk-node {
+    position: absolute; width: 14%; aspect-ratio: 1; transform: translate(-50%, -50%);
+    display: grid; place-items: center; border-radius: 50%; z-index: 2;
+    background: #191919; border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.45); font-size: 4.6cqw;
+    transition: color 0.5s ease, background 0.5s ease, box-shadow 0.6s ease;
+  }
+  .sk-label {
+    position: absolute; top: calc(100% + 1.2cqw); left: 50%; transform: translateX(-50%);
+    font-size: 2.3cqw; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap;
+    color: rgba(255, 255, 255, 0.48); transition: color 0.5s ease;
+  }
+  .sk-node.is-lit { color: var(--sk-lit); background: var(--sk-lit-bg); box-shadow: 0 0 5cqw rgba(var(--sk-glow), 0.28); }
+  .sk-node.is-lit .sk-label { color: #ffffff; }
+  @container (max-width: 380px) { .sk-label { display: none; } }
+
+  .sk-scenes { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+  .sk-scenes button {
+    cursor: pointer; font: inherit; font-size: 0.76rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.65rem 1.1rem; border-radius: 40px; color: #ffffff; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+  .sk-scenes button:hover { border-color: var(--sk-accent); }
+  .sk-scenes button[aria-pressed="true"] { background: var(--sk-accent); border-color: var(--sk-accent); color: #111111; }
+  .sk-note { margin: 0 !important; min-height: 3em; max-width: 440px; text-align: center; color: rgba(255, 255, 255, 0.72) !important; font-size: 0.92rem; line-height: 1.5; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sk-visual * { transition: none !important; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.sk-visual').forEach(visual => {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const SVGNS = 'http://www.w3.org/2000/svg';
+    const RING = 36, RC = 12, RN = 7; // ring radius, centre and device circle radii (% of the stage)
+    const stage = visual.querySelector('.sk-stage');
+    const svg = visual.querySelector('.sk-wires');
+    const nodes = [...visual.querySelectorAll('.sk-node')];
+    const btns = [...visual.querySelectorAll('[data-scene]')];
+    const note = visual.querySelector('.sk-note');
+    // Scenes come from the buttons (data-devices / data-note, from _data/sceneKeypad.json)
+    const SCENES = Object.fromEntries(btns.map(b => [b.dataset.scene, { keys: b.dataset.devices.split(' '), note: b.dataset.note }]));
+    const el = (tag, attrs) => {
+      const e = document.createElementNS(SVGNS, tag);
+      Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v));
+      svg.appendChild(e);
+      return e;
+    };
+
+    el('circle', { cx: 50, cy: 50, r: RING, class: 'ring-guide' });
+    // Devices evenly round the ring; each gets a spoke from the centre and two half-arcs that trace its border
+    const parts = nodes.map((node, i) => {
+      const a = (-90 + (360 / nodes.length) * i) * Math.PI / 180;
+      const x = 50 + RING * Math.cos(a), y = 50 + RING * Math.sin(a);
+      node.style.left = `${x}%`;
+      node.style.top = `${y}%`;
+      const x1 = 50 + RC * Math.cos(a), y1 = 50 + RC * Math.sin(a);
+      const x2 = x - RN * Math.cos(a), y2 = y - RN * Math.sin(a);
+      el('line', { x1, y1, x2, y2, class: 'spoke-base' });
+      const spoke = el('line', { x1, y1, x2, y2, pathLength: 1, class: 'live' });
+      const r = RN + 0.4;
+      const sx = x - r * Math.cos(a), sy = y - r * Math.sin(a), ex = x + r * Math.cos(a), ey = y + r * Math.sin(a);
+      const arcs = [1, 0].map(sweep => el('path', { d: `M ${sx} ${sy} A ${r} ${r} 0 0 ${sweep} ${ex} ${ey}`, pathLength: 1, class: 'live' }));
+      return { node, key: node.dataset.key, spoke, arcs };
+    });
+
+    let timers = [];
+    const show = (name) => {
+      timers.forEach(clearTimeout);
+      timers = [];
+      const keys = SCENES[name].keys;
+      btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.scene === name)));
+      note.textContent = SCENES[name].note;
+      let n = 0;
+      parts.forEach(p => {
+        if (!keys.includes(p.key)) {
+          p.spoke.classList.remove('on');
+          p.arcs.forEach(a => a.classList.remove('on'));
+          p.node.classList.remove('is-lit');
+          return;
+        }
+        // Current runs to each device in turn, traces its border, then the icon lights
+        const d = reduce ? 0 : n++ * 140;
+        timers.push(setTimeout(() => p.spoke.classList.add('on'), d));
+        timers.push(setTimeout(() => p.arcs.forEach(a => a.classList.add('on')), d + (reduce ? 0 : 420)));
+        timers.push(setTimeout(() => p.node.classList.add('is-lit'), d + (reduce ? 0 : 600)));
+      });
+    };
+
+    // Cycles through the scenes on its own until a visitor picks one
+    const order = Object.keys(SCENES);
+    let idx = 0, auto = null;
+    btns.forEach(b => b.addEventListener('click', () => {
+      clearInterval(auto);
+      auto = null;
+      idx = order.indexOf(b.dataset.scene);
+      show(b.dataset.scene);
+    }));
+    let started = false, picked = false;
+    btns.forEach(b => b.addEventListener('click', () => { picked = true; }));
+    const start = () => {
+      if (!started) { started = true; show(order[0]); }
+      if (!picked && !reduce && !auto) auto = setInterval(() => { idx = (idx + 1) % order.length; show(order[idx]); }, 4200);
+    };
+    const stop = () => { clearInterval(auto); auto = null; };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(es => es.forEach(e => (e.isIntersecting ? start() : stop())), { threshold: 0.45 }).observe(stage);
+    } else {
+      start();
+    }
+    });
+  });
+</script>

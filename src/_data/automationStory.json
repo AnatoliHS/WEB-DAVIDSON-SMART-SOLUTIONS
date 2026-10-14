@@ -1,0 +1,74 @@
+{
+  "home": {
+    "id": "smart-home-automation",
+    "heading": ["Smart Home", "Automation"],
+    "intro": { "strong": "Your lighting, shades, climate, audio and security working as one system.", "text": "Controlled from a single app, keypad, remote or your voice." },
+    "cta": { "label": "Schedule Consultation", "href": "/contact/" },
+    "chapters": [
+      {
+        "title": "All Connected.", "accent": "Not Siloed.",
+        "paras": [
+          "Imagine sitting in bed reading. When you're ready to sleep, you simply tap <strong>\"Bedtime\"</strong> on your phone, voice assistant, universal remote, or wall keypad.",
+          "Within seconds, motorized shades lower, ambient lights fade to zero, deadbolts lock, security arms, and climate control drops to your preferred nighttime temperature — all without getting out of bed. All smart technology connected in one elegant interface rather than fragmented across dozens of separate apps."
+        ],
+        "checks": ["Single App &amp; Touchpanel Control (Control4 &amp; Lutron)", "One Touch Scene Automations (\"Bedtime\", \"Away\", \"Entertainment\")", "Seamless Voice, Keypad, Remote &amp; Smartphone Access"]
+      },
+      {
+        "title": "Unlock the Potential of", "accent": "Smart Homes",
+        "paras": [
+          "A professionally installed smart home system automatically adapts brightness and color temperature throughout the day and per season. Quick-access climate controls keep every zone in your home optimal based on occupancy and sun exposure.",
+          "On a larger scale, enjoy multi room audio to stream your favorite music, podcasts, or radio seamlessly through every room in your residence. In your home theatre, configure lighting, projector, audio, and shades with a single command."
+        ],
+        "links": [{ "label": "Smart Lighting &amp; Shades", "href": "/services/smart-lights/" }, { "label": "Home Theatre", "href": "/services/home-theatre/" }]
+      },
+      {
+        "title": "Certified Electrical &amp;", "accent": "System Integration",
+        "paras": [
+          "Partnered with <strong>Davidson Electrical Services</strong>, our ECRA/ESA certified master electricians and Control4 specialists ensure every line voltage lighting load and low voltage automation system across Quinte West, Belleville, and Prince Edward County is installed safely, reliably, and legally."
+        ],
+        "links": [{ "label": "Learn About Our Partnership", "href": "/about/" }]
+      }
+    ],
+    "credentials": [
+      { "icon": "fa-bolt", "title": "ECRA / ESA Certified", "text": "Master electricians on every install" },
+      { "icon": "fa-microchip", "title": "Control4 Specialists", "text": "System design &amp; programming" },
+      { "icon": "fa-handshake", "title": "Davidson Electrical Services", "text": "Line &amp; low voltage, one team" }
+    ]
+  },
+  "business": {
+    "id": "business-automation",
+    "heading": ["Business", "Automation"],
+    "intro": { "strong": "Your lighting, climate, access, cameras and network working as one system.", "text": "Managed from a single app, wall keypad or touch panel, on site or from anywhere." },
+    "cta": { "label": "Request an Audit", "href": "/contact/" },
+    "chapters": [
+      {
+        "title": "All Connected.", "accent": "Not Siloed.",
+        "paras": [
+          "Picture closing time. Instead of walking the building switching off lights, checking doors and setting the alarm, the last person out taps <strong>\"Closed\"</strong> on a wall keypad, touch panel or their phone.",
+          "Within seconds, lights switch off, doors lock, the alarm arms, guest Wi-Fi shuts down and the heating drops to its overnight setback. In the morning, <strong>\"Open\"</strong> brings it all back. Every system in one interface instead of a drawer full of separate apps, remotes and key fobs."
+        ],
+        "checks": ["Single App &amp; Touchpanel Control (Control4 &amp; Lutron)", "One Touch Scenes (\"Open\", \"Meeting\", \"Closed\")", "Remote Access &amp; Instant Alerts from Anywhere"]
+      },
+      {
+        "title": "Smarter Spaces,", "accent": "Lower Running Costs",
+        "paras": [
+          "Lighting and climate follow your business hours and occupancy, so you're never heating, cooling or lighting empty rooms. Schedules adjust on their own for weekends and holidays.",
+          "In the boardroom, one button dims the lights, wakes the display and starts the video call. Background music, digital signage and guest Wi-Fi run on their own schedules in every zone, while key card access and cameras keep a record of who came and went."
+        ],
+        "links": [{ "label": "Business Security", "href": "/services/business-security/" }, { "label": "Business Networking", "href": "/services/business-networking/" }]
+      },
+      {
+        "title": "Certified Electrical &amp;", "accent": "System Integration",
+        "paras": [
+          "Partnered with <strong>Davidson Electrical Services</strong>, our ECRA/ESA certified master electricians and Control4 specialists ensure every commercial lighting load, access control point and low voltage system across Quinte West, Belleville, and Prince Edward County is installed safely, reliably, and to code."
+        ],
+        "links": [{ "label": "Learn About Our Partnership", "href": "/about/" }]
+      }
+    ],
+    "credentials": [
+      { "icon": "fa-bolt", "title": "ECRA / ESA Certified", "text": "Master electricians on every install" },
+      { "icon": "fa-microchip", "title": "Control4 Specialists", "text": "Commercial system design &amp; programming" },
+      { "icon": "fa-handshake", "title": "Davidson Electrical Services", "text": "Line &amp; low voltage, one team" }
+    ]
+  }
+}
