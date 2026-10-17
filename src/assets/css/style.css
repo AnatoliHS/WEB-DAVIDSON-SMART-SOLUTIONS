@@ -441,6 +441,9 @@ body.business-portal .brand-logo-text .accent-s {
     overflow-y: hidden;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
+    /* Room above the cards so the hover lift (and its border) isn't clipped by the scroll area; offset so nothing moves */
+    padding-top: 6px;
+    margin-top: -6px;
     padding-bottom: 0.75rem;
     scrollbar-width: thin;
     scrollbar-color: var(--color-accent, #0066cc) rgba(0, 0, 0, 0.06);
