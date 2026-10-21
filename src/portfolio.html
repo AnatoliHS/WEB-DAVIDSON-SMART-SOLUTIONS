@@ -60,13 +60,13 @@ description: Explore our portfolio of commercial and residential smart home auto
         <svg class="pfh-wires" aria-hidden="true"></svg>
         <span class="pfh-origin"><i class="pfh-origin-node" aria-hidden="true"></i>Featured</span>
         {% for p in projects %}
-        <a href="#{{ p.slug }}" class="pf-hub-card" data-i="{{ loop.index0 }}" aria-label="View project: {{ p.client }}">
+        <a href="/case-studies/{{ p.slug }}/" class="pf-hub-card" data-i="{{ loop.index0 }}" data-slug="{{ p.slug }}" aria-label="View case study: {{ p.client }}">
           <img src="{{ p.image }}" alt="{{ p.alt }}" loading="lazy" />
           <div class="pfh-card-body">
             <span class="pfh-num">{% if loop.index < 10 %}0{% endif %}{{ loop.index }} &middot; {{ p.sector }} &middot; {{ p.discipline }}</span>
             <h3>{{ p.client }}</h3>
             <p>{{ p.outcome }}</p>
-            <span class="pfh-meta"><i class="fa-solid fa-location-dot"></i> {{ p.location }} <span class="pfh-view">View project <i class="fa-solid fa-arrow-right"></i></span></span>
+            <span class="pfh-meta"><i class="fa-solid fa-location-dot"></i> {{ p.location }} <span class="pfh-view">View case study <i class="fa-solid fa-arrow-right"></i></span></span>
           </div>
         </a>
         {% endfor %}
@@ -98,7 +98,10 @@ description: Explore our portfolio of commercial and residential smart home auto
               <div class="is-outcome"><dt>The Result</dt><dd>{{ p.outcome }}</dd></div>
             </dl>
             <div class="pf-pills">{% for s in p.systems %}<span>{{ s }}</span>{% endfor %}</div>
-            <a href="/contact/" class="pf-btn">Discuss a Similar Project <i class="fa-solid fa-arrow-right"></i></a>
+            <div class="pf-actions">
+              <a href="/case-studies/{{ p.slug }}/" class="pf-btn">Read the Case Study <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="/contact/" class="pf-text-link">Discuss a similar project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
           </div>
           {% if p.gallery %}
           <div class="pf-gallery">
@@ -159,7 +162,10 @@ description: Explore our portfolio of commercial and residential smart home auto
             {% for g in p.gallery %}<img src="{{ g }}" alt="{{ p.client }} project photo {{ loop.index }}" loading="lazy" />{% endfor %}
           </div>
           {% endif %}
-          <a href="/contact/" class="pf-text-link">Discuss a similar project <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="pf-actions">
+            <a href="/case-studies/{{ p.slug }}/" class="pf-btn">Read the Case Study <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="/contact/" class="pf-text-link">Discuss a similar project <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
         </article>
         {% endfor %}
       </div>
@@ -276,6 +282,8 @@ description: Explore our portfolio of commercial and residential smart home auto
     transition: transform 0.3s var(--pf-ease), box-shadow 0.3s ease;
   }
   .pf-btn:hover { color: #111111; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(197, 160, 89, 0.3); }
+
+  .pf-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; }
 
   .pf-text-link {
     display: inline-flex; align-items: center; gap: 0.5rem;
@@ -653,7 +661,7 @@ description: Explore our portfolio of commercial and residential smart home auto
     const tabs = showcase.querySelectorAll('.pf-tabs button');
     const briefs = showcase.querySelectorAll('.pf-brief');
     const counter = showcase.querySelector('.pf-counter b');
-    const slugs = Array.from(tiles, t => t.getAttribute('href').slice(1));
+    const slugs = Array.from(tiles, t => t.dataset.slug);
     const count = slugs.length;
     let current = 0;
     let trackingPausedUntil = 0;
@@ -702,13 +710,6 @@ description: Explore our portfolio of commercial and residential smart home auto
       setActive(i);
       history.replaceState({ pf: slugs[current] }, '', '#' + slugs[current]);
     };
-
-    tiles.forEach((tile, i) => {
-      tile.addEventListener('click', (e) => {
-        e.preventDefault();
-        openProject(i);
-      });
-    });
 
     showcase.querySelectorAll('[data-action="view-all"]').forEach(btn => btn.addEventListener('click', () => showAll()));
     showcase.querySelector('[data-action="prev"]').addEventListener('click', () => goTo(current - 1));

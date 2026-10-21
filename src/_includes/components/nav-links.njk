@@ -109,7 +109,8 @@
         </div>
 
         <div class="has-dropdown has-mega-dropdown">
-          <a href="/about/" class="nav-link {% if page.url and page.url.startsWith('/about/') %}active{% endif %}">
+          <a role="button" tabindex="0" aria-haspopup="true" style="cursor: default;"
+            class="nav-link {% if page.url and page.url.startsWith('/about/') %}active{% endif %}">
             ABOUT <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
           </a>
           <div class="dropdown-menu mega-dropdown-menu about-mega-dropdown-menu">
@@ -140,11 +141,11 @@
                   <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
                 </a>
 
-                <a href="/portfolio/" class="about-link-item">
-                  <div class="about-link-icon"><i class="fa-solid fa-images"></i></div>
+                <a href="/case-studies/crimson-cider/" class="about-link-item">
+                  <div class="about-link-icon"><i class="fa-solid fa-book-open"></i></div>
                   <div class="about-link-text">
-                    <span class="about-link-title">Portfolio Showcase</span>
-                    <span class="about-link-desc">Explore featured home theatre, lighting &amp; network builds</span>
+                    <span class="about-link-title">Case Study: Crimson Cider</span>
+                    <span class="about-link-desc">Starlink, Wi-Fi &amp; three-zone audio for a cidery</span>
                   </div>
                   <span class="about-link-arrow"><i class="fa-solid fa-chevron-right"></i></span>
                 </a>
@@ -163,7 +164,7 @@
 
             <!-- Mobile Fallback Menu -->
             <div class="mobile-dropdown-list">
-              <a href="/portfolio/" class="dropdown-item">Portfolio Showcase</a>
+              <a href="/case-studies/crimson-cider/" class="dropdown-item">Case Study: Crimson Cider</a>
               <a href="/about/" class="dropdown-item">About the Company</a>
               <a href="/contact/" class="dropdown-item">Contact &amp; Consultations</a>
             </div>
@@ -175,7 +176,7 @@
         {% if item.children %}
         <div
           class="has-dropdown {% if item.title == 'SERVICES' or item.title == 'Services' or item.title == 'ABOUT' or item.title == 'About' or item.title == 'INDUSTRY PROFESSIONALS' or item.title == 'Industry Professionals' or item.href == '/services/' or item.href == '/#home-services' or item.href == '/about/' or item.href == '/industry-professionals/' %}has-mega-dropdown{% endif %}">
-          <a href="{{ item.href }}"
+          <a {% if item.href == '/about/' %}role="button" tabindex="0" aria-haspopup="true" style="cursor: default;"{% else %}href="{{ item.href }}"{% endif %}
             class="nav-link {% if page.url and ((page.url.startsWith('/services/') and (item.title == 'SERVICES' or item.title == 'Services')) or (item.href != '/' and page.url.startsWith(item.href))) %}active{% endif %}">
             {{ item.title }} <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
           </a>

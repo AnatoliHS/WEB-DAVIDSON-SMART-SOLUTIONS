@@ -10,8 +10,62 @@
     "challenge": "Glare on executive workstations and heavy summer solar gain across the corporate headquarters.",
     "solution": "Custom Lutron motorized interior shades with automated glare control and keypad scenes.",
     "outcome": "Glare-free workstations, a lighter summer cooling load and single-touch sunlight control.",
-    "systems": ["Lutron Shades", "Automated Glare Control", "Keypad Scenes", "HVAC Energy Savings"],
-    "gallery": ["/assets/images/deep-food-1.webp", "/assets/images/deep-food-2.webp", "/assets/images/deep-food-3.webp", "/assets/images/deep-food-4.webp"]
+    "systems": [
+      "Lutron Shades",
+      "Automated Glare Control",
+      "Keypad Scenes",
+      "HVAC Energy Savings"
+    ],
+    "gallery": [
+      "/assets/images/deep-food-1.webp",
+      "/assets/images/deep-food-2.webp",
+      "/assets/images/deep-food-3.webp",
+      "/assets/images/deep-food-4.webp"
+    ],
+    "caseStudy": {
+      "heroImage": "/assets/deep-restaurant.jpg",
+      "heroAlt": "Deep brand building with floor-to-ceiling glass",
+      "scope": "Custom Motorized Interior Shades",
+      "lede": "Custom motorized shades for the Canadian headquarters of an international, family-owned food manufacturer.",
+      "overview": "Deep Foods makes authentic Indian cuisine under brands like Bansi, Hot Wok and Reena. Their Mississauga headquarters asked us to design and install motorized shades that would make the office more comfortable without shutting out the daylight.",
+      "challengeTitle": "Bright windows,",
+      "challengeAccent": "glaring screens.",
+      "challenge": "Long runs of glass brought plenty of natural light into the office, but also glare across computer screens and extra heat through the warm summer months.",
+      "challengeImage": "/assets/images/deep-food-1.webp",
+      "challengeAlt": "Wall of office windows fitted with motorized shades",
+      "steps": [
+        {
+          "title": "Fabric made for the job",
+          "text": "We specified custom-made shade fabric that lets natural light filter through while cutting the glare on monitors, so the office stays bright and workstations stay readable.",
+          "images": [
+            "/assets/images/deep-food-2.webp",
+            "/assets/images/deep-food-3.webp"
+          ],
+          "alts": [
+            "Open office with shades softening light across the windows",
+            "Executive office with shades on two window walls"
+          ]
+        },
+        {
+          "title": "Two days on site",
+          "text": "Our team travelled to Mississauga and completed the full installation over two dedicated days, leaving a clean, functional finish in every office.",
+          "images": [
+            "/assets/images/deep-food-4.webp"
+          ],
+          "alts": [
+            "Boardroom with shades partially lowered"
+          ],
+          "compact": true
+        }
+      ],
+      "result": "Glare-free workstations, a cooler office through the summer, and daylight that still fills the room.",
+      "tags": [
+        "Motorized Interior Shades",
+        "Custom Fabric",
+        "Glare Control",
+        "Two-Day Install"
+      ]
+    }
   },
   {
     "slug": "once-upon-a-child",
@@ -24,8 +78,61 @@
     "challenge": "Protecting retail stock and staff without locking into monthly monitoring contracts.",
     "solution": "Hikvision ColorVu 4K cameras, encrypted local NVR storage, keycard entry and smartphone alerts.",
     "outcome": "Full-colour 4K night coverage and instant alerts, with zero monthly fees.",
-    "systems": ["Hikvision ColorVu 4K", "Encrypted NVR Storage", "Smart Access Control", "Zero Monthly Fees"],
-    "gallery": ["/assets/images/Once-Upon-a-Child-Belleville-1.webp", "/assets/images/Once-Upon-a-Child-Belleville-2.webp", "/assets/images/Once-Upon-a-Child-Belleville-3.webp", "/assets/images/Once-Upon-a-Child-Belleville-4.webp"]
+    "systems": [
+      "Hikvision ColorVu 4K",
+      "Encrypted NVR Storage",
+      "Smart Access Control",
+      "Zero Monthly Fees"
+    ],
+    "gallery": [
+      "/assets/images/Once-Upon-a-Child-Belleville-1.webp",
+      "/assets/images/Once-Upon-a-Child-Belleville-2.webp",
+      "/assets/images/Once-Upon-a-Child-Belleville-3.webp",
+      "/assets/images/Once-Upon-a-Child-Belleville-4.webp"
+    ],
+    "caseStudy": {
+      "heroImage": "/assets/images/once-upon-a-child-hero.jpg",
+      "heroAlt": "Children's romper hanging on a wooden rail",
+      "scope": "Security Cameras, LED Retail Lighting",
+      "lede": "Pan-and-zoom camera coverage and bright, efficient LED lighting for a new kids' resale store on Front Street.",
+      "overview": "Owners Kate and Chris moved to Belleville from Toronto and saw how few options local parents had for affordable, quality kids' clothing. They opened a Once Upon a Child in a Front Street plaza and asked us to make the store bright, welcoming and safe from day one.",
+      "challengeTitle": "A new store,",
+      "challengeAccent": "starting from dim.",
+      "challenge": "The unit came with dim original lighting and the shelving hadn't gone in yet. The owners needed cameras that could see into every aisle and corner, the back storage room and the front entrance.",
+      "challengeImage": "/assets/images/Once-Upon-a-Child-Belleville-1.webp",
+      "challengeAlt": "Store wall of toys and clothing with a pendant camera overhead",
+      "steps": [
+        {
+          "title": "Coverage planned with the owners",
+          "text": "We worked with Kate and Chris to place pendant-mount cameras that pan a full 360° and zoom 15x, covering corners and hard-to-see aisles, with more at the storage room and the front entrance. Everything feeds to monitors through their video management system.",
+          "images": [
+            "/assets/images/Once-Upon-a-Child-Belleville-3.webp",
+            "/assets/images/Once-Upon-a-Child-Belleville-4.webp"
+          ],
+          "alts": [
+            "Pendant camera above the clothing racks",
+            "Camera covering a long aisle of kids' clothing"
+          ]
+        },
+        {
+          "title": "Lighting laid out to the floor plan",
+          "text": "With our sister company, Davidson Electrical Services, we replaced the original fixtures with bright LED lighting placed to light every aisle of the planned layout before the shelving arrived. The store is brighter and uses significantly less energy.",
+          "images": [
+            "/assets/images/Once-Upon-a-Child-Belleville-2.webp"
+          ],
+          "alts": [
+            "New linear LED fixture beside a pendant camera"
+          ]
+        }
+      ],
+      "result": "Customers can find sizes and read price tags easily, staff and stock are covered from every angle, and the store opened bright and inviting.",
+      "tags": [
+        "360° Pan & 15x Zoom Cameras",
+        "Video Management System",
+        "LED Retail Lighting",
+        "Lower Energy Use"
+      ]
+    }
   },
   {
     "slug": "selby-united-church",
@@ -38,8 +145,69 @@
     "challenge": "Clear speech and dependable live broadcasts for weekly services in a traditional sanctuary.",
     "solution": "Multi-zone audio, beamforming wireless microphones and an intuitive single-touch control system.",
     "outcome": "Intelligible sound in every pew and web broadcasts any volunteer can run.",
-    "systems": ["Multi-Zone Audio", "Beamforming Microphones", "Live Web Broadcasting", "Single Touch Control"],
-    "gallery": ["/assets/images/united-1.webp", "/assets/images/united-2.webp", "/assets/images/united-3.webp", "/assets/images/united-4.webp"]
+    "systems": [
+      "Multi-Zone Audio",
+      "Beamforming Microphones",
+      "Live Web Broadcasting",
+      "Single Touch Control"
+    ],
+    "gallery": [
+      "/assets/images/united-1.webp",
+      "/assets/images/united-2.webp",
+      "/assets/images/united-3.webp",
+      "/assets/images/united-4.webp"
+    ],
+    "caseStudy": {
+      "heroImage": "/assets/Selby.webp",
+      "heroAlt": "Selby United Church with the installation van out front",
+      "scope": "ALR Projection, Laser Projector, Feature Lighting, Altar Power",
+      "lede": "Projection that holds up in full daylight, feature lighting for the cross and a rewired altar for a sanctuary ringed by stained glass.",
+      "overview": "During a spring renovation with S & J General Contracting, Selby United Church asked us to upgrade the visuals at the front of the sanctuary so the congregation could follow hymns and video clearly.",
+      "challengeTitle": "Ten windows.",
+      "challengeAccent": "One washed-out screen.",
+      "challenge": "The sanctuary is lined with ten stained-glass windows, each about ten feet tall. They fill the room with daylight, which is exactly what washed out the existing projector screen. Covering them with shades would have fixed the glare but taken away the room's character.",
+      "challengeImage": "/assets/images/united-1.webp",
+      "challengeAlt": "Stained-glass windows along the sanctuary wall",
+      "steps": [
+        {
+          "title": "Screens that reject ambient light",
+          "text": "We replaced the old screen with five ambient-light-rejecting (ALR) panels, custom-sized for the space and mounted to brackets on the original lath and plaster walls in about three hours each. The picture stays vivid with the lights on and the windows uncovered.",
+          "images": [
+            "/assets/images/united-4.webp"
+          ],
+          "alts": [
+            "New ALR screen at the front of the sanctuary beside the cross"
+          ]
+        },
+        {
+          "title": "A long-throw laser projector",
+          "text": "The panels are paired with an Epson PowerLite long-throw laser projector that can fill an image up to 500 inches, running on a laser light source rated for 20,000 hours with no lamp changes.",
+          "images": [
+            "/assets/images/united-2.webp"
+          ],
+          "alts": [
+            "Sanctuary ceiling with pendant lights and fans"
+          ]
+        },
+        {
+          "title": "Light for the cross, power at the altar",
+          "text": "Floor-to-ceiling LED strips, with custom-sized lighting behind it, now frame the wooden cross that greets everyone as they arrive. Davidson Electrical Services also added 120-volt receptacles under the stage, so the pastor and members can plug in without running cords across the altar.",
+          "images": [
+            "/assets/images/united-3.webp"
+          ],
+          "alts": [
+            "The front of the sanctuary with the wooden cross and screen"
+          ]
+        }
+      ],
+      "result": "Hymns and video read clearly in full daylight, the cross is the first thing guests see, and the stage is free of extension cords.",
+      "tags": [
+        "5 ALR Screen Panels",
+        "Epson Laser Projector",
+        "LED Cross Lighting",
+        "Altar Receptacles"
+      ]
+    }
   },
   {
     "slug": "kita-beauty-lounge",
@@ -52,7 +220,68 @@
     "challenge": "A boutique salon needing distinct, calm atmospheres across every treatment room.",
     "solution": "Lutron keypads with custom scenes, warm-dim LED accent lighting and flush in-ceiling speakers.",
     "outcome": "One-touch salon modes that set lighting and audio for every part of the business day.",
-    "systems": ["Lutron Keypads", "Warm Dimming Scenes", "In Ceiling Audio", "Automated Salon Modes"],
-    "gallery": ["/assets/images/kita-1.webp", "/assets/images/kita-2.webp", "/assets/images/kita-3.webp", "/assets/images/kita-4.webp"]
+    "systems": [
+      "Lutron Keypads",
+      "Warm Dimming Scenes",
+      "In Ceiling Audio",
+      "Automated Salon Modes"
+    ],
+    "gallery": [
+      "/assets/images/kita-1.webp",
+      "/assets/images/kita-2.webp",
+      "/assets/images/kita-3.webp",
+      "/assets/images/kita-4.webp"
+    ],
+    "caseStudy": {
+      "heroImage": "/assets/Kita.webp",
+      "heroAlt": "Kita Beauty Lounge reception with woven pendant lights",
+      "scope": "Lutron Lighting, Sonos Audio, Smart Security",
+      "lede": "One-touch lighting and music scenes, sound in every treatment room and discreet security for a downtown Belleville spa.",
+      "overview": "Kita Beauty Lounge offers hair, holistic and medical spa services from a renovated heritage building in downtown Belleville. They asked us to design and install the lighting, audio and security so the technology would match the standard of care their clients expect.",
+      "challengeTitle": "Heritage character,",
+      "challengeAccent": "modern expectations.",
+      "challenge": "High ceilings, exposed brick and wood floors give the lounge its charm, and leave no room for clutter. A wall full of switches would have spoiled the look. The large storefront window that shows off their products also made the space a target, and an older alarm panel from the previous owners needed a stronger connection.",
+      "challengeImage": "/assets/images/kita-4.webp",
+      "challengeAlt": "Salon corridor with recessed ceiling lighting",
+      "steps": [
+        {
+          "title": "One keypad, one scene",
+          "text": "Instead of rows of switches, we installed Lutron keypads so a single press sets the lights and starts the music together, keeping the walls clean.",
+          "images": [
+            "/assets/images/kita-3.webp"
+          ],
+          "alts": [
+            "Lutron audio keypad and dimmer on the wall"
+          ]
+        },
+        {
+          "title": "Music in every room",
+          "text": "Sonos speakers are spread through the building, with upbeat music on the main floor and calmer sound where clients have manicures, facials and massages.",
+          "images": [
+            "/assets/images/kita-2.webp"
+          ],
+          "alts": [
+            "Sonos speaker on a shelf in a treatment room"
+          ]
+        },
+        {
+          "title": "Security that blends in",
+          "text": "In just over an hour we added a business security package: heat and motion sensors, recessed door sensors and a wireless system with encrypted signalling that resists tampering. Justin fished a new low-voltage power cable down the wall to give the new panel a solid connection, and the owners are alerted the moment a window breaks or a door is forced.",
+          "images": [
+            "/assets/images/kita-1.webp"
+          ],
+          "alts": [
+            "Before and after: old alarm keypad replaced with a touchscreen panel"
+          ]
+        }
+      ],
+      "result": "Every room changes mood with one touch, music follows clients through their visit, and the storefront is protected without a single sensor spoiling the design.",
+      "tags": [
+        "Lutron Keypads",
+        "Sonos Audio",
+        "Encrypted Wireless Security",
+        "Recessed Door Sensors"
+      ]
+    }
   }
 ]

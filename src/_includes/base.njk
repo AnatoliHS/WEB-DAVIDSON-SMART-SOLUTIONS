@@ -22,7 +22,7 @@
   </script>
 
   <!-- Editorial Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css?v=9.9" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=10.0" />
 
   <!-- Favicon -->
   <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
@@ -195,9 +195,15 @@
               <a href="/about/" class="drawer-sub-link">
                 <span>About Company</span>
               </a>
+              {% if isBusinessPage or page.url == "/business/" %}
+              <a href="/case-studies/crimson-cider/" class="drawer-sub-link">
+                <span>Case Study</span>
+              </a>
+              {% else %}
               <a href="/portfolio/" class="drawer-sub-link">
                 <span>Portfolio</span>
               </a>
+              {% endif %}
             </div>
           </div>
 
@@ -661,8 +667,8 @@
         }
       });
 
-      // Auto-close on in-page navigation
-      document.querySelectorAll('.mobile-island-dropdown a:not(.island-sub-toggle), .desktop-pill-nav a').forEach(link => {
+      // Auto-close on in-page navigation (skips non-navigating toggles like About)
+      document.querySelectorAll('.mobile-island-dropdown a:not(.island-sub-toggle), .desktop-pill-nav a:not([role="button"])').forEach(link => {
         link.addEventListener('click', () => {
           setTimeout(() => {
             if (desktopPill && desktopPillIsOpen()) closeDesktopPill();

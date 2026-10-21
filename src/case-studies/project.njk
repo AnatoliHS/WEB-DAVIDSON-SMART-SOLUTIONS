@@ -1,0 +1,178 @@
+---
+layout: default
+pagination:
+  data: projects
+  size: 1
+  alias: p
+permalink: "/case-studies/{{ p.slug }}/"
+eleventyComputed:
+  title: "{{ p.client }} Case Study | Davidson Smart Solutions"
+  description: "{{ p.caseStudy.lede }}"
+---
+{# Mini case study generated per project from _data/projects.json (caseStudy block). Styles: CASE STUDY PAGES in style.css #}
+{% set cs = p.caseStudy %}
+{% set next = projects[(pagination.pageNumber + 1) % projects.length] %}
+
+<!-- Case Study Hero -->
+<section class="cs-hero cs-hero-mini dark-section">
+  <div class="cs-hero-bg" style="background-image: url('{{ cs.heroImage }}');"></div>
+  <div class="cs-hero-overlay"></div>
+  <div class="container cs-hero-inner">
+    <span class="cs-eyebrow cs-hero-eyebrow">Case Study &mdash; {{ p.sector }}</span>
+    <h1 class="cs-hero-title">
+      <span class="hero-title-line-mask"><span class="hero-title-line">{{ p.client }}</span></span>
+    </h1>
+    <p class="cs-hero-lede">{{ cs.lede }}</p>
+
+    <dl class="cs-hero-meta">
+      <div>
+        <dt>Client</dt>
+        <dd>{{ p.client }}</dd>
+      </div>
+      <div>
+        <dt>Location</dt>
+        <dd>{{ p.location }}</dd>
+      </div>
+      <div>
+        <dt>Sector</dt>
+        <dd>{{ p.sector }}</dd>
+      </div>
+      <div>
+        <dt>Scope</dt>
+        <dd>{{ cs.scope }}</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- Overview -->
+<section class="section-statement-layout dark-section section-statement-dark cs-section">
+  <div class="container">
+    <div class="statement-layout-grid" style="margin-bottom: 0;">
+      <div class="statement-layout-left">
+        <span class="statement-layout-label">Overview</span>
+      </div>
+      <div class="statement-layout-right">
+        <h2 class="statement-layout-title scroll-text-reveal">{{ cs.overview }}</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- The Challenge -->
+<section class="cs-section cs-dark">
+  <div class="container">
+    <div class="cs-split{% if not cs.challengeImage %} cs-split-solo{% endif %}">
+      <div class="cs-split-text">
+        <span class="cs-eyebrow">01 &middot; The Challenge</span>
+        <h2 class="cs-heading">{{ cs.challengeTitle }}<br><span>{{ cs.challengeAccent }}</span></h2>
+        <p class="cs-body">{{ cs.challenge }}</p>
+      </div>
+      {% if cs.challengeImage %}
+      <figure class="cs-figure cs-figure-tall cs-reveal">
+        <img src="{{ cs.challengeImage }}" alt="{{ cs.challengeAlt }}" loading="lazy" />
+      </figure>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- The Solution -->
+<section class="cs-section cs-dark cs-solution">
+  <div class="container">
+    <div class="cs-section-head">
+      <span class="cs-eyebrow">02 &middot; The Solution</span>
+      <h2 class="cs-heading">What we<br><span>delivered.</span></h2>
+    </div>
+
+    {% for step in cs.steps %}
+    <article class="cs-step{% if loop.index is even %} cs-step-reverse{% endif %}{% if step.compact %} cs-step-compact{% endif %}">
+      {% if step.images.length > 1 %}
+      <div class="cs-figure-pair cs-figure-pair-even">
+        {% for img in step.images %}
+        <figure class="cs-figure cs-reveal">
+          <img src="{{ img }}" alt="{{ step.alts[loop.index0] }}" loading="lazy" />
+        </figure>
+        {% endfor %}
+      </div>
+      {% else %}
+      <figure class="cs-figure cs-reveal">
+        <img src="{{ step.images[0] }}" alt="{{ step.alts[0] }}" loading="lazy" />
+      </figure>
+      {% endif %}
+      <div class="cs-step-text">
+        <span class="cs-step-num">0{{ loop.index }}</span>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.text }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- The Result -->
+<section class="section-statement-layout dark-section section-statement-dark cs-section">
+  <div class="container">
+    <div class="statement-layout-grid" style="margin-bottom: 0;">
+      <div class="statement-layout-left">
+        <span class="statement-layout-label">03 &middot; The Result</span>
+      </div>
+      <div class="statement-layout-right">
+        <h2 class="statement-layout-title scroll-text-reveal">{{ cs.result }}</h2>
+        <ul class="cs-credentials">
+          {% for s in cs.tags %}<li>{{ s }}</li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Next Case Study -->
+<a href="/case-studies/{{ next.slug }}/" class="cs-next">
+  <div class="cs-next-bg" style="background-image: url('{{ next.caseStudy.heroImage }}');"></div>
+  <div class="cs-next-overlay"></div>
+  <div class="container cs-next-inner">
+    <span class="cs-eyebrow">Next Case Study</span>
+    <span class="cs-next-title">{{ next.client }} <i class="fa-solid fa-arrow-right"></i></span>
+  </div>
+</a>
+
+<!-- Start Your Project CTA -->
+<section class="home-together-cta">
+  <div class="container">
+    <div class="together-cta-grid">
+      <h2 class="together-cta-heading">
+        <span>START</span>
+        <span style="color: var(--color-accent);">YOUR</span>
+        <span>PROJECT</span>
+      </h2>
+      <div class="together-cta-content">
+        <p class="together-cta-text">
+          Planning something similar? Tell us about your space and we'll walk you through what it would take.
+        </p>
+        <a href="/contact/" class="together-cta-btn">GET IN TOUCH</a>
+      </div>
+    </div>
+    <a href="/portfolio/" class="cs-back-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+  </div>
+</section>
+
+<!-- Case Study Scroll Reveal -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.cs-reveal');
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(el => el.classList.add('is-in'));
+      return;
+    }
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(el => revealObserver.observe(el));
+  });
+</script>
