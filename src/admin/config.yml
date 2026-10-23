@@ -1,8 +1,8 @@
 backend:
   name: github
-  repo: AnatoliHS/WEB-QUINTE-SMART-HOMES
+  repo: AnatoliHS/WEB-DAVIDSON-SMART-SOLUTIONS
   branch: main
-  base_url: https://web-quinte-smart-homes.pages.dev
+  base_url: https://davidsonsmartsolutions.com
   # Only needed if you host your own OAuth handler rather than using a
   # provider's. Must return a GitHub token to the CMS.
   auth_endpoint: /api/auth

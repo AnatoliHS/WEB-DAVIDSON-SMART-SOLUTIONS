@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://quintesmarthomes.com/sitemap.xml
+Sitemap: https://davidsonsmartsolutions.com/sitemap.xml

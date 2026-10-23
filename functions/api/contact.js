@@ -10,7 +10,7 @@
  *   TURNSTILE_SECRET_KEY  secret  Turnstile widget secret key
  *   CONTACT_TO_EMAIL      text    Inbox that receives enquiries (comma-separate for several)
  *   CONTACT_FROM_EMAIL    text    Sender on a domain verified in Resend, e.g. "Website <enquiries@yourdomain.ca>"
- *   ALLOWED_ORIGINS       text    Optional. Comma-separated origins allowed to post, e.g. "https://quintesmarthomes.ca"
+ *   ALLOWED_ORIGINS       text    Optional. Comma-separated origins allowed to post, e.g. "https://davidsonsmartsolutions.com"
  */
 
 const LIMITS = { name: 120, email: 254, phone: 40, city: 120, company: 160, budget: 60, message: 5000, source: 200, page: 500 };
