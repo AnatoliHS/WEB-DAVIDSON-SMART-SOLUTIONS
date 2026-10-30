@@ -9822,6 +9822,123 @@ body.business-portal {
   background: #000;
 }
 
+.cs-figure-video {
+  position: relative;
+}
+
+/* Large play cue over the film's poster */
+.cs-film-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  padding: 1rem;
+  border: 0;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.55) 100%);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: opacity 0.4s ease, background 0.4s ease;
+}
+
+.cs-film-play[hidden] {
+  display: none;
+}
+
+.cs-film-play:hover {
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.45) 100%);
+}
+
+.cs-film-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #121212;
+  font-size: 1.6rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cs-film-icon i {
+  margin-left: 5px;
+}
+
+/* Soft ring pulsing out from the button */
+.cs-film-icon::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  animation: csFilmPulse 2.2s ease-out infinite;
+}
+
+.cs-film-play:hover .cs-film-icon {
+  transform: scale(1.08);
+}
+
+.cs-film-play:focus-visible .cs-film-icon {
+  outline: 3px solid #ffffff;
+  outline-offset: 6px;
+}
+
+.cs-film-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.cs-film-label b {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.cs-film-label span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cs-figure-video.is-playing .cs-film-play {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes csFilmPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .cs-film-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 1.15rem;
+  }
+
+  .cs-film-label b {
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-film-icon::after {
+    animation: none;
+  }
+}
+
 /* Scroll reveal */
 .cs-reveal {
   opacity: 0;
@@ -11138,6 +11255,19 @@ body.business-portal {
   font-size: 0.88rem;
   line-height: 1.5;
   color: #c9ced8;
+}
+
+/* Summary line under the drawing */
+.agri-fly-note {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.agri-fly-note strong {
+  color: #ffffff;
+  font-weight: 700;
 }
 
 /* Chapter row: progress bars fill while each stop is shown */

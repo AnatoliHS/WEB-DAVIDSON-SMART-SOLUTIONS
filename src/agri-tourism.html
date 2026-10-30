@@ -82,11 +82,13 @@ contactFormId: agri-contact
         </svg>
         <div class="agri-fly-hud"><i></i><span>Your property &middot; Overview</span></div>
         <div class="agri-fly-cap is-out" aria-live="polite">
-          <span class="agri-fly-badge">Your property</span>
-          <h3>Four places guests feel it first.</h3>
-          <p>From the bar to the barn, rural properties lose sales and atmosphere in the same spots.</p>
+          <span class="agri-fly-badge">01 &middot; Tasting room</span>
+          <h3>The card reader drops on your busiest day</h3>
+          <p>Rural internet buckles when the lot is full, and every failed tap is a lost sale.</p>
         </div>
       </div>
+
+      <p class="agri-fly-note"><strong>Four places guests feel it first.</strong> From the bar to the barn, rural properties lose sales and atmosphere in the same spots.</p>
 
       <div class="agri-fly-chapters">
         <button type="button" class="agri-fly-chap" data-c="0"><span class="agri-fly-bar"></span><b>01 &middot; Tasting room</b><span>Card reader drops</span></button>
@@ -174,7 +176,7 @@ contactFormId: agri-contact
       { name: 'Barn', poly: [[8, 6], [42, 6], [42, 24], [8, 24]], focus: [20, 15], pinZ: 28, light: 175,
         eyebrow: '04 · Barn', title: 'No eyes on the property after close', text: 'Equipment, stock and outbuildings left unwatched overnight and through the off-season.' }
     ];
-    const overviewCap = { eyebrow: 'Your property', title: 'Four places guests feel it first.', text: 'From the bar to the barn, rural properties lose sales and atmosphere in the same spots.', hud: 'Your property · Overview' };
+    const overviewHud = 'Your property · Overview';
 
     /* ---- Draw the property ---- */
     const [lx, ly] = P(0, 54), [tx0, ty0] = P(0, 0), [rx0, ry0] = P(100, 0);
@@ -305,7 +307,7 @@ contactFormId: agri-contact
     };
 
     /* ---- Chapters ---- */
-    const DWELL = 5000, MOVE = 1150;   // time held at each position, and the camera move between them
+    const DWELL = 5000, WIDE = 1000, MOVE = 1150;   // time held at each stop, at the wide shot, and the camera move between them
     const cap = fly.querySelector('.agri-fly-cap');
     const hud = fly.querySelector('.agri-fly-hud span');
     const chaps = fly.querySelectorAll('.agri-fly-chap');
@@ -335,10 +337,11 @@ contactFormId: agri-contact
       cap.classList.add('is-out');
       highlight(-2);
       move(shotFor(i), MOVE, spotFor(i), () => {
-        setCaption(i < 0 ? overviewCap : zones[i]);
-        cap.classList.remove('is-out');
+        // The wide shot is a brief beat with no caption before the tour starts again
+        if (i < 0) hud.textContent = overviewHud;
+        else { setCaption(zones[i]); cap.classList.remove('is-out'); }
         highlight(i);
-        if (!held) timer = setTimeout(() => next(i), DWELL);
+        if (!held) timer = setTimeout(() => next(i), i < 0 ? WIDE : DWELL);
       });
     };
     // Tour only advances while the map is on screen; otherwise it waits and picks up when scrolled back
@@ -367,9 +370,7 @@ contactFormId: agri-contact
       pins.forEach(p => p.textW = p.el.querySelector('text').getComputedTextLength());
       fly.classList.add('is-in');
       move({ ...cam0 }, reduceMotion ? 0 : 2200, null, () => {
-        setCaption(overviewCap);
-        cap.classList.remove('is-out');
-        timer = setTimeout(() => next(-1), DWELL);
+        timer = setTimeout(() => next(-1), WIDE);
       });
     }, { threshold: 0.3 }).observe(fly);
   });

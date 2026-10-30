@@ -59,12 +59,16 @@ permalink: /case-studies/crimson-cider/
       </div>
     </div>
 
-    <figure class="cs-figure cs-figure-video cs-reveal">
+    <figure class="cs-figure cs-figure-video cs-reveal" id="csFilm">
       <video controls playsinline preload="metadata" poster="/assets/images/crimson/web/still-053.jpg"
         aria-label="Crimson Cider case study film">
         <source src="/assets/images/crimson/Crimson-Cider-Case-Study.mp4" type='video/mp4; codecs="hvc1.1.6.L120.90, mp4a.40.2"'>
         <source src="/assets/images/crimson/Crimson-Cider-Case-Study-h264.mp4" type="video/mp4">
       </video>
+      <button type="button" class="cs-film-play" hidden>
+        <span class="cs-film-icon"><i class="fa-solid fa-play"></i></span>
+        <span class="cs-film-label"><b>Watch the film</b><span>Crimson Cider case study &middot; 1:10</span></span>
+      </button>
     </figure>
   </div>
 </section>
@@ -418,5 +422,25 @@ permalink: /case-studies/crimson-cider/
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     items.forEach(el => revealObserver.observe(el));
+  });
+
+  // Case study film: large play cue over the poster; native controls take over once it plays
+  document.addEventListener('DOMContentLoaded', () => {
+    const film = document.getElementById('csFilm');
+    if (!film) return;
+    const video = film.querySelector('video');
+    const play = film.querySelector('.cs-film-play');
+    video.removeAttribute('controls');
+    play.hidden = false;
+    play.addEventListener('click', () => {
+      video.controls = true;
+      video.play();
+    });
+    video.addEventListener('play', () => film.classList.add('is-playing'));
+    video.addEventListener('ended', () => {
+      film.classList.remove('is-playing');
+      video.controls = false;
+      video.load();
+    });
   });
 </script>
