@@ -114,6 +114,9 @@ contactFormId: agri-contact
     const fitDrawing = () => svg.setAttribute('preserveAspectRatio', isMobile() ? 'xMidYMid slice' : 'xMidYMid meet');
     fitDrawing();
     matchMedia('(max-width: 900px), (hover: none) and (pointer: coarse)').addEventListener('change', fitDrawing);
+    // Phones skip the per-frame filters (motion blur, flashlight glow): re-blurring the whole drawing every frame drops them to a few fps
+    const lite = isMobile();
+    if (lite) fly.classList.add('is-lite');
 
     // Low-angle dimetric projection: world (x right-back, y left-back, z up) -> drawing units
     const U = 7, C = 0.9, S = 0.38;
@@ -219,6 +222,7 @@ contactFormId: agri-contact
     });
     layer('main').innerHTML = g;
     layer('lit').innerHTML = g;
+    if (lite) layer('lit').removeAttribute('filter');
 
     let fence = '';
     for (let x = 2; x <= 98; x += 4) fence += line([x, 53, 0], [x, 53, 3], 'fence');
@@ -279,7 +283,7 @@ contactFormId: agri-contact
       // Pull back mid-move like a camera on a jib; longer moves pull back further
       const amp = 0.18 * Math.min(1, Math.hypot((to.x - from.x) * to.s, (to.y - from.y) * to.s) / 500);
       let prev = null;
-      root.setAttribute('filter', 'url(#agriFlyBlur)');
+      if (!lite) root.setAttribute('filter', 'url(#agriFlyBlur)');
       const step = () => {
         const t = Math.min(Math.max((performance.now() - t0) / dur, 0), 1), e = ease(t);
         const dip = 1 - amp * Math.sin(Math.PI * t);
@@ -292,7 +296,7 @@ contactFormId: agri-contact
         }
         // Motion blur follows the camera's speed
         const sx = W / 2 + cam.ox - cam.x * cam.s, sy = H / 2 + cam.oy - cam.y * cam.s;
-        if (prev) blur.setAttribute('stdDeviation', `${Math.min(Math.abs(sx - prev[0]) * .45, 14).toFixed(1)} ${Math.min(Math.abs(sy - prev[1]) * .45, 10).toFixed(1)}`);
+        if (prev && !lite) blur.setAttribute('stdDeviation', `${Math.min(Math.abs(sx - prev[0]) * .45, 14).toFixed(1)} ${Math.min(Math.abs(sy - prev[1]) * .45, 10).toFixed(1)}`);
         prev = [sx, sy];
         if (t < 1) raf = requestAnimationFrame(step);
         else { blur.setAttribute('stdDeviation', '0 0'); root.removeAttribute('filter'); if (done) done(); }
@@ -334,9 +338,20 @@ contactFormId: agri-contact
         setCaption(i < 0 ? overviewCap : zones[i]);
         cap.classList.remove('is-out');
         highlight(i);
-        if (!held) timer = setTimeout(() => go(i >= zones.length - 1 ? -1 : i + 1), DWELL);
+        if (!held) timer = setTimeout(() => next(i), DWELL);
       });
     };
+    // Tour only advances while the map is on screen; otherwise it waits and picks up when scrolled back
+    let onScreen = false, pending = null;
+    const next = (i) => {
+      const n = i >= zones.length - 1 ? -1 : i + 1;
+      if (onScreen) go(n); else pending = n;
+    };
+    new IntersectionObserver((entries) => {
+      onScreen = entries[0].isIntersecting;
+      fly.classList.toggle('is-off', !onScreen);
+      if (onScreen && pending !== null) { const n = pending; pending = null; go(n); }
+    }).observe(fly);
     chaps.forEach(c => c.addEventListener('click', () => go(+c.dataset.c, true)));
 
     // Establishing shot, started the first time the map scrolls into view
@@ -354,7 +369,7 @@ contactFormId: agri-contact
       move({ ...cam0 }, reduceMotion ? 0 : 2200, null, () => {
         setCaption(overviewCap);
         cap.classList.remove('is-out');
-        timer = setTimeout(() => go(0), DWELL);
+        timer = setTimeout(() => next(-1), DWELL);
       });
     }, { threshold: 0.3 }).observe(fly);
   });
