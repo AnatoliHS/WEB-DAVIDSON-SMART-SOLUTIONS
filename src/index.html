@@ -4,6 +4,7 @@ title: Home Automation & Smart Integration
 description: "Davidson Smart Solutions provides whole home automation, smart lighting, high end audio/visual, security,
 and
 networking installed by licensed electricians in Belleville, PEC, and Quinte."
+contactFormId: contact
 ---
 
 <!-- Editorial Fullwidth Background Hero Section (component--herofulltext) -->
@@ -205,7 +206,7 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
           <strong>Everything you need to know about planning, pre wiring, and automating your home or commercial
             space.</strong> Contact our Belleville integration team for custom inquiries.
         </p>
-        <a href="/contact/" class="btn-pill-light">
+        <a href="#contact" class="btn-pill-light">
           Ask a Question <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
@@ -292,22 +293,117 @@ networking installed by licensed electricians in Belleville, PEC, and Quinte."
 </section>
 
 
-<!-- High-Impact Spotlight CTA Banner -->
-<section class="home-together-cta">
+<!-- Contact Form (replaces the CTA banner and standalone contact page) -->
+<section class="section contact-editorial-section" id="contact" style="padding-top: 6.5rem;">
   <div class="container">
-    <div class="together-cta-grid">
-      <h2 class="together-cta-heading">
-        <span>START</span>
-        <span style="color: var(--color-accent);">YOUR</span>
-        <span>PROJECT</span>
-      </h2>
-      <div class="together-cta-content">
-        <p class="together-cta-text">
-          Connect with our master electricians and system architects to engineer your custom smart home, lighting, or
-          commercial automation project.
+    <div class="contact-editorial-grid">
+
+      <!-- Left Column: Giant Stacked Display Title & Intro Text -->
+      <div>
+        <h2 class="together-cta-heading">
+          <span>LET'S</span>
+          <span style="color: var(--color-accent);">WORK</span>
+          <span>TOGETHER</span>
+        </h2>
+        <p class="contact-editorial-desc">
+          Have a project in mind? We'd love to hear about it. Connect with our certified master electricians and system
+          architects to plan your automation scope.
         </p>
-        <a href="/contact/" class="together-cta-btn">GET IN TOUCH</a>
       </div>
+
+      <!-- Right Column: Form Card, Call Link, & Visit Us Details -->
+      <div>
+        <!-- Form Card Box (Dark Card Container) -->
+        <div class="contact-dark-card">
+          <form data-contact-form data-form-source="{{ title }}">
+
+            <div class="contact-form-row">
+              <div>
+                <input name="name" autocomplete="name" type="text" class="contact-dark-input" required placeholder="Full Name *" />
+              </div>
+              <div>
+                <input name="email" autocomplete="email" type="email" class="contact-dark-input" required placeholder="Email Address *" />
+              </div>
+            </div>
+
+            <div class="contact-form-row">
+              <div>
+                <input name="phone" autocomplete="tel" type="tel" class="contact-dark-input" required placeholder="Phone Number *" />
+              </div>
+              <div>
+                <input name="city" autocomplete="address-level2" type="text" class="contact-dark-input" required placeholder="City *" />
+              </div>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+              <select name="budget" class="contact-dark-input" required>
+                <option value="" disabled selected>Estimated Budget *</option>
+                <option>Under $5,000</option>
+                <option>$5,000 – $15,000</option>
+                <option>$15,000 – $30,000</option>
+                <option>$30,000 – $50,000</option>
+                <option>$50,000+</option>
+                <option>Flexible / Undecided</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom: 1.25rem;">
+              <textarea name="message" class="contact-dark-input" rows="4" required placeholder="How can we help you? *"
+                style="resize: vertical;"></textarea>
+            </div>
+
+            <div class="contact-submit-row">
+              <div class="contact-legal-text">
+                By submitting you agree to our <a href="/terms-of-service/"
+                  style="color: rgba(255, 255, 255, 0.9); text-decoration: underline;">Terms of Service</a> and <a
+                  href="/privacy-policy/" style="color: rgba(255, 255, 255, 0.9); text-decoration: underline;">Privacy Policy</a>
+              </div>
+              <button type="submit" class="together-cta-btn">
+                SUBMIT INQUIRY <i class="fa-solid fa-arrow-up-right" style="margin-left: 0.4rem;"></i>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Prefer Call Prompt -->
+        <div class="contact-call-prompt">
+          Prefer to hop on a call? <a href="tel:6137799044"
+            style="color: var(--color-accent); font-weight: 700; text-decoration: underline;">Book a call</a> instead.
+        </div>
+
+        <hr class="contact-divider" />
+
+        <!-- Visit Us Details Grid -->
+        <div class="contact-visitus-wrap">
+          <h3 style="font-size: 1.6rem; font-weight: 700; color: #ffffff; margin-bottom: 1.5rem;">Visit Us</h3>
+
+          <div class="contact-info-grid">
+            <div>
+              <div
+                style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.45); font-weight: 700; margin-bottom: 0.5rem;">
+                (ADDRESS)</div>
+              <div style="font-size: 0.98rem; color: rgba(255, 255, 255, 0.85); line-height: 1.5;">
+                Belleville, Prince Edward County,<br>
+                Quinte West &amp; Eastern Ontario
+              </div>
+            </div>
+
+            <div>
+              <div
+                style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.45); font-weight: 700; margin-bottom: 0.5rem;">
+                (OFFICE HOURS)</div>
+              <div style="font-size: 0.98rem; color: rgba(255, 255, 255, 0.85); line-height: 1.5;">
+                Phone: <a href="tel:6137799044"
+                  style="color: #ffffff; font-weight: 600; text-decoration: underline;">613-779-9044</a><br>
+                Monday – Friday: 8:00 AM – 5:00 PM
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </div>
 </section>

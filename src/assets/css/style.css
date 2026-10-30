@@ -3002,8 +3002,7 @@ body.business-portal .hero-service-subtitle,
 /* Founder Quote Feature Section */
 .founder-quote-section {
   color: #ffffff;
-  padding: 5.5rem 0 0 0;
-  overflow: visible;
+  padding: 5.5rem 0;
   position: relative;
   background-color: #121212;
   background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
@@ -3014,13 +3013,12 @@ body.business-portal .hero-service-subtitle,
 
 .founder-quote-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items: flex-end;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: center;
 }
 
 .founder-quote-content {
-  padding-bottom: 5.5rem;
   padding-right: 1rem;
 }
 
@@ -3055,76 +3053,53 @@ body.business-portal .hero-service-subtitle,
   line-height: 1.4;
 }
 
+/* Framed portrait: 4:5 crop of the photo with an offset gold outline behind it */
 .founder-quote-portrait {
   position: relative;
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: visible;
-  z-index: 2;
+  max-width: 440px;
+  aspect-ratio: 4 / 5;
+  justify-self: center;
 }
 
-/* Soft warm glow behind the portrait cut-out so it lifts off the dark background */
 .founder-quote-portrait::before {
   content: '';
   position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 85%;
-  aspect-ratio: 1;
-  transform: translateX(-50%);
-  background: radial-gradient(circle at 50% 60%, rgba(197, 160, 89, 0.22) 0%, rgba(197, 160, 89, 0.06) 45%, transparent 70%);
+  inset: 0;
+  transform: translate(18px, 18px);
+  border: 2px solid var(--color-accent);
+  border-radius: 14px;
   pointer-events: none;
-  z-index: -1;
 }
 
 .founder-quote-portrait-img {
+  position: relative;
   width: 100%;
-  max-width: 680px;
-  height: auto;
-  max-height: 600px;
-  object-fit: contain;
-  object-position: bottom center;
-  transform: scale(1.15);
-  transform-origin: bottom center;
-  border-radius: 0;
-  box-shadow: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 52% 35%;
+  border-radius: 14px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
   display: block;
 }
 
 @media (max-width: 960px), (hover: none) and (pointer: coarse) {
   .founder-quote-section {
-    padding: 3.5rem 0 0 0;
-    overflow: hidden;
+    padding: 3.5rem 0;
   }
 
   .founder-quote-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2.5rem;
   }
 
   .founder-quote-content {
-    padding-bottom: 1.5rem;
     padding-right: 0;
   }
 
   .founder-quote-portrait {
-    height: auto;
-    max-height: 440px;
-    overflow: hidden;
-    margin-bottom: 0;
-  }
-
-  .founder-quote-portrait-img {
-    height: auto;
-    max-height: 420px;
-    width: 100%;
-    object-fit: contain;
-    object-position: bottom center;
-    transform: none;
-    margin-bottom: 0;
+    max-width: 320px;
+    order: -1;
   }
 }
 
@@ -8180,7 +8155,6 @@ body.business-portal .process-section-wrap.dark-section .title-color-wipe.reveal
 /* ==========================================================================
    Editorial Contact Page Section (Matching Reference Card & Info Layout)
    ========================================================================== */
-body.contact-page,
 body:has(.contact-editorial-section) {
   background-color: #121212 !important;
 }
@@ -8202,6 +8176,16 @@ body:has(.contact-editorial-section) {
   border-top: none !important;
   border: none !important;
 }
+
+/* Business contact form reuses its old CTA banner photo */
+.contact-editorial-section.contact-bg-barn {
+  background-image:
+    linear-gradient(180deg, rgba(18, 18, 18, 0.98) 0%, rgba(18, 18, 18, 0.9) 6%, transparent 22%),
+    linear-gradient(135deg, rgba(18, 18, 18, 0.88) 0%, rgba(28, 28, 28, 0.78) 50%, rgba(14, 14, 14, 0.92) 100%),
+    var(--contact-bg) !important;
+}
+
+.contact-bg-barn { --contact-bg: url('/assets/images/crimson/web/still-042.jpg'); }
 
 .contact-editorial-section::before {
   content: '';
@@ -10522,5 +10506,750 @@ body.business-portal {
 
   .proof-case-card {
     min-height: 380px;
+  }
+}
+
+/* ==========================================================================
+   Agri-Tourism Landing Page (/agri-tourism/, standalone, no navbar)
+   ========================================================================== */
+.agri-accent {
+  color: #61709e;
+}
+
+.agri-eyebrow {
+  display: block;
+  margin-bottom: 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* Hero */
+.agri-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding: 9rem 0 4.5rem;
+  background-color: #0b0f17;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.agri-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.agri-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 55%;
+}
+
+/* Darkened at the top for the bar and at the bottom for the title and context text */
+.agri-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(11, 15, 23, 0.75) 0%, rgba(11, 15, 23, 0.15) 22%, transparent 40%),
+    linear-gradient(0deg, rgba(18, 18, 18, 1) 0%, rgba(11, 15, 23, 0.82) 28%, rgba(11, 15, 23, 0.35) 58%, rgba(11, 15, 23, 0.2) 100%);
+}
+
+/* Top bar: logo left, trust points centre, audit button right */
+.agri-hero-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 1.75rem 0;
+}
+
+.agri-hero-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.agri-logo {
+  display: block;
+  height: 56px;
+  width: auto;
+}
+
+.agri-trust {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.agri-trust li + li::before {
+  content: '/';
+  margin: 0 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.together-cta-btn.agri-hero-book {
+  padding: 0.8rem 1.6rem;
+  font-size: 0.78rem;
+}
+
+.agri-hero-book i,
+.agri-split-intro .together-cta-btn i {
+  margin-left: 0.6rem;
+}
+
+/* Bottom row: title left, context and film link right */
+.agri-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: end;
+}
+
+.agri-hero-title {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(3rem, 8.5vw, 7.5rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.agri-hero-side {
+  justify-self: end;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.75rem;
+}
+
+.agri-hero-sub {
+  margin: 0;
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.agri-text-link {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease;
+}
+
+.agri-text-link:hover {
+  border-color: #ffffff;
+}
+
+.agri-text-link i {
+  margin-left: 0.4rem;
+  font-size: 0.85em;
+}
+
+/* Shared sections */
+.agri-section {
+  padding: 6.5rem 0;
+  background-color: #121212;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+  background-size: 16px 16px;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.agri-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem 4rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.agri-title {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.agri-intro {
+  max-width: 460px;
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Problem: $5,000 line under the flyover */
+.agri-callout {
+  margin: 2rem 0 0;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.agri-callout strong {
+  color: #61709e;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Solution */
+.agri-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.agri-card {
+  overflow: hidden;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+
+.agri-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.agri-card-body {
+  padding: 1.4rem;
+}
+
+.agri-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.agri-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Proof stats */
+.agri-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.agri-stat {
+  padding: 2rem 1.25rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.agri-stat:last-child {
+  border-right: 0;
+}
+
+.agri-stat strong {
+  display: block;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-accent);
+  margin-bottom: 0.4rem;
+}
+
+.agri-stat span {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Process: editorial split */
+.agri-split {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.agri-split-intro .agri-title {
+  margin-bottom: 1.5rem;
+  font-size: clamp(2rem, 3.3vw, 3rem);
+}
+
+.agri-split-intro p {
+  max-width: 380px;
+  margin: 0 0 2rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.agri-split-note {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.agri-split-note i {
+  color: #8f9cc8;
+}
+
+.agri-split-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.agri-split-steps li {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1.5rem;
+  padding: 2.25rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Outlined numbers in business blue */
+.agri-split-num {
+  font-family: var(--font-sans);
+  font-size: 4.2rem;
+  font-weight: 800;
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #61709e;
+}
+
+.agri-split-steps h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.agri-split-steps p {
+  margin: 0;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 1024px) {
+  .agri-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .agri-hero {
+    padding: 7.5rem 0 4rem;
+  }
+
+  .agri-hero-bg img {
+    object-position: 45% 60%;
+  }
+
+  .agri-hero-bg::after {
+    background: linear-gradient(0deg, rgba(18, 18, 18, 1) 0%, rgba(11, 15, 23, 0.82) 45%, rgba(11, 15, 23, 0.45) 100%);
+  }
+
+  .agri-hero-bar {
+    padding: 1.25rem 0;
+  }
+
+  .agri-hero-bar-inner {
+    gap: 1rem;
+  }
+
+  .agri-logo {
+    height: 42px;
+  }
+
+  /* Trust points don't fit beside the logo and button on small screens */
+  .agri-trust {
+    display: none;
+  }
+
+  .together-cta-btn.agri-hero-book {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+  }
+
+  .agri-hero-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Beats the site-wide phone h1 size and margin (both !important) for this hero only */
+  .agri-hero .agri-hero-title {
+    font-size: clamp(3rem, 15vw, 5rem) !important;
+    margin-bottom: 0 !important;
+  }
+
+  .agri-hero-side {
+    justify-self: start;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .agri-hero-sub {
+    font-size: 1.15rem;
+  }
+
+  .agri-section {
+    padding: 4.5rem 0;
+  }
+
+  .agri-head {
+    margin-bottom: 2rem;
+  }
+
+  .agri-split {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .agri-split-steps li {
+    grid-template-columns: 70px 1fr;
+    padding: 1.75rem 0;
+  }
+
+  .agri-split-num {
+    font-size: 3rem;
+  }
+
+  .agri-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .agri-stat:nth-child(2) {
+    border-right: 0;
+  }
+
+  .agri-stat:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (max-width: 560px) {
+  .agri-cards {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* Problem: blueprint flyover (gold linework in the style of the About service-area map; text in business blue) */
+.agri-fly {
+  margin-top: 1rem;
+}
+
+.agri-fly-stage {
+  position: relative;
+  /* Shorter than the 16:9 drawing so more of the section fits on screen; on desktop the drawing is fitted inside (see the script) */
+  aspect-ratio: 21 / 9;
+}
+
+/* No frame: the drawing fades out at the edges */
+.agri-fly-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  -webkit-mask-image: radial-gradient(ellipse 72% 68% at 52% 50%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 68% at 52% 50%, #000 55%, transparent 100%);
+}
+
+.agri-fly-root {
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+
+.agri-fly.is-in .agri-fly-root {
+  opacity: 1;
+}
+
+.agri-fly-svg polygon,
+.agri-fly-svg path,
+.agri-fly-svg ellipse,
+.agri-fly-svg line,
+.agri-fly-svg circle,
+.agri-fly-svg rect {
+  vector-effect: non-scaling-stroke;
+}
+
+/* Base drawing: faint gold lines, dark faces hide the lines behind them */
+.agri-fly-svg .face { fill: #121212; stroke: rgba(197, 160, 89, 0.42); stroke-width: 1; stroke-linejoin: round; }
+.agri-fly-svg .face-roof { fill: #141414; stroke: rgba(197, 160, 89, 0.5); stroke-width: 1; stroke-linejoin: round; }
+.agri-fly-svg .hatch { fill: none; stroke: rgba(197, 160, 89, 0.22); stroke-width: 0.8; }
+.agri-fly-svg .win { fill: rgba(197, 160, 89, 0.06); stroke: rgba(197, 160, 89, 0.45); stroke-width: 0.9; }
+.agri-fly-svg .ground { fill: none; stroke: rgba(197, 160, 89, 0.3); stroke-width: 1; }
+.agri-fly-svg .grid { fill: none; stroke: rgba(197, 160, 89, 0.08); stroke-width: 0.8; }
+.agri-fly-svg .area { fill: none; stroke: rgba(197, 160, 89, 0.32); stroke-width: 1; }
+.agri-fly-svg .stripe { stroke: rgba(197, 160, 89, 0.28); stroke-width: 0.9; }
+.agri-fly-svg .soft { fill: none; stroke: rgba(197, 160, 89, 0.24); stroke-width: 0.9; }
+.agri-fly-svg .canopy { fill: #121212; stroke: rgba(197, 160, 89, 0.3); stroke-width: 0.9; }
+.agri-fly-svg .stem { stroke: rgba(197, 160, 89, 0.45); stroke-width: 1; stroke-dasharray: 2 3; }
+.agri-fly-svg .zone { fill: none; stroke: rgba(197, 160, 89, 0.38); stroke-width: 1; stroke-dasharray: 4 5; }
+.agri-fly-svg .tag { fill: rgba(197, 160, 89, 0.55); font: 700 9px var(--font-sans); letter-spacing: 0.22em; text-transform: uppercase; }
+.agri-fly-svg .tick { stroke: rgba(197, 160, 89, 0.35); stroke-width: 0.9; }
+.agri-fly-svg .topo { fill: none; stroke: rgba(197, 160, 89, 0.1); stroke-width: 1; }
+.agri-fly-svg .fence { fill: none; stroke: rgba(197, 160, 89, 0.3); stroke-width: 1; }
+
+/* Lit copy of the drawing, only visible inside the flashlight */
+.agri-fly-svg [data-layer="lit"] .face,
+.agri-fly-svg [data-layer="lit"] .face-roof { stroke: #f0d59a; stroke-width: 1.3; }
+.agri-fly-svg [data-layer="lit"] .win { fill: rgba(197, 160, 89, 0.5); stroke: #f0d59a; }
+.agri-fly-svg [data-layer="lit"] .ground,
+.agri-fly-svg [data-layer="lit"] .area,
+.agri-fly-svg [data-layer="lit"] .soft,
+.agri-fly-svg [data-layer="lit"] .canopy,
+.agri-fly-svg [data-layer="lit"] .stripe { stroke: rgba(240, 213, 154, 0.8); }
+.agri-fly-svg [data-layer="lit"] .grid { stroke: rgba(240, 213, 154, 0.25); }
+.agri-fly-svg [data-layer="lit"] .hatch { stroke: rgba(240, 213, 154, 0.45); }
+.agri-fly-svg [data-layer="lit"] .zone { fill: rgba(197, 160, 89, 0.07); stroke: #f0d59a; stroke-width: 1.4; stroke-dasharray: none; }
+.agri-fly-svg [data-layer="lit"] .tag { fill: #f0d59a; }
+.agri-fly-svg [data-layer="lit"] .stem { stroke: #f0d59a; }
+
+/* Pins: gold-dot pills like the About map, kept at screen size while the camera zooms */
+.agri-fly-svg .pin { cursor: pointer; }
+.agri-fly-svg .halo { fill: none; stroke: #C5A059; stroke-width: 1.2; transform-box: fill-box; transform-origin: center; animation: agriFlyHalo 2.4s infinite ease-out; }
+.agri-fly-svg .pill { fill: rgba(18, 18, 18, 0.9); stroke: rgba(197, 160, 89, 0.5); stroke-width: 1; transition: width 0.35s ease, stroke 0.3s; }
+.agri-fly-svg .dot { fill: #C5A059; filter: drop-shadow(0 0 4px rgba(197, 160, 89, 0.9)); }
+.agri-fly-svg .pin text { fill: #ffffff; font: 700 19px var(--font-sans); opacity: 0; transition: opacity 0.25s ease; }
+.agri-fly-svg .pin.is-on .pill { stroke: #C5A059; }
+.agri-fly-svg .pin.is-on text { opacity: 1; transition-delay: 0.15s; }
+
+@keyframes agriFlyHalo {
+  0% { transform: scale(0.6); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* Camera label and caption card (About map detail card, in business blue) */
+.agri-fly-hud {
+  position: absolute;
+  top: 2%;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8f9cc8;
+}
+
+.agri-fly-hud i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #61709e;
+  box-shadow: 0 0 8px rgba(97, 112, 158, 0.9);
+}
+
+.agri-fly-cap {
+  position: absolute;
+  left: 0;
+  bottom: 6%;
+  z-index: 3;
+  width: 330px;
+  padding: 1rem 1.1rem 1.1rem;
+  background: rgba(18, 18, 18, 0.92);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.agri-fly-cap.is-out {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.agri-fly-badge {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8f9cc8;
+  background: rgba(97, 112, 158, 0.18);
+}
+
+.agri-fly-cap h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #ffffff;
+}
+
+.agri-fly-cap p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #c9ced8;
+}
+
+/* Chapter row: progress bars fill while each stop is shown */
+.agri-fly-chapters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.agri-fly-chap {
+  position: relative;
+  padding: 1rem 0 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.agri-fly-chap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(97, 112, 158, 0.3);
+}
+
+.agri-fly-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #61709e;
+  box-shadow: 0 0 8px rgba(97, 112, 158, 0.7);
+}
+
+.agri-fly-chap.is-on .agri-fly-bar {
+  animation: agriFlyFill var(--dwell, 4.5s) linear forwards;
+}
+
+.agri-fly-chap.is-held .agri-fly-bar {
+  animation: none;
+  width: 100%;
+}
+
+@keyframes agriFlyFill {
+  to { width: 100%; }
+}
+
+.agri-fly-chap b {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(97, 112, 158, 0.75);
+  transition: color 0.3s;
+}
+
+.agri-fly-chap span:not(.agri-fly-bar) {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s;
+}
+
+.agri-fly-chap.is-on b {
+  color: #8f9cc8;
+}
+
+.agri-fly-chap.is-on span:not(.agri-fly-bar),
+.agri-fly-chap:hover span:not(.agri-fly-bar) {
+  color: #ffffff;
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  /* The drawing sets its own 4:3 height so the caption card sits below it instead of on top */
+  .agri-fly-stage {
+    aspect-ratio: auto;
+    margin: 0 -1.5rem;
+  }
+
+  .agri-fly-svg {
+    position: relative;
+    inset: auto;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, #000 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, #000 60%, transparent 100%);
+  }
+
+  .agri-fly-hud {
+    left: 1.5rem;
+  }
+
+  .agri-fly-cap {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: auto;
+    margin: 0.5rem 1.5rem 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .agri-fly-chapters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agri-fly-root,
+  .agri-fly-cap,
+  .agri-fly-svg .pill,
+  .agri-fly-svg .pin text {
+    transition: none;
+  }
+
+  .agri-fly-svg .halo,
+  .agri-fly-chap.is-on .agri-fly-bar {
+    animation: none;
   }
 }

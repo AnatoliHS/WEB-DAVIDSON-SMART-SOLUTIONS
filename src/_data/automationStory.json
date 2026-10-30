@@ -3,7 +3,7 @@
     "id": "smart-home-automation",
     "heading": ["Smart Home", "Automation"],
     "intro": { "strong": "Your lighting, shades, climate, audio and security working as one system.", "text": "Controlled from a single app, keypad, remote or your voice." },
-    "cta": { "label": "Schedule Consultation", "href": "/contact/" },
+    "cta": { "label": "Schedule Consultation", "href": "#contact" },
     "chapters": [
       {
         "title": "All Connected.", "accent": "Not Siloed.",
@@ -39,7 +39,7 @@
     "id": "business-automation",
     "heading": ["Business", "Automation"],
     "intro": { "strong": "Your lighting, climate, access, cameras and network working as one system.", "text": "Managed from a single app, wall keypad or touch panel, on site or from anywhere." },
-    "cta": { "label": "Request an Audit", "href": "/contact/" },
+    "cta": { "label": "Request an Audit", "href": "#biz-contact" },
     "chapters": [
       {
         "title": "All Connected.", "accent": "Not Siloed.",

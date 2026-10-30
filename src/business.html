@@ -4,6 +4,7 @@ title: Belleville Small Business Security & High Performance Business Networking
 description: "Advanced small business security systems with 4K cameras, 24/7 remote Ontario operator monitoring, and
 high performance enterprise networks by Davidson Smart Solutions."
 isBusinessPage: true
+contactFormId: biz-contact
 ---
 
 <!-- Editorial Business Fullwidth Background Hero Section -->
@@ -270,7 +271,7 @@ isBusinessPage: true
     <div class="proof-split">
       <div class="statement-layout-video-wrap">
         <video class="statement-layout-video" autoplay loop muted playsinline preload="auto">
-          <source src="/assets/fly-over.mp4" type="video/mp4">
+          <source src="/assets/images/crimson/Crimson-Sider-Short.mp4" type="video/mp4">
         </video>
       </div>
 
@@ -289,22 +290,71 @@ isBusinessPage: true
   </div>
 </section>
 
-<!-- Book the Audit: Commercial Business CTA Banner -->
-<section class="biz-together-cta" id="biz-contact">
+<!-- Book the Audit: Business Contact Form (replaces the CTA banner and standalone contact page) -->
+<section class="section contact-editorial-section contact-bg-barn" id="biz-contact" style="padding-top: 6.5rem;">
   <div class="container">
-    <div class="together-cta-grid">
-      <h2 class="together-cta-heading">
-        <span>BOOK</span>
-        <span style="color: var(--color-accent, #61709e);">YOUR</span>
-        <span>AUDIT</span>
-      </h2>
-      <div class="together-cta-content">
-        <p class="together-cta-text">
-          Tell us what's frustrating you, whether it's the card reader, the guest Wi-Fi or dead zones on the
-          property. A licensed master electrician will walk your site and give you a clear plan.
+    <div class="contact-editorial-grid">
+
+      <!-- Left Column: Giant Stacked Display Title & Intro Text -->
+      <div>
+        <h2 class="together-cta-heading" style="margin-bottom: 2rem;">
+          <span>LET'S</span>
+          <span style="color: var(--color-accent);">WORK</span>
+          <span>TOGETHER</span>
+        </h2>
+        <p style="font-size: 1.15rem; color: rgba(255, 255, 255, 0.78); line-height: 1.6; max-width: 460px;">
+          Book an on site audit of your security, networking and audio systems with our licensed master electricians across Belleville &amp; Quinte.
         </p>
-        <a href="/contact/" class="together-cta-btn">BOOK AN ON-SITE AUDIT</a>
       </div>
+
+      <!-- Right Column: Form Card & Call Prompt -->
+      <div>
+        <div class="contact-dark-card biz-dark-card">
+          <form data-contact-form data-form-source="{{ title }}">
+
+            <div class="contact-form-row">
+              <div>
+                <input name="name" autocomplete="name" type="text" class="contact-dark-input" required placeholder="Full Name *" />
+              </div>
+              <div>
+                <input name="email" autocomplete="email" type="email" class="contact-dark-input" required placeholder="Email Address *" />
+              </div>
+            </div>
+
+            <div class="contact-form-row">
+              <div>
+                <input name="phone" autocomplete="tel" type="tel" class="contact-dark-input" required placeholder="Phone Number *" />
+              </div>
+              <div>
+                <input name="city" autocomplete="address-level2" type="text" class="contact-dark-input" required placeholder="City *" />
+              </div>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+              <input name="company" autocomplete="organization" type="text" class="contact-dark-input" required placeholder="Company Name *" />
+            </div>
+
+            <div style="margin-bottom: 1.25rem;">
+              <textarea name="message" class="contact-dark-input" rows="4" required placeholder="How can we help you? *" style="resize: vertical;"></textarea>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; flex-wrap: wrap;">
+              <div style="font-size: 0.78rem; color: rgba(255, 255, 255, 0.65); max-width: 240px; line-height: 1.45;">
+                By submitting you agree to our <a href="/terms-of-service/" style="color: rgba(255, 255, 255, 0.9); text-decoration: underline;">Terms of Service</a> and <a href="/privacy-policy/" style="color: rgba(255, 255, 255, 0.9); text-decoration: underline;">Privacy Policy</a>
+              </div>
+              <button type="submit" class="together-cta-btn biz-cta-btn" style="padding: 0.85rem 2.2rem; font-size: 0.88rem;">
+                SUBMIT INQUIRY <i class="fa-solid fa-arrow-up-right" style="margin-left: 0.4rem;"></i>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+        <div style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 2rem;">
+          Prefer to hop on a call? <a href="tel:6137799044" style="color: var(--color-accent); font-weight: 700; text-decoration: underline;">Book a call</a> instead.
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -326,7 +376,7 @@ isBusinessPage: true
           <strong>Straight answers on pricing, timelines and working with the systems you already have.</strong>
           Something else on your mind? Ask our Belleville team directly.
         </p>
-        <a href="/contact/" class="btn-pill-light">
+        <a href="#biz-contact" class="btn-pill-light">
           Ask a Question <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>

@@ -1,0 +1,3 @@
+# Cloudflare Pages redirects. The standalone contact page now lives as a form on the home page.
+/contact /#contact 301
+/contact/ /#contact 301

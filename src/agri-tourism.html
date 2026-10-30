@@ -1,0 +1,677 @@
+---
+title: Agri-Tourism Wi-Fi, Starlink & Outdoor Audio | Prince Edward County & Quinte
+description: "Starlink, property-wide Wi-Fi, outdoor audio and security cameras for wineries, cideries, farm markets and event venues in Prince Edward County and the Quinte region."
+permalink: /agri-tourism/
+isBusinessPage: true
+hideNav: true
+hideGoogleBadge: true
+contactFormId: agri-contact
+---
+
+<!-- Agri-Tourism Landing Page: standalone (no navbar). Funnel: Hook → Problem → Solution → Proof → Process → FAQ → Form -->
+
+<!-- Hero: logo, trust points and audit button across the top; title bottom-left; context and film link bottom-right -->
+<header class="agri-hero" id="agri-top">
+  <div class="agri-hero-bg">
+    <img src="/assets/images/crimson/web/still-079.jpg" alt="Red blankets on a stone window seat overlooking the Crimson Cider patio" fetchpriority="high" />
+  </div>
+
+  <div class="agri-hero-bar">
+    <div class="container agri-hero-bar-inner">
+      <img src="/assets/davidson-logo-light.png" alt="Davidson Smart Solutions" class="agri-logo" />
+      <ul class="agri-trust">
+        <li>Licensed Master Electrician</li>
+        <li>Control4 Authorized Supplier</li>
+      </ul>
+      <a href="#agri-contact" class="together-cta-btn biz-cta-btn agri-hero-book">Book an On-Site Audit <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <div class="container agri-hero-content">
+    <div class="agri-hero-main">
+      <span class="agri-eyebrow">Agri-Tourism &middot; Prince Edward County &amp; Quinte</span>
+      <h1 class="agri-hero-title">Give Guests<br>A Reason<br><span class="agri-accent">To Stay.</span></h1>
+    </div>
+    <div class="agri-hero-side">
+      <p class="agri-hero-sub">
+        Starlink, property-wide Wi-Fi, outdoor audio and cameras for wineries, cideries, farm markets and event venues.
+        Designed around how guests move through your property, and installed before your season opens.
+      </p>
+      <a href="#agri-proof" class="agri-text-link">Watch the Crimson Cider film <i class="fa-solid fa-arrow-down"></i></a>
+    </div>
+  </div>
+</header>
+
+<!-- Problem: blueprint flyover of a farm property (camera visits each problem area in turn) -->
+<section class="agri-section" id="agri-problem">
+  <div class="container">
+    <div class="agri-head">
+      <div>
+        <span class="agri-eyebrow">Sound familiar?</span>
+        <h2 class="agri-title">Rural Property.<br><span class="agri-accent">City Expectations.</span></h2>
+      </div>
+      <p class="agri-intro">
+        Guests expect to tap to pay, share a photo and hear music on the patio. On a rural property, that's harder
+        than it sounds, and your staff end up working around it instead of serving customers.
+      </p>
+    </div>
+
+    <div class="agri-fly" id="agriFly">
+      <div class="agri-fly-stage">
+        <svg class="agri-fly-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <filter id="agriFlyBlur" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="0 0" /></filter>
+            <filter id="agriFlyGlow" x="-10%" y="-10%" width="120%" height="120%">
+              <feGaussianBlur stdDeviation="2.2" result="b" />
+              <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
+            <radialGradient id="agriFlySpotGrad">
+              <stop offset="0" stop-color="#fff" /><stop offset=".55" stop-color="#fff" stop-opacity=".85" /><stop offset="1" stop-color="#fff" stop-opacity="0" />
+            </radialGradient>
+            <mask id="agriFlySpot" maskUnits="userSpaceOnUse" x="-5000" y="-5000" width="10000" height="10000">
+              <circle class="agri-fly-spot" cx="0" cy="0" r="0" fill="url(#agriFlySpotGrad)" />
+            </mask>
+          </defs>
+          <g class="agri-fly-root">
+            <g data-layer="bg"></g>
+            <g data-layer="main" class="bp"></g>
+            <g data-layer="lit" class="bp" mask="url(#agriFlySpot)" filter="url(#agriFlyGlow)"></g>
+            <g data-layer="fg"></g>
+            <g data-layer="pins"></g>
+          </g>
+        </svg>
+        <div class="agri-fly-hud"><i></i><span>Your property &middot; Overview</span></div>
+        <div class="agri-fly-cap is-out" aria-live="polite">
+          <span class="agri-fly-badge">Your property</span>
+          <h3>Four places guests feel it first.</h3>
+          <p>From the bar to the barn, rural properties lose sales and atmosphere in the same spots.</p>
+        </div>
+      </div>
+
+      <div class="agri-fly-chapters">
+        <button type="button" class="agri-fly-chap" data-c="0"><span class="agri-fly-bar"></span><b>01 &middot; Tasting room</b><span>Card reader drops</span></button>
+        <button type="button" class="agri-fly-chap" data-c="1"><span class="agri-fly-bar"></span><b>02 &middot; Patio</b><span>Dead zones</span></button>
+        <button type="button" class="agri-fly-chap" data-c="2"><span class="agri-fly-bar"></span><b>03 &middot; Yard</b><span>Silence outside</span></button>
+        <button type="button" class="agri-fly-chap" data-c="3"><span class="agri-fly-bar"></span><b>04 &middot; Barn</b><span>No eyes after close</span></button>
+      </div>
+    </div>
+
+    <p class="agri-callout"><strong>A single outage can cost <span class="stat-count" data-target="5000" data-prefix="$" data-suffix="+">$5,000+</span></strong> in lost sales and downtime.</p>
+  </div>
+</section>
+
+<!-- Blueprint flyover: draws the property, then flies the camera between the four problem areas -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const fly = document.getElementById('agriFly');
+    if (!fly) return;
+    const svg = fly.querySelector('.agri-fly-svg');
+    const layer = (name) => svg.querySelector(`[data-layer="${name}"]`);
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = () => matchMedia('(max-width: 900px), (hover: none) and (pointer: coarse)').matches;
+
+    // Desktop fits the whole 16:9 drawing inside the shorter frame (smaller wide shot); phones fill their 4:3 frame
+    const fitDrawing = () => svg.setAttribute('preserveAspectRatio', isMobile() ? 'xMidYMid slice' : 'xMidYMid meet');
+    fitDrawing();
+    matchMedia('(max-width: 900px), (hover: none) and (pointer: coarse)').addEventListener('change', fitDrawing);
+
+    // Low-angle dimetric projection: world (x right-back, y left-back, z up) -> drawing units
+    const U = 7, C = 0.9, S = 0.38;
+    const P = (x, y, z = 0) => [(x - y) * C * U, ((x + y) * S - z) * U];
+    const pts = (arr) => arr.map(p => P(...p).map(n => n.toFixed(1)).join(',')).join(' ');
+    const poly = (arr, cls) => `<polygon class="${cls}" points="${pts(arr)}"/>`;
+    const line = (a, b, cls) => { const [x1, y1] = P(...a), [x2, y2] = P(...b); return `<line class="${cls}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`; };
+
+    // Gable-roofed building, ridge along x, gable end facing +x, with hatched roof
+    const house = (x0, y0, x1, y1, h, rise, opts = {}) => {
+      const ym = (y0 + y1) / 2, o = 0.7;
+      let s = '';
+      s += poly([[x0 - o, y0 - o, h - .4], [x1 + o, y0 - o, h - .4], [x1 + o, ym, h + rise], [x0 - o, ym, h + rise]], 'face-roof');
+      s += poly([[x0, y1, 0], [x1, y1, 0], [x1, y1, h], [x0, y1, h]], 'face');
+      s += poly([[x1, y0, 0], [x1, y1, 0], [x1, y1, h], [x1, ym, h + rise], [x1, y0, h]], 'face');
+      (opts.frontWins || []).forEach(([xa, xb, za, zb]) => s += poly([[xa, y1, za], [xb, y1, za], [xb, y1, zb], [xa, y1, zb]], 'win'));
+      (opts.sideDoors || []).forEach(([ya, yb, zb, cross]) => {
+        s += poly([[x1, ya, 0], [x1, yb, 0], [x1, yb, zb], [x1, ya, zb]], 'face');
+        if (cross) s += line([x1, ya, 0], [x1, yb, zb], 'hatch') + line([x1, yb, 0], [x1, ya, zb], 'hatch');
+      });
+      (opts.sideWins || []).forEach(([ya, yb, za, zb]) => s += poly([[x1, ya, za], [x1, yb, za], [x1, yb, zb], [x1, ya, zb]], 'win'));
+      s += poly([[x0 - o, y1 + o, h - .4], [x1 + o, y1 + o, h - .4], [x1 + o, ym, h + rise], [x0 - o, ym, h + rise]], 'face-roof');
+      for (let x = x0 + 2; x < x1; x += 2.2) s += line([x, y1 + o * .6, h - .2], [x, ym + .3, h + rise - .2], 'hatch');
+      return s;
+    };
+    const silo = (cx, cy, r, h) => {
+      const [X, Yb] = P(cx, cy, 0), [, Yt] = P(cx, cy, h);
+      const rx = r * C * U * Math.SQRT2, ry = r * S * U * Math.SQRT2;
+      let s = `<path class="face" d="M${X - rx},${Yt} L${X - rx},${Yb} A${rx},${ry} 0 0 0 ${X + rx},${Yb} L${X + rx},${Yt} Z"/>`;
+      for (let z = h * .2; z < h; z += h * .2) { const [, Yz] = P(cx, cy, z); s += `<path class="hatch" d="M${X - rx},${Yz} A${rx},${ry} 0 0 0 ${X + rx},${Yz}"/>`; }
+      s += `<path class="face-roof" d="M${X - rx},${Yt} A${rx},${rx * .8} 0 0 1 ${X + rx},${Yt} A${rx},${ry} 0 0 1 ${X - rx},${Yt} Z"/>`;
+      s += `<path class="face" style="fill:none" d="M${X - rx},${Yt} A${rx},${ry} 0 0 0 ${X + rx},${Yt}"/>`;
+      return s;
+    };
+    const tree = (x, y, h, r) => {
+      const [X, Y] = P(x, y, 0), [, Yt] = P(x, y, h);
+      return `<line class="soft" x1="${X}" y1="${Y}" x2="${X}" y2="${Yt}"/><ellipse class="canopy" cx="${X}" cy="${Yt - r * .6}" rx="${r}" ry="${r * 1.05}"/>`;
+    };
+    const umbrella = (x, y) => {
+      const [X, Y] = P(x, y, 0), [, Yt] = P(x, y, 5);
+      return `<ellipse class="face" cx="${X}" cy="${Y - 4}" rx="9" ry="3.5"/><line class="soft" x1="${X}" y1="${Y}" x2="${X}" y2="${Yt}"/>` +
+        `<path class="face-roof" d="M${X - 16},${Yt + 6} Q${X},${Yt - 14} ${X + 16},${Yt + 6} Z"/>`;
+    };
+    // Ground labels: the matrix lays the text flat along the world x axis (tag) or y axis (tagY)
+    const tag = (x, y, text) => { const [X, Y] = P(x, y); return `<text class="tag" text-anchor="middle" transform="matrix(${C} ${S} ${-C} ${S} ${X} ${Y})">${text}</text>`; };
+    const tagY = (x, y, text) => { const [X, Y] = P(x, y); return `<text class="tag" text-anchor="middle" transform="matrix(${C} ${-S} ${C} ${S} ${X} ${Y})">${text}</text>`; };
+
+    const zones = [
+      { name: 'Tasting room', poly: [[44, 12], [66, 12], [66, 28], [44, 28]], focus: [55, 20], pinZ: 22, light: 150,
+        eyebrow: '01 · Tasting room', title: 'The card reader drops on your busiest day', text: 'Rural internet buckles when the lot is full, and every failed tap is a lost sale.' },
+      { name: 'Patio', poly: [[45, 29], [65, 29], [65, 40], [45, 40]], focus: [55, 34], pinZ: 14, light: 125,
+        eyebrow: '02 · Patio', title: 'Dead zones where guests actually sit', text: 'Signal fades on the patio, in the barn and across the yard.' },
+      { name: 'Yard', poly: [[68, 16], [94, 16], [94, 42], [68, 42]], focus: [81, 29], pinZ: 14, light: 175,
+        eyebrow: '03 · Yard', title: 'One speaker for a whole property', text: 'Loud in one corner, silent in the next, and someone running between rooms turning knobs mid-shift.' },
+      { name: 'Barn', poly: [[8, 6], [42, 6], [42, 24], [8, 24]], focus: [20, 15], pinZ: 28, light: 175,
+        eyebrow: '04 · Barn', title: 'No eyes on the property after close', text: 'Equipment, stock and outbuildings left unwatched overnight and through the off-season.' }
+    ];
+    const overviewCap = { eyebrow: 'Your property', title: 'Four places guests feel it first.', text: 'From the bar to the barn, rural properties lose sales and atmosphere in the same spots.', hud: 'Your property · Overview' };
+
+    /* ---- Draw the property ---- */
+    const [lx, ly] = P(0, 54), [tx0, ty0] = P(0, 0), [rx0, ry0] = P(100, 0);
+    let topo = '';
+    for (let k = 0; k < 4; k++) {
+      const d = k * 26;
+      topo += `<path class="topo" d="M${lx - 300},${ly - 30 + d} Q${lx - 80},${ty0 - 150 + d} ${tx0 - 120},${ty0 - 60 + d} Q${tx0 + 60},${ty0 - 190 + d} ${tx0 + 260},${ty0 - 70 + d} Q${rx0 - 160},${ry0 - 260 + d} ${rx0 + 300},${ry0 - 90 + d}"/>`;
+    }
+    layer('bg').innerHTML = topo;
+
+    let g = '';
+    for (let i = 5; i < 100; i += 5) g += line([i, 0], [i, 54], 'grid');
+    for (let j = 6; j < 54; j += 6) g += line([0, j], [100, j], 'grid');
+    g += poly([[0, 0], [100, 0], [100, 54], [0, 54]], 'ground');
+    for (let i = 0; i <= 100; i += 10) g += line([i, 54], [i, 55.6], 'tick');
+    g += line([0, 46], [100, 46], 'area') + line([0, 51], [100, 51], 'area');
+    for (let x = 3; x < 100; x += 6) g += line([x, 48.5], [x + 3, 48.5], 'soft');
+    g += poly([[18, 30], [40, 30], [40, 43], [18, 43]], 'area');
+    for (let x = 21; x < 40; x += 3.5) g += line([x, 31], [x, 36], 'stripe') + line([x, 37], [x, 42], 'stripe');
+    g += poly([[68, 16], [94, 16], [94, 42], [68, 42]], 'area');
+    g += poly([[45, 29], [65, 29], [65, 40], [45, 40]], 'area');
+    for (let x = 47.5; x < 65; x += 2.5) g += line([x, 29], [x, 40], 'grid');
+    zones.forEach((z) => g += `<polygon class="zone" points="${pts(z.poly.map(p => [...p, .1]))}"/>`);
+    g += tag(29, 45, 'Parking') + tag(81, 44.5, 'Yard') + tag(55, 42.5, 'Patio') + tagY(66.6, 20, 'Tasting room') + tag(18, 25.5, 'Barn');
+
+    // Objects, painted back to front by depth (x + y)
+    const objs = [];
+    objs.push({ d: 30, s: house(10, 8, 26, 22, 14, 9, { sideDoors: [[12, 18, 9, true]], frontWins: [[14, 17, 9, 11.5], [19, 22, 9, 11.5]] }) });
+    objs.push({ d: 42, s: silo(32, 10, 3.2, 26) });
+    objs.push({ d: 46, s: silo(38.5, 9, 2.7, 22) });
+    objs.push({ d: 75, s: house(46, 14, 64, 26, 10, 6.5, { frontWins: [[48, 52, 3, 7], [54, 58, 3, 7], [60, 63, 3, 7]], sideWins: [[16, 19, 3.5, 7], [21, 24, 3.5, 7]] }) });
+    [[49, 32], [55, 36], [61, 32]].forEach(([x, y]) => objs.push({ d: x + y, s: umbrella(x, y) }));
+    [[72, 20, 9, 18], [88, 22, 11, 22], [80, 37, 8, 16], [92, 36, 10, 20], [6, 30, 9, 18], [3, 12, 10, 20], [96, 8, 12, 24], [60, 4, 10, 20]]
+      .forEach(([x, y, h, r]) => objs.push({ d: x + y, s: tree(x, y, h, r) }));
+    [[73, 27], [86, 31]].forEach(([x, y]) => {
+      const [X, Y] = P(x, y), [, Yt] = P(x, y, 4);
+      objs.push({ d: x + y, s: `<line class="soft" x1="${X}" y1="${Y}" x2="${X}" y2="${Yt}"/><rect class="face" x="${X - 3}" y="${Yt - 6}" width="6" height="8" rx="1.5"/>` });
+    });
+    objs.sort((a, b) => a.d - b.d).forEach(o => g += o.s);
+
+    // Pin stems live in the drawing; pin heads are drawn at screen size in their own layer
+    zones.forEach((z) => {
+      const [fx, fy] = z.focus, [gx, gy] = P(fx, fy, 0);
+      g += line([fx, fy, 0], [fx, fy, z.pinZ], 'stem') + `<ellipse class="zone" cx="${gx}" cy="${gy}" rx="10" ry="3.8"/>`;
+    });
+    layer('main').innerHTML = g;
+    layer('lit').innerHTML = g;
+
+    let fence = '';
+    for (let x = 2; x <= 98; x += 4) fence += line([x, 53, 0], [x, 53, 3], 'fence');
+    fence += line([0, 53, 2.4], [100, 53, 2.4], 'fence') + line([0, 53, 1.2], [100, 53, 1.2], 'fence');
+    layer('fg').innerHTML = fence;
+
+    // Pins: About-map style pills (gold dot, label opens when active)
+    const pins = zones.map((z, i) => {
+      const el = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      el.setAttribute('class', 'pin');
+      el.innerHTML = `<circle class="halo" cx="0" cy="0" r="13"/><rect class="pill" x="-19" y="-19" height="38" rx="19" width="38"/>` +
+        `<circle class="dot" cx="0" cy="0" r="7"/><text x="20" y="6.5">${z.name}</text>`;
+      el.addEventListener('click', () => go(i, true));
+      layer('pins').appendChild(el);
+      const [hx, hy] = P(z.focus[0], z.focus[1], z.pinZ);
+      return { el, hx, hy, textW: 0 };
+    });
+
+    /* ---- Camera ---- */
+    const W = 1600, H = 900;
+    const bbox = layer('main').getBBox();
+    let cam0, cam;
+    const shotFor = (i) => {
+      if (i < 0) return { ...cam0 };
+      const [fx, fy] = zones[i].focus, [x, y] = P(fx, fy, zones[i].pinZ * 0.5);
+      return { x, y, s: cam0.s * (isMobile() ? 1.9 : 2.05), ox: isMobile() ? 0 : W * 0.14, oy: isMobile() ? -H * 0.05 : H * 0.02 };
+    };
+    // Parallax: hills move slower than the property, the fence faster
+    const layers = [['bg', 0.35], ['main', 1], ['lit', 1], ['fg', 1.3]].map(([n, f]) => [layer(n), f]);
+    const apply = (c) => {
+      layers.forEach(([el, f]) => {
+        const s = cam0.s + (c.s - cam0.s) * f, x = cam0.x + (c.x - cam0.x) * f, y = cam0.y + (c.y - cam0.y) * f;
+        el.setAttribute('transform', `translate(${(W / 2 + c.ox - x * s).toFixed(2)} ${(H / 2 + c.oy - y * s).toFixed(2)}) scale(${s.toFixed(4)})`);
+      });
+      const tx = W / 2 + c.ox - c.x * c.s, ty = H / 2 + c.oy - c.y * c.s, k = isMobile() ? 1.8 : 1.5;   // pins scaled up to stay readable when the drawing is shrunk to fit
+      pins.forEach(p => p.el.setAttribute('transform', `translate(${(tx + p.hx * c.s).toFixed(1)} ${(ty + p.hy * c.s).toFixed(1)}) scale(${k})`));
+    };
+
+    // Flashlight: a soft circle in drawing space that closes during a move and opens on arrival
+    const spotEl = svg.querySelector('.agri-fly-spot');
+    let spot = { x: 0, y: 0, r: 0 };
+    const setSpot = (s) => { spot = s; spotEl.setAttribute('cx', s.x.toFixed(1)); spotEl.setAttribute('cy', s.y.toFixed(1)); spotEl.setAttribute('r', Math.max(s.r, 0).toFixed(1)); };
+    const spotFor = (i) => {
+      if (i < 0) return { ...spot, r: 0 };
+      const [fx, fy] = zones[i].focus, [x, y] = P(fx, fy, zones[i].pinZ * 0.35);
+      return { x, y, r: zones[i].light };
+    };
+
+    const root = svg.querySelector('.agri-fly-root');
+    const blur = svg.querySelector('#agriFlyBlur feGaussianBlur');
+    const ease = (t) => t < .5 ? 8 * t ** 4 : 1 - Math.pow(-2 * t + 2, 4) / 2;
+    let raf;
+    const move = (to, dur, spotTarget, done) => {
+      cancelAnimationFrame(raf);
+      const sFrom = { ...spot };
+      if (reduceMotion || !dur) { cam = to; apply(cam); if (spotTarget) setSpot(spotTarget); if (done) done(); return; }
+      const from = { ...cam }, t0 = performance.now();
+      // Pull back mid-move like a camera on a jib; longer moves pull back further
+      const amp = 0.18 * Math.min(1, Math.hypot((to.x - from.x) * to.s, (to.y - from.y) * to.s) / 500);
+      let prev = null;
+      root.setAttribute('filter', 'url(#agriFlyBlur)');
+      const step = () => {
+        const t = Math.min(Math.max((performance.now() - t0) / dur, 0), 1), e = ease(t);
+        const dip = 1 - amp * Math.sin(Math.PI * t);
+        cam = { x: from.x + (to.x - from.x) * e, y: from.y + (to.y - from.y) * e, ox: from.ox + (to.ox - from.ox) * e, oy: from.oy + (to.oy - from.oy) * e,
+                s: (from.s + (to.s - from.s) * e) * dip };
+        apply(cam);
+        if (spotTarget) {
+          const close = Math.max(0, 1 - t * 2.2), open = Math.max(0, (t - .55) / .45);
+          setSpot({ x: sFrom.x + (spotTarget.x - sFrom.x) * e, y: sFrom.y + (spotTarget.y - sFrom.y) * e, r: sFrom.r * close + spotTarget.r * ease(open) });
+        }
+        // Motion blur follows the camera's speed
+        const sx = W / 2 + cam.ox - cam.x * cam.s, sy = H / 2 + cam.oy - cam.y * cam.s;
+        if (prev) blur.setAttribute('stdDeviation', `${Math.min(Math.abs(sx - prev[0]) * .45, 14).toFixed(1)} ${Math.min(Math.abs(sy - prev[1]) * .45, 10).toFixed(1)}`);
+        prev = [sx, sy];
+        if (t < 1) raf = requestAnimationFrame(step);
+        else { blur.setAttribute('stdDeviation', '0 0'); root.removeAttribute('filter'); if (done) done(); }
+      };
+      raf = requestAnimationFrame(step);
+    };
+
+    /* ---- Chapters ---- */
+    const DWELL = 7000, MOVE = 1150;   // time held at each position, and the camera move between them
+    const cap = fly.querySelector('.agri-fly-cap');
+    const hud = fly.querySelector('.agri-fly-hud span');
+    const chaps = fly.querySelectorAll('.agri-fly-chap');
+    let timer, held = false;
+    const setCaption = (c) => {
+      cap.querySelector('.agri-fly-badge').textContent = c.eyebrow;
+      cap.querySelector('h3').textContent = c.title;
+      cap.querySelector('p').textContent = c.text;
+      hud.textContent = c.hud || `${c.eyebrow.split('· ')[1]} · Camera ${c.eyebrow.slice(0, 2)}`;
+    };
+    const highlight = (i) => {
+      pins.forEach((p, k) => {
+        p.el.classList.toggle('is-on', k === i);
+        p.el.querySelector('.pill').style.width = (k === i ? p.textW + 56 : 38) + 'px';
+      });
+      chaps.forEach(c => {
+        const on = +c.dataset.c === i;
+        c.classList.remove('is-on'); void c.offsetWidth;
+        c.classList.toggle('is-on', on);
+        c.classList.toggle('is-held', on && held);
+        c.style.setProperty('--dwell', DWELL / 1000 + 's');
+      });
+    };
+    const go = (i, manual) => {
+      clearTimeout(timer);
+      if (manual) held = true;
+      cap.classList.add('is-out');
+      highlight(-2);
+      move(shotFor(i), MOVE, spotFor(i), () => {
+        setCaption(i < 0 ? overviewCap : zones[i]);
+        cap.classList.remove('is-out');
+        highlight(i);
+        if (!held) timer = setTimeout(() => go(i >= zones.length - 1 ? -1 : i + 1), DWELL);
+      });
+    };
+    chaps.forEach(c => c.addEventListener('click', () => go(+c.dataset.c, true)));
+
+    // Establishing shot, started the first time the map scrolls into view
+    const cx = bbox.x + bbox.width / 2, cy = bbox.y + bbox.height / 2;
+    cam0 = { x: cx, y: cy + bbox.height * .04, s: Math.min(W / bbox.width, H / bbox.height) * (isMobile() ? 1.15 : 0.95), ox: 0, oy: 0 };
+    cam = { ...cam0, s: cam0.s * 0.86 };
+    apply(cam);
+    setSpot({ x: cx, y: cy, r: 0 });
+
+    new IntersectionObserver((entries, obs) => {
+      if (!entries[0].isIntersecting) return;
+      obs.disconnect();
+      pins.forEach(p => p.textW = p.el.querySelector('text').getComputedTextLength());
+      fly.classList.add('is-in');
+      move({ ...cam0 }, reduceMotion ? 0 : 2200, null, () => {
+        setCaption(overviewCap);
+        cap.classList.remove('is-out');
+        timer = setTimeout(() => go(0), DWELL);
+      });
+    }, { threshold: 0.3 }).observe(fly);
+  });
+</script>
+
+<!-- Solution -->
+<section class="agri-section" id="agri-solution">
+  <div class="container">
+    <div class="agri-head">
+      <div>
+        <span class="agri-eyebrow">What we install</span>
+        <h2 class="agri-title">One System,<br><span class="agri-accent">Built for the Season.</span></h2>
+      </div>
+      <p class="agri-intro">
+        Internet, Wi-Fi, audio and security designed together, so everything works the same on a quiet Tuesday and a
+        sold-out long weekend.
+      </p>
+    </div>
+
+    <div class="agri-cards">
+      <article class="agri-card">
+        <img src="/assets/images/crimson/web/still-054.jpg" alt="Starlink dish mounted on the roof peak at dusk" loading="lazy" />
+        <div class="agri-card-body">
+          <h3>Starlink &amp; Wired Backbone</h3>
+          <p>High-speed internet where cable and fibre don't reach, feeding a wired network and one tidy equipment rack.</p>
+        </div>
+      </article>
+      <article class="agri-card">
+        <img src="/assets/images/crimson/web/still-090.jpg" alt="Network cabling terminated in the equipment rack" loading="lazy" />
+        <div class="agri-card-body">
+          <h3>Property-Wide Wi-Fi</h3>
+          <p>Coverage from the tasting room to the parking lot, with a separate guest network so payments stay on their own.</p>
+        </div>
+      </article>
+      <article class="agri-card">
+        <img src="/assets/images/crimson/web/still-026.jpg" alt="Mounting an outdoor speaker on the new stone patio wall" loading="lazy" />
+        <div class="agri-card-body">
+          <h3>Zoned Outdoor Audio</h3>
+          <p>Weather-rated speakers in each area, tuned by ear and run from one tablet at the bar.</p>
+        </div>
+      </article>
+      <article class="agri-card">
+        <img src="/assets/images/crimson/web/still-030.jpg" alt="Davidson Smart Solutions technician on site" loading="lazy" />
+        <div class="agri-card-body">
+          <h3>Cameras &amp; Security</h3>
+          <p>4K cameras and monitored alarms watching buildings, stock and equipment, viewable from your phone.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Proof -->
+<section class="agri-section" id="agri-proof">
+  <div class="container">
+    <div class="agri-head">
+      <div>
+        <span class="agri-eyebrow">Case Study &middot; Crimson Cider</span>
+        <h2 class="agri-title">Ready for<br><span class="agri-accent">Victoria Day.</span></h2>
+      </div>
+      <p class="agri-intro">
+        Before the project, music for the whole venue came from a single portable speaker on a table. We built the
+        network, Wi-Fi and three audio zones alongside the new stone patio, in time for the May long weekend.
+      </p>
+    </div>
+
+    <div class="proof-split">
+      <div class="statement-layout-video-wrap">
+        <video class="statement-layout-video" autoplay loop muted playsinline preload="metadata" poster="/assets/images/crimson/web/still-015.jpg">
+          <source src="/assets/images/crimson/Crimson-Sider-Short.mp4" type="video/mp4">
+        </video>
+      </div>
+      <a href="/case-studies/crimson-cider/" class="proof-case-card">
+        <div class="proof-case-card-bg" style="background-image: url('/assets/images/crimson/web/still-053.jpg');"></div>
+        <div class="proof-case-card-overlay"></div>
+        <div class="proof-case-card-content">
+          <span class="proof-case-card-tag">Case Study</span>
+          <h3 class="proof-case-card-title">Crimson Cider</h3>
+          <p class="proof-case-card-text">Starlink, Wi-Fi &amp; three-zone audio for a Prince Edward County cidery.</p>
+          <span class="proof-case-card-btn">Read the Case Study <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+    <!-- TODO: add Craig's quote here once it's in -->
+
+    <div class="agri-stats">
+      <div class="agri-stat"><strong>3</strong><span>Independent audio zones</span></div>
+      <div class="agri-stat"><strong>300+</strong><span>Mbps Starlink download</span></div>
+      <div class="agri-stat"><strong>~4</strong><span>Weeks from groundwork to sound</span></div>
+      <div class="agri-stat"><strong>1</strong><span>Local team for all of it</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Process: editorial split (intro and button left, numbered steps right) -->
+<section class="agri-section" id="agri-process">
+  <div class="container agri-split">
+    <div class="agri-split-intro">
+      <span class="agri-eyebrow">How it works</span>
+      <h2 class="agri-title">Three Steps to<br><span class="agri-accent">Opening Day.</span></h2>
+      <p>From the first walk-through to the first busy weekend, one local team handles every step.</p>
+      <a href="#agri-contact" class="together-cta-btn biz-cta-btn">Book an On-Site Audit <i class="fa-solid fa-arrow-right"></i></a>
+      <div class="agri-split-note"><i class="fa-solid fa-bolt"></i> Every project passes through Justin's desk</div>
+    </div>
+
+    <ol class="agri-split-steps">
+      <li>
+        <span class="agri-split-num">01</span>
+        <div>
+          <h3>On-Site Audit</h3>
+          <p>A licensed master electrician walks the property with you and maps how guests move through it.</p>
+        </div>
+      </li>
+      <li>
+        <span class="agri-split-num">02</span>
+        <div>
+          <h3>Clear Written Quote</h3>
+          <p>One scope for internet, Wi-Fi, audio and cameras, with a clear price before any work begins.</p>
+        </div>
+      </li>
+      <li>
+        <span class="agri-split-num">03</span>
+        <div>
+          <h3>Installed Before Your Season</h3>
+          <p>Scheduled around your hours and other trades, then supported by the same local team.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- Frequently Asked Questions (same layout as business FAQ) -->
+<section class="designer-ideas-section" id="faq">
+  <div class="container">
+
+    <div class="designer-ideas-header">
+      <div>
+        <h2 class="designer-ideas-heading">
+          <span class="heading-white">Frequently Asked</span><br>
+          <span class="heading-red">Questions</span>
+        </h2>
+      </div>
+
+      <div class="designer-ideas-intro">
+        <p>
+          <strong>Straight answers on pricing, timelines and working with the systems you already have.</strong>
+          Something else on your mind? Ask our Belleville team directly.
+        </p>
+        <a href="#agri-contact" class="btn-pill-light">
+          Ask a Question <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="faq-container-narrow">
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-question" aria-expanded="true">
+            <span class="faq-question-text">
+              <span class="faq-num">01</span>
+              How much does a system for our property cost?
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            Every property is different. Price depends on the size of the space, how many audio zones, access points or
+            cameras you need, and whether usable cabling is already in place. The on-site audit is how we put an
+            accurate number on it, and you get a clear written quote before any work begins.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-question-text">
+              <span class="faq-num">02</span>
+              How long does an installation take?
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            Smaller jobs, like a security upgrade or a few speakers, often take a day or two. Larger projects with
+            outdoor zones or new cabling take longer and are planned around your season and other trades. At Crimson
+            Cider we planned months ahead and coordinated with the landscapers to be ready for the May long weekend.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-question-text">
+              <span class="faq-num">03</span>
+              Can you work with or service the systems we already have?
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            Often, yes. During the audit we look at your existing network, speakers, cameras and alarm panel, keep what's
+            sound and upgrade what isn't. We only maintain brands we've tested ourselves, so if a piece of equipment is
+            unreliable or no longer supported, we'll tell you honestly and recommend a replacement.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-question-text">
+              <span class="faq-num">04</span>
+              Will the installation disrupt our business?
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            We schedule around your hours. Cable runs and mounting happen before you open, noisy work and fine-tuning
+            happen after close, and the space is cleaned up before customers arrive, so you can stay open while we
+            work.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-question-text">
+              <span class="faq-num">05</span>
+              Who do we call if something stops working?
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            Us. The same local team designs, installs and supports your network, audio and security, so there's one
+            number to call and no finger-pointing between vendors. We can also monitor your network remotely and
+            often spot problems before your staff notice them.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ Accordion Toggle (mirrors index) -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('#faq .faq-item').forEach(item => {
+      const btn = item.querySelector('.faq-question');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          item.classList.toggle('open');
+          btn.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
+        });
+      }
+    });
+  });
+</script>
+
+<!-- Book the Audit: Business Contact Form -->
+<section class="section contact-editorial-section contact-bg-barn" id="agri-contact" style="padding-top: 6.5rem;">
+  <div class="container">
+    <div class="contact-editorial-grid">
+
+      <!-- Left Column: Giant Stacked Display Title & Intro Text -->
+      <div>
+        <h2 class="together-cta-heading" style="margin-bottom: 2rem;">
+          <span>LET'S</span>
+          <span style="color: var(--color-accent);">WORK</span>
+          <span>TOGETHER</span>
+        </h2>
+        <p style="font-size: 1.15rem; color: rgba(255, 255, 255, 0.78); line-height: 1.6; max-width: 460px;">
+          Tell us about your property and when your season opens. A licensed master electrician will walk your site
+          and give you a clear, written plan.
+        </p>
+      </div>
+
+      <!-- Right Column: Form Card & Call Prompt -->
+      <div>
+        <div class="contact-dark-card biz-dark-card">
+          <form data-contact-form data-form-source="{{ title }}">
+
+            <div class="contact-form-row">
+              <div>
+                <input name="name" autocomplete="name" type="text" class="contact-dark-input" required placeholder="Full Name *" />
+              </div>
+              <div>
+                <input name="email" autocomplete="email" type="email" class="contact-dark-input" required placeholder="Email Address *" />
+              </div>
+            </div>
+
+            <div class="contact-form-row">
+              <div>
+                <input name="phone" autocomplete="tel" type="tel" class="contact-dark-input" required placeholder="Phone Number *" />
+              </div>
+              <div>
+                <input name="city" autocomplete="address-level2" type="text" class="contact-dark-input" required placeholder="City *" />
+              </div>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+              <input name="company" autocomplete="organization" type="text" class="contact-dark-input" required placeholder="Company Name *" />
+            </div>
+
+            <div style="margin-bottom: 1.25rem;">
+              <textarea name="message" class="contact-dark-input" rows="4" required placeholder="Tell us about your property and what you'd like to fix *" style="resize: vertical;"></textarea>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; flex-wrap: wrap;">
+              <div style="font-size: 0.78rem; color: rgba(255, 255, 255, 0.65); max-width: 240px; line-height: 1.45;">
+                By submitting you agree to our <a href="/terms-of-service/" style="color: rgba(255, 255, 255, 0.9); text-decoration: underline;">Terms of Service</a> and <a href="/privacy-policy/" style="color: rgba(255, 255, 255, 0.9); text-decoration: underline;">Privacy Policy</a>
+              </div>
+              <button type="submit" class="together-cta-btn biz-cta-btn" style="padding: 0.85rem 2.2rem; font-size: 0.88rem;">
+                SUBMIT INQUIRY <i class="fa-solid fa-arrow-up-right" style="margin-left: 0.4rem;"></i>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+        <div style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 2rem;">
+          Prefer to hop on a call? <a href="tel:6137799044" style="color: var(--color-accent); font-weight: 700; text-decoration: underline;">Book a call</a> instead.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

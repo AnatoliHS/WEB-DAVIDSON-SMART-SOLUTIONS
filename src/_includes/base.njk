@@ -29,7 +29,17 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 </head>
 
-<body class="{% if isBusinessPage or page.url == '/business/' %}business-portal{% endif %}{% if page.url == '/contact/' or page.url == '/contact' %} contact-page{% endif %}">
+{#- Contact CTAs go to the page's own form, else the Business or Home page form -#}
+{%- if contactFormId -%}
+  {%- set consultHref = "#" + contactFormId -%}
+{%- elif isBusinessPage or page.url == "/business/" -%}
+  {%- set consultHref = "/business/#biz-contact" -%}
+{%- else -%}
+  {%- set consultHref = "/#contact" -%}
+{%- endif %}
+<body class="{% if isBusinessPage or page.url == '/business/' %}business-portal{% endif %}">
+  {#- Standalone landing pages (hideNav: true) render without the navbar -#}
+  {% if not hideNav %}
   <!-- Thinking Wave Visualizer Ring around Closed Navbar Circle (Desktop Only) -->
   <div class="pill-thinking-orb" id="pillThinkingOrb" aria-hidden="true">
     <canvas class="orb-wave-canvas" id="orbWaveCanvas" width="140" height="140"></canvas>
@@ -61,7 +71,7 @@
       <div class="pill-divider" aria-hidden="true"></div>
 
       <div class="pill-actions">
-        <a href="/contact/" class="btn btn-primary pill-btn-consult">Book Consultation</a>
+        <a href="{{ consultHref }}" class="btn btn-primary pill-btn-consult">Book Consultation</a>
         {% if page.url == "/business/" or isBusinessPage %}
         <a href="/" class="link-arrow pill-switch-link">Residential <i class="fa-solid fa-arrow-right"></i></a>
         {% else %}
@@ -116,7 +126,7 @@
 
         <!-- Right: Connect Action Link -->
         <div class="island-right-group">
-          <a href="/contact/" class="mobile-island-connect-btn" aria-label="Connect" title="Connect">
+          <a href="{{ consultHref }}" class="mobile-island-connect-btn" aria-label="Connect" title="Connect">
             <i class="fa-regular fa-message"></i>
           </a>
         </div>
@@ -216,7 +226,7 @@
 
           <!-- 5. Start Your Project -->
           <div class="drawer-nav-row">
-            <a href="/contact/" class="drawer-nav-link drawer-nav-link-project" aria-label="Start Your Project">
+            <a href="{{ consultHref }}" class="drawer-nav-link drawer-nav-link-project" aria-label="Start Your Project">
               <span>Start Your Project</span>
               <svg class="drawer-project-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="6" y1="18" x2="18" y2="6"></line>
@@ -240,6 +250,8 @@
     </nav>
     </div>
   </header>
+
+  {% endif %}
 
   <!-- Main Content -->
   <main id="main-content">
@@ -267,11 +279,11 @@
             <li><a href="/">Home</a></li>
             <li><a href="/portfolio/">Portfolio</a></li>
             <li><a href="/about/">About Firm</a></li>
-            <li><a href="/services/">Services Overview</a></li>
+            <li><a href="/#home-services">Services Overview</a></li>
             <li><a href="/industry-professionals/">Contractors & Designers</a></li>
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">News & Insights</a></li>
-            <li><a href="/contact/">Contact & Consultation</a></li>
+            <li><a href="{{ consultHref }}">Contact & Consultation</a></li>
           </ul>
         </div>
 
@@ -308,10 +320,12 @@
     </div>
   </footer>
 
-  <!-- Google Preferred Badge Component -->
+  <!-- Google Preferred Badge Component (landing pages can hide it with hideGoogleBadge: true) -->
+  {% if not hideGoogleBadge %}
   <div class="google-badge-fixed-wrapper">
     {% include "components/preferred-badge.njk" %}
   </div>
+  {% endif %}
 
   <!-- Scripts: Desktop Expanding Pill, Mobile Hamburger, Word Writing Reveal & Stat Count-Up -->
   <script>
@@ -617,6 +631,10 @@
             closeDesktopPill();
           });
         }
+
+        // Consult button may jump to an on-page form, so get the pill out of the way
+        const pillConsultBtn = desktopPill.querySelector('.pill-btn-consult');
+        if (pillConsultBtn) pillConsultBtn.addEventListener('click', () => closeDesktopPill());
 
         document.addEventListener('click', (e) => {
           if (desktopPillIsOpen() && !desktopPill.contains(e.target)) {
