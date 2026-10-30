@@ -10714,6 +10714,16 @@ body.business-portal {
   width: auto;
 }
 
+.agri-logo-link {
+  display: block;
+  flex-shrink: 0;
+  transition: opacity 0.25s ease;
+}
+
+.agri-logo-link:hover {
+  opacity: 0.8;
+}
+
 .agri-trust {
   display: flex;
   align-items: center;
