@@ -8,7 +8,7 @@
       "Lighting"
     ],
     "icon": "fa-lightbulb",
-    "image": "/assets/images/lights.jpg",
+    "image": "/assets/images/lights.webp",
     "alt": "Designer Lighting Solutions",
     "desc": "Professional-grade fixtures delivering accurate colour & matching hues, custom circadian daylight scenes, and hidden LED strips that keep sightlines clean under cabinets and entryways.",
     "scenarios": [
@@ -35,7 +35,7 @@
       "Distraction"
     ],
     "icon": "fa-toggle-on",
-    "image": "/assets/images/smart_home_automation_hero.jpg",
+    "image": "/assets/images/smart_home_automation_hero.webp",
     "alt": "Design Without Distraction - Keypads & Controls",
     "desc": "Custom-engraved designer keypads with RGB backlighting, replacing wall switch clutter with single touch control for lighting, music, drapes, and climate.",
     "scenarios": [
@@ -62,7 +62,7 @@
       "Shading"
     ],
     "icon": "fa-sun",
-    "image": "/assets/images/showcase_window_shades.jpg",
+    "image": "/assets/images/showcase_window_shades.webp",
     "alt": "Architectural Shading Solutions",
     "desc": "Silent, synchronized motorized shades with fabrics curated to match interior design, protecting paintings and furnishings from UV damage.",
     "scenarios": [
@@ -89,7 +89,7 @@
       "Architectural Audio"
     ],
     "icon": "fa-headphones",
-    "image": "/assets/images/showcase_audio.jpg",
+    "image": "/assets/images/showcase_audio.webp",
     "alt": "Invisible Architectural Audio",
     "desc": "Commercial-grade speakers fully hidden within ceilings and walls, processing multiple audio sources for whole home music zones without visual impact.",
     "scenarios": [
@@ -116,7 +116,7 @@
       "Security"
     ],
     "icon": "fa-shield-halved",
-    "image": "/assets/images/home-sec.jpg",
+    "image": "/assets/images/home-sec.webp",
     "alt": "User Friendly Security",
     "desc": "Discreet cameras, glass break sensors for large windows without visible wiring, access control intercoms, and temperature monitoring.",
     "scenarios": [
@@ -143,7 +143,7 @@
       "Media Concealment"
     ],
     "icon": "fa-tv",
-    "image": "/assets/images/home-theater.jpg",
+    "image": "/assets/images/home-theater.webp",
     "alt": "Motorized TV & Media Concealment",
     "desc": "Dual-purpose living spaces where high definition displays emerge from VisionArt framed artwork or lift out of custom cabinetry on command.",
     "scenarios": [

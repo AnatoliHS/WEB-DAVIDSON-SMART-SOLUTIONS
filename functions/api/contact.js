@@ -6,6 +6,8 @@
  * The browser handler (src/assets/js/contact-form.js) maps each error code to a message and fallback.
  *
  * Environment variables (Cloudflare dashboard → Pages project → Settings → Variables and Secrets):
+ * Set them for both Production and Preview, then redeploy: a deployment keeps the values it was built with.
+ *   TURNSTILE_SITE_KEY    text    Turnstile widget site key. Read at build time by .eleventy.js, not by this function
  *   RESEND_API_KEY        secret  Resend API key
  *   TURNSTILE_SECRET_KEY  secret  Turnstile widget secret key
  *   CONTACT_TO_EMAIL      text    Inbox that receives enquiries (comma-separate for several)
@@ -33,7 +35,11 @@ const clean = (value, max) => String(value ?? '').replace(/\r\n?/g, '\n').trim()
 
 async function readBody(request) {
   const type = request.headers.get('Content-Type') || '';
-  if (type.includes('application/json')) return await request.json();
+  if (type.includes('application/json')) {
+    const body = await request.json();
+    if (!body || typeof body !== 'object') throw new Error('body is not an object');
+    return body;
+  }
   if (type.includes('form')) return Object.fromEntries(await request.formData());
   throw new Error('unsupported content type');
 }
@@ -86,8 +92,9 @@ function buildEmail(data) {
 
 export async function onRequestPost({ request, env }) {
   // 1. Configuration (missing secrets are a site problem, not the visitor's)
-  if (!env.RESEND_API_KEY || !env.TURNSTILE_SECRET_KEY || !env.CONTACT_TO_EMAIL || !env.CONTACT_FROM_EMAIL) {
-    console.error('contact: missing environment variables');
+  const unset = ['RESEND_API_KEY', 'TURNSTILE_SECRET_KEY', 'CONTACT_TO_EMAIL', 'CONTACT_FROM_EMAIL'].filter((key) => !env[key]);
+  if (unset.length) {
+    console.error('contact: missing environment variables:', unset.join(', '));
     return fail(503, 'not_configured', 'The contact form is not configured yet.');
   }
 
@@ -109,7 +116,13 @@ export async function onRequestPost({ request, env }) {
   // 4. Honeypot: bots fill the hidden field. Pretend success so they don't retry.
   if (clean(raw.website, 200)) return json(200, { ok: true });
 
-  const data = Object.fromEntries(Object.entries(LIMITS).map(([key, max]) => [key, clean(raw[key], max)]));
+  // Only the message may span lines; other fields end up in the subject and table rows
+  const data = Object.fromEntries(
+    Object.entries(LIMITS).map(([key, max]) => {
+      const value = clean(raw[key], max);
+      return [key, key === 'message' ? value : value.replace(/\s+/g, ' ')];
+    })
+  );
 
   // 5. Validate
   const missing = REQUIRED.filter((key) => !data[key]);

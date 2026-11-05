@@ -7,14 +7,15 @@
   <title>{{ title | default("Automation - Convenience at your fingertips") }} — {{ site.title }}</title>
   <meta name="description" content="{{ description | default(site.description) }}" />
   {% if robots %}<meta name="robots" content="{{ robots }}" />{% endif %}
+  {% if page.url != "/404.html" %}<link rel="canonical" href="{{ site.url }}{{ page.url }}" />{% endif %}
+  {% if page.url == "/" %}<script type="application/ld+json">{{ localBusiness | dump | safe }}</script>{% endif %}
 
-  <!-- Google Fonts & Font Awesome Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Fonts and icons are self-hosted and inlined so they don't hold up the first paint -->
+  <link rel="preload" href="/assets/fonts/e2e017e1ca.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+{% include "components/font-faces.css" %}
+{{ fontAwesomeCss | safe }}
+  </style>
 
   <!-- Layout helper: touch tablets (no hover, coarse pointer) get the mobile layout at any width, matching the CSS media queries -->
   <script>
@@ -22,7 +23,7 @@
   </script>
 
   <!-- Editorial Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css?v=10.0" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=10.1" />
 
   <!-- Favicon -->
   <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
@@ -54,10 +55,10 @@
 
     <!-- Circle Bulb Trigger Button (Always visible on left) -->
     <button class="pill-bulb-btn" id="pillBulbBtn" aria-label="Open Navigation Menu" aria-expanded="false" title="Menu">
-      <img src="/assets/bulb-black.png" alt="Davidson Smart Solutions Logo" class="pill-bulb-icon bulb-icon-dark" />
-      <img src="/assets/bulb-white.png" alt="Davidson Smart Solutions Commercial Logo"
+      <img src="/assets/bulb-black.webp" alt="Davidson Smart Solutions Logo" class="pill-bulb-icon bulb-icon-dark" />
+      <img src="/assets/bulb-white.webp" alt="Davidson Smart Solutions Commercial Logo"
         class="pill-bulb-icon bulb-icon-light" />
-      <img src="/assets/davidson-logo-light.png" alt="Davidson Smart Solutions Wordmark" class="pill-expanded-logo" />
+      <img src="/assets/davidson-logo-light.webp" width="1100" height="440" alt="Davidson Smart Solutions Wordmark" class="pill-expanded-logo" />
     </button>
 
     <!-- Expanded Long Pill Content Wrapper -->
@@ -106,7 +107,7 @@
 
         <!-- Center: Brand Logo Home Navigation -->
         <a href="{% if isBusinessPage or page.url == '/business/' %}/business/{% else %}/{% endif %}" class="mobile-island-bulb-btn mobile-island-brand-link" id="mobileIslandBulbBtn" aria-label="Davidson Smart Solutions Home">
-          <img src="/assets/davidson-logo.png" alt="Davidson Smart Solutions Logo" class="mobile-island-brand-logo" />
+          <img src="/assets/davidson-logo.webp" width="600" height="257" alt="Davidson Smart Solutions Logo" class="mobile-island-brand-logo" />
         </a>
 
         <!-- Center: Switch to Division Pill (between X and message icon when drawer is open) -->
@@ -242,7 +243,7 @@
             <div class="drawer-logo-wave-wrap" aria-hidden="true">
               <canvas class="orb-wave-canvas drawer-wave-canvas" id="drawerOrbWaveCanvas" width="140" height="140"></canvas>
             </div>
-            <img src="/assets/davidson-logo-light.png" alt="Davidson Smart Solutions Logo" class="drawer-brand-logo-img" />
+            <img src="/assets/davidson-logo-light.webp" width="1100" height="440" alt="Davidson Smart Solutions Logo" class="drawer-brand-logo-img" />
           </a>
         </div>
 
@@ -264,7 +265,7 @@
       <div class="footer-grid">
         <div>
           <a href="/" class="brand-logo" style="margin-bottom: 1.5rem; display: inline-block;">
-            <img src="/assets/davidson-logo-light.png" alt="Davidson Smart Solutions Logo"
+            <img src="/assets/davidson-logo-light.webp" width="1100" height="440" alt="Davidson Smart Solutions Logo"
               style="height: 135px; width: auto; max-width: 420px; object-fit: contain; filter: brightness(0) invert(1);" />
           </a>
           <p style="font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.5rem; color: #a3a3a3; max-width: 340px;">
@@ -292,7 +293,7 @@
           <ul class="footer-links">
             <li><a href="/services/smart-lights/">Smart Lighting & Shades</a></li>
             <li><a href="/services/home-theatre/">Audio & Home Theatre</a></li>
-            <li><a href="/services/security/">Security & Access Control</a></li>
+            <li><a href="/services/home-security/">Security & Access Control</a></li>
             <li><a href="/services/networking/">Networking & Starlink</a></li>
             <li><a href="/services/outdoor/">Motorized Screens & Pergolas</a></li>
             <li><a href="/services/commercial/">Commercial Smart Solutions</a></li>
@@ -1237,9 +1238,9 @@
     });
   </script>
   <!-- Contact forms: message-sent / error states, Turnstile, delivery via /api/contact (functions/api/contact.js) -->
-  <script src="/assets/js/contact-form.js?v=1.2" defer
+  <script src="/assets/js/contact-form.js?v=1.3" defer
     data-endpoint="{{ site.forms.endpoint }}"
-    data-turnstile-sitekey="{{ site.forms.turnstileSiteKey }}"
+    data-turnstile-sitekey="{{ turnstileSiteKey }}"
     data-email="{{ site.email }}"
     data-phone="{{ site.phone }}"></script>
 </body>

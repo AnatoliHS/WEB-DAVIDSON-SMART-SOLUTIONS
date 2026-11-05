@@ -17,6 +17,7 @@
     phone: script?.dataset.phone || '',
   };
   const TIMEOUT_MS = 15000;
+  const TOKEN_WAIT_MS = 8000;
   const TURNSTILE_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
   const FIELD_NAMES = { name: 'your name', email: 'a valid email address', phone: 'your phone number', city: 'your city', message: 'a message' };
 
@@ -98,6 +99,7 @@
     else form.appendChild(widgetSlot);
 
     let widgetId = null;
+    let widgetFailed = false;
     let busy = false;
 
     const renderWidget = () =>
@@ -110,6 +112,9 @@
           action: 'contact',
           // Tokens expire after 5 minutes; get a fresh one silently
           'refresh-expired': 'auto',
+          callback: () => { widgetFailed = false; },
+          // e.g. this domain isn't on the widget's hostname list, or the site key is wrong
+          'error-callback': () => { widgetFailed = true; },
         });
         return ts;
       });
@@ -123,6 +128,16 @@
       }, { rootMargin: '300px' });
       io.observe(form);
     }
+
+    // The check runs in the background, and restarts after every attempt: give it a moment to finish
+    const waitForToken = async (ts) => {
+      const deadline = Date.now() + TOKEN_WAIT_MS;
+      for (;;) {
+        const token = ts.getResponse(widgetId) || '';
+        if (token || widgetFailed || Date.now() >= deadline) return token;
+        await new Promise((resolve) => setTimeout(resolve, 200));
+      }
+    };
 
     const setBusy = (on) => {
       busy = on;
@@ -193,7 +208,7 @@
       }
 
       // The site hasn't been connected to a sending service yet
-      if (!config.endpoint) {
+      if (!config.endpoint || !config.siteKey) {
         return fail(data, "Online sending isn't available yet.", 'Please email or call us directly. Your message has been copied into the email for you.', { retry: false });
       }
 
@@ -203,10 +218,16 @@
       let token = '';
       try {
         const ts = await renderWidget();
-        token = ts.getResponse(widgetId) || '';
+        token = await waitForToken(ts);
         if (!token) {
           setBusy(false);
-          return show('error', 'Please complete the security check.', 'Tick the box above the button, then submit again.');
+          if (widgetFailed) {
+            // Start the check over so "Try again" gets a clean attempt
+            widgetFailed = false;
+            ts.reset(widgetId);
+            return fail(data, "The security check couldn't finish.", 'Please try again, or contact us directly. Your message is still in the form.');
+          }
+          return show('error', 'Please complete the security check.', 'Complete the check below the button, then submit again.');
         }
       } catch {
         setBusy(false);
@@ -256,7 +277,7 @@
         }
         case 'turnstile_missing':
         case 'turnstile_expired':
-          return show('error', 'Please complete the security check again.', 'It expired before the form was sent. Tick the box and submit again.');
+          return show('error', 'Please complete the security check again.', 'It expired before the form was sent. Complete the check below the button and submit again.');
         case 'turnstile_failed':
           return fail(data, "We couldn't verify you're human.", 'Please try the security check again. If it keeps failing, contact us directly.');
         case 'rate_limited':

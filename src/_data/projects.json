@@ -5,7 +5,7 @@
     "sector": "Corporate",
     "discipline": "Commercial Shading",
     "location": "Mississauga, ON",
-    "image": "/assets/deep-restaurant.jpg",
+    "image": "/assets/deep-restaurant.webp",
     "alt": "Deep Foods Inc. Commercial Motorized Shades",
     "challenge": "Glare on executive workstations and heavy summer solar gain across the corporate headquarters.",
     "solution": "Custom Lutron motorized interior shades with automated glare control and keypad scenes.",
@@ -23,7 +23,7 @@
       "/assets/images/deep-food-4.webp"
     ],
     "caseStudy": {
-      "heroImage": "/assets/deep-restaurant.jpg",
+      "heroImage": "/assets/deep-restaurant.webp",
       "heroAlt": "Deep brand building with floor-to-ceiling glass",
       "scope": "Custom Motorized Interior Shades",
       "lede": "Custom motorized shades for the Canadian headquarters of an international, family-owned food manufacturer.",
@@ -73,7 +73,7 @@
     "sector": "Retail",
     "discipline": "Commercial Security",
     "location": "Belleville, ON",
-    "image": "/assets/once-upon-a-child.jpg",
+    "image": "/assets/once-upon-a-child.webp",
     "alt": "Once Upon a Child Belleville Commercial Security",
     "challenge": "Protecting retail stock and staff without locking into monthly monitoring contracts.",
     "solution": "Hikvision ColorVu 4K cameras, encrypted local NVR storage, keycard entry and smartphone alerts.",
@@ -91,7 +91,7 @@
       "/assets/images/Once-Upon-a-Child-Belleville-4.webp"
     ],
     "caseStudy": {
-      "heroImage": "/assets/images/once-upon-a-child-hero.jpg",
+      "heroImage": "/assets/images/once-upon-a-child-hero.webp",
       "heroAlt": "Children's romper hanging on a wooden rail",
       "scope": "Security Cameras, LED Retail Lighting",
       "lede": "Pan-and-zoom camera coverage and bright, efficient LED lighting for a new kids' resale store on Front Street.",

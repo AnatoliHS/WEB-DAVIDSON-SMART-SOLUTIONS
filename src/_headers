@@ -1,0 +1,8 @@
+# Cloudflare Pages response headers. Browsers reuse these files for 7 days instead of re-checking each visit.
+# After changing a CSS or JS file, bump its ?v= number in base.njk so visitors get the new copy straight away.
+/assets/*
+  Cache-Control: public, max-age=604800
+
+# Keep the Cloudflare preview addresses out of search results; only the real domain should be indexed.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex

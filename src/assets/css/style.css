@@ -2,8 +2,6 @@
    Davidson Smart Solutions - Editorial Luxury Design System
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
-
 /* Brown Sugar Editorial Display Font */
 @font-face {
   font-family: 'Brown Sugar';
@@ -1899,7 +1897,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-image: url('/assets/Davidson-House-Main.png');
+  background-image: url('/assets/Davidson-House-Main.webp');
   background-position: center var(--hero-bg-y, 10%);
   background-size: cover;
   background-repeat: no-repeat;
@@ -1926,7 +1924,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-image: url('/assets/images/crimson/web/still-021.jpg');
+  background-image: url('/assets/images/crimson/web/still-021.webp');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1956,7 +1954,7 @@ body.business-portal:has(.desktop-pill-nav.is-on-dark) .pill-thinking-orb {
 }
 
 .hero-editorial-contact .hero-bg-layer {
-  background-image: url('/assets/images/contact_hero_white_grey.jpg');
+  background-image: url('/assets/images/contact_hero_white_grey.webp');
 }
 
 /* White Veil Overlay for Home, Business, & Contact Hero Sections */
@@ -5125,7 +5123,7 @@ body.business-portal .hero-service-subtitle,
   max-width: 1100px;
   margin: 0 auto;
   height: 560px;
-  background-image: url('/assets/images/service_area_map_bg.jpg');
+  background-image: url('/assets/images/service_area_map_bg.webp');
   background-size: cover;
   background-position: center;
   border-radius: var(--radius-sm);
@@ -7939,7 +7937,7 @@ body.business-portal .process-section-wrap.dark-section .title-color-wipe.reveal
 .home-together-cta {
   position: relative;
   background-color: #050505;
-  background-image: url('/assets/images/cta-spotlight.jpg');
+  background-image: url('/assets/images/cta-spotlight.webp');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -8050,7 +8048,7 @@ body.business-portal .process-section-wrap.dark-section .title-color-wipe.reveal
 .biz-together-cta {
   position: relative;
   background-color: #121212;
-  background-image: url('/assets/images/business-cta-bg.jpg');
+  background-image: url('/assets/images/business-cta-bg.webp');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -8168,7 +8166,7 @@ body:has(.contact-editorial-section) {
   background-image:
     linear-gradient(180deg, rgba(18, 18, 18, 0.98) 0%, rgba(18, 18, 18, 0.9) 6%, transparent 22%),
     linear-gradient(135deg, rgba(18, 18, 18, 0.88) 0%, rgba(28, 28, 28, 0.78) 50%, rgba(14, 14, 14, 0.92) 100%),
-    url('/assets/images/work-together.jpg') !important;
+    url('/assets/images/work-together.webp') !important;
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
@@ -8185,7 +8183,7 @@ body:has(.contact-editorial-section) {
     var(--contact-bg) !important;
 }
 
-.contact-bg-barn { --contact-bg: url('/assets/images/crimson/web/still-042.jpg'); }
+.contact-bg-barn { --contact-bg: url('/assets/images/crimson/web/still-042.webp'); }
 
 .contact-editorial-section::before {
   content: '';

@@ -4,7 +4,7 @@ date: 2026-09-02
 description: "Key steps to designing zero monthly fee 4K video surveillance, encrypted access control, and remote telemetry for retail and industrial facilities."
 category: "Blog"
 tag: "Commercial Security Architecture"
-image: "/assets/images/business-security.jpg"
+image: "/assets/images/business-security.webp"
 tags: ["blog"]
 ---
 

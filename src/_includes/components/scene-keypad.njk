@@ -5,7 +5,7 @@
       <div class="sk-visual{% if automationVariant == 'business' %} is-business{% endif %}">
         <div class="sk-stage" role="img" aria-label="Automation hub connecting {% for n in sk.nodes %}{{ n.label | lower }}{% if not loop.last %}, {% endif %}{% endfor %}">
           <svg class="sk-wires" viewBox="0 0 100 100" aria-hidden="true"></svg>
-          <div class="sk-centre" aria-hidden="true"><span class="sk-centre-halo"></span><img src="/assets/bulb-white.png" alt="" /></div>
+          <div class="sk-centre" aria-hidden="true"><span class="sk-centre-halo"></span><img src="/assets/bulb-white.webp" alt="" /></div>
           {% for n in sk.nodes %}
           <div class="sk-node" data-key="{{ n.key }}" aria-hidden="true"><i class="fa-solid {{ n.icon }}"></i><span class="sk-label">{{ n.label }}</span></div>
           {% endfor %}

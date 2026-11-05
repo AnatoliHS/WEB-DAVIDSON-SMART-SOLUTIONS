@@ -4,7 +4,7 @@ date: 2026-08-28
 description: "How certified electrician mounting and structured low voltage cabling maximize your Starlink satellite speeds in rural Ontario."
 category: "Blog"
 tag: "Starlink & High Speed Networks"
-image: "/assets/images/starlink.jpg"
+image: "/assets/images/starlink.webp"
 tags: ["blog"]
 ---
 

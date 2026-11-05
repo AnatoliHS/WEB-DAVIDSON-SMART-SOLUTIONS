@@ -18,7 +18,6 @@
   },
   "forms": {
     "endpoint": "/api/contact",
-    "turnstileSiteKey": "1x00000000000000000000AA",
-    "_note": "turnstileSiteKey above is Cloudflare's public TEST key (always passes). Replace it with your real site key before launch. Secrets live in Cloudflare, see functions/api/contact.js."
+    "_note": "The Turnstile site key and all secrets are Cloudflare environment variables, see functions/api/contact.js."
   }
 }

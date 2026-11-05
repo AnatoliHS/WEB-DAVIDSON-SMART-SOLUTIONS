@@ -1,3 +1,7 @@
 # Cloudflare Pages redirects. The standalone contact page now lives as a form on the home page.
 /contact /#contact 301
 /contact/ /#contact 301
+
+# /services/security/ was an exact copy of the home security page.
+/services/security /services/home-security/ 301
+/services/security/ /services/home-security/ 301

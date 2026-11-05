@@ -1,0 +1,24 @@
+---
+layout: default
+title: Page Not Found
+description: "The page you were looking for could not be found."
+permalink: /404.html
+robots: noindex
+eleventyExcludeFromCollections: true
+---
+
+<section class="section" style="background: var(--bg-surface, #F8F7F4); padding: 11rem 0 7rem 0 !important;">
+  <div class="container" style="max-width: 760px; text-align: center;">
+    <span style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-accent, #C5A059); display: block; margin-bottom: 1rem;">
+      Error 404
+    </span>
+    <h1 style="font-family: 'Brown Sugar', var(--font-serif); font-weight: 400; font-size: clamp(2.4rem, 4vw, 3.5rem); letter-spacing: -0.01em; color: var(--text-primary, #222222); margin-bottom: 1.25rem;">
+      Page not found
+    </h1>
+    <p style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary, #555555); margin-bottom: 2.25rem;">
+      This page may have moved or no longer exists. Head back to the home page, or call us at
+      <a href="tel:{{ site.phone }}" style="color: inherit; text-decoration: underline;">{{ site.phone }}</a>.
+    </p>
+    <a href="/" class="together-cta-btn">Back to Home <i class="fa-solid fa-arrow-right" style="margin-left: 0.6rem;"></i></a>
+  </div>
+</section>
