@@ -10,8 +10,8 @@
  *   TURNSTILE_SITE_KEY    text    Turnstile widget site key. Read at build time by .eleventy.js, not by this function
  *   RESEND_API_KEY        secret  Resend API key
  *   TURNSTILE_SECRET_KEY  secret  Turnstile widget secret key
- *   CONTACT_TO_EMAIL      text    Inbox that receives enquiries (comma-separate for several)
- *   CONTACT_FROM_EMAIL    text    Sender on a domain verified in Resend, e.g. "Website <enquiries@yourdomain.ca>"
+ *   CONTACT_TO_EMAIL      text    Inbox that receives enquiries (comma-separate for several), e.g. "hi@davidsonsmartsolutions.ca"
+ *   CONTACT_FROM_EMAIL    text    Sender on a domain verified in Resend, e.g. "Davidson Smart Solutions <hi@davidsonsmartsolutions.ca>"
  *   ALLOWED_ORIGINS       text    Optional. Comma-separated origins allowed to post, e.g. "https://davidsonsmartsolutions.com"
  */
 
