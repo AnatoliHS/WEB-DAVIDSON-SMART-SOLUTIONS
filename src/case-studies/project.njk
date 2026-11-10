@@ -4,10 +4,12 @@ pagination:
   data: projects
   size: 1
   alias: p
+  addAllPagesToCollections: true
 permalink: "/case-studies/{{ p.slug }}/"
 eleventyComputed:
   title: "{{ p.client }} Case Study | Davidson Smart Solutions"
   description: "{{ p.caseStudy.lede }}"
+  image: "{{ p.caseStudy.heroImage }}"
 ---
 {# Mini case study generated per project from _data/projects.json (caseStudy block). Styles: CASE STUDY PAGES in style.css #}
 {% set cs = p.caseStudy %}

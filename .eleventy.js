@@ -15,6 +15,9 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toLocaleString(DateTime.DATE_MED);
   });
 
+  // Sitemap <lastmod>: a YYYY-MM-DD date
+  eleventyConfig.addFilter("dateToIso", (value) => new Date(value).toISOString().slice(0, 10));
+
   eleventyConfig.addFilter("readableDate", (value) =>
     new Date(value).toLocaleDateString("en-CA", {
       year: "numeric",

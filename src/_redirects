@@ -5,3 +5,7 @@
 # /services/security/ was an exact copy of the home security page.
 /services/security /services/home-security/ 301
 /services/security/ /services/home-security/ 301
+
+# The commercial home page moved from /business/ to /commercial/.
+/business /commercial/ 301
+/business/ /commercial/ 301

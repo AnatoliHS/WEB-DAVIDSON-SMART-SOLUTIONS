@@ -6,3 +6,7 @@
 # Keep the Cloudflare preview addresses out of search results; only the real domain should be indexed.
 https://:project.pages.dev/*
   X-Robots-Tag: noindex
+
+# The CMS login is not a page for search results.
+/admin/*
+  X-Robots-Tag: noindex, nofollow

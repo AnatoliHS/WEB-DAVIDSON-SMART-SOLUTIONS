@@ -1,6 +1,5 @@
 // LocalBusiness structured data for the home page.
-// Phone, email and street address are left out until they're confirmed: add telephone, email,
-// streetAddress and postalCode here once they are.
+// The street address is left out until it's confirmed: add streetAddress and postalCode here once it is.
 const site = require("./site.json");
 
 module.exports = {
@@ -10,6 +9,8 @@ module.exports = {
   name: site.title,
   description: site.description,
   url: `${site.url}/`,
+  telephone: `+1-${site.phone}`,
+  email: site.email,
   logo: `${site.url}/assets/davidson-logo.webp`,
   image: `${site.url}/assets/Davidson-House-Main.webp`,
   address: {

@@ -4,10 +4,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ title | default("Automation - Convenience at your fingertips") }} — {{ site.title }}</title>
-  <meta name="description" content="{{ description | default(site.description) }}" />
+  {#- Add the brand name to the title unless the page title already has it -#}
+  {%- set pageTitle = title | default("Automation - Convenience at your fingertips") -%}
+  {%- set fullTitle = pageTitle if site.title in pageTitle else pageTitle + " — " + site.title -%}
+  {%- set metaDescription = description | default(site.description) -%}
+  {%- set shareImage = site.url + (image | default("/assets/Davidson-House-Main.webp")) %}
+  <title>{{ fullTitle }}</title>
+  <meta name="description" content="{{ metaDescription }}" />
   {% if robots %}<meta name="robots" content="{{ robots }}" />{% endif %}
   {% if page.url != "/404.html" %}<link rel="canonical" href="{{ site.url }}{{ page.url }}" />{% endif %}
+
+  <!-- Link previews on social media and messaging apps -->
+  <meta property="og:site_name" content="{{ site.title }}" />
+  <meta property="og:locale" content="en_CA" />
+  <meta property="og:type" content="{% if tags and 'post' in tags %}article{% else %}website{% endif %}" />
+  <meta property="og:title" content="{{ fullTitle }}" />
+  <meta property="og:description" content="{{ metaDescription }}" />
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  <meta property="og:image" content="{{ shareImage }}" />
+  <meta name="twitter:card" content="summary_large_image" />
   {% if page.url == "/" %}<script type="application/ld+json">{{ localBusiness | dump | safe }}</script>{% endif %}
 
   <!-- Fonts and icons are self-hosted and inlined so they don't hold up the first paint -->
@@ -23,7 +38,7 @@
   </script>
 
   <!-- Editorial Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css?v=10.1" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=10.3" />
 
   <!-- Favicon -->
   <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
@@ -33,12 +48,12 @@
 {#- Contact CTAs go to the page's own form, else the Business or Home page form -#}
 {%- if contactFormId -%}
   {%- set consultHref = "#" + contactFormId -%}
-{%- elif isBusinessPage or page.url == "/business/" -%}
-  {%- set consultHref = "/business/#biz-contact" -%}
+{%- elif isBusinessPage or page.url == "/commercial/" -%}
+  {%- set consultHref = "/commercial/#biz-contact" -%}
 {%- else -%}
   {%- set consultHref = "/#contact" -%}
 {%- endif %}
-<body class="{% if isBusinessPage or page.url == '/business/' %}business-portal{% endif %}">
+<body class="{% if isBusinessPage or page.url == '/commercial/' %}business-portal{% endif %}">
   {#- Standalone landing pages (hideNav: true) render without the navbar -#}
   {% if not hideNav %}
   <!-- Thinking Wave Visualizer Ring around Closed Navbar Circle (Desktop Only) -->
@@ -73,10 +88,10 @@
 
       <div class="pill-actions">
         <a href="{{ consultHref }}" class="btn btn-primary pill-btn-consult">Book Consultation</a>
-        {% if page.url == "/business/" or isBusinessPage %}
+        {% if page.url == "/commercial/" or isBusinessPage %}
         <a href="/" class="link-arrow pill-switch-link">Residential <i class="fa-solid fa-arrow-right"></i></a>
         {% else %}
-        <a href="/business/" class="link-arrow pill-switch-link">Commercial <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="/commercial/" class="link-arrow pill-switch-link">Commercial <i class="fa-solid fa-arrow-right"></i></a>
         {% endif %}
       </div>
 
@@ -106,19 +121,19 @@
         </div>
 
         <!-- Center: Brand Logo Home Navigation -->
-        <a href="{% if isBusinessPage or page.url == '/business/' %}/business/{% else %}/{% endif %}" class="mobile-island-bulb-btn mobile-island-brand-link" id="mobileIslandBulbBtn" aria-label="Davidson Smart Solutions Home">
+        <a href="{% if isBusinessPage or page.url == '/commercial/' %}/commercial/{% else %}/{% endif %}" class="mobile-island-bulb-btn mobile-island-brand-link" id="mobileIslandBulbBtn" aria-label="Davidson Smart Solutions Home">
           <img src="/assets/davidson-logo.webp" width="600" height="257" alt="Davidson Smart Solutions Logo" class="mobile-island-brand-logo" />
         </a>
 
         <!-- Center: Switch to Division Pill (between X and message icon when drawer is open) -->
         <div class="island-bar-switch-wrap" id="islandBarSwitchWrap">
-          {% if page.url == "/business/" or isBusinessPage %}
+          {% if page.url == "/commercial/" or isBusinessPage %}
           <a href="/" class="drawer-switch-link drawer-switch-residential island-bar-switch-link">
             <span class="switch-link-text">Switch to Residential</span>
             <i class="fa-solid fa-arrow-right drawer-switch-arrow"></i>
           </a>
           {% else %}
-          <a href="/business/" class="drawer-switch-link drawer-switch-commercial island-bar-switch-link">
+          <a href="/commercial/" class="drawer-switch-link drawer-switch-commercial island-bar-switch-link">
             <span class="switch-link-text">Switch to Commercial</span>
             <i class="fa-solid fa-arrow-right drawer-switch-arrow"></i>
           </a>
@@ -141,7 +156,7 @@
         <div class="drawer-editorial-nav" id="drawerEditorialNav">
           <!-- 1. Home -->
           <div class="drawer-nav-row">
-            <a href="{% if isBusinessPage or page.url == '/business/' %}/business/{% else %}/{% endif %}"
+            <a href="{% if isBusinessPage or page.url == '/commercial/' %}/commercial/{% else %}/{% endif %}"
                class="drawer-nav-link">
               <span>Home</span>
             </a>
@@ -154,7 +169,7 @@
               <i class="fa-solid fa-chevron-down drawer-chevron"></i>
             </button>
             <div class="drawer-sub-menu" id="drawerServicesMenu">
-              {% if isBusinessPage or page.url == "/business/" %}
+              {% if isBusinessPage or page.url == "/commercial/" %}
               <a href="/services/business-security/" class="drawer-sub-link">
                 <span>Small Business Security</span>
               </a>
@@ -168,26 +183,26 @@
               <a href="/services/networking/" class="drawer-sub-link">
                 <span>Home Networking</span>
               </a>
+              <a href="/services/smart-lights/" class="drawer-sub-link">
+                <span>Smart Lights</span>
+              </a>
+              <a href="/services/audio/" class="drawer-sub-link">
+                <span>Home Audio</span>
+              </a>
+              <a href="/services/window-shades/" class="drawer-sub-link">
+                <span>Window Shades</span>
+              </a>
               <a href="/services/starlink/" class="drawer-sub-link">
                 <span>Starlink Installation</span>
               </a>
               <a href="/services/home-security/" class="drawer-sub-link">
                 <span>Home Security</span>
               </a>
-              <a href="/services/audio/" class="drawer-sub-link">
-                <span>Architectural Audio</span>
-              </a>
               <a href="/services/home-theatre/" class="drawer-sub-link">
                 <span>Home Theatre</span>
               </a>
               <a href="/services/outdoor-screens/" class="drawer-sub-link">
                 <span>Outdoor Screens</span>
-              </a>
-              <a href="/services/smart-lights/" class="drawer-sub-link">
-                <span>Smart Lights</span>
-              </a>
-              <a href="/services/window-shades/" class="drawer-sub-link">
-                <span>Window Shades</span>
               </a>
               <a href="/services/pergola/" class="drawer-sub-link">
                 <span>Louvered Pergola</span>
@@ -206,7 +221,7 @@
               <a href="/about/" class="drawer-sub-link">
                 <span>About Company</span>
               </a>
-              {% if isBusinessPage or page.url == "/business/" %}
+              {% if isBusinessPage or page.url == "/commercial/" %}
               <a href="/case-studies/crimson-cider/" class="drawer-sub-link">
                 <span>Case Study</span>
               </a>
@@ -239,7 +254,7 @@
 
         <!-- Drawer Brand Footer Logo with Animated Thinking Wave Aura around Bulb -->
         <div class="drawer-footer-brand">
-          <a href="{% if isBusinessPage or page.url == '/business/' %}/business/{% else %}/{% endif %}" class="drawer-brand-logo-link" aria-label="Davidson Smart Solutions Home">
+          <a href="{% if isBusinessPage or page.url == '/commercial/' %}/commercial/{% else %}/{% endif %}" class="drawer-brand-logo-link" aria-label="Davidson Smart Solutions Home">
             <div class="drawer-logo-wave-wrap" aria-hidden="true">
               <canvas class="orb-wave-canvas drawer-wave-canvas" id="drawerOrbWaveCanvas" width="140" height="140"></canvas>
             </div>
@@ -406,7 +421,7 @@
           const currentPath = window.location.pathname;
           const isAtHome = (targetHref === currentPath) ||
                            (targetHref === '/' && (currentPath === '' || currentPath === '/index.html' || currentPath === '/')) ||
-                           (targetHref === '/business/' && (currentPath === '/business' || currentPath === '/business/index.html' || currentPath === '/business/'));
+                           (targetHref === '/commercial/' && (currentPath === '/commercial' || currentPath === '/commercial/index.html' || currentPath === '/commercial/'));
 
           if (isAtHome) {
             e.preventDefault();

@@ -13,6 +13,18 @@
           "href": "/services/networking/"
         },
         {
+          "title": "Smart Lights",
+          "href": "/services/smart-lights/"
+        },
+        {
+          "title": "Audio",
+          "href": "/services/audio/"
+        },
+        {
+          "title": "Window Shades",
+          "href": "/services/window-shades/"
+        },
+        {
           "title": "Starlink Installation",
           "href": "/services/starlink/"
         },
@@ -21,24 +33,12 @@
           "href": "/services/home-security/"
         },
         {
-          "title": "Audio",
-          "href": "/services/audio/"
-        },
-        {
           "title": "Home Theatre",
           "href": "/services/home-theatre/"
         },
         {
           "title": "Outdoor Motorized Screens",
           "href": "/services/outdoor-screens/"
-        },
-        {
-          "title": "Smart Lights",
-          "href": "/services/smart-lights/"
-        },
-        {
-          "title": "Window Shades",
-          "href": "/services/window-shades/"
         },
         {
           "title": "Pergola",

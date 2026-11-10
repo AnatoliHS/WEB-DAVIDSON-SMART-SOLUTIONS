@@ -876,7 +876,7 @@ body.business-portal .brand-logo-text .accent-s {
   transform: translateX(5px);
 }
 
-/* Hero CTA Pill Shape & Semi-Transparent Background (index.html & business.html - Desktop & Mobile) */
+/* Hero CTA Pill Shape & Semi-Transparent Background (index.html & commercial.html - Desktop & Mobile) */
 .hero-editorial .hero-sub-content .link-arrow,
 .hero-editorial .link-arrow {
   display: inline-flex !important;
@@ -4241,10 +4241,11 @@ body.business-portal .hero-service-subtitle,
     transform: scale(0.98) !important;
   }
 
+  /* Centred on the bulb: in davidson-logo-light.webp its centre is 10% across and 50.3% down */
   .drawer-logo-wave-wrap {
     position: absolute !important;
-    top: calc(47.5% + 2px) !important;
-    left: 18.1% !important;
+    top: 50.3% !important;
+    left: 10% !important;
     transform: translate(-50%, -50%) !important;
     width: 140px !important;
     height: 140px !important;
@@ -4269,10 +4270,11 @@ body.business-portal .hero-service-subtitle,
     filter: drop-shadow(0 0 18px rgba(97, 112, 158, 0.8)) !important;
   }
 
+  /* Sized so the bulb (97% of the logo height) sits inside the orb ring, which stays a fixed size (~106px across inside) */
   .drawer-brand-logo-img {
-    height: 125px !important;
+    height: 90px !important;
     width: auto !important;
-    max-width: min(310px, 86vw) !important;
+    max-width: min(225px, 64vw) !important;
     object-fit: contain !important;
     filter: brightness(0) invert(1) !important;
     opacity: 0.96 !important;

@@ -1,9 +1,9 @@
-        {% if isBusinessPage or page.url == "/business/" %}
+        {% if isBusinessPage or page.url == "/commercial/" %}
         <!-- Dedicated Business Portal Navigation Menu -->
-        <a href="/business/" class="nav-link {% if page.url == '/business/' %}active{% endif %}">HOME</a>
+        <a href="/commercial/" class="nav-link {% if page.url == '/commercial/' %}active{% endif %}">HOME</a>
 
         <div class="has-dropdown has-mega-dropdown">
-          <a href="/business/#commercial-services"
+          <a href="/commercial/#commercial-services"
             class="nav-link {% if page.url and page.url.startsWith('/services/') %}active{% endif %}">
             SERVICES <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; margin-left: 0.2rem;"></i>
           </a>
@@ -197,6 +197,35 @@
                   </div>
                 </a>
 
+                <a href="/services/smart-lights/" class="mega-card-item">
+                  <div class="mega-card-bg" style="background-image: url('/assets/images/lights.webp');">
+                  </div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Smart Lights</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+
+                <a href="/services/audio/" class="mega-card-item">
+                  <div class="mega-card-bg" style="background-image: url('/assets/images/showcase_audio.webp');"></div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Home Audio</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+
+                <a href="/services/window-shades/" class="mega-card-item">
+                  <div class="mega-card-bg" style="background-image: url('/assets/images/showcase_window_shades.webp');">
+                  </div>
+                  <div class="mega-card-overlay"></div>
+                  <div class="mega-card-content">
+                    <span class="mega-card-title">Window Shades</span>
+                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  </div>
+                </a>
+
                 <a href="/services/starlink/" class="mega-card-item">
                   <div class="mega-card-bg" style="background-image: url('/assets/images/starlink.webp');">
                   </div>
@@ -213,15 +242,6 @@
                   <div class="mega-card-overlay"></div>
                   <div class="mega-card-content">
                     <span class="mega-card-title">Home Security</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-
-                <a href="/services/audio/" class="mega-card-item">
-                  <div class="mega-card-bg" style="background-image: url('/assets/images/showcase_audio.webp');"></div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Architectural Audio</span>
                     <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
                   </div>
                 </a>
@@ -246,26 +266,6 @@
                   </div>
                 </a>
 
-                <a href="/services/smart-lights/" class="mega-card-item">
-                  <div class="mega-card-bg" style="background-image: url('/assets/images/lights.webp');">
-                  </div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Smart Lights</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-
-                <a href="/services/window-shades/" class="mega-card-item">
-                  <div class="mega-card-bg" style="background-image: url('/assets/images/showcase_window_shades.webp');">
-                  </div>
-                  <div class="mega-card-overlay"></div>
-                  <div class="mega-card-content">
-                    <span class="mega-card-title">Window Shades</span>
-                    <span class="mega-card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-
                 <a href="/services/pergola/" class="mega-card-item">
                   <div class="mega-card-bg" style="background-image: url('/assets/images/pergola-opt.webp');"></div>
                   <div class="mega-card-overlay"></div>
@@ -277,7 +277,7 @@
               </div>
 
               <div class="mega-dropdown-footer">
-                <a href="/business/" class="mega-footer-link">
+                <a href="/commercial/" class="mega-footer-link">
                   <span>Looking for Commercial Grade Security &amp; Enterprise Networking?</span>
                   <span style="color: var(--color-accent); font-weight: 700;">Switch to Commercial <i
                       class="fa-solid fa-arrow-right"></i></span>
@@ -291,7 +291,7 @@
               <a href="{{ child.href }}" class="dropdown-item">{{ child.title }}</a>
               {% endfor %}
               <div style="border-top: 1px solid var(--border-subtle); margin: 0.4rem 0;"></div>
-              <a href="/business/" class="dropdown-item" style="color: var(--color-accent); font-weight: 700;">Switch to
+              <a href="/commercial/" class="dropdown-item" style="color: var(--color-accent); font-weight: 700;">Switch to
                 Commercial <i class="fa-solid fa-arrow-right"></i></a>
             </div>
             {% elseif item.title == "ABOUT" or item.title == "About" or item.href == "/about/" %}

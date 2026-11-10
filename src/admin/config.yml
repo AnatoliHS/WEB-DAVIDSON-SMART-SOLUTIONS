@@ -2,7 +2,7 @@ backend:
   name: github
   repo: AnatoliHS/WEB-DAVIDSON-SMART-SOLUTIONS
   branch: main
-  base_url: https://davidsonsmartsolutions.com
+  base_url: https://davidsonsmartsolutions.ca
   # Only needed if you host your own OAuth handler rather than using a
   # provider's. Must return a GitHub token to the CMS.
   auth_endpoint: /api/auth
