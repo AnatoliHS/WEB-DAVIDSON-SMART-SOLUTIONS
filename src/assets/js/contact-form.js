@@ -6,13 +6,15 @@
  * - Shows "Message sent" or a specific error at the top of the form; inputs are kept on error
  * - Every error offers fallbacks: try again, email (pre-filled with what they typed) or phone
  *
- * Config arrives on this script's tag: data-endpoint, data-turnstile-sitekey, data-email, data-phone.
+ * Config arrives on this script's tag: data-endpoint, data-turnstile-sitekey, data-audience, data-email, data-phone.
+ * data-audience ("residential" or "business") decides which inbox the server sends to.
  */
 (() => {
   const script = document.currentScript;
   const config = {
     endpoint: script?.dataset.endpoint || '',
     siteKey: script?.dataset.turnstileSitekey || '',
+    audience: script?.dataset.audience === 'business' ? 'business' : 'residential',
     email: script?.dataset.email || '',
     phone: script?.dataset.phone || '',
   };
@@ -70,6 +72,7 @@
     const data = Object.fromEntries(new FormData(form));
     data.source = form.dataset.formSource || document.title;
     data.page = location.href;
+    data.audience = config.audience;
     return data;
   };
 

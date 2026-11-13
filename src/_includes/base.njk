@@ -1265,11 +1265,14 @@
   </dialog>
   <script src="/assets/js/rebrand-notice.js?v=1.0" defer></script>
 
-  <!-- Contact forms: message-sent / error states, Turnstile, delivery via /api/contact (functions/api/contact.js) -->
-  <script src="/assets/js/contact-form.js?v=1.3" defer
+  <!-- Contact forms: message-sent / error states, Turnstile, delivery via /api/contact (functions/api/contact.js).
+       Business pages (isBusinessPage) send to the business inbox, every other page to the residential one. -->
+  {%- set isBusinessForm = isBusinessPage or page.url == "/commercial/" %}
+  <script src="/assets/js/contact-form.js?v=1.4" defer
     data-endpoint="{{ site.forms.endpoint }}"
     data-turnstile-sitekey="{{ turnstileSiteKey }}"
-    data-email="{{ site.email }}"
+    data-audience="{% if isBusinessForm %}business{% else %}residential{% endif %}"
+    data-email="{% if isBusinessForm %}{{ site.businessEmail }}{% else %}{{ site.email }}{% endif %}"
     data-phone="{{ site.phone }}"></script>
 </body>
 

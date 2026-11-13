@@ -7,13 +7,25 @@
  *
  * Environment variables (Cloudflare dashboard → Pages project → Settings → Variables and Secrets):
  * Set them for both Production and Preview, then redeploy: a deployment keeps the values it was built with.
- *   TURNSTILE_SITE_KEY    text    Turnstile widget site key. Read at build time by .eleventy.js, not by this function
  *   RESEND_API_KEY        secret  Resend API key
  *   TURNSTILE_SECRET_KEY  secret  Turnstile widget secret key
- *   CONTACT_TO_EMAIL      text    Inbox that receives enquiries (comma-separate for several), e.g. "hi@davidsonsmartsolutions.ca"
- *   CONTACT_FROM_EMAIL    text    Sender on a domain verified in Resend, e.g. "Davidson Smart Solutions <hi@davidsonsmartsolutions.ca>"
  *   ALLOWED_ORIGINS       text    Optional. Comma-separated origins allowed to post, e.g. "https://davidsonsmartsolutions.ca"
+ *   (The public Turnstile site key is set in .eleventy.js, not here.)
+ *
+ * Recipients and sender are set in RECIPIENTS and FROM_EMAIL below. Each can be overridden without a
+ * code change (comma-separate several inboxes):
+ *   CONTACT_TO_EMAIL           text    Optional. Residential inbox
+ *   CONTACT_TO_EMAIL_BUSINESS  text    Optional. Business inbox
+ *   CONTACT_FROM_EMAIL         text    Optional. Sender; its domain must be verified in Resend
  */
+
+// The browser only says "residential" or "business"; it never chooses an address.
+const RECIPIENTS = {
+  residential: 'hi@davidsonsmartsolutions.ca',
+  business: 'business@davidsonsmartsolutions.ca',
+};
+// forms.davidsonsmartsolutions.ca is the sending domain verified in Resend
+const FROM_EMAIL = 'Davidson Smart Solutions <website@forms.davidsonsmartsolutions.ca>';
 
 const LIMITS = { name: 120, email: 254, phone: 40, city: 120, company: 160, budget: 60, message: 5000, source: 200, page: 500 };
 const REQUIRED = ['name', 'email', 'phone', 'city', 'message'];
@@ -92,7 +104,7 @@ function buildEmail(data) {
 
 export async function onRequestPost({ request, env }) {
   // 1. Configuration (missing secrets are a site problem, not the visitor's)
-  const unset = ['RESEND_API_KEY', 'TURNSTILE_SECRET_KEY', 'CONTACT_TO_EMAIL', 'CONTACT_FROM_EMAIL'].filter((key) => !env[key]);
+  const unset = ['RESEND_API_KEY', 'TURNSTILE_SECRET_KEY'].filter((key) => !env[key]);
   if (unset.length) {
     console.error('contact: missing environment variables:', unset.join(', '));
     return fail(503, 'not_configured', 'The contact form is not configured yet.');
@@ -145,17 +157,22 @@ export async function onRequestPost({ request, env }) {
     return fail(502, 'turnstile_unavailable', 'The security check could not be verified.');
   }
 
-  // 7. Send through Resend
+  // 7. Send through Resend, to the business or residential inbox
+  const isBusiness = raw.audience === 'business';
+  const to = (isBusiness
+    ? env.CONTACT_TO_EMAIL_BUSINESS || RECIPIENTS.business
+    : env.CONTACT_TO_EMAIL || RECIPIENTS.residential
+  ).split(',').map((e) => e.trim()).filter(Boolean);
   const { text, html } = buildEmail(data);
   try {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: env.CONTACT_FROM_EMAIL,
-        to: env.CONTACT_TO_EMAIL.split(',').map((e) => e.trim()).filter(Boolean),
+        from: env.CONTACT_FROM_EMAIL || FROM_EMAIL,
+        to,
         reply_to: data.email,
-        subject: `New enquiry from ${data.name}${data.source ? ` · ${data.source}` : ''}`,
+        subject: `New ${isBusiness ? 'business' : 'residential'} enquiry from ${data.name}${data.source ? ` · ${data.source}` : ''}`,
         text,
         html,
       }),
