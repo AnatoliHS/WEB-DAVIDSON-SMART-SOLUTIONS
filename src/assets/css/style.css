@@ -11520,3 +11520,59 @@ body.business-portal {
     animation: none;
   }
 }
+
+/* Legal pages (privacy policy, terms of service): dark theme to match the rest of the site */
+.legal-hero {
+  background: #0b0f17;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.legal-hero h1 {
+  color: #ffffff;
+}
+
+.legal-hero p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.legal-body {
+  background: #121212;
+  color: #c9ccd1;
+}
+
+.legal-body h2,
+.legal-body h3,
+.legal-body strong {
+  color: #ffffff;
+}
+
+.legal-body p,
+.legal-body ul,
+.legal-body li {
+  color: #c9ccd1;
+}
+
+.legal-body a:hover {
+  color: #ffffff;
+}
+
+.legal-body .legal-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* The site-wide mobile rules make every .section and h2 much bigger; legal pages need plain reading sizes. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .section.legal-hero {
+    padding: 8rem 0 3rem !important;
+  }
+
+  .section.legal-body {
+    padding: 3rem 0 4.5rem !important;
+  }
+
+  .legal-body h2 {
+    font-size: 1.4rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
