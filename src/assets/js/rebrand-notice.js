@@ -1,10 +1,14 @@
-// Rebrand notice: shown only to visitors redirected from the old quintesmarthomes.ca domain.
-// The redirect on the old domain adds ?from=quintesmarthomes to the URL. Visitors who come
-// straight to davidsonsmartsolutions.ca never see the notice.
+// Rebrand notice.
+// - Until SHOW_ALL_UNTIL: every visitor sees it once (remembered in localStorage).
+// - Always: visitors redirected from the old quintesmarthomes.ca domain see it on arrival.
+//   The redirect on the old domain adds ?from=quintesmarthomes to the URL.
+// After SHOW_ALL_UNTIL passes, the notice automatically goes back to old-domain visitors only.
 (() => {
   const PARAM = 'from';
   const VALUE = 'quintesmarthomes';
   const OLD_HOST = 'quintesmarthomes.ca';
+  const SHOW_ALL_UNTIL = new Date('2027-05-17T00:00:00'); // 6 months from launch (2026-11-17)
+  const SEEN_KEY = 'rebrandNoticeSeen';
 
   const url = new URL(window.location.href);
   const fromParam = url.searchParams.get(PARAM) === VALUE;
@@ -15,7 +19,16 @@
     fromReferrer = !!document.referrer && new URL(document.referrer).hostname.endsWith(OLD_HOST);
   } catch (e) { /* bad referrer, ignore */ }
 
-  if (!fromParam && !fromReferrer) return;
+  const fromOldDomain = fromParam || fromReferrer;
+
+  let alreadySeen = false;
+  try {
+    alreadySeen = localStorage.getItem(SEEN_KEY) === '1';
+  } catch (e) { /* storage blocked, treat as not seen */ }
+
+  const showToEveryone = new Date() < SHOW_ALL_UNTIL && !alreadySeen;
+
+  if (!fromOldDomain && !showToEveryone) return;
 
   // Remove the marker from the address bar so a refresh, bookmark or shared link doesn't show it again
   if (fromParam) {
@@ -28,6 +41,10 @@
     if (!dialog || typeof dialog.showModal !== 'function') return;
 
     dialog.showModal();
+
+    try {
+      localStorage.setItem(SEEN_KEY, '1');
+    } catch (e) { /* storage blocked, ignore */ }
 
     // Click on the dark backdrop closes it
     dialog.addEventListener('click', (e) => {

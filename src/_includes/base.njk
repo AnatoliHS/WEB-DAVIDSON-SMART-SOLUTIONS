@@ -1252,7 +1252,8 @@
       }
     });
   </script>
-  <!-- Rebrand notice: only opens for visitors redirected from quintesmarthomes.ca (see rebrand-notice.js) -->
+  {% if not hideRebrandNotice %}
+  <!-- Rebrand notice: shown once to every visitor until 2027-05-17, and always to visitors redirected from quintesmarthomes.ca (see rebrand-notice.js). Pages can opt out with hideRebrandNotice: true -->
   <dialog class="rebrand-notice" id="rebrandNotice" aria-labelledby="rebrandNoticeTitle">
     <form method="dialog" class="rebrand-notice-inner">
       <button type="submit" class="rebrand-notice-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
@@ -1263,7 +1264,8 @@
       <button type="submit" class="btn btn-primary rebrand-notice-btn">Continue to the site</button>
     </form>
   </dialog>
-  <script src="/assets/js/rebrand-notice.js?v=1.0" defer></script>
+  <script src="/assets/js/rebrand-notice.js?v=1.1" defer></script>
+  {% endif %}
 
   <!-- Contact forms: message-sent / error states, Turnstile, delivery via /api/contact (functions/api/contact.js).
        Business pages (isBusinessPage) send to the business inbox, every other page to the residential one. -->
