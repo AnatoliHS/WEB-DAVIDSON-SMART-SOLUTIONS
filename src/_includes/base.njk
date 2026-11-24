@@ -27,10 +27,7 @@
 
   <!-- Fonts and icons are self-hosted and inlined so they don't hold up the first paint -->
   <link rel="preload" href="/assets/fonts/e2e017e1ca.woff2" as="font" type="font/woff2" crossorigin>
-  <style>
-{% include "components/font-faces.css" %}
-{{ fontAwesomeCss | safe }}
-  </style>
+  {{ headStyles | safe }}
 
   <!-- Layout helper: touch tablets (no hover, coarse pointer) get the mobile layout at any width, matching the CSS media queries -->
   <script>
@@ -43,6 +40,13 @@
   <!-- Favicon -->
   <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <!-- Meta (Facebook) Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '646378971706818');
+    fbq('track', 'PageView');
+  </script>
 </head>
 
 {#- Contact CTAs go to the page's own form, else the Business or Home page form -#}
@@ -54,6 +58,7 @@
   {%- set consultHref = "/#contact" -%}
 {%- endif %}
 <body class="{% if isBusinessPage or page.url == '/commercial/' %}business-portal{% endif %}">
+  <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=646378971706818&ev=PageView&noscript=1" /></noscript>
   {#- Standalone landing pages (hideNav: true) render without the navbar -#}
   {% if not hideNav %}
   <!-- Thinking Wave Visualizer Ring around Closed Navbar Circle (Desktop Only) -->

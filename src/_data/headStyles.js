@@ -1,4 +1,6 @@
-// Builds the Font Awesome CSS for the page <head>, keeping only icons the site uses. It is regenerated on
+// Builds the <style> tag for the page <head>: the self-hosted font faces, then the Font Awesome CSS.
+// The whole tag is built here, not in base.njk, so the editor's CSS checker doesn't flag template tags as errors.
+// Font Awesome keeps only the icons the site uses. It is regenerated on
 // every build by scanning src/ for "fa-" class names, so an icon added in the CMS or a template just works.
 // Icons built from a variable name at runtime aren't detected: write out the full class name somewhere.
 const fs = require("fs");
@@ -6,6 +8,7 @@ const path = require("path");
 
 const SRC = path.join(__dirname, "..");
 const VENDOR = path.join(SRC, "_includes", "vendor", "font-awesome-6.4.0.min.css");
+const FONT_FACES = path.join(SRC, "_includes", "components", "font-faces.css");
 const SCANNED = /\.(html|njk|md|json|ya?ml|js|css)$/;
 const SKIPPED_DIRS = new Set(["admin", "vendor", "images", "fonts"]);
 
@@ -21,7 +24,7 @@ module.exports = () => {
     for (const [name] of fs.readFileSync(file, "utf8").matchAll(/\bfa-[a-z0-9-]+/g)) used.add(name);
   }
 
-  return fs
+  const fontAwesome = fs
     .readFileSync(VENDOR, "utf8")
     // Only the Font Awesome 6 fonts are served; the site doesn't use the v4/v5 compatibility names
     .replace(/@font-face\{[^}]*\}/g, (face) => {
@@ -36,4 +39,6 @@ module.exports = () => {
       const kept = list.filter((s) => used.has(s.slice(1, -":before".length)));
       return kept.length ? rule.replace(selectors, kept.join(",")) : "";
     });
+
+  return `<style>\n${fs.readFileSync(FONT_FACES, "utf8")}\n${fontAwesome}\n</style>`;
 };
