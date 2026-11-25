@@ -11416,7 +11416,7 @@ body.business-portal {
   }
 }
 
-/* Rebrand notice (only shown to visitors redirected from quintesmarthomes.ca) */
+/* Rebrand notice (only shown to visitors arriving from quintesmarthomes.ca / .com) */
 .rebrand-notice {
   /* The global reset sets margin: 0, which breaks the browser's built-in dialog centering */
   position: fixed;
